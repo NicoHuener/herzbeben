@@ -1,0 +1,61 @@
+version '1.0-SNAPSHOT'
+group 'de.photowalk'
+description 'Sample Dropwizard REST Stub'
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+allprojects {
+    repositories {
+        // Use jcenter for resolving your dependencies.
+        // You can declare any Maven/Ivy/file repository here.
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+
+dependencies {
+    compile 'com.h2database:h2:1.4.196'
+    compile 'io.dropwizard:dropwizard-core:1.1.3'
+    compile 'io.dropwizard:dropwizard-hibernate:1.1.3'
+    compile 'org.codehaus.groovy:groovy-all:2.4.10'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'junit:junit:4.12'
+}
+
+/**
+ * buildscript contains dependencies for the build tool itself not for the target build.
+ */
+buildscript {
+
+    /**
+     * The repositories block configures the repositories Gradle uses to
+     * search or download the dependencies. Gradle pre-configures support for remote
+     * repositories such as JCenter, Maven Central, and Ivy. You can also use local
+     * repositories or define your own remote repositories. The code below defines
+     * JCenter as the repository Gradle should use to look for its dependencies.
+     */
+
+    repositories {
+        jcenter()
+    }
+
+    /**
+     * The dependencies block configures the dependencies Gradle needs to use
+     * to build your project. The following line adds Android plugin for Gradle
+     * version 2.3.3 as a classpath dependency.
+     */
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+    }
+
+}
+
