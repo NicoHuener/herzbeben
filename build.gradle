@@ -1,6 +1,6 @@
 version '1.0-SNAPSHOT'
-group 'de.photowalk'
-description 'Sample Dropwizard REST Stub'
+group 'de.meetme'
+description 'Meetme Dropwizard Project'
 
 apply plugin: 'java'
 apply plugin: 'groovy'
@@ -58,4 +58,3 @@ buildscript {
     }
 
 }
-
