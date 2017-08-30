@@ -2,11 +2,15 @@ package de.meetme.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-// create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
 public class Person {
+    // create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -43,5 +47,15 @@ public class Person {
     @JsonProperty
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

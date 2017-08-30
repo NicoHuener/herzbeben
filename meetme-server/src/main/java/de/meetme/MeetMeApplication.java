@@ -60,9 +60,10 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     }
 
     private void initDb(MeetMeConfiguration configuration, Environment environment) {
+        // todo check if database is already initialized
         try {
             Connection con = hibernate.getDataSourceFactory(configuration).build(environment.metrics(), "DataSource").getConnection();
-            PreparedStatement stmt = con.prepareStatement("insert into person (id, firstname, name, email) values (1, 'pvn1', 'pn1', 'email1')");
+            PreparedStatement stmt = con.prepareStatement("insert into person (firstname, name, email) values ('pvn1', 'pn1', 'email1')");
             stmt.executeUpdate();
             stmt.close();
             con.close();

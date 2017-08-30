@@ -1,9 +1,8 @@
 package de.meetme;
 
-import io.dropwizard.Configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class MeetMeConfiguration extends Configuration {
     private DataSourceFactory dataSourceFactory;

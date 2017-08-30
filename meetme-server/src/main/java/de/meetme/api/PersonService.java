@@ -1,7 +1,6 @@
 package de.meetme.api;
 
 
-import com.codahale.metrics.annotation.Timed;
 import de.meetme.data.Person;
 import de.meetme.db.PersonDao;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -9,14 +8,25 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.context.internal.ManagedSessionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/person")
+@Path("/person") // Part of the URL to identify this resource
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class PersonService {
+    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+
     private final PersonDao dao;
     private final SessionFactory sessionFactory;
 
@@ -26,30 +36,24 @@ public class PersonService {
     }
 
     @GET
-    @Timed
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @UnitOfWork
+    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public Person getPerson(@PathParam("id") long id) {
-        dao.persist(new Person(1, "vorname", "name", "email"));
         return dao.get(id);
     }
 
     @DELETE
-    @Timed
     @Path("/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    @UnitOfWork
+    @Produces(MediaType.TEXT_PLAIN) // We return plain text, no JSON
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public void removePerson(@PathParam("id") long id) {
         Person person = dao.get(id);
         dao.remove(person);
     }
 
     @GET
-    @Timed
     @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @UnitOfWork
+    @UnitOfWork   //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public List<Person> getPersons() {
         Session session = sessionFactory.openSession();
         ManagedSessionContext.bind(session);
@@ -61,12 +65,10 @@ public class PersonService {
     }
 
     @POST
-    @Timed
-    @Path("/save")
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({MediaType.APPLICATION_JSON})
-    @UnitOfWork
-    public Person addPerson(Person person) {
+    @Path("/create")
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public Person createPerson(Person person) throws Exception {
+        log.debug("Create Person: " + person);
         return dao.persist(person);
     }
 }
