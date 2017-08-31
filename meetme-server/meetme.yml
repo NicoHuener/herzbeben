@@ -1,3 +1,6 @@
+# This is the Dropwizward Application Configuration file
+# This file is read into the MeetMeConfiguration class
+# If you need additional configuration you can extend the MeetMeConfiguration class and add the config here
 
 # Log Level to make log output visible
 logging:

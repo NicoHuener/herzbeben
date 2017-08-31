@@ -49,7 +49,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
 
         // add here new data classes, DAOs and services
         final PersonDao dao = new PersonDao(hibernate.getSessionFactory());
-        de.meetme.api.PersonService personService = new de.meetme.api.PersonService(dao, hibernate.getSessionFactory());
+        de.meetme.api.PersonService personService = new de.meetme.api.PersonService(dao);
         environment.jersey().register(personService);
 
         // start h2 in server mode to connect remotely
