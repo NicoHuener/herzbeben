@@ -142,4 +142,26 @@ class PersonDaoTest extends Specification {
         cleanup:
         session.close()
     }
+
+    def tesstUpdate() {
+        setup:
+        def session = sessionFactory.getCurrentSession()
+        def transaction = session.beginTransaction()
+        Person p = new Person(0,"fn1", "name1", "email1")
+        Person created = personDao.persist(p)
+
+        when:
+        p.name = "name2"
+        personDao.update(p)
+        def result = personDao.get(p.id)
+        transaction.commit()
+
+        then:
+        result
+        result.name == "name2"
+        result.id == created.id
+
+        cleanup:
+        session.close()
+    }
 }

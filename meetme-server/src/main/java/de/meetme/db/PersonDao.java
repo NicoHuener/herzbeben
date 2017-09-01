@@ -1,6 +1,7 @@
 package de.meetme.db;
 
 
+import de.meetme.data.Person;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 
 
-public class PersonDao extends AbstractDao<de.meetme.data.Person> {
+public class PersonDao extends AbstractDao<Person> {
 
     public PersonDao(SessionFactory sessionFactory) {
         super(sessionFactory);

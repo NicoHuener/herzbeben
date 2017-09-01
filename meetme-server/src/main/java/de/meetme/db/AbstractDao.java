@@ -46,7 +46,8 @@ abstract public class AbstractDao<T extends PersistentObject> extends AbstractDA
     }
 
     public void update(T entity) {
-
+        log.debug("Update " + entity);
+        persist(entity);
     }
 
     public List<T> getAll() {
