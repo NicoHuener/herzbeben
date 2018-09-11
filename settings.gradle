@@ -10,4 +10,4 @@
 
 rootProject.name = 'meetme'
 include 'meetme-server'
-include 'meetme-app'
+//include 'meetme-app'
