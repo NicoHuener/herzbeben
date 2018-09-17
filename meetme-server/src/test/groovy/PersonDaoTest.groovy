@@ -106,7 +106,6 @@ class PersonDaoTest extends Specification {
         session.close()
     }
 
-
     def testGet() {
         setup:
         def session = sessionFactory.getCurrentSession()
