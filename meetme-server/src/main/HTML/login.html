@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fallstudie</title>
+        <link rel="stylesheet" href="login.css">
+        <script type=text/javascript src = "login.js"></script>
+    </head>
+    <body>
+        <div id="choice">
+            <button onclick="showCreateAccount()">Create account</button>
+            <button onclick="showLogin()">Login</button>
+        </div>
+        <!-- creates basic login-form -->
+        <div id="container">
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <div id="lower">
+                    <input type="checkbox"><label for="checkbox">Keep me logged in</label>
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+        </div> 
+        
+         <div id="signup">
+            <form>
+                <label for="E-Mail address">E-Mail address:</label>
+                <input type="text" id="mail" name="mail">
+                <label for="Username-signup">Username:</label>
+                <input type="text" id="Username-signup" name="Username-signup">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <label for="password">Confirm password:</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+                <div id="lower2">
+                    <input type="submit" value="Create account">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
