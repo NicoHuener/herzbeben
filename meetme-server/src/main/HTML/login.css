@@ -1,7 +1,7 @@
 /* login-style basics */
 html, body {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     color: #444;
     -webkit-font-smoothing: antialiased;
@@ -9,21 +9,66 @@ html, body {
 }
 #background {
     margin-top: 0;
-    background-image: url(photo-1519085731353-fb9924fadee7.jpg);
+   /* margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;*/
+    background-image: url(palm-trees-sky_4460x4460.jpg);
     width: 100%;
     height: 100%;
-    background-size: cover;
+    background-size: 100% 100vh;
     background-position: center center;
     position: absolute;
     left: 0px;
     top: 0px;
     z-index: -1;
 }
+#slogan {
+    color: transparent;
+    font-size: 90px;
+    text-emphasis: bold;
+    margin-left: 70px;
+}
+/*
 #choice {
     color: transparent;
+    margin-top: 350px;
+    margin-left: 70px;
+    z-index: 2;
+    width: 200px;
+    height: 50px;
+    background: #FBF0EE;
+}
+*/
+
+#buttonCreate{
+    background-color: #FBF0EE;
+    border: none;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    top: 87%;
+    margin-left: 70px;
+}
+
+#buttonLogin{
+    background-color: #FBF0EE;
+    border: none;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    top: 87%;
+    margin-left: 235px;
+}
+#buttonCreate:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+#buttonLogin:hover{
+    cursor: pointer;
+    opacity: 0.9;
 }
 #signup {
-    position: fixed;
+    position: absolute;
     width: 340px;
     height: 450px;
     top: 40%;
@@ -35,7 +80,7 @@ html, body {
 }
 /* login-style additional */
 #container {
-    position: fixed;
+    position: absolute;
     width: 340px;
     height: 300px;
     top: 50%;

@@ -8,10 +8,14 @@
     <script type=text/javascript src = "login.js"></script>
 </head>
 <body>
+<!-- creates Slogan + Logo division -->
+<p id="slogan">Sharing is caring.
+</p>
 <div id="background"></div>
+<!-- creates Buttons that lead to Login/Account creating -->
 <div id="choice">
-    <button onclick="showCreateAccount()">Create account</button>
-    <button onclick="showLogin()">Login</button>
+    <button id="buttonCreate" onclick="showCreateAccount()">Create account</button>
+    <button id="buttonLogin" onclick="showLogin()">Login</button>
 </div>
 <!-- creates basic login-form -->
 <div id="container">
@@ -26,7 +30,7 @@
         </div>
     </form>
 </div>
-
+<!-- creates signup sheet -->
 <div id="signup">
     <form>
         <label for="E-Mail address">E-Mail address:</label>
