@@ -11,17 +11,24 @@ public class Person extends PersistentObject {
     private String name;
     private String firstName;
     private String email;
+    private String username;
 
     public Person() {
         // Needed by Jackson deserialization
         super(0);
     }
 
-    public Person(long id, String firstName, String name, String email) {
+    public Person(long id, String name, String firstName, String email, String username) {
         super(id);
-        this.firstName = firstName;
         this.name = name;
+        this.firstName = firstName;
         this.email = email;
+        this.username = username;
+    }
+
+    @JsonProperty
+    public String getUsername() {
+        return username;
     }
 
     @JsonProperty
@@ -42,10 +49,10 @@ public class Person extends PersistentObject {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + getId() +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

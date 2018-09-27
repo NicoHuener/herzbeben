@@ -18,7 +18,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     private static final Logger log = LoggerFactory.getLogger(MeetMeApplication.class);
 
     // Add here new data classes in order to register them at hibernate bundle
-    private static final Class<?>[] entities = {de.meetme.data.Person.class};
+    private static final Class<?>[] entities = {de.meetme.data.Person.class,de.meetme.data.Photo.class};
 
     /**
      * Create
@@ -63,9 +63,9 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         // todo check if database is already initialized
         try {
             Connection con = hibernate.getDataSourceFactory(configuration).build(environment.metrics(), "DataSource").getConnection();
-            PreparedStatement stmt = con.prepareStatement("insert into person (firstname, name, email) values ('pvn1', 'pn1', 'email1')");
-            stmt.executeUpdate();
-            stmt.close();
+            //PreparedStatement stmt = con.prepareStatement("insert into person (firstname, name, email) values ('pvn1', 'pn1', 'email1')");
+            //stmt.executeUpdate();
+            //stmt.close();
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -75,7 +75,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     /**
      * Start H2 db as server.
      * You can connect remotly using this URL:
-     * jdbc:h2:tcp://localhost:9092/~/meetmedb
+     * jdbc:h2:tcp://localhost:9095/~/meetmedb
      * User: sa
      * Pwd: <KEEP EMPTY>
      *
