@@ -9,17 +9,20 @@
 </head>
 <body>
 <!-- creates Slogan + Logo division -->
-<p id="slogan">Sharing is caring.
-</p>
+<div>
+    <p id="slogan">A picture is worth a thousand words.
+    </p>
+</div>
 <div id="background"></div>
 <!-- creates Buttons that lead to Login/Account creating -->
 <div id="choice">
     <button id="buttonCreate" onclick="showCreateAccount()">Create account</button>
-    <button id="buttonLogin" onclick="showLogin()">Login</button>
+    <button id="buttonLogin" onclick="showLogin()">Back to login</button>
 </div>
 <!-- creates basic login-form -->
 <div id="container">
-    <form>
+    <form id="form1">
+        <p id="sign-in1">Sign in now!</p><br><br>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
         <label for="password">Password:</label>
