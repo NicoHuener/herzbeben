@@ -1,9 +1,9 @@
 function showCreateAccount(){
-    
+
     var x = document.getElementById("signup");
-    
+
     var z = document.getElementById("container");
-    
+
     var a = document.getElementById("buttonCreate");
 
     var i = document.getElementById("buttonLogin");
@@ -16,7 +16,7 @@ function showCreateAccount(){
 
     }
 
-   else{
+    else{
         x.style.display = "block";
     }
 
@@ -27,7 +27,7 @@ function showCreateAccount(){
         z.style.display = "none"
     }
 
-     /*Close Create Button*/
+    /*Close Create Button*/
     if(a.style.display === "block"){
 
         a.style.display = "none";
@@ -38,7 +38,7 @@ function showCreateAccount(){
     }
 
     /*Show Login Button*/
-     if(i.style.display === "none"){
+    if(i.style.display === "none"){
 
         i.style.display = "block";
 
@@ -50,53 +50,50 @@ function showCreateAccount(){
 }
 
 
-function showLogin(){
+function showLogin() {
 
     var y = document.getElementById("container");
     var u = document.getElementById("signup");
     var b = document.getElementById("buttonLogin");
-     var j = document.getElementById("buttonCreate");
+    var j = document.getElementById("buttonCreate");
 
 
     /*Open Login Form*/
-    if(y.style.display === "block"){
+    if (y.style.display === "block") {
 
         y.style.display = "none";
 
 
     }
-    else{
+    else {
         y.style.display = "block";
     }
 
     /*Close Create Form*/
-    if(u.style.display === "block"){
+    if (u.style.display === "block") {
         u.style.display = "none"
     }
 
 
-
-
-
     /*Close Login Button*/
-    if(b.style.display === "block"){
+    if (b.style.display === "block") {
 
         b.style.display = "none";
 
     }
-    else{
+    else {
         b.style.display = "none";
     }
 
 
     /*Show Create Button*/
-     if(j.style.display === "none"){
+    if (j.style.display === "none") {
 
         j.style.display = "block";
 
     }
-    else{
+    else {
         j.style.display = "block";
     }
-    
+
 }
