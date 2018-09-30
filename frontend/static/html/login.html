@@ -21,12 +21,12 @@
 </div>
 <!-- creates basic login-form -->
 <div id="container">
-    <form id="form1">
+    <form id="login" name="login">
         <p id="sign-in1">Sign in now!</p><br><br>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
+        <label for="usernamelogin">Username:</label>
+        <input type="text" id="usernamelogin" name="usernamelogin">
+        <label for="passwordlogin">Password:</label>
+        <input type="password" id="passwordlogin" name="passwordlogin">
         <div id="lower">
             <input type="checkbox"><label for="checkbox">Keep me logged in</label>
             <input type="submit" value="Login">
@@ -35,9 +35,13 @@
 </div>
 <!-- creates signup sheet -->
 <div id="signup">
-    <form>
-        <label for="E-Mail address">E-Mail address:</label>
+    <form name="signupform" id="signupform" onsubmit="registerUser()">
+        <label for="mail">E-Mail address:</label>
         <input type="text" id="mail" name="mail">
+        <label for="firstname">Firstname:</label>
+        <input type="text" id="firstname" name="firstname">
+        <label for="lastname">Lastname:</label>
+        <input type="text" id="lastname" name="lastname">
         <label for="Username-signup">Username:</label>
         <input type="text" id="Username-signup" name="Username-signup">
         <label for="password">Password:</label>
@@ -49,5 +53,26 @@
         </div>
     </form>
 </div>
+
+<script>
+    /*function checkPW(){
+    }*/
+
+    function registerUser(){
+        var email = document.getElementById("mail").value;
+        var lastname = document.getElementById("lastname").value;
+        var firstname = document.getElementById("firstname").value;
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var id = "3"
+        var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        //xmlhttp.send(JSON.stringify({"email": email,"password": password,"lastname": lastname,"firstname": firstname, "username" : username }));
+        xmlhttp.send(JSON.stringify({"id" : id, "email": email,"firstName": firstname, "name": lastname, "username" : username }));
+    }
+</script>
+
+
 </body>
 </html>
