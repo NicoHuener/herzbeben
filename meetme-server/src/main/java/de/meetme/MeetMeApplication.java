@@ -2,6 +2,7 @@ package de.meetme;
 
 import de.meetme.db.PersonDao;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -38,6 +39,8 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     @Override
     public void initialize(Bootstrap<MeetMeConfiguration> bootstrap) {
         log.debug("initialize");
+
+        bootstrap.addBundle(new AssetsBundle("/html/","/","login.html","static"));
 
         // register Dropwizard Hibernate bundle
         bootstrap.addBundle(hibernate);

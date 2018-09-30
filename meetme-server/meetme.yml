@@ -18,11 +18,13 @@ logging:
 
 # App Server settings
 server:
+    type: simple
     rootPath: '/meetme/api/*' # Base path for the HTTP URL
     applicationContextPath: /
-    applicationConnectors:
-        - type: http
-          port: 8085 # Port of the web server for HTTP requests
+    adminContextPath: /admin
+    connector:
+      type: http
+      port: 8080 # Port of the web server for HTTP requests
 
 # Database settings
 database:
