@@ -19,7 +19,7 @@ public class Photo extends PersistentObject {
         super(0);
     }
 
-    public Photo(long id, Person person, String title, int clicks, int wins,) {
+    public Photo(long id, Person person, String title, int clicks, int wins, byte[] picture) {
         super(id);
         this.person = person;
         this.title = title;
