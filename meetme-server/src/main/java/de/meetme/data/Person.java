@@ -12,18 +12,20 @@ public class Person extends PersistentObject {
     private String firstName;
     private String email;
     private String username;
+    private String password;
 
     public Person() {
         // Needed by Jackson deserialization
         super(0);
     }
 
-    public Person(long id, String name, String firstName, String email, String username) {
-        super(id);
+    public Person(String name, String firstName, String email, String username, String password) {
+        super(0);
         this.name = name;
         this.firstName = firstName;
         this.email = email;
         this.username = username;
+        this.password = password;
     }
 
     @JsonProperty
@@ -39,6 +41,11 @@ public class Person extends PersistentObject {
     @JsonProperty
     public String getName() {
         return name;
+    }
+
+    @JsonProperty
+    public String getPassword() {
+        return password;
     }
 
     @JsonProperty

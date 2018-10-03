@@ -35,27 +35,35 @@
 </div>
 <!-- creates signup sheet -->
 <div id="signup">
-    <form name="signupform" id="signupform" onsubmit="registerUser()">
+    <form name="signupform" id="signupform" >
         <label for="mail">E-Mail address:</label>
         <input type="text" id="mail" name="mail">
         <label for="firstname">Firstname:</label>
         <input type="text" id="firstname" name="firstname">
         <label for="lastname">Lastname:</label>
         <input type="text" id="lastname" name="lastname">
-        <label for="Username-signup">Username:</label>
-        <input type="text" id="Username-signup" name="Username-signup">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
-        <label for="password">Confirm password:</label>
-        <input type="password" id="confirm-password" name="confirm-password">
+        <label for="confpassword">Confirm password:</label>
+        <input type="password" id="confpassword" name="confpassword">
         <div id="lower2">
-            <input type="submit" value="Create account">
+            <input type="submit" value="Create account" onclick="registerUser()">
         </div>
     </form>
 </div>
 
 <script>
-    /*function checkPW(){
+   /* function checkPW(){
+        var password = document.getElementById("password").value;
+        var confpassword = document.getElementById("confpassword").value;
+
+        if (password == confpassword) {
+            alert('Passwort ist gleich')
+        } else {
+            alert('Passwort ist nicht gleich')
+        }
     }*/
 
     function registerUser(){
@@ -64,15 +72,16 @@
         var firstname = document.getElementById("firstname").value;
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        var id = "3"
+
+
         var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+
         xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
         xmlhttp.setRequestHeader("Content-Type", "application/json");
-        //xmlhttp.send(JSON.stringify({"email": email,"password": password,"lastname": lastname,"firstname": firstname, "username" : username }));
-        xmlhttp.send(JSON.stringify({"id" : id, "email": email,"firstName": firstname, "name": lastname, "username" : username }));
+        xmlhttp.send(JSON.stringify({"email": email,"password": password,"name": lastname,"firstName": firstname, "username" : username }));
     }
 </script>
 
-
+<li><a href="allusers.html">AllUsers</a></li>
 </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AllUsers</title>
+    <!-- <link rel="stylesheet" href="userview.css">
+    <script type=text/javascript src = "login.js"></script> -->
+</head>
+</head>
+<body>
+<h1>Tabelle mit allen Nutzern</h1>
+
+<section id="result">
+
+</section>
+<script>
+    window.onload = function () {
+
+        var xhr = new XMLHttpRequest();
+        var userlist;
+
+        xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+        xhr.send(null);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                userlist = xhr.responseText;
+                alert(userlist);
+                var result = document.getElementById("result");
+                var variable = userlist.replace(/"/g, '');
+                var variablef = variable.split('},{');
+                variablef.forEach(listArray);
+                //alert(variable);
+                //for (var i=0; i<variable.length; i++) {
+                //dataArray = new Arr
+            }
+
+
+            function listArray(elem) {
+                var varib = elem.split(',');
+                var anzahl = varib.length;
+                varib.forEach(listArrayb);
+
+
+                function listArrayb(elem) {
+                    //result.innerHTML += elem.trim() + "<br>";
+                    var i=1;
+                    document.write("<tr><td>Eintrag " + i + " is:</td>");
+                    document.write("<td>" + elem + "</td></tr>");
+
+                }
+
+                //for (var i=0; i<anzahl; i++) {
+                //document.write("<tr><td>Eintrag " + i + " is:</td>");
+                //document.write("<td>" + elem + "</td></tr>");
+                //}
+            }
+
+
+//"index [" + index + "] " +
+
+
+        }
+
+    }
+</script>
+
+</body>
+</html>
