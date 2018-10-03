@@ -2,7 +2,9 @@ package de.meetme.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Person extends PersistentObject {
@@ -10,7 +12,9 @@ public class Person extends PersistentObject {
 
     private String name;
     private String firstName;
+    @Column(unique = true)
     private String email;
+    @Column(unique = true)
     private String username;
     private String password;
 
