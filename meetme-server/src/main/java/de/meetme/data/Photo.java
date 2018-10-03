@@ -12,16 +12,18 @@ public class Photo extends PersistentObject {
     private Person person;
     private String title;
     private int clicks;
+    private int wins;
 
     public Photo() {
         super(0);
     }
 
-    public Photo(long id, Person person, String title, int clicks) {
+    public Photo(long id, Person person, String title, int clicks, int wins) {
         super(id);
         this.person = person;
         this.title = title;
         this.clicks = clicks;
+        this.wins = wins;
     }
 
     @JsonProperty
@@ -39,12 +41,18 @@ public class Photo extends PersistentObject {
         return clicks;
     }
 
+    @JsonProperty
+    public int getWins() {
+        return wins;
+    }
+
     @Override
     public String toString() {
         return "Photo{" +
                 "person=" + person +
                 ", title='" + title + '\'' +
                 ", clicks=" + clicks +
+                ", wins=" + wins +
                 '}';
     }
 }
