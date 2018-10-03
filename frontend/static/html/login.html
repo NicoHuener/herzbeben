@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fallstudie</title>
+    <link rel="icon" href="./images/Herzbeben_Logo.png">
     <link rel="stylesheet" href="login.css">
     <script type=text/javascript src = "login.js"></script>
 </head>
@@ -49,7 +50,7 @@
         <label for="confpassword">Confirm password:</label>
         <input type="password" id="confpassword" name="confpassword">
         <div id="lower2">
-            <input type="submit" value="Create account" onclick="registerUser()">
+            <input type="submit" value="Create account" onclick="registerUser()" onclick="checkPassword()">
         </div>
     </form>
 </div>
@@ -82,6 +83,6 @@
     }
 </script>
 
-<li><a href="allusers.html">AllUsers</a></li>
+
 </body>
 </html>

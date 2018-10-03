@@ -3,31 +3,34 @@
     color: #333;
 
 }
+
+
 /* Two image containers including the compared images*/
 .column1 {
-  float: left;
-  display: block;
-  width: 50%;
-  padding: 5px;
-  margin-left: 200px;
-  margin-right: 15px;align-content: center;
-  cursor: pointer;
+    float: left;
+    display: block;
+    width: 50%;
+    padding: 5px;
+    margin-left: 200px;
+    margin-right: 15px;align-content: center;
+    cursor: pointer;
 }
 
 .column2 {
-  float: left;
-  width: 50%;
-  padding: 5px;
-  cursor: pointer;
+    float: left;
+    width: 50%;
+    padding: 5px;
+    cursor: pointer;
 }
 
 /* Changes the color of pictures on hover*/
 .column1:hover .image1 {
-  opacity: 0.8;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .column2:hover .image2 {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 
@@ -35,20 +38,20 @@
 
 /* Clear floats after image containers */
 .row::after {
-  content: "";
-  clear: both;
-  display: table;
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .row {
-  display: flex;
+    display: flex;
 
 }
 
 .column {
-  flex: 50%;
-  padding: 5px;
-  
+    flex: 50%;
+    padding: 5px;
+
 }
 /*placing the two image containers with margin to each other and to the sides of the page*/
 .column1 {
@@ -56,58 +59,20 @@
     margin-left: 200px;
     margin-right: 15px;
     width: 50%;
-	
+
 }
 .column2 {
     display: block;
     margin-left: 15px;
     margin-right: 200px;
     width: 50%;
-	
+
 }
 
 /*Placing the container in the vertical center of the page */
 .row {
-	margin-top: auto;
-	margin-bottom: 10%;
-}
-
-.top_navbar {
-	background-color: #333;
-	overflow: hidden;
-	height: 47px;
-}
-
-/* Style the links inside the navigation bar */
-.top_navbar a {
-    float: right;
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    padding: 14px 16px;
-    font-size: 17px;
-    padding-right: 20px;
-    
-}
-
-/* Changes the color of links on hover */
-.top_navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Add a color to the active/current link */
-.top_navbar a.active {
-    background-color: #ddd;
-    color: black;
-}
-
-/*Suchfeld in die Mitte*/
-.suchfeld {
-	text-align: center;
-    padding-top: 20px;
-    border-radius: 3px;
-    
+    margin-top: auto;
+    margin-bottom: 10%;
 }
 
 
@@ -118,5 +83,47 @@
     font-size: 20px;
     margin-top: 65px;
     margin-bottom: 65px;
-    
+
+}
+
+/* homepage ende */
+/* Profile Page code */
+
+#profile-picture{
+    position: relative;
+    border-radius: 50%;
+    background-image: url(./images/sean-o-406693-unsplash.jpg);
+    border-color: lightgray;
+    height: 150px;
+    width: 150px;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+#profile-username{
+    position: absolute;
+    font-size: 35px;
+    margin-left: 260px;
+    margin-top: -110px;
+}
+
+#upload-picture{
+    position: absolute;
+    background-color: lightgray;
+    border-radius: 5px;
+    height: 150px;
+    width: 200px;
+    margin-left: 60px;
+    margin-top: 70px;
+}
+
+#uploadButton{
+    position: relative;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: gray;
+    vertical-align: middle;
+    top: 31%;
+
 }

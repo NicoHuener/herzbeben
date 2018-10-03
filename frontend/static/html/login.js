@@ -97,3 +97,12 @@ function showLogin() {
     }
 
 }
+
+function checkPassword(){
+    if("password-signup" === "confirm-password"){
+
+    }
+    else{
+        alert("Passwords don't match");
+    }
+}
