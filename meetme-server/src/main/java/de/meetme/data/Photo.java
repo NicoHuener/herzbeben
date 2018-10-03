@@ -13,6 +13,7 @@ public class Photo extends PersistentObject {
     private String title;
     private int clicks;
     private int wins;
+    private byte[] picture;
 
     public Photo() {
         super(0);
@@ -24,6 +25,7 @@ public class Photo extends PersistentObject {
         this.title = title;
         this.clicks = clicks;
         this.wins = wins;
+        this.picture = picture;
     }
 
     @JsonProperty
@@ -44,6 +46,11 @@ public class Photo extends PersistentObject {
     @JsonProperty
     public int getWins() {
         return wins;
+    }
+
+    @JsonProperty
+    public byte[] getPicture() {
+        return picture;
     }
 
     @Override
