@@ -19,11 +19,12 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     private static final Logger log = LoggerFactory.getLogger(MeetMeApplication.class);
 
     // Add here new data classes in order to register them at hibernate bundle
-    private static final Class<?>[] entities = {de.meetme.data.Person.class,de.meetme.data.Photo.class};
+    private static final Class<?>[] entities = {de.meetme.data.Person.class,de.meetme.data.Photo.class,de.meetme.data.Shootout.class};
 
     /**
      * Create
      */
+    /** selbst Befehle für (...) Photo.class, entitites und für shootout */
     private final HibernateBundle<MeetMeConfiguration> hibernate = new HibernateBundle<MeetMeConfiguration>(de.meetme.data.Person.class,entities) {
         @Override
         public DataSourceFactory getDataSourceFactory(MeetMeConfiguration configuration) {

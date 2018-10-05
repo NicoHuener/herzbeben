@@ -18,8 +18,7 @@ public class Person extends PersistentObject {
     private String username;
     private String password;
 
-    public Person() {
-        // Needed by Jackson deserialization
+    public Person() {// Needed by Jackson deserialization
         super(0);
     }
 
