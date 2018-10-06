@@ -3,7 +3,7 @@
     color: #333;
 }
 
-/* Two image containers including the compared images*/
+/* Two image containers including the compared images
 .column1 {
     float: left;
     display: block;
@@ -22,22 +22,6 @@
     cursor: pointer;
 }
 
-/* Changes the color of pictures on hover*/
-.column1:hover .image1 {
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-.column2:hover .image2 {
-    opacity: 0.8;
-}
-
-.column {
-    flex: 50%;
-    padding: 5px;
-
-}
-/*placing the two image containers with margin to each other and to the sides of the page*/
 .column1 {
     display: block;
     margin-left: 200px;
@@ -50,18 +34,22 @@
     margin-right: 200px;
     width: 50%;
 }
+*/
 
-/*Placing the container in the vertical center of the page */
-.row {
-    display: flex;
-    margin-top: auto;
-    margin-bottom: 10%;
+/* Changes the color of pictures on hover*/
+.column1:hover #image1 {
+  opacity: 0.8;
+    cursor: pointer;
 }
-
+.column2:hover #image2 {
+  opacity: 0.8;
+    cursor: pointer;
+}
 
 /* section zentrieren*/
 #heading{
-    text-align: center;
+    position: static;
+    text-align-last: center;
     line-height: 15px;
     font-size: 20px;
     margin-top: 65px;
@@ -108,5 +96,51 @@
     background-color: gray;
     vertical-align: middle;
     top: 31%;
-
 }
+
+/*Sidebar left*/
+@import url("https://bootswatch.com/flatly/bootstrap.min.css");
+
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    background:#ecf0f1;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -40%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    margin-left: 12px;
+  }
+}
+
+#sidebar {
+    padding:15px;
+    margin-top:10px;
+}
+/* End Sidebar left*/
+
+
+

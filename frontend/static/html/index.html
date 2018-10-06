@@ -59,23 +59,51 @@
     </nav>
 </header>
 
-    <!-- Seitenüberschrift-->
-    <header id="heading">
-        <h1>Compare Pictures</h1>
-        <h2>Click on the one you like better</h2>
-    </header>
+<!-- Sidebar left -->
+<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="sidebar-nav">
+                <ul class="nav">
 
+                    <li class="active"><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                </ul>
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
 
-    <div class="row">
-        <div class="column1">
-            <img class="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
+        <!-- Seitenüberschrift-->
+        <header id="heading">
+            <h1>Compare Pictures</h1>
+            <h2>Click on the one you like better</h2>
+        </header>
 
+        <!-- Bildervergleich -->
+        <div class="container">
+            <div class="col-sm-4 column1">
+                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
+
+            </div>
+
+            <div class="col-sm-4 column2">
+                <img class="img-auto" id="image2" src="./images/mountains2.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
+            </div>
         </div>
 
-        <div class="column2">
-            <img class="image2" src="./images/mountains2.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
-        </div>
     </div>
+    <!--/span-->
+</div>
+<!--/row-->
 
     <!-- JavaScript for top navbar -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
