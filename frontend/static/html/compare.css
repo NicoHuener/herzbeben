@@ -1,0 +1,106 @@
+﻿body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    color: #333;
+}
+
+/* Changes the color of pictures on hover*/
+.column1:hover #image1 {
+  opacity: 0.8;
+    cursor: pointer;
+}
+.column2:hover #image2 {
+  opacity: 0.8;
+    cursor: pointer;
+}
+
+/* section zentrieren*/
+#heading{
+    position: static;
+    text-align-last: center;
+    line-height: 15px;
+    font-size: 20px;
+    margin-top: 65px;
+    margin-bottom: 65px;
+}
+
+/* homepage ende */
+
+/* Profile Page code */
+
+#profile-picture{
+    position: relative;
+    border-radius: 50%;
+    background-image: url(./images/sean-o-406693-unsplash.jpg);
+    border-color: lightgray;
+    height: 150px;
+    width: 150px;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+#profile-username{
+    position: absolute;
+    font-size: 35px;
+    margin-left: 260px;
+    margin-top: -110px;
+}
+
+#upload-picture{
+    position: absolute;
+    background-color: lightgray;
+    border-radius: 5px;
+    height: 150px;
+    width: 200px;
+    margin-left: 60px;
+    margin-top: 70px;
+}
+
+#uploadButton{
+    position: relative;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: gray;
+    vertical-align: middle;
+    top: 31%;
+}
+
+/*Sidebar left*/
+@import url("https://bootswatch.com/flatly/bootstrap.min.css");
+
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    background:#ecf0f1;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -40%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    margin-left: 12px;
+  }
+}
+
+#sidebar {
+    padding:15px;
+    margin-top:10px;
+}
+/* End Sidebar left*/
+
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}

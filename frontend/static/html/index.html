@@ -1,119 +1,88 @@
 <!DOCTYPE html>
-
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fallstudie</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="index.css" type="text/css">
-
-    <!-- for top navbar -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script type=text/javascript src = "index.js"></script>
 </head>
-
 <body>
-<header class="navbar navbar-inverse">
-    <nav role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/Herzbeben_Logo.png" alt="Home" width="30px" height="30px"> </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <!--            <li><a href="#">Help</a></li>
-                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
-                     -->
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="allusers.html">Nutzerübersicht</a></li>  <!-- Hab ich nur vorläuftig mal hier hin gepackt zwecks schnellerem Zugriff -->
-                    <li class="active"><a href="#">Compare Pictures</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Sign out</a></li>
-                            <li><a href="#">AGB's</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-</header>
-
-<!-- Sidebar left -->
-<div class="container-fluid">
-    <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="sidebar-nav">
-                <ul class="nav">
-
-                    <li class="active"><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="nav-divider"></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
-            </div>
-            <!--/.well -->
-        </div>
-        <!--/span-->
-
-        <!-- Seitenüberschrift-->
-        <header id="heading">
-            <h1>Compare Pictures</h1>
-            <h2>Click on the one you like better</h2>
-        </header>
-
-        <!-- Bildervergleich -->
-        <div class="container">
-            <div class="col-sm-4 column1">
-                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
-
-            </div>
-
-            <div class="col-sm-4 column2">
-                <img class="img-auto" id="image2" src="./images/mountains2.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
-            </div>
-        </div>
-
-    </div>
-    <!--/span-->
+<!-- creates Slogan + Logo division -->
+<div>
+    <p id="slogan">A picture is worth a thousand words.
+    </p>
 </div>
-<!--/row-->
+<div id="background"></div>
+<!-- creates Buttons that lead to Login/Account creating -->
+<div id="choice">
+    <button id="buttonCreate" onclick="showCreateAccount()">Create account</button>
+    <button id="buttonLogin" onclick="showLogin()">Back to login</button>
+</div>
+<!-- creates basic login-form -->
+<div id="container">
+    <form id="login" name="login">
+        <p id="sign-in1">Sign in now!</p><br><br>
+        <label for="usernamelogin">Username:</label>
+        <input type="text" id="usernamelogin" name="usernamelogin">
+        <label for="passwordlogin">Password:</label>
+        <input type="password" id="passwordlogin" name="passwordlogin">
+        <div id="lower">
+            <input type="checkbox"><label for="checkbox">Keep me logged in</label>
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+<!-- creates signup sheet -->
+<div id="signup">
+    <form name="signupform" id="signupform" >
+        <label for="mail">E-Mail address:</label>
+        <input type="text" id="mail" name="mail">
+        <label for="firstname">Firstname:</label>
+        <input type="text" id="firstname" name="firstname">
+        <label for="lastname">Lastname:</label>
+        <input type="text" id="lastname" name="lastname">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <label for="confpassword">Confirm password:</label>
+        <input type="password" id="confpassword" name="confpassword">
+        <div id="lower2">
+            <input type="submit" value="Create account" onclick="registerUser()" onclick="checkPassword()">
+        </div>
+    </form>
+</div>
 
-    <!-- JavaScript for top navbar -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-    </script>
+<script>
+   /* function checkPW(){
+        var password = document.getElementById("password").value;
+        var confpassword = document.getElementById("confpassword").value;
 
+        if (password == confpassword) {
+            alert('Passwort ist gleich')
+        } else {
+            alert('Passwort ist nicht gleich')
+        }
+    }*/
+
+    function registerUser(){
+        var email = document.getElementById("mail").value;
+        var lastname = document.getElementById("lastname").value;
+        var firstname = document.getElementById("firstname").value;
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+
+        var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+
+        xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+        xmlhttp.setRequestHeader("Content-Type", "application/json");
+        xmlhttp.send(JSON.stringify({"email": email,"password": password,"name": lastname,"firstName": firstname, "username" : username }));
+    }
+</script>
 
 
 </body>
-
-
-
 </html>
-

@@ -1,106 +1,176 @@
-﻿body {
+/* login-style basics */
+html, body {
+    max-width: 100%;
+    max-height: 100%;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
-    color: #333;
+    color: #444;
+    -webkit-font-smoothing: antialiased;
+    /*background: #f0f0f0;*/
 }
-
-/* Changes the color of pictures on hover*/
-.column1:hover #image1 {
-  opacity: 0.8;
-    cursor: pointer;
-}
-.column2:hover #image2 {
-  opacity: 0.8;
-    cursor: pointer;
-}
-
-/* section zentrieren*/
-#heading{
-    position: static;
-    text-align-last: center;
-    line-height: 15px;
-    font-size: 20px;
-    margin-top: 65px;
-    margin-bottom: 65px;
-}
-
-/* homepage ende */
-
-/* Profile Page code */
-
-#profile-picture{
-    position: relative;
-    border-radius: 50%;
+#background {
+    margin-top: 0;
+    /* margin-right: 0;
+     margin-bottom: 0;
+     margin-left: 0;*/
     background-image: url(./images/sean-o-406693-unsplash.jpg);
-    border-color: lightgray;
-    height: 150px;
-    width: 150px;
-    margin-left: 60px;
-    margin-top: 60px;
-}
-
-#profile-username{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100vh;
+    background-position: center center;
     position: absolute;
-    font-size: 35px;
-    margin-left: 260px;
-    margin-top: -110px;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
 }
+#slogan {
+    color: white;
+    font-size: 80px;
+    font-family: "Palatino Linotype", "Book Antiqua", sans-serif;
+    text-emphasis: bold;
+    margin-left: 70px;
+    width: 500px;
+    text-align: center;
+}
+#companyName{
+    color: white;
 
-#upload-picture{
-    position: absolute;
-    background-color: lightgray;
-    border-radius: 5px;
-    height: 150px;
+}
+/*
+#choice {
+    color: transparent;
+    margin-top: 350px;
+    margin-left: 70px;
+    z-index: 2;
     width: 200px;
-    margin-left: 60px;
-    margin-top: 70px;
-}
-
-#uploadButton{
-    position: relative;
-    border-radius: 50%;
     height: 50px;
-    width: 50px;
-    background-color: gray;
-    vertical-align: middle;
-    top: 31%;
+    background: #FBF0EE;
 }
+*/
 
-/*Sidebar left*/
-@import url("https://bootswatch.com/flatly/bootstrap.min.css");
-
-@media screen and (max-width: 768px) {
-  .row-offcanvas {
-    position: relative;
-    -webkit-transition: all 0.25s ease-out;
-    -moz-transition: all 0.25s ease-out;
-    transition: all 0.25s ease-out;
-    background:#ecf0f1;
-  }
-
-  .row-offcanvas-left
-  .sidebar-offcanvas {
-    left: -40%;
-  }
-
-  .row-offcanvas-left.active {
-    left: 40%;
-  }
-
-  .sidebar-offcanvas {
+#buttonCreate{
+    background-color: #E9AD9C;
+    border: none;
+    width: 320px;
+    height: 50px;
     position: absolute;
-    top: 0;
-    width: 40%;
-    margin-left: 12px;
-  }
+    top: 75%;
+    margin-left: 855px;
+    z-index: 2;
+    border-radius: 5px;
 }
 
-#sidebar {
-    padding:15px;
-    margin-top:10px;
+#buttonLogin{
+    background-color: #E9AD9C;
+    border: none;
+    width: 190px;
+    height: 50px;
+    position: absolute;
+    top: 87%;
+    margin-left: 860px;
+    display: none;
+    z-index: 2;
+    border-radius: 5px;
 }
-/* End Sidebar left*/
+#buttonCreate:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+#buttonLogin:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+#signup {
+    position: absolute;
+    width: 340px;
+    height: 600px;
+    top: 40%;
+    left: 80%;
+    margin-top: -240px;
+    margin-left: -170px;
+    display:none;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0;
+}
+/* login-style additional */
+#container {
+    position: absolute;
+    width: 340px;
+    height: 400px;
+    top: 45%;
+    left: 80%;
+    margin-top: -140px;
+    margin-left: -170px;
+    display:block;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0;
+}
+#sign-in1 {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 20px;
+    background: white;
+    font-size: 20px;
+}
+/* login-style making it pretty */
+form {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+label {
+    color: #555;
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+/*styling different input areas */
+p a {
+    font-size: 11px;
+    color: #aaa;
+    float: right;
+    margin-top: -13px;
+    margin-right: 20px;
+}
+p a:hover {
+    color: #555;
+}
+input {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+    outline: none;
+}
+input[type=text],
+input[type=password] {
+    color: #777;
+    padding-left: 10px;
+    margin: 10px;
+    margin-top: 10px;
+    margin-left: 16px;
+    width: 290px;
+    height: 30px;
+}
+#lower {
+    /*background: #ecf2f5;*/
+    width: 100%;
+    height: 69px;
+    margin-top: 20px;
+}
+#lower2 {
 
-footer {
-  padding-left: 15px;
-  padding-right: 15px;
+}
+input[type=checkbox] {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.check {
+    margin-left: 3px;
+}
+input[type=submit] {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
 }
