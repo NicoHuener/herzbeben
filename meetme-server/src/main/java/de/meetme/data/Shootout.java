@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 public class Shootout extends PersistentObject {
+
     // create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
 
     private String name;
