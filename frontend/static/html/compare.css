@@ -98,6 +98,20 @@
     padding:15px;
     margin-top:10px;
 }
+
+#search_shootout {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#create_shootout {
+    background-color: #E9AD9C;
+    border: none;
+    height: 40px;
+    z-index: 2;
+    border-radius: 5px;
+    margin-top: 15px;
+}
 /* End Sidebar left*/
 
 footer {
