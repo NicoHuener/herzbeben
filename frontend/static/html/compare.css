@@ -65,6 +65,21 @@
     top: 31%;
 }
 
+#buttonHelp{
+position: fixed;
+border-radius: 5px;
+height: 40px;
+width: 50px;
+background-color:#E9AD9C;
+top: 10%;
+margin-left: 1200px;
+border:none;
+}
+#buttonHelp:hover{
+cursor: pointer;
+    opacity: 0.9;
+ }
+
 /*Sidebar left*/
 @import url("https://bootswatch.com/flatly/bootstrap.min.css");
 

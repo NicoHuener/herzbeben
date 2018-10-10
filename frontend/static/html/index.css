@@ -71,6 +71,18 @@ html, body {
     z-index: 2;
     border-radius: 5px;
 }
+#buttonHelp{
+background-color:#E9AD9C;
+border: none;
+width: 40px;
+height: 60px;
+position: absolute;
+top: 27%;
+margin-left: 1185px;
+z-index:2;
+border-radius: 5px;
+
+ }
 #buttonCreate:hover{
     cursor: pointer;
     opacity: 0.9;
@@ -79,6 +91,11 @@ html, body {
     cursor: pointer;
     opacity: 0.9;
 }
+#buttonHelp:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
 #signup {
     position: absolute;
     width: 340px;
