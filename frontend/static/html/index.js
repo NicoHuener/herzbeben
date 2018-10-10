@@ -1,3 +1,13 @@
+
+function createvalidpw (pw) {
+    var bcrypt = require('bcryptjs')
+
+    var salt = bcrypt.genSaltSync();
+    var vaildpw = bcrypt.hashSync(pw, salt);
+    alert("Password: " && vaildpw);
+    return vaildpw;
+}
+
 function showCreateAccount(){
 
     var x = document.getElementById("signup");
@@ -98,11 +108,12 @@ function showLogin() {
 
 }
 
-function checkPassword(){
-    if("password" === "confpassword"){
-
+function checkPassword(confpw,pw){
+    if(confpw === pw){
+    return true;
     }
     else{
+        return false;
         alert("Passwords don't match");
     }
 }

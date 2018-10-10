@@ -4,18 +4,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Person extends PersistentObject {
     // create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
 
+    @Column (nullable = false)
     private String name;
+    @Column (nullable = false)
     private String firstName;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
+    @Column (nullable = false)
     private String password;
 
     public Person() {// Needed by Jackson deserialization
