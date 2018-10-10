@@ -17,7 +17,6 @@ public class PersonShootout extends PersistentObject{
         super(0);
     }
 
-
     public PersonShootout(Person person, Shootout shootout) {
         super(0);
         this.person = person;

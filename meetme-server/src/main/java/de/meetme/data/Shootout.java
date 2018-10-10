@@ -13,33 +13,21 @@ public class Shootout extends PersistentObject {
     private String name;
     @ManyToOne
     private Person person;
-    private int winner;
 
     public Shootout() {
         // Needed by Jackson deserialization
         super(0);
     }
 
-    public Shootout(String name,Person person, int winner) {
+    public Shootout(String name,Person person) {
         super(0);
         this.name = name;
         this.person = person;
-        this.winner = winner;
     }
 
     @JsonProperty
     public String getName() {
         return name;
-    }
-
-    @JsonProperty
-    public int getWinner() {
-        return winner;
-    }
-
-    @JsonProperty
-    public void setWinner(int winner) {
-        this.winner = winner;
     }
 
     @JsonProperty
@@ -52,7 +40,6 @@ public class Shootout extends PersistentObject {
         return "Shootout{" +
                 "name='" + name + '\'' +
                 ", personid=" + person +
-                ", winner=" + winner +
                 '}';
     }
 }
