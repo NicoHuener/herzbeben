@@ -99,7 +99,7 @@ function showLogin() {
 }
 
 function checkPassword(){
-    if("password-signup" === "confirm-password"){
+    if("password" === "confpassword"){
 
     }
     else{
