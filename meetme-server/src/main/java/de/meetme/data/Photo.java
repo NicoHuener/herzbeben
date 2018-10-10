@@ -2,7 +2,9 @@ package de.meetme.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -10,17 +12,19 @@ public class Photo extends PersistentObject {
 
     @ManyToOne
     private Person person;
+    @Column(nullable = false)
     private String title;
     private int clicks;
     private int wins;
+    @Lob
     private byte[] picture;
 
     public Photo() {
         super(0);
     }
 
-    public Photo(long id, Person person, String title, int clicks, int wins, byte[] picture) {
-        super(id);
+    public Photo(Person person, String title, int clicks, int wins, byte[] picture) {
+        super(0);
         this.person = person;
         this.title = title;
         this.clicks = clicks;

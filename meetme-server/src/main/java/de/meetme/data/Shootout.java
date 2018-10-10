@@ -3,17 +3,16 @@ package de.meetme.data;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.ManyToOne;
 
 
 @Entity
 public class Shootout extends PersistentObject {
-
     // create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
 
     private String name;
-    private List teilnehmer;
-    private List ranking;
+    @ManyToOne
+    private Person person;
     private int winner;
 
     public Shootout() {
@@ -21,28 +20,16 @@ public class Shootout extends PersistentObject {
         super(0);
     }
 
-
-    public Shootout(long id, String name, List teilnehmer, List ranking, int winner) {
-        super(id);
+    public Shootout(String name,Person person, int winner) {
+        super(0);
         this.name = name;
-        this.teilnehmer = teilnehmer;
-        this.ranking = ranking;
+        this.person = person;
         this.winner = winner;
     }
 
     @JsonProperty
     public String getName() {
         return name;
-    }
-
-    @JsonProperty
-    public List getTeilnehmer() {
-        return teilnehmer;
-    }
-
-    @JsonProperty
-    public List getRanking() {
-        return ranking;
     }
 
     @JsonProperty
@@ -55,18 +42,17 @@ public class Shootout extends PersistentObject {
         this.winner = winner;
     }
 
+    @JsonProperty
+    public Person getPerson() {
+        return person;
+    }
 
     @Override
     public String toString() {
         return "Shootout{" +
                 "name='" + name + '\'' +
-                ", teilnehmer=" + teilnehmer +
-                ", ranking=" + ranking +
+                ", personid=" + person +
                 ", winner=" + winner +
                 '}';
     }
 }
-
-
-
-

@@ -19,7 +19,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     private static final Logger log = LoggerFactory.getLogger(MeetMeApplication.class);
 
     // Add here new data classes in order to register them at hibernate bundle
-    private static final Class<?>[] entities = {de.meetme.data.Person.class,de.meetme.data.Photo.class,de.meetme.data.Shootout.class};
+    private static final Class<?>[] entities = {de.meetme.data.Person.class,de.meetme.data.Photo.class,de.meetme.data.Shootout.class,de.meetme.data.PersonShootout.class,de.meetme.data.Rank.class};
 
     /**
      * Create
