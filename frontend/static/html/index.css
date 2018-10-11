@@ -71,27 +71,60 @@ html, body {
     z-index: 2;
     border-radius: 5px;
 }
-#buttonHelp{
-background-color:#E9AD9C;
-border: none;
-width: 40px;
-height: 60px;
-position: absolute;
-top: 57%;
-margin-left: 1185px;
-z-index:2;
-border-radius: 5px;
+/* creates Help Button*/
+    .help{
+    background-color: #E9AD9C;
+    border: none;
+    width: 40px;
+    height: 50px;
+    position: fixed;
+    margin-left: 1140px;
+    display: inline-block;
+    bottom: 420px;
+    z-index: 2;
+    border-radius: 5px;
+    }
+    .help .helpText{
+    visibility: hidden;
+    width: 150px;
+    height: 170px;
+    background-color: #E9AD9C;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -21%;
+    left: -230%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .help .helpText::after{
+    content: "";
+    position: absolute;
+    top: 80%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #E9AD9C transparent transparent transparent;
+    }
+    .help:hover .helpText{
+    visibility: visible;
+    opacity: 1;
+    }
+    .help:hover{
+    cursor: pointer;
+    opacity: 0.9;}
 
- }
+
 #buttonCreate:hover{
     cursor: pointer;
     opacity: 0.9;
 }
 #buttonLogin:hover{
-    cursor: pointer;
-    opacity: 0.9;
-}
-#buttonHelp:hover{
     cursor: pointer;
     opacity: 0.9;
 }
