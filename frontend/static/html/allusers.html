@@ -86,130 +86,134 @@
 <script>
     window.onload = function () {
 
-        var xhr = new XMLHttpRequest();
-        var userlist;
-        var anzahltr;
-        var varib;
+            var xhr = new XMLHttpRequest();
+            var userlist;
+            var anzahltr;
+            var varib;
 
-        xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
-        xhr.send(null);
+            xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+            xhr.send(null);
 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                userlist = xhr.responseText;
-                alert(userlist);
-                var result = document.getElementById("result");
-                var variable = userlist.replace(/"/g, '');
-                var variablef = variable.split('},{');
-                anzahltr = variablef.length;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    userlist = xhr.responseText;
 
-                for (var i = 0; i < anzahltr; i++) {
-                    result.innerHTML += "<tr> <td id='td1" + i + "'/>" + i + "</td> " +
-                        "<td id='td2 " + i + " '>" + i + "</td>" +
-                        "<td id='td3 " + i + "'>" + i + "</td>" +
-                        "<td id='td4 " + i + " '>" + i + "</td>" +
-                        "<td id='td5 " + i + "'>" + i + "</td>" +
-                        "<td id='td6 " + i + "'>" + i + "</td>" +
-                        "</tr>";
-                }
+                    var json = JSON.parse(userlist);
+                    //alert(userlist.name);
+                    var str = JSON.stringify(userlist, null, 2);
+                    alert(str);
+                    var result = document.getElementById("result");
+                    var variable = userlist.replace(/"/g, '');
+                    var variablef = variable.split('},{');
+                    anzahltr = variablef.length;
 
-                variablef.forEach(function createoutput(element, index) {
-                    console.log(element); // logs "3", "5", "7"
-                    console.log(index);
-                    var place;
                     for (var i = 0; i < anzahltr; i++) {
-                        varib = element.split(',');
-                        console.log(varib);
-                        var anzahltd = varib.length;
-
-
-
-                        //var schoolArr = school_list.split(',');
-                        var table = "<table>";
-                        var n = i +1;
-                        for (var i=0; i< anzahltd.length; i++) {
-                            table = table + "<tr><td>"+ varib[i]+"</td><td>"+ varib[n] +"</td></tr>";
-                        }
-                        table = table + "</table>";
-
-                        return table;
-
-                        document.getElementById("result").innerHTML =+ table;
-
-
-
-
-                        if (anzahltd == 1)
-                        { place = document.getElementById("td1" + i);}
-                        else if ((anzahltd == 2))
-                        { place = document.getElementById("td2" + i);}
-                        else if ((anzahltd == 3))
-                        { place = document.getElementById("td3" + i);}
-                        else if ((anzahltd == 4))
-                        { place = document.getElementById("td4" + i);}
-                        else if ((anzahltd == 5))
-                        { place = document.getElementById("td5" + i);}
-                        else if ((anzahltd == 6))
-                        { place = document.getElementById("td6" + i);}
-                        document.getElementById("td1" + i).innerHTML += varib
-                        place.innerHTML += varib;
-
-                        //varib.forEach(tddata);}
-
-                        //function tddata() {
+                        result.innerHTML += "<tr> <td id='td1" + i + "'/>" + i + "</td> " +
+                            "<td id='td2 " + i + " '>" + i + "</td>" +
+                            "<td id='td3 " + i + "'>" + i + "</td>" +
+                            "<td id='td4 " + i + " '>" + i + "</td>" +
+                            "<td id='td5 " + i + "'>" + i + "</td>" +
+                            "<td id='td6 " + i + "'>" + i + "</td>" +
+                            "</tr>";
                     }
 
-                });
-                //alert(variable);
-                //for (var i=0; i<variable.length; i++) {
-                //dataArray = new Arr
-            }
-
-        };}
-
-           // function listArray(elem) {
-             //   result.innerHTML  +=  ("</tr>");
-               // result.innerHTML  +=  ("<tr>");
-                //varib = elem.split(',');
-                //var anzahltd = varib.length;
-               // varib.forEach(createdatainput(varib));
-
-           // }
-
-             //   listArrayb();
-            //function createdatainput(elem) {
-             //   for (var i=0; i<anzahltr; i++) {
-              //  var place = document.getElementById("td"+n+p)
-                //place.innerHTML +=
-            //}}
-
-            //function listArrayb() {
-             //   createoutput();
-               //  function createoutput(element, index) {
-                //    console.log(element); // logs "3", "5", "7"
-                 //   console.log(index);
-
-                //}}
-
-
-                    //result.innerHTML += elem.trim() + "<br>";
+                    variablef.forEach(function createoutput(element, index) {
+                        console.log(element); // logs "3", "5", "7"
+                        console.log(index);
+                        var place;
+                        for (var i = 0; i < anzahltr; i++) {
+                            varib = element.split(',');
+                            console.log(varib);
+                            var anzahltd = varib.length;
 
 
 
-                //for (var i=0; i<anzahl; i++) {
-                //document.write("<tr><td>Eintrag " + i + " is:</td>");
-                //document.write("<td>" + elem + "</td></tr>");
-                //}
+                            //var schoolArr = school_list.split(',');
+                            var table = "<table>";
+                            var n = i +1;
+                            for (var i=0; i< anzahltd.length; i++) {
+                                table = table + "<tr><td>"+ varib[i]+"</td><td>"+ varib[n] +"</td></tr>";
+                            }
+                            table = table + "</table>";
 
+                            return table;
 
-
-//"index [" + index + "] " +
+                            document.getElementById("result").innerHTML =+ table;
 
 
 
 
+                            if (anzahltd == 1)
+                            { place = document.getElementById("td1" + i);}
+                            else if ((anzahltd == 2))
+                            { place = document.getElementById("td2" + i);}
+                            else if ((anzahltd == 3))
+                            { place = document.getElementById("td3" + i);}
+                            else if ((anzahltd == 4))
+                            { place = document.getElementById("td4" + i);}
+                            else if ((anzahltd == 5))
+                            { place = document.getElementById("td5" + i);}
+                            else if ((anzahltd == 6))
+                            { place = document.getElementById("td6" + i);}
+                            document.getElementById("td1" + i).innerHTML += varib
+                            place.innerHTML += varib;
 
-</script>
+                            //varib.forEach(tddata);}
+
+                            //function tddata() {
+                        }
+
+                    });
+                    //alert(variable);
+                    //for (var i=0; i<variable.length; i++) {
+                    //dataArray = new Arr
+                }
+
+            };}
+
+        // function listArray(elem) {
+        //   result.innerHTML  +=  ("</tr>");
+        // result.innerHTML  +=  ("<tr>");
+        //varib = elem.split(',');
+        //var anzahltd = varib.length;
+        // varib.forEach(createdatainput(varib));
+
+        // }
+
+        //   listArrayb();
+        //function createdatainput(elem) {
+        //   for (var i=0; i<anzahltr; i++) {
+        //  var place = document.getElementById("td"+n+p)
+        //place.innerHTML +=
+        //}}
+
+        //function listArrayb() {
+        //   createoutput();
+        //  function createoutput(element, index) {
+        //    console.log(element); // logs "3", "5", "7"
+        //   console.log(index);
+
+        //}}
+
+
+        //result.innerHTML += elem.trim() + "<br>";
+
+
+
+        //for (var i=0; i<anzahl; i++) {
+        //document.write("<tr><td>Eintrag " + i + " is:</td>");
+        //document.write("<td>" + elem + "</td></tr>");
+        //}
+
+
+
+        //"index [" + index + "] " +
+
+
+
+
+
+        </script>
 
 </body>
 </html>

@@ -41,7 +41,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
     public void initialize(Bootstrap<MeetMeConfiguration> bootstrap) {
         log.debug("initialize");
 
-        bootstrap.addBundle(new AssetsBundle("/html/","/","login.html","static"));
+        bootstrap.addBundle(new AssetsBundle("/html/","/","index.html","static"));
 
         // register Dropwizard Hibernate bundle
         bootstrap.addBundle(hibernate);
