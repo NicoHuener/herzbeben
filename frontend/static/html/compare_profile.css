@@ -4,9 +4,6 @@
 }
 /* Compare page code*/
 
-#navbar {
-position: absolute;
-}
 /* Changes the color of pictures on hover*/
 .column1:hover #image1 {
   opacity: 0.8;
