@@ -20,6 +20,11 @@ a{
     color: black;
 }
 
-#shootoutÜbersicht {
-    margin-top: 10%;
+#ShootoutÜbersicht {
+    margin-top: 80px;
+}
+
+#ranking {
+    margin-top: 80px;
+    text-align: center;
 }
