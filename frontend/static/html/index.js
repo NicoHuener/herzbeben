@@ -157,8 +157,9 @@ function checkPassword(confpw,pw){
     return true;
     }
     else{
-        return false;
         alert("Passwords don't match");
+        return false;
+
     }
 
 
