@@ -18,6 +18,10 @@ function showCreateAccount(){
 
     var i = document.getElementById("buttonLogin");
 
+    var h = document.getElementById("help");
+
+    var r = document.getElementById("helpRe");
+
 
     /*Open Form*/
     if(x.style.display === "block"){
@@ -57,6 +61,24 @@ function showCreateAccount(){
         i.style.display = "block";
     }
 
+    /*Close Help Button*/
+    if (h.style.display === "block"){
+
+        h.style.display ="none";
+    }
+    else{
+        h.style.display = "none";
+    }
+
+    /* Show HelpRe Button*/
+    if(r.style.display === "none"){
+
+          r.style.display = "block";
+
+    }
+    else{
+          r.style.display = "block";
+    }
 }
 
 
@@ -66,6 +88,9 @@ function showLogin() {
     var u = document.getElementById("signup");
     var b = document.getElementById("buttonLogin");
     var j = document.getElementById("buttonCreate");
+    var h = document.getElementById("help");
+    var r = document.getElementById ("helpRe");
+
 
 
     /*Open Login Form*/
@@ -78,6 +103,7 @@ function showLogin() {
     else {
         y.style.display = "block";
     }
+
 
     /*Close Create Form*/
     if (u.style.display === "block") {
@@ -106,6 +132,24 @@ function showLogin() {
         j.style.display = "block";
     }
 
+    /*Show Help Button*/
+    if (h.style.display === "none"){
+
+        h.style.display = "block";
+    }
+    else {
+        h.style.display = "block";
+    }
+
+    /*Close HelpRe Button*/
+    if (r.style.display === "block"){
+
+         r.style.display = "none";
+    }
+    else {
+         r.style.display = "none";
+    }
+
 }
 
 function checkPassword(confpw,pw){
@@ -116,4 +160,6 @@ function checkPassword(confpw,pw){
         return false;
         alert("Passwords don't match");
     }
+
+
 }
