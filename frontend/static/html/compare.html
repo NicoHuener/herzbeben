@@ -4,17 +4,20 @@
 <head>
     <title>Fallstudie</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare.css" type="text/css">
+    <link rel="stylesheet" href="compare_profile.css" type="text/css">
 
     <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script type=text/javascript src = "navbarFunction.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
 </head>
 
 <body>
-<header class="navbar navbar-inverse">
-    <nav role="navigation">
-        <div class="container-fluid">
+
+<header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+    <nav role="navigation" >
+        <div class="container-fluid" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -27,12 +30,8 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <!--            <li><a href="#">Help</a></li>
-                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
-                     -->
-                </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -40,17 +39,17 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="allusers.html">Nutzerübersicht</a></li>  <!-- Hab ich nur vorläuftig mal hier hin gepackt zwecks schnellerem Zugriff -->
+                    <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
                     <li class="active"><a href="#">Compare Pictures</a></li>
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="allusers.html">All Users</a></li>
                             <li><a href="#">Help</a></li>
-                            <li><a href="#">Sign out</a></li>
                             <li><a href="#">AGB's</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -58,6 +57,7 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
+
 
 <!-- Sidebar left -->
 <div class="container-fluid">
@@ -68,8 +68,8 @@
                     <header>Shootouts</header>
                     <br>
                     <button type="button" id="create_shootout">Create shootout</button>
-                    <div class="form-group">
-                        <input id="search_shootout" type="text" class="form-control" placeholder="Search">
+                    <div class="form-group" id="search_shootout">
+                        <input  type="text" class="form-control" placeholder="Search">
                     </div>
                     <li class="active"><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
@@ -94,7 +94,7 @@
         </header>
 
         <!-- Bildervergleich -->
-        <div class="container">
+        <div class="container" id="image_container">
             <div class="col-sm-4 column1">
                 <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
 
@@ -111,9 +111,9 @@
 <!--/row-->
 
 <!--Help button-->
-<div id="help">
-    <button id="buttonHelp" onclick="showHelp()">Help</button>
-</div>
+<button class="helpBtn1">Help
+    <span class="helpText">Please insert help text.</span>
+</button>
 
     <!-- JavaScript for top navbar -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
