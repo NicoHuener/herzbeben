@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fallstudie</title>
-        <link rel="icon" href="./images/Herzbeben_Logo.png">
-        <link rel="stylesheet" href="compare.css">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- <script type=text/javascript src = "index.js"></script> -->
-    </head>
-    <body>
-        
-    <header class="navbar navbar-inverse">
+<head>
+    <title>Fallstudie</title>
+    <link rel="icon" href="Herzbeben_Logo.png">
+	<link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="shootout.css" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+  <header class="navbar navbar-inverse">
     <nav role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/Herzbeben_Logo.png" alt="Home" width="30px" height="30px"> </a>
+          <a class="navbar-brand" href="#"> <img class="brandImage" src="Herzbeben_Logo.png" alt="Home" width="30px" height="30px"> </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,8 +40,8 @@
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="compare.html">Compare Pictures</a></li>
-            <li class="active"><a href="profile.html">Profile</a></li>
+            <li><a href="#">Compare Pictures</a></li>
+            <li><a href="profile.html">Profile</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -56,11 +56,25 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-        </header>
-        <div id="profile-picture">
-        </div>   
-        <div id="upload-picture" align="center">
-           <span title="Upload picture"> <button id="uploadButton">+</button>  </span>
-        </div>
-        <p id="profile-username">Username</p>
-
+    </header>  
+    <div id="ShootoutÜbersicht">
+        <table>
+        <tr>
+            <th>Shootout-Name</th>
+            <th>Topic</th>
+            <th>Top ranked pictures</th>
+        </tr>    
+        <tr>
+            <td>Sweater Weather</td>
+            <td>Nature</td>
+            <td><a href="ShootoutRanking.html">Picture ranking</a></td>
+        </tr>
+        <tr>
+            <td>Coffee</td>
+            <td>Food</td>
+            <td><a href="ShootoutRanking.html">Picture ranking</a></td>
+        </tr>
+        </table>
+    </div>
+</body>
+</html>

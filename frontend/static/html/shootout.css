@@ -1,0 +1,21 @@
+table{
+    width: 100%;
+    border: 1px solid black;
+    align-items: center;
+}
+td, th{
+    border: 1px solid black;
+    text-align: left;
+    padding: 50px;
+}
+th{
+    font-size: 25px;
+    height: 50px;
+}
+td{
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
