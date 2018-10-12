@@ -5,7 +5,7 @@
 /* Compare page code*/
 
 #navbar {
-position: fixed;
+position: absolute;
 }
 /* Changes the color of pictures on hover*/
 .column1:hover #image1 {

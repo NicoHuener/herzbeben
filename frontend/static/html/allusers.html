@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AllUsers</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="compare.css" type="text/css">
+    <script type=text/javascript src = "navbarFunction.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- <script type=text/javascript src = "index.js"></script> -->
@@ -34,11 +32,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <!--            <li><a href="#">Help</a></li>
-                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
-                     -->
-                </ul>
+                <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -50,13 +44,13 @@
                     <li><a href="compare.html">Compare Pictures</a></li>
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="allusers.html">Nutzerübersicht</a></li>
                             <li><a href="#">Help</a></li>
-                            <li><a href="#">Sign out</a></li>
                             <li><a href="#">AGB's</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
