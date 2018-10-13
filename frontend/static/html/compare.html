@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type=text/javascript src = "navbarFunction.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+    <script src="jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
 
-<header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+
+<header class="navbar navbar-inverse fnavbar-fixed-top navbar-custom">
     <nav role="navigation" >
         <div class="container-fluid" >
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,7 +69,7 @@
                 <ul class="nav">
                     <header>Shootouts</header>
                     <br>
-                    <button type="button" id="create_shootout">Create shootout</button>
+                    <button type="button" id="create_shootout" onclick="openModal()">Create shootout</button>
                     <div class="form-group" id="search_shootout">
                         <input  type="text" class="form-control" placeholder="Search">
                     </div>
@@ -86,6 +88,63 @@
             <!--/.well -->
         </div>
         <!--/span-->
+    <!-- Modal popup Shootout -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-header">
+                    <h2> Create your shootout!</h2>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="text">Name</label>
+                        <input type="text" id="text">
+                        <p></p>
+                        <label for="text">Shootout ID</label>
+                        <p>
+                        </p
+                        ><select>
+                        <option> private </option>
+                        <option> public</option>
+                    </select>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="createShootout" class="button" onclick="showShootout()"> Create shootout </button>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("create_shootout");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
+
+
 
         <!-- Seitenüberschrift-->
         <header id="heading">
