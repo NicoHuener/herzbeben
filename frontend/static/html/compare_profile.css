@@ -67,23 +67,23 @@
     top: 31%;
 }
 
-/* creates Help Button*/
+/* creates Help Button Compare*/
     .helpBtn1{
     background-color: #E9AD9C;
     border: none;
     width: 40px;
     height: 40px;
     position: fixed;
-    margin-left: 1220px;
+    margin-left: 1233px;
     display: inline-block;
-    bottom: 515px;
+    bottom: 497px;
     z-index: 2;
     border-radius: 5px;
     }
     .helpBtn1 .helpText{
     visibility: hidden;
-    width: 150px;
-    height: 170px;
+    width: 180px;
+    height: 245px;
     background-color: #E9AD9C;
     color: black;
     text-align: center;
@@ -91,8 +91,8 @@
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -331%;
-    left: -230%;
+    bottom: -520%;
+    left: -300%;
     margin-left: -70px;
     opacity: 0;
     transition: opacity 0.3s;
@@ -114,6 +114,56 @@
     .helpBtn1:hover{
     cursor: pointer;
     opacity: 0.9;}
+
+/*Creates help button Profile*/
+.helpBtn2{
+    background-color: #E9AD9C;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    margin-left: 1233px;
+    display: inline-block;
+    bottom: 513px;
+    z-index: 2;
+    border-radius: 5px;
+    }
+    .helpBtn2 .helpText{
+    visibility: hidden;
+    width: 170px;
+    height: 190px;
+    background-color: #E9AD9C;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -380%;
+    left: -280%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .helpBtn2 .helpText::after{
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #E9AD9C transparent transparent transparent;
+    }
+    .helpBtn2:hover .helpText{
+    visibility: visible;
+    opacity: 1;
+    }
+    .helpBtn2:hover{
+    cursor: pointer;
+    opacity: 0.9;}
+
+
 
 /*Sidebar left*/
 @import url("https://bootswatch.com/flatly/bootstrap.min.css");
@@ -170,3 +220,4 @@ footer {
   padding-left: 15px;
   padding-right: 15px;
 }
+
