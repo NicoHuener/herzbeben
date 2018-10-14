@@ -95,11 +95,10 @@ alert('username = ' + usernamel);
 
                  }
                 else if (document.cookie) {
-                     alert("already logged in");
                      window.location.replace("http://localhost:8080/compare.html");
                }
                  else {
-alert('in else')
+
                      // Check if ConfirmationPW = PW
 
                      //create hashed PW
@@ -179,33 +178,76 @@ checkNotEmpty();
        var password = document.getElementById("password").value;
        var confpw = document.getElementById("confpassword").value;
 
+       function createuser() {
 
 
+           // Check if ConfirmationPW = PW
+           if(checkPassword(confpw,password) === true){
+               //create hashed PW
+               //var valpw = createvalidpw(password);
 
-       // Check if ConfirmationPW = PW
-       if(checkPassword(confpw,password) === true){
-           //create hashed PW
-           //var valpw = createvalidpw(password);
 
+               var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
 
-           var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-
-           xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
-           xmlhttp.setRequestHeader("Content-Type", "application/json");
-           //sent the new HttpRequest
-           xmlhttp.send(JSON.stringify({"email": email,"password": password,"name": lastname,"firstName": firstname, "username" : username }));
+               xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+               xmlhttp.setRequestHeader("Content-Type", "application/json");
+               //sent the new HttpRequest
+               xmlhttp.send(JSON.stringify({"email": email,"password": password,"name": lastname,"firstName": firstname, "username" : username }));
 // noch zu bearbeiten!! -----------------------
-           document.cookie = "id=";
+               document.cookie = "id=test";
 // --------------------------------------------
-           window.location.replace("http://localhost:8080/compare.html");
+               window.location.replace("http://localhost:8080/compare.html");
 
 
+           }
+           else{
+               alert('signin failed');
+           }
        }
-       else{
-          alert('signin failed');
-       }
+
+
+function checkdataindb(email,username) {
+    var xhr = new XMLHttpRequest();
+    var json;
+    var anzahluser;
+
+
+    xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+    xhr.send(null);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            json = xhr.responseText;
+
+            var userlist = JSON.parse(json);
+            anzahluser=(Object.keys(userlist).length)
+
+            var useravailable = true;
+            for (var i = 0; i < anzahluser; i++) {
+                if (userlist[i].email === email) {
+                    alert('Their is already an account with this Email: ' + email);
+                    window.location.replace("http://localhost:8080/index.html");
+                    return useravailable = false;
+                }
+                else if (userlist[i].username === username){
+                        alert('Username ' + username+ ' is already taken!');
+                    window.location.replace("http://localhost:8080/index.html");
+                    return useravailable = false;
+                }
+            }
+            if (useravailable === true){
+            createuser()
+            }
+        }
+    }
+    
+}
+
+
+checkdataindb(email,username);
 
    }
+
 </script>
 
 

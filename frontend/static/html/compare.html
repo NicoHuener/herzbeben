@@ -156,7 +156,7 @@
         <!-- Bildervergleich -->
         <div class="container" id="image_container">
             <div class="col-sm-4 column1">
-                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="getPictures()">
+                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="newpicbox()">
 
             </div>
 
@@ -170,17 +170,47 @@
 </div>
 <!--/row-->
 <script>
-    function getPictures() {
+    function newpicbox() {
+    var img1_src = "./images/LA.jpg";
+    var img2_src = "./images/mountains1.jpg";
+    var img3_src = "./images/mountains2.jpg";
+    var img4_src = "./images/sean-o-406693-unsplash.jpg";
+    var img5_src = "./images/tree.jpg";
+
+    var picturebox1 = document.getElementById('image1');
+    var picturebox2 = document.getElementById('image2');
+
+
+    var box1 = [img1_src,img2_src,img3_src,img4_src,img5_src,''];
+
+        box1.length = box1.length - 1;
+        picturebox1.innerHTML = "<img src='"+img1_src+"' alt='my image'>"; //+box1[1]+
+
+    }
+
+
+/*
     alert('getpictures started')
     var id = "34";
     var xmlhttpr = new XMLHttpRequest();
-    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + id);
+    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/34");
     xmlhttpr.send(null);
-    var response2 = xmlhttpr.responseText;
-    var photo = JSON.parse(response2);
-    var pictureNumber = (Object.keys(photo).length);
-    alert (pictureNumber);
-}</script>
+
+        xmlhttpr.onreadystatechange = function () {
+            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+            var response2 = xmlhttpr.responseText;
+            var photo = JSON.parse(response2);
+            var pictureNumber = (Object.keys(photo).length);
+            alert (pictureNumber);
+            alert(photo[0].title);
+
+
+                picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
+                var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
+            }*/
+
+
+</script>
 <!--Help button-->
 <button class="helpBtn1">Help
     <span class="helpText">Please click on the picture you like more to participate in this shootout. <br>
