@@ -7,16 +7,17 @@
     position: fixed;
     margin-left: 1233px;
     display: inline-block;
-    bottom: 511px;
+    bottom: 510px;
     z-index: 2;
     border-radius: 5px;
+    color: white;
     }
     .helpBtn .helpText{
     visibility: hidden;
     width: 150px;
     height: 150px;
     background-color: #E9AD9C;
-    color: black;
+    color: white;
     text-align: center;
     border-radius: 5px;
     padding: 7px 0;

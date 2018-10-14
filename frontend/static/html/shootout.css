@@ -42,13 +42,14 @@ a{
      bottom: 512px;
      z-index: 2;
      border-radius: 5px;
+     color: white;
      }
      .helpBtn3 .helpText{
      visibility: hidden;
      width: 150px;
      height: 165px;
      background-color: #E9AD9C;
-     color: black;
+     color: white;
      text-align: center;
      border-radius: 5px;
      padding: 7px 0;
@@ -90,13 +91,14 @@ a{
          bottom: 511px;
          z-index: 2;
          border-radius: 5px;
+         color: white;
          }
          .helpBtn4 .helpText{
          visibility: hidden;
          width: 150px;
          height: 100px;
          background-color: #E9AD9C;
-         color: black;
+         color: white;
          text-align: center;
          border-radius: 5px;
          padding: 7px 0;
