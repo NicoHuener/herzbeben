@@ -1,6 +1,6 @@
 package de.meetme;
 
-import de.meetme.db.PersonDao;
+import de.meetme.db.*;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
@@ -52,9 +52,32 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         log.debug("run");
 
         // add here new data classes, DAOs and services
-        final PersonDao dao = new PersonDao(hibernate.getSessionFactory());
-        de.meetme.api.PersonService personService = new de.meetme.api.PersonService(dao);
+
+        // data class, DAO and service for person
+        final PersonDao daoperson = new PersonDao(hibernate.getSessionFactory());
+        de.meetme.api.PersonService personService = new de.meetme.api.PersonService(daoperson);
         environment.jersey().register(personService);
+
+        // data class, DAO and service for photo
+        final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
+        de.meetme.api.PhotoService photoService = new de.meetme.api.PhotoService(daophoto);
+        environment.jersey().register(photoService);
+/*
+        // data class, DAO and service for shootout
+        final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
+        de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout);
+        environment.jersey().register(shootoutService);
+
+        // data class, DAO and service for personshootout
+        final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
+        de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout);
+        environment.jersey().register(personShootoutService);
+
+       // data class, DAO and service for rank
+        final RankDao daorank = new RankDao(hibernate.getSessionFactory());
+        de.meetme.api.RankService rankService= new de.meetme.api.RankService(daorank);
+        environment.jersey().register(rankService);*/
+
 
         // start h2 in server mode to connect remotely
         startDbServer(configuration.getDbPort());

@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/Herzbeben_Logo.png" alt="Home" width="30px" height="30px"> </a>
+                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -156,7 +156,7 @@
         <!-- Bildervergleich -->
         <div class="container" id="image_container">
             <div class="col-sm-4 column1">
-                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
+                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="getPictures()">
 
             </div>
 
@@ -169,7 +169,18 @@
     <!--/span-->
 </div>
 <!--/row-->
-
+<script>
+    function getPictures() {
+    alert('getpictures started')
+    var id = "34";
+    var xmlhttpr = new XMLHttpRequest();
+    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + id);
+    xmlhttpr.send(null);
+    var response2 = xmlhttpr.responseText;
+    var photo = JSON.parse(response2);
+    var pictureNumber = (Object.keys(photo).length);
+    alert (pictureNumber);
+}</script>
 <!--Help button-->
 <button class="helpBtn1">Help
     <span class="helpText">Please click on the picture you like more to participate in this shootout. <br>

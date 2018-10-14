@@ -29,7 +29,7 @@ public class RankService {
         this.dao = dao;
     }
 
-    @GET
+   @GET
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public List<Rank> getPhotosByUserid(Shootout shootout) throws Exception {
