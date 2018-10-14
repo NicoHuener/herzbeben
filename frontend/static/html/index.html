@@ -57,53 +57,89 @@
     </form>
 </div>
 <script>
+/*window.onload = function () {
+   function cookiesEnabled () {
+        var cookieEnabled = (navigator.cookieEnabled) ? true : false;
 
+        if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
+            document.cookie="testcookie";
+            cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
+        }
+        return (cookieEnabled);
+    }
+    cookiesEnabled();
+
+
+
+    if ( document.cookie) {
+        window.location.replace("http://localhost:8080/compare.html");
+    }
+};*/
 
     function signinUser(){
         alert('signin shit started'); //debug purpose only
 
         //initalizing variables with textfields from html signin form
 
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-
+        var usernamel = document.getElementById("usernamelogin").value;
+        var passwordl = document.getElementById("passwordlogin").value;
+alert('username = ' + usernamel);
          //creates alert if no username or password is typed in
 
-         function checkNotEmptyUn(){
+         function checkNotEmpty() {
+                 if (usernamel === "" || usernamel === null) {
+                     alert('Please type in a Username!');
+                 }
+                 else if (passwordl === "" || passwordl === null) {
+                     alert('Please type in a Password!');
 
-            if(username === "" || username === null){
+                 }
+                else if (document.cookie) {
+                     alert("already logged in");
+                     window.location.replace("http://localhost:8080/compare.html");
+               }
+                 else {
+alert('in else')
+                     // Check if ConfirmationPW = PW
 
-            alert('Please type in a Username!');
-            }
-         }
-         function checkNotEmptyPw(){
+                     //create hashed PW
+                     //var valpw = createvalidpw(password);
+                     //alert(valpw); //debug purpose only
+                     var id = "34";
+                     var xmlhttplog = new XMLHttpRequest(); // new HttpRequest instance
 
-            if(password === "" || username ===null){
+                     xmlhttplog.open("GET", "http://localhost:8080/meetme/api/person/" + id, true);
+                     xmlhttplog.setRequestHeader("Content-Type", "application/json");
+                     //sent the new HttpRequest
+                     xmlhttplog.send(null);
+                     xmlhttplog.onreadystatechange = function () {
+                         if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
+                             var json = xmlhttplog.responseText;
+                             var userdata = JSON.parse(json);
+                             var dbpassword = (userdata.password);
+                             var dbusername = (userdata.username);
 
-             alert ('Please type in a Password!');
-             }
-          }
+                             if (dbpassword === passwordl && dbusername === usernamel) {
 
-checkNotEmptyUn();
-checkNotEmptyPw();
+                                 document.cookie = "id=" + userdata.id;
+                                window.location.replace("http://localhost:8080/compare.html");
+
+                             }
+                             else {
+                                 alert('login failed');
+                             }
+                         }
+                     }
+                 }
+        }
+
+
+checkNotEmpty();
 
 
 
-        // Check if ConfirmationPW = PW
 
-            //create hashed PW
-            var valpw = createvalidpw(password);
-            alert(valpw); //debug purpose only
-
-            var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-
-            xmlhttp.open("GET", "http://localhost:8080/meetme/api/" + username);
-            xmlhttp.setRequestHeader("Content-Type", "application/json");
-            //sent the new HttpRequest
-            xmlhttp.send(null);
-            xmlhttp.responseText;
-
-    }
+        }
 </script>
 
 
@@ -149,15 +185,16 @@ checkNotEmptyPw();
        // Check if ConfirmationPW = PW
        if(checkPassword(confpw,password) === true){
            //create hashed PW
-           var valpw = createvalidpw(password);
-           alert(valpw); //debug purpose only
+           //var valpw = createvalidpw(password);
+
 
            var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
 
            xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
            xmlhttp.setRequestHeader("Content-Type", "application/json");
            //sent the new HttpRequest
-           xmlhttp.send(JSON.stringify({"email": email,"password": valpw,"name": lastname,"firstName": firstname, "username" : username }));
+           xmlhttp.send(JSON.stringify({"email": email,"password": password,"name": lastname,"firstName": firstname, "username" : username }));
+           window.location.replace("http://localhost:8080/compare.html");
        }
        else{
           alert('signin failed');

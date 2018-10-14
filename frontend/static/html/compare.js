@@ -2,7 +2,7 @@ window.onload = function () {
     var response;
     var pictureNumber;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "http://localhost:8080/meetme/api/shootout")
+    xmlhttp.open("GET", "http://localhost:8080/meetme/api/shootout",true)
     xmlhttp.send(null);
     response = xmlhttp.responseText;
     var shootout = JSON.parse(response);
