@@ -75,8 +75,8 @@
     height: 40px;
     position: fixed;
     margin-left: 1220px;
+    bottom: 460px;
     display: inline-block;
-    bottom: 495px;
     z-index: 2;
     border-radius: 5px;
     color: white;
