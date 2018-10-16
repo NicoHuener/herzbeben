@@ -37,12 +37,12 @@ public class PersonService {
         return dao.get(id);
     }
 
-  //  @GET
-  // @Path("/{name}")
-  // @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-   // public Person getPersonbyUsername(@PathParam("name") long name) {
-    //   return dao.get(name);
-  //}
+  @GET
+  @Path("/username/{username}")
+  @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+   public Person getPersonbyUsername(@PathParam("username") String username) {
+        return dao.byName(username).get(0);
+  }
 
     @DELETE
     @Path("/{id}")

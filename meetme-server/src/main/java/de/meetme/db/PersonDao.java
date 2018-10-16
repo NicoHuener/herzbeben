@@ -16,7 +16,7 @@ public class PersonDao extends AbstractDao<Person> {
     }
 
     public List<de.meetme.data.Person> byName(String name) {
-        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where name = ?";
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where username = ?";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Person.class);
         q.setParameter( 1, name );
         return q.<de.meetme.data.Person>getResultList();

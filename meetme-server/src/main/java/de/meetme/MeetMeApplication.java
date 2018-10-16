@@ -62,12 +62,12 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
         de.meetme.api.PhotoService photoService = new de.meetme.api.PhotoService(daophoto);
         environment.jersey().register(photoService);
-/*
+
         // data class, DAO and service for shootout
         final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
-        de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout);
+        de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout,daoperson);
         environment.jersey().register(shootoutService);
-
+/*
         // data class, DAO and service for personshootout
         final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
         de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout);
