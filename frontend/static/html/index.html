@@ -57,24 +57,17 @@
     </form>
 </div>
 <script>
-/*window.onload = function () {
-   function cookiesEnabled () {
-        var cookieEnabled = (navigator.cookieEnabled) ? true : false;
-
-        if (typeof navigator.cookieEnabled == "undefined" && !cookieEnabled) {
-            document.cookie="testcookie";
-            cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false;
-        }
-        return (cookieEnabled);
-    }
-    cookiesEnabled();
-
-
-
-    if ( document.cookie) {
+window.onload = function () {
+    var text = "Username: maxm   Password: 1234";
+    alert(text);
+    if (document.cookie) {
         window.location.replace("http://localhost:8080/compare.html");
     }
-};*/
+};
+
+
+
+
 function checkNotEmpty(usernamel,passwordl) {
     if (usernamel === "" || usernamel === null) {
         alert('Please type in a Username!');
