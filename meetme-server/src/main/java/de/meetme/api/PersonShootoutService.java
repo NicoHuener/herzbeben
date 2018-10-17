@@ -45,10 +45,10 @@ public class PersonShootoutService {
     /*------------------------------------------------------------------------------------------------
     Noch zu bearbeiten: shootout über shootoutid suchen, nicht über shootoutname
     @POST
-    @Path("/{shootoutname}&{userids}")
+    @Path("/{shootoutname}&{userid}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public Shootout addParticipantsToShootout(@PathParam("shootoutname") String shootoutname, @PathParam("userid") List<Integer> userids) throws Exception {
+    public Shootout addParticipantToShootout(@PathParam("shootoutname") String shootoutname, @PathParam("userid") List<Integer> userids) throws Exception {
         log.debug("Create Teilnehmer am Shootout : " + shootoutname);
 
         for(int i = 0; i< userids.size(); i++){
