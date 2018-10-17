@@ -71,11 +71,24 @@
     </div>
 <script>
     window.onload = function () {
-        var userid = document.cookie;
-        userid = "34";
+
+        function cookiewerteHolen () {
+            var Wert = "";
+            if (document.cookie) {
+                var Wertstart = document.cookie.indexOf("=") + 1;
+                var Wertende = document.cookie.indexOf(";");
+                if (Wertende == -1) {
+                    Wertende = document.cookie.length;
+                }
+                Wert = document.cookie.substring(Wertstart, Wertende);
+            }
+            return Wert;
+        }
+
+
 
         var xmlhttplog = new XMLHttpRequest(); // new HttpRequest instance
-
+        var userid = cookiewerteHolen();
         xmlhttplog.open("GET", "http://localhost:8080/meetme/api/person/" + userid, true);
         xmlhttplog.setRequestHeader("Content-Type", "application/json");
         //sent the new HttpRequest
@@ -90,7 +103,6 @@
             }
         }
     }
-
 </script>
     <!--Help button-->
     <button class="helpBtn2">Help
