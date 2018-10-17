@@ -68,4 +68,10 @@ public class ShootoutService {
         return shootoutDao.getShootoutByPersonid(id);
     }
 
+    @GET
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Shootout> getShootouts() {
+        return  shootoutDao.getAll();
+    }
+
 }
