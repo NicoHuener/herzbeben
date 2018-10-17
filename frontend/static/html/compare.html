@@ -147,6 +147,11 @@
             span.onclick = function() {
                 modal.style.display = "none";
             }
+            //var die beim klicken auf Btn "Create Shootout
+            var closeCS= document.getElementById("createShootout")[0];
+            closeCS.onclick= function(){
+                modal.style.display="none";
+            }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
