@@ -76,16 +76,16 @@
                     </div >
 
                     <table id="shootoutstable">
-
+                        <!--/ Inhalt wird dynamisch geladen! -->
                     </table>
-                    <!--/  <li class="active"><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li> -->
+                                            <!--/  <li class="active"><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li>
+                                              <li><a href="#">Link</a></li> -->
                   </ul>
 
               </div>
@@ -124,7 +124,10 @@
             //Ausgabe der Liste aller Shootouts in der Sidebar
 
             window.onload = function () {
-                alert('get shootouts started');
+
+                if (document.cookie === ""){
+                    window.location.replace("http://localhost:8080/index.html");
+                }
                 var xmlhttpsidebar = new XMLHttpRequest ();
 
                 xmlhttpsidebar.open("GET", 'http://localhost:8080/meetme/api/shootout/', true);
@@ -135,13 +138,12 @@
                     if(xmlhttpsidebar.readyState == XMLHttpRequest.DONE){
                         var json = xmlhttpsidebar.responseText;
                         var shootoutData = JSON.parse(json);
-                        alert(shootoutData);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
                         var shootouttable = document.getElementById("shootoutstable");
                         for (var i = 0; i < anzahlShootouts; i++){
 
                             shootouttable.innerHTML += "<tr>" +
-                               "<li><href ='#' id='td1\" + i +\"'/>" + shootoutData[i].name + "</li>" +
+                               "<li>" + "<a href ='#' id='td1\" + i +\"'/>" + shootoutData[i].name + "</a>"+ "</li>" +
                                 "</tr>";
                         }
 
@@ -175,27 +177,30 @@
             // When the user clicks on the button, open the modal
             btn.onclick = function() {
                 modal.style.display = "block";
-            };
+            }
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function() {
                 modal.style.display = "none";
-            };
+            }
             //var die beim klicken auf Btn "Create Shootout
-            var closeCS= document.getElementById("createShootout")[0];
+            var closeCS = document.getElementById("createShootout")[0];
             closeCS.onclick= function(){
                 modal.style.display="none";
-            };
+            }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
-            };
-            var userID=cookiewerteHolen();
+            }
 
             function createShootout(){
+                var userID;
+                userID = cookiewerteHolen();
+
+
                 if (document.cookie) {
                 var nameShootout=document.getElementById("nameShootout").value;
                 var xmlhttp = new XMLHttpRequest();
@@ -205,11 +210,18 @@
                 //sent the new HttpRequest
                 xmlhttp.send(JSON.stringify({
                     "shootoutName": nameShootout,
-                    "userid":userID
-                }));}
-                else {
-                    alert('user unknown');
+                    "userid": userID
+                }));
+                    //modal.style.display="none";
+
                 }
+
+                else {
+                    window.location.replace("http://localhost:8080/index.html");
+                }
+                modal.style.display="none";
+                //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
+
             }
 
 
@@ -225,14 +237,18 @@
         </header>
 
         <!-- Bildervergleich -->
+
+
+
+
         <div class="container" id="image_container">
             <div class="col-sm-4 column1">
-                <img class="img-auto" id="image1" src="./images/mountains1.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="newpicbox()">
+                <img class="img-auto" id="image1" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="changepic2()">
 
             </div>
 
             <div class="col-sm-4 column2">
-                <img class="img-auto" id="image2" src="./images/mountains2.jpg" alt="no picture uploaded" style="width:100%" height="300px" width="300px">
+                <img class="img-auto" id="image2" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="changepic1()">
             </div>
         </div>
 
@@ -240,48 +256,97 @@
     <!--/span-->
 </div>
 <!--/row-->
-<script>
-    function newpicbox() {
-    var img1_src = "./images/LA.jpg";
-    var img2_src = "./images/mountains1.jpg";
-    var img3_src = "./images/mountains2.jpg";
-    var img4_src = "./images/sean-o-406693-unsplash.jpg";
-    var img5_src = "./images/tree.jpg";
 
-    var picturebox1 = document.getElementById('image1');
-    var picturebox2 = document.getElementById('image2');
+  <script>
+      /*function newpicbox() {
+      var img1_src = "./images/LA.jpg";
+      var img2_src = "./images/mountains1.jpg";
+      var img3_src = "./images/mountains2.jpg";
+      var img4_src = "./images/sean-o-406693-unsplash.jpg";
+      var img5_src = "./images/tree.jpg";
 
-
-    var box1 = [img1_src,img2_src,img3_src,img4_src,img5_src,''];
-
-        box1.length = box1.length - 1;
-        picturebox1.innerHTML = "<img src='"+img1_src+"' alt='my image'>"; //+box1[1]+
-
-    }
+      var picturebox1 = document.getElementById('image1');
+      var picturebox2 = document.getElementById('image2');
 
 
-/*
-    alert('getpictures started')
-    var id = "34";
-    var xmlhttpr = new XMLHttpRequest();
-    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/34");
-    xmlhttpr.send(null);
+      var box1 = [img1_src,img2_src,img3_src,img4_src,img5_src,''];
 
-        xmlhttpr.onreadystatechange = function () {
-            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
-            var response2 = xmlhttpr.responseText;
-            var photo = JSON.parse(response2);
-            var pictureNumber = (Object.keys(photo).length);
-            alert (pictureNumber);
-            alert(photo[0].title);
+          box1.length = box1.length - 1;
+          picturebox1.innerHTML = "<img src='"+img1_src+"' alt='my image'>"; //+box1[1]+
+
+      }*/
 
 
-                picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
-                var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
-            }*/
+
+      var userID;
+      userID = cookiewerteHolen();
+      if (userID === "") {
+          alert('undefined User!');
+      }
+      var photos;
+      var xmlhttpr = new XMLHttpRequest();
+      xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
+      xmlhttpr.send(null);
+
+      xmlhttpr.onreadystatechange = function () {
+          if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+              var json = xmlhttpr.responseText;
+               photos = JSON.parse(json);
+             //var picamount = (Object.keys(photos).length);
+              // alert (pictureNumber);
+              // alert(photo[0].title);
+
+              // ------ load fist pic for image1 ---------------------
+              document.getElementById("image1").src = photos[0].picture;
+              photos.shift();
+              // ------ load fist pic for image2 --------------------
+              var lastpic = (Object.keys(photos).length)-1;
+              document.getElementById("image2").src = photos[lastpic].picture;
+              photos.pop();
+          }
+      };
+
+        var clicks = -1;
+          function changepic1 () {
+              clicks++;
+              var arraylength = (Object.keys(photos).length);
+
+              if (arraylength !== 0){
+              document.getElementById("image1").src = photos[0].picture;
+              photos.shift();
+              alert('photos left: '+(Object.keys(photos).length + 1)+ ' Anzahl clicks für pic2: ' + clicks);
+              }
+              else {
+                  clicks++;
+                  alert('photos left: '+(Object.keys(photos).length)+ ' Anzahl clicks für pic2: ' + clicks);
+                  alert('no pics left!');
+              }
+          }
+          function changepic2 () {
+              clicks++;
+              var arraylength = (Object.keys(photos).length);
+              if (arraylength !== 0){
+              var lastpic = (Object.keys(photos).length)-1;
+              document.getElementById("image2").src = photos[lastpic].picture;
+              photos.pop();
+              alert('photos left: '+(Object.keys(photos).length +1)+ ' Anzahl clicks für pic1: ' + clicks);
+              }
+              else {
+                  clicks++;
+                  alert('photos left: '+(Object.keys(photos).length)+ ' Anzahl clicks für pic2: ' + clicks);
+                  alert('no pics left!');
+              }
+          }
+
+      changepic1(); //set first Pic on page
+      changepic2(); //set first Pic on page
+
+      // picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
+      // var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
 
 
-</script>
+  </script>
+
 <!--Help button-->
 <button class="helpBtn1">Help
     <span class="helpText">Please click on the picture you like more to participate in this shootout. <br>
