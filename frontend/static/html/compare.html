@@ -98,10 +98,10 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <label for="text">Name</label>
-                        <input type="text" id="text">
+                        <label for="nameShootout">Name</label>
+                        <input type="text" id="nameShootout">
                         <p></p>
-                        <label for="text">Shootout ID</label>
+                        <label for="nameShootout">Shootout ID</label>
                         <p>
                         </p
                         ><select>
@@ -112,12 +112,25 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="createShootout" class="button" onclick="showShootout()"> Create shootout </button>
+                    <button id="createShootout" class="button" onclick="createShootout()"> Create shootout </button>
                 </div>
 
             </div>
         </div>
+
         <script>
+            function cookiewerteHolen () {
+                var Wert = "";
+                if (document.cookie) {
+                    var Wertstart = document.cookie.indexOf("=") + 1;
+                    var Wertende = document.cookie.indexOf(";");
+                    if (Wertende == -1) {
+                        Wertende = document.cookie.length;
+                    }
+                    Wert = document.cookie.substring(Wertstart, Wertende);
+                }
+                return Wert;
+            }
             // Get the modal
             var modal = document.getElementById('myModal');
 
@@ -143,6 +156,16 @@
                     modal.style.display = "none";
                 }
             }
+            var userID=cookiewerteHolen();
+
+            function createShootout(){
+                var nameShootout=document.getElementById("nameShootout").value;
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.open("POST","http://localhost:8080/meetme/api/shootout/"+nameShootout+"&"+userID);
+            }
+
+
         </script>
 
 
