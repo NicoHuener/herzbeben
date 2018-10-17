@@ -223,3 +223,40 @@ footer {
   padding-right: 15px;
 }
 
+/*Modal shootout Fenster*/
+.modal{
+    /*display:none;*/
+    position:fixed;
+    z-index: 1;
+    left:0;
+    top:0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content{
+    background-color:#fafafa;
+    margin:15% auto;
+    padding:30px;
+    width: 30%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0.17);
+    animation-name:modalopen;
+    animation-duration: 1s;
+}
+#createShootout{
+    background:#E9AD9C;
+    padding: 1em 2em;
+    color:#fff;
+    border:0;
+}
+.close{
+    color:#ccc;
+    float: right;
+    font-size:30px;
+}
+.close:hover, closeBtn:focus{
+    color:#000;
+    text-decoration: none;
+    cursor:pointer;
+}

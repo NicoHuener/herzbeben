@@ -77,11 +77,9 @@
                     <li class="active"><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
-                    <li class="nav-divider"></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
-                    <li class="nav-divider"></li>
                     <li><a href="#">Link</a></li>
                     <li><a href="#">Link</a></li>
                 </ul>
@@ -149,6 +147,11 @@
             span.onclick = function() {
                 modal.style.display = "none";
             }
+            //var die beim klicken auf Btn "Create Shootout
+            var closeCS= document.getElementById("createShootout")[0];
+            closeCS.onclick= function(){
+                modal.style.display="none";
+            }
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
@@ -159,6 +162,7 @@
             var userID=cookiewerteHolen();
 
             function createShootout(){
+                if (document.cookie) {
                 var nameShootout=document.getElementById("nameShootout").value;
                 var xmlhttp = new XMLHttpRequest();
 
@@ -168,7 +172,10 @@
                 xmlhttp.send(JSON.stringify({
                     "shootoutName": nameShootout,
                     "userid":userID
-                }));
+                }));}
+                else {
+                    alert('user unknown');
+                }
             }
 
 
