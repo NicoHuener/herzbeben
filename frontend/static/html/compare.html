@@ -162,6 +162,7 @@
             var userID=cookiewerteHolen();
 
             function createShootout(){
+                if (document.cookie) {
                 var nameShootout=document.getElementById("nameShootout").value;
                 var xmlhttp = new XMLHttpRequest();
 
@@ -171,7 +172,10 @@
                 xmlhttp.send(JSON.stringify({
                     "shootoutName": nameShootout,
                     "userid":userID
-                }));
+                }));}
+                else {
+                    alert('user unknown');
+                }
             }
 
 
