@@ -38,4 +38,13 @@ public class Rank extends PersistentObject{
     public Photo getPhoto() {
         return photo;
     }
+
+    @Override
+    public String toString() {
+        return "Rank{" +
+                "shootout=" + shootout +
+                ", points='" + points + '\'' +
+                ", photo=" + photo +
+                '}';
+    }
 }
