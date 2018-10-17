@@ -1,11 +1,15 @@
 package de.meetme.data;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Person extends PersistentObject {
     // create table person ( id int, name varchar(256), firstname varchar(256), email varchar(256))
 

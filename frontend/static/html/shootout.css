@@ -2,6 +2,7 @@ table{
     width: 100%;
     border: 1px solid black;
     align-items: center;
+    border-radius: 3px;
 }
 td, th{
     border: 1px solid black;
@@ -11,6 +12,7 @@ td, th{
 th{
     font-size: 25px;
     height: 50px;
+    color: #6F9EB2​;
 }
 td{
     font-size: 18px;
