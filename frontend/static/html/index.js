@@ -70,7 +70,7 @@ function showCreateAccount(){
         h.style.display = "none";
     }
 
-    /* Show HelpRe Button*/
+    /* Show HelpRe Button
     if(r.style.display === "none"){
 
           r.style.display = "block";
@@ -78,7 +78,7 @@ function showCreateAccount(){
     }
     else{
           r.style.display = "block";
-    }
+    }*/
 }
 
 
@@ -141,14 +141,14 @@ function showLogin() {
         h.style.display = "block";
     }
 
-    /*Close HelpRe Button*/
+    /*Close HelpRe Button
     if (r.style.display === "block"){
 
          r.style.display = "none";
     }
     else {
          r.style.display = "none";
-    }
+    }*/
 
 }
 
