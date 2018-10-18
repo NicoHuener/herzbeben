@@ -58,10 +58,12 @@
 </div>
 <script>
 window.onload = function () {
-    var text = "Username: maxm   Password: 1234";
-    alert(text);
     if (document.cookie) {
         window.location.replace("http://localhost:8080/compare.html");
+    }
+    else {
+        var text = "Username: maxm   Password: 1234";
+        alert(text);
     }
 };
 
@@ -80,8 +82,8 @@ function checkNotEmpty(usernamel,passwordl) {
         window.location.replace("http://localhost:8080/compare.html");
     }
     else {
-        alert('in der signin else');
-        alert(usernamel + ' ' + passwordl);
+        //alert('in der signin else');
+        //alert(usernamel + ' ' + passwordl);
         // Check if ConfirmationPW = PW
 
         //create hashed PW
@@ -99,7 +101,7 @@ function checkNotEmpty(usernamel,passwordl) {
             if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
                 var json = xmlhttplog.responseText;
                 var userdata = JSON.parse(json);
-                alert (userdata);
+                //alert (userdata);
                 var dbpassword = (userdata.password);
                 var dbusername = (userdata.username);
                 alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
@@ -112,13 +114,13 @@ function checkNotEmpty(usernamel,passwordl) {
     }
 }
     function signinUser(){
-        alert('signin started'); //debug purpose only
+        //alert('signin started'); //debug purpose only
 
         //initalizing variables with textfields from html signin form
 
         var usernamel = document.getElementById("usernamelogin").value;
         var passwordl = document.getElementById("passwordlogin").value;
-        alert('username = ' + usernamel + 'passwort = ' + passwordl);
+        //alert('username = ' + usernamel + 'passwort = ' + passwordl);
          //creates alert if no username or password is typed in
 
         checkNotEmpty(usernamel,passwordl);
@@ -153,7 +155,7 @@ function checkNotEmpty(usernamel,passwordl) {
 
 
    function registerUser(){
-       alert('shit started'); //debug purpose only
+       alert('register started'); //debug purpose only
 
        // initalizing variables with textfields from html signup form
        var email = document.getElementById("mail").value;
