@@ -35,7 +35,7 @@ public class RankService {
     public List<Rank> getPhotosByUserid(Shootout shootout) throws Exception {
         log.debug("Get Rank from Shootout: " + shootout.getName());
 
-        return dao.getRankFromPerson(shootout);
+        return dao.getRankFromShootout(shootout);
     }
 
 
