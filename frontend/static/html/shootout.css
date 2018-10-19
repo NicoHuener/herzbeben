@@ -11,6 +11,7 @@ td, th{
     border: 1px solid white;
     text-align: left;
     padding: 50px;
+    text-align: middle;
 }
 th{
     font-size: 25px;
