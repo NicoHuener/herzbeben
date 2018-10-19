@@ -134,7 +134,136 @@
                     window.location.replace("http://localhost:8080/index.html");
                 }
                 var xmlhttpsidebar = new XMLHttpRequest ();
+//--------------------------------------------------------
+                function displaypictures(shootoutID) {
 
+
+                    // Fisher-Yates shuffle algorithm
+                    function shuffle(array) {
+                        var currentIndex = array.length, temporaryValue, randomIndex;
+
+                        // While there remain elements to shuffle...
+                        while (0 !== currentIndex) {
+
+                            // Pick a remaining element...
+                            randomIndex = Math.floor(Math.random() * currentIndex);
+                            currentIndex -= 1;
+
+                            // And swap it with the current element.
+                            temporaryValue = array[currentIndex];
+                            array[currentIndex] = array[randomIndex];
+                            array[randomIndex] = temporaryValue;
+                        }
+                        return array;
+                    }
+
+                    var userID;
+                    userID = cookiewerteHolen();
+                    if (userID === "") {
+                        alert('undefined User!');
+                    }
+                    var photos;
+                    var xmlhttpr = new XMLHttpRequest();
+                    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
+                    xmlhttpr.send(null);
+
+                    xmlhttpr.onreadystatechange = function () {
+                        if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlhttpr.responseText;
+                            photos = JSON.parse(json);
+                            photos = shuffle(photos);
+                            //var picamount = (Object.keys(photos).length);
+                            // alert (pictureNumber);
+                            // alert(photo[0].title);
+
+                            // ------ load fist pic for image1 ---------------------
+                            document.getElementById("image1").src = photos[0].picture;
+                            document.getElementById("image1").title = photos[0].id;
+                            photos.shift();
+                            // ------ load fist pic for image2 --------------------
+                            var lastpic = (Object.keys(photos).length) - 1;
+                            document.getElementById("image2").src = photos[lastpic].picture;
+                            document.getElementById("image2").title = photos[lastpic].id;
+                            photos.pop();
+                        }
+                    };
+
+
+                    var clicks = -1;
+
+                    function changepic1() { //bild 2 geclickt
+                        clicks++;
+                        var arraylength = (Object.keys(photos).length);
+                        if (arraylength !== 0) {
+                            document.getElementById("image1").src = photos[0].picture;
+                            document.getElementById("image1").title = photos[0].id;
+                            photos.shift();
+                            alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic2: ' + clicks);
+                        }
+                        else { //Keine Bilder mehr in Array!
+                            alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic2: ' + clicks);
+                            document.getElementById("image1").onclick = '';
+                            document.getElementById("image2").onclick = '';
+                            alert('no pics left!');
+                            //gewinner ist bild 2
+                            var photoid = document.getElementById("image2").title;
+
+                            /*xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+                            xmlhttp.setRequestHeader("Content-Type", "application/json");
+                            //sent the new HttpRequest
+                            xmlhttp.send(JSON.stringify({
+                                "email": email,
+                                "password": password,
+                                "name": lastname,
+                                "firstName": firstname,
+                                "username": username
+                            }));*/
+                        }
+                    }
+
+                    function changepic2() { //bild 1 geklickt
+                        clicks++;
+                        var arraylength = (Object.keys(photos).length);
+                        if (arraylength !== 0) {
+                            var lastpic = (Object.keys(photos).length) - 1;
+                            document.getElementById("image2").src = photos[lastpic].picture;
+                            document.getElementById("image2").title = photos[lastpic].id;
+                            photos.pop();
+                            alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic1: ' + clicks);
+                        }
+                        else {  //Keine Bilder mehr in Array!
+                            alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic2: ' + clicks);
+                            document.getElementById("image1").onclick = '';
+                            document.getElementById("image2").onclick = '';
+                            alert('no pics left!');
+                            //gewinner ist bild 1
+                            var photoid = document.getElementById("image1").title;
+
+                            var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+
+                            /*xmlhttp.open("UPDATE", "http://localhost:8080/meetme/api/photo/wins" + photoid);
+                            xmlhttp.setRequestHeader("Content-Type", "application/json");
+                            //sent the new HttpRequest
+                            xmlhttp.send(JSON.stringify({
+                                "email": email,
+                                "password": password,
+                                "name": lastname,
+                                "firstName": firstname,
+                                "username": username
+                            }));*/
+                        }
+                    }
+
+                    changepic1(); //set first Pic on page
+                    changepic2(); //set first Pic on page
+
+                    // picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
+                    // var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
+
+                }
+
+
+                //---------------------------------------------------
                 xmlhttpsidebar.open("GET", 'http://localhost:8080/meetme/api/shootout/', true);
                 xmlhttpsidebar.setRequestHeader("Content-Type", "application/json"); //?
                 xmlhttpsidebar.send(null);
@@ -146,13 +275,12 @@
                         var anzahlShootouts=(Object.keys(shootoutData).length);
                         var shootouttable = document.getElementById("shootoutstable");
                         for (var i = 0; i < anzahlShootouts; i++){
-
+                            var shootoutid = document.getElementById(shootoutData[i].id);
                             shootouttable.innerHTML += "<tr>" +
-                               "<li>" + "<a href ='#' id='td1\" + i +\"'/>" + shootoutData[i].name + "</a>"+ "</li>" +
+                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick = 'displaypictures(shootoutid)'/>" + shootoutData[i].name + "</a>"+ "</li>" +
                                 "</tr>";
                         }
-
-                    }
+                                            }
 
                 }
             };
@@ -248,12 +376,12 @@
 
         <div class="container" id="image_container">
             <div class="col-sm-4 column1">
-                <img class="img-auto" id="image1" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="changepic2()">
+                <img class="img-auto" id="image1" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" title="" onclick="changepic2()">
 
             </div>
 
             <div class="col-sm-4 column2">
-                <img class="img-auto" id="image2" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" onclick="changepic1()">
+                <img class="img-auto" id="image2" src="" alt="no picture uploaded" style="width:100%" height="300px" width="300px" title="" onclick="changepic1()" >
             </div>
         </div>
 
@@ -263,97 +391,6 @@
 <!--/row-->
 
   <script>
-      // Fisher-Yates shuffle algorithm
-          function shuffle(array) {
-          var currentIndex = array.length, temporaryValue, randomIndex;
-
-          // While there remain elements to shuffle...
-          while (0 !== currentIndex) {
-
-              // Pick a remaining element...
-              randomIndex = Math.floor(Math.random() * currentIndex);
-              currentIndex -= 1;
-
-              // And swap it with the current element.
-              temporaryValue = array[currentIndex];
-              array[currentIndex] = array[randomIndex];
-              array[randomIndex] = temporaryValue;
-          }
-          return array;
-      }
-
-      var userID;
-      userID = cookiewerteHolen();
-      if (userID === "") {
-          alert('undefined User!');
-      }
-      var photos;
-      var xmlhttpr = new XMLHttpRequest();
-      xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
-      xmlhttpr.send(null);
-
-      xmlhttpr.onreadystatechange = function () {
-          if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
-              var json = xmlhttpr.responseText;
-               photos = JSON.parse(json);
-               photos = shuffle(photos);
-             //var picamount = (Object.keys(photos).length);
-              // alert (pictureNumber);
-              // alert(photo[0].title);
-
-              // ------ load fist pic for image1 ---------------------
-              document.getElementById("image1").src = photos[0].picture;
-              photos.shift();
-              // ------ load fist pic for image2 --------------------
-              var lastpic = (Object.keys(photos).length)-1;
-              document.getElementById("image2").src = photos[lastpic].picture;
-              photos.pop();
-          }
-      };
-
-
-
-        var clicks = -1;
-          function changepic1 () {
-              clicks++;
-              var arraylength = (Object.keys(photos).length);
-
-              if (arraylength !== 0){
-              document.getElementById("image1").src = photos[0].picture;
-              photos.shift();
-              alert('photos left: '+(Object.keys(photos).length + 1)+ ' Anzahl clicks für pic2: ' + clicks);
-              }
-              else { //Keine Bilder mehr in Array!
-                  clicks++;
-                  alert('photos left: '+(Object.keys(photos).length)+ ' Anzahl clicks für pic2: ' + clicks);
-                  document.getElementById("image1").onclick = '';
-                  document.getElementById("image2").onclick = '';
-                  alert('no pics left!');
-              }
-          }
-          function changepic2 () {
-              clicks++;
-              var arraylength = (Object.keys(photos).length);
-              if (arraylength !== 0){
-              var lastpic = (Object.keys(photos).length)-1;
-              document.getElementById("image2").src = photos[lastpic].picture;
-              photos.pop();
-              alert('photos left: '+(Object.keys(photos).length +1)+ ' Anzahl clicks für pic1: ' + clicks);
-              }
-              else {  //Keine Bilder mehr in Array!
-                  clicks++;
-                  alert('photos left: '+(Object.keys(photos).length)+ ' Anzahl clicks für pic2: ' + clicks);
-                  document.getElementById("image1").onclick = '';
-                  document.getElementById("image2").onclick = '';
-                  alert('no pics left!');
-              }
-          }
-
-      changepic1(); //set first Pic on page
-      changepic2(); //set first Pic on page
-
-      // picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
-      // var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
 
 
   </script>
