@@ -31,7 +31,6 @@ import java.util.List;
         log.debug("Update Wins: " + photoid);
         //Photo photo = dao.get(photoid);
         dao.updatewins(photoid);
-        //dao.update(photo);
     }
 
     @PUT
