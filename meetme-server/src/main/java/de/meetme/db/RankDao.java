@@ -13,8 +13,8 @@ public class RankDao  extends AbstractDao<Rank> {
         super(sessionFactory);
     }
 
-    public List<Rank> getRankFromPerson(Shootout shootout) {
-        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ?";
+    public List<Rank> getRankFromShootout(Shootout shootout) {
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ? order by points";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
         q.setParameter( 1, shootout.getId() );
         return q.<de.meetme.data.Rank>getResultList();
