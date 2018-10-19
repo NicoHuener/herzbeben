@@ -2,6 +2,7 @@ package de.meetme.api;
 
 import de.meetme.data.Person;
 import de.meetme.data.Photo;
+import de.meetme.db.PersonDao;
 import de.meetme.db.PhotoDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
@@ -23,6 +24,22 @@ import java.util.List;
         this.dao = dao;
     }
 
+    @PUT
+    @Path("/wins/{photoid}")
+    @UnitOfWork
+    public void updatewins( @PathParam("photoid")long photoid) throws Exception{
+        log.debug("Update Wins: " + photoid);
+        //Photo photo = dao.get(photoid);
+        dao.updatewins(photoid);
+        //dao.update(photo);
+    }
+
+    @PUT
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public void updatePhoto(Photo photo) throws Exception {
+        log.debug("Update Photo: " + photo);
+        dao.update(photo);
+    }
 
     @GET
     @Path("/{id}")
