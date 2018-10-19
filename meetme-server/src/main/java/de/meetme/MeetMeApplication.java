@@ -67,7 +67,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
         de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout,daoperson);
         environment.jersey().register(shootoutService);
-/*
+
         // data class, DAO and service for personshootout
         final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
         de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout);
@@ -76,7 +76,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
        // data class, DAO and service for rank
         final RankDao daorank = new RankDao(hibernate.getSessionFactory());
         de.meetme.api.RankService rankService= new de.meetme.api.RankService(daorank);
-        environment.jersey().register(rankService);*/
+        environment.jersey().register(rankService);
 
 
         // start h2 in server mode to connect remotely

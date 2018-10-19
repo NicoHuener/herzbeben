@@ -54,7 +54,7 @@ table, th, td {
      position: fixed;
      margin-left: 1142px;
      display: inline-block;
-     bottom: 512px;
+     bottom: 490px;
      z-index: 2;
      border-radius: 5px;
      color: white;
@@ -103,7 +103,7 @@ table, th, td {
          position: fixed;
          margin-left: 1233px;
          display: inline-block;
-         bottom: 511px;
+         bottom: 490px;
          z-index: 2;
          border-radius: 5px;
          color: white;
