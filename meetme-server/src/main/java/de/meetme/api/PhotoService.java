@@ -27,10 +27,11 @@ import java.util.List;
     @PUT
     @Path("/wins/{photoid}")
     @UnitOfWork
-    public void updatewins( @PathParam("photoid")long photoid) throws Exception{
+    public String updatewins( @PathParam("photoid")long photoid) throws Exception{
         log.debug("Update Wins: " + photoid);
         //Photo photo = dao.get(photoid);
         dao.updatewins(photoid);
+        return dao.updatewins(photoid);
     }
 
     @PUT

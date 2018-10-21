@@ -40,14 +40,16 @@ public class PhotoDao extends AbstractDao<Photo> {
         return q.<de.meetme.data.Photo>getResultList();
     }
     */
-   public void updatewins(long id){
+   public String updatewins(long id){
        List<Photo> ph= getPhotoById(id);
        Photo pic = ph.get(0);
-       int newwins = pic.getWins();
+       int newwins = pic.getWins() + 1;
 
-       String sqlQuery = "update table" + getEntityClass().getSimpleName() + "set wins =" + newwins + "where photo_id = ?";
+       String sqlQuery = "update" + getEntityClass().getSimpleName() + "set wins = ? where photo_id = ?";
        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
-       q.setParameter( 1, id );
+       q.setParameter( 1, newwins);
+       q.setParameter( 2, id);
+        return sqlQuery;
    }
 
 
