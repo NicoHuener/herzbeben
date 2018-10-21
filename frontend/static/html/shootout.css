@@ -54,6 +54,9 @@ table, th, td {
 #caption{
     text-align: center;
 }
+#search_shootout{
+    width: 30%;
+}
 
 
 /* creates Help Button ShootoutRanking*/
