@@ -50,8 +50,7 @@
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="#">Help</a></li>
-                            <li><a href="#">AGB's</a></li>
-                            <li><a href="#">FAQ</a></li>
+                            <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
                         </ul>
@@ -104,18 +103,11 @@
                     <form>
                         <label for="nameShootout">Name</label>
                         <input type="text" id="nameShootout">
-                        <p></p>
-                        <label for="nameShootout">Shootout ID</label>
                         <p>
                         </p><select>
                         <option> private </option>
                         <option> public</option>
                     </select>
-                        <button class="helpBtn5">Help
-                            <span class="helpText">Please enter the name of your new shootout.  <br>
-                                        If you want to share this shootout with everyone select "public" below.
-                            </span>
-                        </button>
 
                     </form>
                 </div>
@@ -149,11 +141,9 @@
                         for (var i = 0; i < anzahlShootouts; i++){
 
                             shootouttable.innerHTML += "<tr>" +
-                               "<li>" + "<a href ='#' id='shootoutData['"+i+"'].id' onclick = 'function displaypictures(document.getElementById(shootoutData[i].id))'/>" + shootoutData[i].name + "</a>"+ "</li>" +
+                               "<li>" + "<a href ='#' id='td1\" + i +\"'/>" + shootoutData[i].name + "</a>"+ "</li>" +
                                 "</tr>";
                         }
-
-
 
                     }
 
@@ -266,7 +256,6 @@
 <!--/row-->
 
   <script>
-  function displaypictures (shootoutID) {
       // Fisher-Yates shuffle algorithm
           function shuffle(array) {
           var currentIndex = array.length, temporaryValue, randomIndex;
@@ -358,7 +347,7 @@
 
       // picturebox2.innerHTML = "<img src='"+img_src+"' alt='my image'>";
       // var box2 = [img1_src,img2_src,img3_src,img4_src,img5_src];
-}
+
 
   </script>
 
@@ -366,7 +355,7 @@
 <button class="helpBtn1">Help
     <span class="helpText">Please click on the picture you like more to participate in this shootout. <br>
     To participate in another shootout select one on the left. Click on the button "Create Shootout" to create your own
-    new shootout. To see the ranking please click on "Shootout Ranking" in the navigation bar.
+    new shootout.
     </span>
 </button>
 
