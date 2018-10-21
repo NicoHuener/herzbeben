@@ -54,7 +54,8 @@ table, th, td {
     text-align: center;
 }
 #search_shootout{
-    width: 30%;
+    width: 15%;
+    margin-left: 60px;
 }
 
 
