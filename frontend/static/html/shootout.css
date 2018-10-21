@@ -1,7 +1,6 @@
 table{
     width: 90%;
     border: 1px solid white;
-    align-items: center;
     border-radius: 3px;
 }
 tr:nth-child(even) {
