@@ -17,7 +17,7 @@ import java.util.List;
 
 @Path("/personshootout") // Part of the URL to identify this resource
 @Produces(MediaType.APPLICATION_JSON)
-//@Consumes(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class PersonShootoutService {
 
     private static final Logger log = LoggerFactory.getLogger(PersonShootoutService.class);
