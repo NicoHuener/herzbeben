@@ -3,14 +3,16 @@ package de.meetme.api;
 import de.meetme.data.Photo;
 import de.meetme.db.PhotoDao;
 import io.dropwizard.hibernate.UnitOfWork;
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import  javax.ws.rs.PathParam;
 import  java.io.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -76,51 +78,51 @@ import java.util.List;
         return  dao.getAll();
     }
 
-   /* @POST
+ /*  @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response uploadFile(
+    public Response uploadpicture(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
 
-        OutputStream out = null;
-        String fileName = fileDetail.getFileName();
-        String filePath = "./src/main/uploads/" + fileName;
-        //LocalDate createdDate = java.time.LocalDate.now();
-        // save it
-        //writeToFile(uploadedInputStream, uploadedFileLocation);
+       OutputStream out = null;
+       String fileName = fileDetail.getFileName();
+       String filePath = "./src/main/uploads/" + fileName;
+       //LocalDate createdDate = java.time.LocalDate.now();
+       // save it
+       //writeToFile(uploadedInputStream, uploadedFileLocation);
 
-        // save uploaded file to new location
-        //writeToFile(uploadedInputStream, uploadedFileLocation) {
+       // save uploaded file to new location
+       //writeToFile(uploadedInputStream, uploadedFileLocation) {
 
-        try {
-            //OutputStream out = null;
-            File fileToUpload = new File(filePath);
-            out = new FileOutputStream(fileToUpload);
-            int read;
-            byte[] bytes = new byte[2048];
+       try {
+           //OutputStream out = null;
+           File fileToUpload = new File(filePath);
+           out = new FileOutputStream(fileToUpload);
+           int read;
+           byte[] bytes = new byte[2048];
 
-            while ((read = uploadedInputStream.read(bytes)) != -1) {
-                out.write(bytes, 0, read);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Response.status(500).build();
-        } finally {
-            try {
-            out.close();
-        }catch (IOException e){
-            e.printStackTrace();
-           return Response.status(500).build();
-        }
+           while ((read = uploadedInputStream.read(bytes)) != -1) {
+               out.write(bytes, 0, read);
+           }
+       } catch (IOException e) {
+           e.printStackTrace();
+           // return Response.status(500).build();
+       } finally {
+           try {
+               out.close();
+           } catch (IOException e) {
+               e.printStackTrace();
+               // return Response.status(500).build();
+           }
 
 
+       }
 
-    }
+       return Response.status(200).build();
 
-        return Response.status(200).build();
 
-}*/
+   }*/
 }
 
