@@ -5,8 +5,11 @@ import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.jersey.sessions.SessionFactoryProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.eclipse.jetty.server.session.SessionHandler;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.h2.tools.Server;
@@ -70,7 +73,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
 
         // data class, DAO and service for personshootout
         final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
-        de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout);
+        de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout,daoshootout);
         environment.jersey().register(personShootoutService);
 
        // data class, DAO and service for rank
@@ -78,7 +81,10 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         de.meetme.api.RankService rankService= new de.meetme.api.RankService(daorank);
         environment.jersey().register(rankService);
 
+        environment.jersey().register(MultiPartFeature.class);
 
+//environment.servlets().setSessionHandler(new SessionHandler());
+//environment.jersey().register(SessionFactoryProvider.class);
         // start h2 in server mode to connect remotely
         startDbServer(configuration.getDbPort());
 
