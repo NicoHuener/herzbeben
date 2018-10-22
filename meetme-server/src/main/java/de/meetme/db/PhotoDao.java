@@ -63,4 +63,5 @@ public class PhotoDao extends AbstractDao<Photo> {
         q.executeUpdate();
     }
 
+    //public void createpicindb()
 }

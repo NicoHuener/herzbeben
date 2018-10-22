@@ -78,7 +78,14 @@ import java.util.List;
         return  dao.getAll();
     }
 
-   @POST
+    @POST
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public Photo createPhoto(Photo photo) throws Exception {
+        log.debug("Create Photo: " + photo);
+        return dao.persist(photo);
+    }
+
+    @POST
     @Path("/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     //@Produces(MediaType.APPLICATION_JSON)
@@ -89,6 +96,7 @@ import java.util.List;
        OutputStream out = null;
        String fileName = fileDetail.getFileName();
        String filePath = "./src/main/uploads/" + fileName;
+
 
        try {
            //OutputStream out = null;

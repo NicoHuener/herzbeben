@@ -49,6 +49,7 @@
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
+                            <li><a href="allphotos.html">All Pictures</a></li>
                             <li><a href="#">Help</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
@@ -147,9 +148,10 @@ function createshootoutlist() {
                         var shootouttable = document.getElementById("shootoutstable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person;
+                           var shootoutid = shootoutData[i].id;
                             shootouttable.innerHTML +=
                                 "<tr>" +
-                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+")' />" + shootoutData[i].name + "</a>"+ "</li>" +
+                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + "</a>"+ "</li>" +
                                 "</tr>";
 
                         }
@@ -271,7 +273,7 @@ function createshootoutlist() {
       //--------------------------------------------------------
 //alt="no picture uploaded"
 var photos;
-function starttheshow (personID){
+function starttheshow (personID, shootoutID){
     // Fisher-Yates shuffle algorithm
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -338,6 +340,11 @@ function starttheshow (personID){
             var pic2ID = document.getElementById("image2").title;
 
             alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic2: ' + clicks);
+            var xmlhttppoints = new XMLHttpRequest();
+           /* xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + clicks +"&"+ shootoutID + "&" + pic2ID);
+            xmlhttppoints.setRequestHeader("Content-Type", "application/json");
+            //sent the new HttpRequest
+            xmlhttppoints.send();*/
         }
         else { //Keine Bilder mehr in Array!
             alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic2: ' + clicks);
