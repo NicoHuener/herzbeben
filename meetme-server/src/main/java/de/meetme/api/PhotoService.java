@@ -1,8 +1,6 @@
 package de.meetme.api;
 
-import de.meetme.data.Person;
 import de.meetme.data.Photo;
-import de.meetme.db.PersonDao;
 import de.meetme.db.PhotoDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
@@ -27,10 +25,9 @@ import java.util.List;
     @PUT
     @Path("/wins/{photoid}")
     @UnitOfWork
-    public String updatewins( @PathParam("photoid")long photoid) throws Exception{
+    public void updatewins( @PathParam("photoid")long photoid) throws Exception{
         log.debug("Update Wins: " + photoid);
         dao.updatewins(photoid);
-        return dao.updatewins(photoid);
     }
 
     @PUT
