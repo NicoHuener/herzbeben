@@ -22,12 +22,20 @@ public class RankService {
         this.dao = dao;
     }
 
-    @PUT
+    /*@PUT
     @Path("/points/{points}&{rankid}")
     @UnitOfWork
     public void updatepoints(@PathParam("points")int points,@PathParam("rankid")long rankId) {
         log.debug("Update points: " + rankId);
         dao.updatepoints(points, rankId);
+    }*/
+
+    @PUT
+    @Path("/points/{points}&{shootoutid}&{photoid}")
+    @UnitOfWork
+    public void updatepoints(@PathParam("points")int points,@PathParam("shootoutid")long shootoutid,@PathParam("photoid")long photoId) {
+        log.debug("Update points: " + shootoutid + photoId);
+        dao.updatepoints(points, shootoutid, photoId);
     }
 
    @GET
