@@ -1,21 +1,25 @@
 table{
-    width: 100%;
-    border: 1px solid black;
-    align-items: center;
+    width: 90%;
+    border: 1px solid white;
     border-radius: 3px;
 }
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 td, th{
-    border: 1px solid black;
-    text-align: left;
+    border: 1px solid white;
     padding: 50px;
+
 }
 th{
     font-size: 25px;
     height: 50px;
     color: #6F9EB2​;
+
 }
 td{
     font-size: 18px;
+    text-align: center;
 }
 a{
     text-decoration: none;
@@ -36,12 +40,22 @@ table, th, td {
 
 #spalte {
     width: 30%;
+    background:#E9AD9C;
+    color: #fff;
+    text-align: center;
 
 }
 
 #ranking {
     margin-top: 80px;
     text-align: center;
+}
+#caption{
+    text-align: center;
+}
+#search_shootout{
+    width: 15%;
+    margin-left: 60px;
 }
 
 
