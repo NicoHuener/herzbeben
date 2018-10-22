@@ -29,8 +29,15 @@ import java.util.List;
     @UnitOfWork
     public void updatewins( @PathParam("photoid")long photoid) throws Exception{
         log.debug("Update Wins: " + photoid);
-        //Photo photo = dao.get(photoid);
         dao.updatewins(photoid);
+    }
+
+    @PUT
+    @Path("/clicks/{clicks}&{photoid}")
+    @UnitOfWork
+    public void updateclicks(@PathParam("clicks")int clicks,@PathParam("photoid")long photoid){
+        log.debug("Update clicks: " + photoid);
+        dao.updateclicks(clicks,photoid);
     }
 
     @PUT
