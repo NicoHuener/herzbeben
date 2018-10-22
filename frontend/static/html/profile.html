@@ -67,7 +67,54 @@
         </div>
     <div id="usernamefield"></div>
 
-<script>
+    <!--Flexbox Anfang-->
+    <!-- Header -->
+    <!--<div class="header">
+        <h1>Responsive Image Grid</h1>
+
+    </div>-->
+
+    <!-- Photo Grid -->
+    <div class="row">
+        <div class="column">
+            <img id="image01" src="‪" alt="no picture uploaded" style="width:100%">
+            <img id="image02" src="" style="width:100%">
+            <img id="image03" src="" style="width:100%">
+            <img id="image04" src="" style="width:100%">
+            <img id="image05" src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+        </div>
+        <div class="column">
+            <img scr="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+            <img src="" style="width:100%">
+        </div>
+    </div>
+
+    <!--Flexbox ENde-->
+
+    <script>
     window.onload = function () {
 
         function cookiewerteHolen () {
@@ -83,6 +130,68 @@
             return Wert;
         }
 
+//Bilderabfrage für Flexbox-----------------------------------------------
+
+
+        var userID;
+        userID = cookiewerteHolen();
+        if (userID === "") {
+            alert('undefined User!');
+        }
+        // cookiewerteHolen();
+
+        var photos;
+        var xmlhttpr = new XMLHttpRequest(); //get all the photos from user
+        xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
+        xmlhttpr.send(null);
+
+        xmlhttpr.onreadystatechange = function () {
+            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpr.responseText;
+                photos = JSON.parse(json);
+
+
+                var anzahlphotos =(Object.keys(photos).length);
+               /* var schleifen = anzahlphotos / 6;
+
+
+                for (var i = 0; i < anzahlphotos; i++) {
+                    result.innerHTML += "<tr> " +
+                        "<td id='td1" + i + "'/>" + photolist[i].id + "</td> " +
+                        "<td id='td2 " + i + " '>" + photolist[i].title + "</td>" +
+                        "<td id='td3 " + i + "'>" + photolist[i].clicks + "</td>" +
+                        "<td id='td4 " + i + " '>" + photolist[i].wins + "</td>" +
+                        "<td id='td5 " + i + "'>" + photolist[i].person.id + "</td>" +
+                        "<td id='td6 " + i + "'>" + photolist[i].person.username + "</td>" +
+                        "</tr>";
+                }*/
+                document.getElementById("image01").src = photos[0].picture;
+                document.getElementById("image02").src = photos[1].picture;
+                document.getElementById("image03").src = photos[2].picture;
+
+                document.getElementById("image04").src = photos[3].picture;
+
+                document.getElementById("image05").src = photos[4].picture;
+
+
+
+            }
+        };
+
+        /* function profilepictures (){
+         var arraylength =(Object.key(photos).length);
+         if (arraylength !==0){
+         document.getElementById ("image01").scr = photos [0].pictures;
+
+         }
+         else { //keine Bilder im Array
+         alert('photos left: ' + ((Object.key(photos).length)))
+              }
+         }
+
+         profilepictures ();*/
+
+//Bilderabfrage für Flexbox Ende----------------------------------------
 
 
         var xmlhttplog = new XMLHttpRequest(); // new HttpRequest instance

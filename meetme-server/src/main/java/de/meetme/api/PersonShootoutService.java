@@ -16,8 +16,6 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/personshootout") // Part of the URL to identify this resource
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class PersonShootoutService {
 
     private static final Logger log = LoggerFactory.getLogger(PersonShootoutService.class);
@@ -25,8 +23,9 @@ public class PersonShootoutService {
     private PersonDao personDao;
     private ShootoutDao shootoutDao;
 
-    public PersonShootoutService(PersonShootoutDao dao) {
+    public PersonShootoutService(PersonShootoutDao dao,ShootoutDao shootoutDao) {
         this.dao = dao;
+        this.shootoutDao = shootoutDao;
     }
 
    /* @POST
@@ -65,10 +64,11 @@ public class PersonShootoutService {
 
 
     @GET
+    @Path("/{shootout}")
     @UnitOfWork
-    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public List<Person> getParticipantsByShootout(Shootout shootout) throws Exception {
-        log.debug("Get Participants from Shootout: " + shootout.getName());
+    public List<Person> getParticipantsByShootout(@PathParam("shootout") long shootoutId) throws Exception {
+        log.debug("Get Participants from Shootout: " + shootoutId);
+        Shootout shootout = shootoutDao.get(shootoutId);
 
         return dao.getPersonsFromShootout(shootout);
     }
