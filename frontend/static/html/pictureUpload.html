@@ -71,12 +71,23 @@
 <h1>Picture Upload</h1>
 
 <form action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
-    <p>Select a file : <input type="file" name="file" size="45"/></p>
-    <input type="submit" onclick="addpictodb()" value="Upload Picture" />
+    <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
+    <input type="submit" onclick="addpictodb(from)" value="Upload Picture" />
 </form>
 <script>
-    function addpictodb() {
+    function addpictodb(from) {
+ var fullPath = document.getElementById('eingabefeld').value;
+ if (fullPath){
+     var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
+     var fielname = fullPath.substring(startIndex);
+     if (filename.indexOf('\\') === 0 || fielname.indexOf('/') === 0){
+         fielname = filename.substring(1);
+     }
+     console.log(filename);
 
+     var filepath = "../../../meetme-server/src/main/uploads/" + filename + ".jpg";
+
+ }
     }
 </script>
 </body>
