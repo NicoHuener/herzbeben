@@ -83,8 +83,8 @@
             <img id="image03" src="" style="width:100%">
             <img id="image04" src="" style="width:100%">
             <img id="image05" src="" style="width:100%">
-            <img src="" style="width:100%">
-            <img src="" style="width:100%">
+            <img id="image06" src="" style="width:100%">
+            <img id="image07" src="" style="width:100%">
         </div>
         <div class="column">
             <img scr="" style="width:100%">
@@ -153,6 +153,7 @@
 
 
                 var anzahlphotos =(Object.keys(photos).length);
+               // alert(Object.keys(photos).length);
                /* var schleifen = anzahlphotos / 6;
 
 
@@ -166,15 +167,15 @@
                         "<td id='td6 " + i + "'>" + photolist[i].person.username + "</td>" +
                         "</tr>";
                 }*/
-                document.getElementById("image01").src = photos[0].picture;
-                document.getElementById("image02").src = photos[1].picture;
-                document.getElementById("image03").src = photos[2].picture;
+                for (var i = 0; i < anzahlphotos; i++) {
+                    var n = i+1;
+                    document.getElementById("image0"+ n).src = photos[i].picture;
+                    /*document.getElementById("image0+1).src = photos[1].picture;
+                    document.getElementById("image03").src = photos[2].picture;
+                    document.getElementById("image04").src = photos[3].picture;
+                    document.getElementById("image05").src = photos[4].picture;*/
 
-                document.getElementById("image04").src = photos[3].picture;
-
-                document.getElementById("image05").src = photos[4].picture;
-
-
+                }
 
             }
         };

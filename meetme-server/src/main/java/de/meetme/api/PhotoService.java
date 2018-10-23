@@ -79,6 +79,7 @@ import java.util.List;
     }
 
     @POST
+    @Path("/upload/picdata")
     @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public Photo createPhoto(Photo photo) throws Exception {
         log.debug("Create Photo: " + photo);
