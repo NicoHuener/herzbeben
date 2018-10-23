@@ -14,12 +14,12 @@ public class PhotoDao extends AbstractDao<Photo> {
     }
 
 
-    public List<de.meetme.data.Photo> getPhotoById(long id) {
+    /*public List<de.meetme.data.Photo> getPhotoById(long id) {
         String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where id = ?";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
         q.setParameter( 1, id );
         return q.<de.meetme.data.Photo>getResultList();
-    }
+    }*/
 
     public List<Photo> getPhotoFromPerson(long id) {
         String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where person_id = ?";
@@ -41,14 +41,27 @@ public class PhotoDao extends AbstractDao<Photo> {
     }
     */
    public void updatewins(long id){
-       List<Photo> ph= getPhotoById(id);
-       Photo pic = ph.get(0);
-       int newwins = pic.getWins();
+       //List<Photo> ph= getPhotoById(id);
+       Photo pic = get(id);
+       int newwins = pic.getWins()+1;
 
-       String sqlQuery = "update table" + getEntityClass().getSimpleName() + "set wins =" + newwins + "where photo_id = ?";
+       String sqlQuery = "update " + getEntityClass().getSimpleName() + " set wins = " + newwins + " where id = ?";
+
        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
        q.setParameter( 1, id );
+       q.executeUpdate();
    }
 
+    public void updateclicks(int clicks,long id){
+        Photo pic = get(id);
+        int newclicks = pic.getClicks()+clicks;
 
+        String sqlQuery = "update " + getEntityClass().getSimpleName() + " set clicks = " + newclicks + " where id = ?";
+
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
+        q.setParameter( 1, id );
+        q.executeUpdate();
+    }
+
+    //public void createpicindb()
 }

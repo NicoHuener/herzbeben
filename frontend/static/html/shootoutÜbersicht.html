@@ -50,6 +50,7 @@
                   <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                   <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <li><a href="allusers.html">All Users</a></li>
+                      <li><a href="allphotos.html">All Pictures</a></li>
                       <li><a href="#">Help</a></li>
                       <li><a href="AGB.html">AGB's</a></li>
                       <li role="separator" class="divider"></li>
@@ -67,28 +68,61 @@
         <div class="form-group" id="search_shootout">
             <input  type="text" class="form-control" placeholder="Search">
         </div >
-        <table align="center">
+        <table id = "result" align="center">
         <tr>
             <th id="spalte">Shootout-Name</th>
-            <th id="spalte">Topic</th>
+            <th id="spalte">User</th>
             <th id="spalte">Top ranked pictures</th>
-        </tr>    
-        <tr>
-            <td>Sweater Weather</td>
-            <td>Nature</td>
-            <td><a href="ShootoutRanking.html">Picture ranking</a></td>
-        </tr>
-        <tr>
-            <td>Coffee</td>
-            <td>Food</td>
-            <td><a href="ShootoutRanking.html">Picture ranking</a></td>
-        </tr>
-        <tr>
-            <td>Make up</td>
-            <td>Beauty</td>
-            <td>Picture ranking</td>
         </tr>
 
+            <script>
+                window.onload = function () {
+
+                    var xhr = new XMLHttpRequest();
+                    var json;
+                    var anzahlshootouts;
+
+
+                    xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
+                    xhr.send(null);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            json = xhr.responseText;
+                            var shootoutlist = JSON.parse(json);
+                            anzahlshootouts=(Object.keys(shootoutlist).length);
+
+
+                            for (var i = 0; i < anzahlshootouts; i++) {
+                                var personid = shootoutlist[i].person;
+                              /*  if (isNaN(personid)){
+
+                                }else {
+
+
+                                var xhrperson = new XMLHttpRequest();
+                                xhrperson.open('GET', 'http://localhost:8080/meetme/api/person/' + personid, true);
+                                xhrperson.send(null);
+                                xhr.onreadystatechange = function () {
+                                    if (xhrperson.readyState == XMLHttpRequest.DONE) {
+                                        json = xhrperson.responseText;
+                                        var person = JSON.parse(json);*/
+
+
+                                result.innerHTML += "<tr> " +
+                                    "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
+                                    "<td id='td2 " + i + " '>" + shootoutlist[i].person + "</td>" +
+                                    "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\" >Picture ranking</a></td>" +
+                                    "</tr>";
+                            }
+                        }
+                    };
+
+                    };
+
+
+
+            </script>
         </table>
     </div>
   <!--creates Help button-->

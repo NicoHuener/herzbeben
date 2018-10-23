@@ -1,23 +1,47 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>FAQ</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AllUsers</title>
+    <title>FAQ</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="allusers.css" type="text/css">
-    <script type=text/javascript src = "navbarFunction.js"></script>
-
+    <!-- <link rel="stylesheet" href="compare_profile.css"> -->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- <script type=text/javascript src = "index.js"></script> -->
     <script type=text/javascript src = "navbarFunction.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
 
+        .active, .accordion:hover {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="navbar navbar-inverse">
+<header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
     <nav role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -33,7 +57,11 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <!--            <li><a href="#">Help</a></li>
+                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
+                     -->
+                </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
@@ -60,86 +88,41 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-<!-- <form id="file-form" action="handler.php" method="POST">
-    <input type="file" id="file-select" name="photos[]" multiple/>
-    <button type="submit" id="upload-button">Upload</button>
-</form> -->
-<button class="helpBtn">Help
-    <span class="helpText">Please select the Picture you want to upload and click on "Upload Picture"!</span>
-</button>
-<body>
-<h1>Picture Upload</h1>
+</head>
 
-<form action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
-    <p>Select a file : <input type="file" name="file" size="45"/></p>
-    <input type="submit" onclick="addpictodb()" value="Upload Picture" />
-</form>
+<h2>Animated Accordion</h2>
+<p></p>
+
+<button class="accordion">How can I create a shootout?</button>
+<div class="panel">
+    <p>To create a shootout, please click on "</p>
+</div>
+
+<button class="accordion">AGB #2</button>
+<div class="panel">
+    <p></p>
+</div>
+
+<button class="accordion">AGB #3</button>
+<div class="panel">
+    <p></p>
+</div>
+
 <script>
-    function addpictodb() {
+    var acc = document.getElementsByClassName("accordion");
+    var i;
 
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
     }
 </script>
 </body>
-
-
-<!--
-<script>
-    var form = document.getElementById('file-form');
-    var fileSelect = document.getElementById('file-select');
-    var uploadButton = document.getElementById('upload-button');
-
-    form.onsubmit = function(event) {
-        event.preventDefault();
-
-        // Update button text.
-        uploadButton.innerHTML = 'Uploading...';
-
-        // Get the selected files from the input.
-        var files = fileSelect.files;
-
-        // Create a new FormData object.
-        var formData = new FormData();
-
-        // Loop through each of the selected files.
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-
-            // Check the file type.
-            if (!file.type.match('image.*')) {
-                continue;
-            }
-
-            // Add the file to the request.
-            formData.append('photos[]', file, file.name);
-        }
-
-        // Files
-        formData.append(name, file, file.name);
-
-        //// Blobs
-        //formData.append(name, blob, file.name);
-
-        // Strings
-        //formData.append(name, value);
-
-        // Set up the request.
-        var xhr = new XMLHttpRequest();
-
-        // Open the connection.
-        xhr.open("POST", "http://localhost:8080/meetme/api/photo", true);
-        xhr.setRequestHeader("Content-Type", "multipart/form-data");
-
-        // Set up a handler for when the request finishes.
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                // File(s) uploaded.
-                uploadButton.innerHTML = 'Upload';
-            } else {
-                alert('An error occurred!');
-            }
-        };
-
-        // Send the Data.
-        xhr.send(formData);
-    }
-</script> -->
+</html>

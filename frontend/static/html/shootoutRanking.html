@@ -55,6 +55,7 @@
                   <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                   <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <li><a href="allusers.html">All Users</a></li>
+                      <li><a href="allphotos.html">All Pictures</a></li>
                       <li><a href="#">Help</a></li>
                       <li><a href="AGB.html">AGB's</a></li>
                       <li role="separator" class="divider"></li>
@@ -84,83 +85,118 @@
         </table>
         </div>
     </div>
-    <div class="container">
+    <div class="container" >
         <div id="Best-picture">
-           <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+           <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         </div> <br> <br>
         <div id="Second-best">
-            <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+            <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         </div> <br> <br>
         <div id="Third-best">
-            <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+            <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         </div>
     </div>
-    <!-- <div id="Bildüberschrift">
-        <div class="container">
-        <table>
-        <tr>
-        <td>Nr. 4</td>
-        <td>Nr. 5</td>
-        <td>Nr. 6</td>
-        </tr>
-        </table>
-        </div>
-    </div>
-    <div class="container">
-        <div id="Best-picture">
-           <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Second-best">
-            <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Third-best">
-            <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div>
-    </div>
-    <div id="Bildüberschrift">
-        <div class="container">
-        <table>
-        <tr>
-        <td>Nr. 7</td>
-        <td>Nr. 8</td>
-        <td>Nr. 9</td>
-        </tr>
-        </table>
-        </div>
-    </div>
-    <div class="container">
-        <div id="Best-picture">
-           <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Second-best">
-            <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Third-best">
-            <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div>
-    </div>
-    <div id="Bildüberschrift">
-        <div class="container">
-        <table>
-        <tr>
-        <td>Nr. 10</td>
-        <td>Nr. 11</td>
-        <td>Nr. 12</td>
-        </tr>
-        </table>
-        </div>
-    </div>
-    <div class="container">
-        <div id="Best-picture">
-           <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Second-best">
-            <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div> <br> <br>
-        <div id="Third-best">
-            <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        </div>
-    </div> -->
+
+  <script>
+      window.onload = function (){
+          alert('in function');
+          var shootoutID = 3;
+          var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+
+              xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/rank/shootout/" + shootoutID, true);
+              xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+              //sent the new HttpRequest
+              //var data = JSON.stringify(json);
+              xmlhttplog2.send(null);
+              console.log('request für top fotos gesendet');
+
+
+
+                  xmlhttplog2.onreadystatechange = function () {
+                      if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                          var json = xmlhttplog2.responseText;
+                          var points = JSON.parse(json);
+                          points.reverse();
+                          alert (Object.keys(points).length);
+                          alert(points[0].photo.picture);
+                          document.getElementById('bestpic').src = points[0].photo.picture;
+                          document.getElementById('Secondpic').src = points[1].photo.picture;
+                          document.getElementById('Thirdpic').src = points[2].photo.picture;
+                      }
+
+                  };
+
+              };
+      //document.getElementById('bestpic').src = link;
+
+  </script>
+
+  <!-- <div id="Bildüberschrift">
+      <div class="container">
+      <table>
+      <tr>
+      <td>Nr. 4</td>
+      <td>Nr. 5</td>
+      <td>Nr. 6</td>
+      </tr>
+      </table>
+      </div>
+  </div>
+  <div class="container">
+      <div id="Best-picture">
+         <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Second-best">
+          <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Third-best">
+          <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div>
+  </div>
+  <div id="Bildüberschrift">
+      <div class="container">
+      <table>
+      <tr>
+      <td>Nr. 7</td>
+      <td>Nr. 8</td>
+      <td>Nr. 9</td>
+      </tr>
+      </table>
+      </div>
+  </div>
+  <div class="container">
+      <div id="Best-picture">
+         <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Second-best">
+          <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Third-best">
+          <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div>
+  </div>
+  <div id="Bildüberschrift">
+      <div class="container">
+      <table>
+      <tr>
+      <td>Nr. 10</td>
+      <td>Nr. 11</td>
+      <td>Nr. 12</td>
+      </tr>
+      </table>
+      </div>
+  </div>
+  <div class="container">
+      <div id="Best-picture">
+         <img src="mountains1.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Second-best">
+          <img src="mountains2.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div> <br> <br>
+      <div id="Third-best">
+          <img src="sean-o-406693-unsplash.jpg" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+      </div>
+  </div> -->
 
 </body>
 </html>

@@ -28,7 +28,7 @@
 <div id = "help">
 <button class="help">Help
     <span class="helpText">To sign in with your klicks-account please enter your username and password
-        into the predicted input box and click on the “Log In”-button afterwards. <br>
+        into the designated input box and click on the “Log In”-button afterwards. <br>
         If you don’t have a klicks-account, please select “Create Account” to register.
 </span>
 </button>
@@ -82,16 +82,7 @@ function checkNotEmpty(usernamel,passwordl) {
         window.location.replace("http://localhost:8080/compare.html");
     }
     else {
-        //alert('in der signin else');
-        //alert(usernamel + ' ' + passwordl);
-        // Check if ConfirmationPW = PW
-
-        //create hashed PW
-        //var valpw = createvalidpw(password);
-        //alert(valpw); //debug purpose only
-
         var xmlhttplog = new XMLHttpRequest(); // new HttpRequest instance
-
         xmlhttplog.open("GET", "http://localhost:8080/meetme/api/person/username/" + usernamel, true);
         xmlhttplog.setRequestHeader("Content-Type", "application/json");
         //sent the new HttpRequest
@@ -108,6 +99,9 @@ function checkNotEmpty(usernamel,passwordl) {
                 if (dbpassword === passwordl && dbusername === usernamel) {
                     document.cookie = "id=" + userdata.id;
                     window.location.replace("http://localhost:8080/compare.html");
+                }
+                else {
+                    alert ('wrong username or password!');
                 }
             }
         }
@@ -146,6 +140,7 @@ function checkNotEmpty(usernamel,passwordl) {
         <label for="confpassword">Confirm password:</label>
         <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password">
         <div id="lower2">
+            <input type="checkbox" id = "AGBcheckbox"><label for="AGBcheckbox">I have read the <a href="AGB.html">AGB's</a></label>
             <input type="submit" value="Create account" onclick="registerUser()" >
 
             <button class="helpRe">Help

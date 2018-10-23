@@ -1,19 +1,12 @@
 package de.meetme.api;
 
-import de.meetme.data.Person;
-import de.meetme.data.Photo;
 import de.meetme.data.Rank;
-import de.meetme.data.Shootout;
-import de.meetme.db.PhotoDao;
 import de.meetme.db.RankDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -29,13 +22,29 @@ public class RankService {
         this.dao = dao;
     }
 
+    /*@PUT
+    @Path("/points/{points}&{rankid}")
+    @UnitOfWork
+    public void updatepoints(@PathParam("points")int points,@PathParam("rankid")long rankId) {
+        log.debug("Update points: " + rankId);
+        dao.updatepoints(points, rankId);
+    }*/
+
+    @PUT
+    @Path("/points/{points}&{shootoutid}&{photoid}")
+    @UnitOfWork
+    public void updatepoints(@PathParam("points")int points,@PathParam("shootoutid")long shootoutid,@PathParam("photoid")long photoId) {
+        log.debug("Update points: " + shootoutid + photoId);
+        dao.updatepoints(points, shootoutid, photoId);
+    }
+
    @GET
+   @Path("/shootout/{shootoutId}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public List<Rank> getPhotosByUserid(Shootout shootout) throws Exception {
-        log.debug("Get Rank from Shootout: " + shootout.getName());
-
-        return dao.getRankFromShootout(shootout);
+    public List<Rank> getRanksbyShootoutId(@PathParam("shootoutId")long shootoutId) throws Exception {
+        log.debug("Get Rank from Shootout: " + shootoutId);
+       return dao.getRankFromShootout(shootoutId);
     }
 
 
