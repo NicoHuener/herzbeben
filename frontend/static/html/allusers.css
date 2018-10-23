@@ -1,5 +1,5 @@
 /* help Button*/
- .helpBtn{
+ .helpBtn6{
     background-color: #E9AD9C;
     border: none;
     width: 40px;
@@ -7,12 +7,12 @@
     position: fixed;
     margin-left: 1233px;
     display: inline-block;
-    bottom: 490px;
+    bottom: 510px;
     z-index: 2;
     border-radius: 5px;
     color: white;
     }
-    .helpBtn .helpText{
+    .helpBtn6 .helpText{
     visibility: hidden;
     width: 150px;
     height: 100px;
@@ -23,13 +23,13 @@
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -158%;
-    left: -230%;
+    bottom: -150%;
+    left: -225%;
     margin-left: -70px;
     opacity: 0;
     transition: opacity 0.3s;
     }
-    .helpBtn .helpText::after{
+    .helpBtn6 .helpText::after{
     content: "";
     position: absolute;
     top: 10%;
@@ -39,10 +39,10 @@
     border-style: solid;
     border-color: #E9AD9C transparent transparent transparent;
     }
-    .helpBtn:hover .helpText{
+    .helpBtn6:hover .helpText{
     visibility: visible;
     opacity: 1;
     }
-    .helpBtn:hover{
+    .helpBtn6:hover{
     cursor: pointer;
     opacity: 0.9;}

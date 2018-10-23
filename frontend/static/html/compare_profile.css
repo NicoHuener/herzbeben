@@ -18,10 +18,11 @@
 }
 
 #heading{
-    position: static;
+    position: fixed;
     text-align: center;
     line-height: 15px;
     font-size: 20px;
+    margin-left: 35%;
     margin-top: 80px;
     margin-bottom: 65px;
 }
@@ -74,9 +75,9 @@
     width: 40px;
     height: 40px;
     position: fixed;
-    margin-left: 1220px;
+    margin-left: 1230px;
     display: inline-block;
-    bottom: 495px;
+    bottom: 511px;
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -123,9 +124,9 @@
     width: 40px;
     height: 40px;
     position: fixed;
-    margin-left: 1233px;
+    margin-left: 1220px;
     display: inline-block;
-    bottom: 511px;
+    bottom: 495px;
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -174,7 +175,7 @@
     position: fixed;
     margin-left: -105px;
     display: inline-block;
-    bottom: 375px;
+    bottom: 385px;
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -182,7 +183,7 @@
     .helpBtn5 .helpText{
     visibility: hidden;
     width: 170px;
-    height: 120px;
+    height: 130px;
     background-color: #E9AD9C;
     color: white;
     text-align: center;
@@ -190,7 +191,7 @@
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -500%;
+    bottom: -557%;
     left: 290%;
     margin-left: -70px;
     opacity: 0;
@@ -354,6 +355,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
+
 }
 
 /* Create four equal columns that sits next to each other */
@@ -361,10 +363,14 @@ body {
     flex: 25%;
     max-width: 25%;
     padding: 0 4px;
+    flex-direction: row-reverse;
+
 }
 
 .column img {
-    margin-top: 8px;
+    margin-top: 250px;
+    margin-left: 50px;
+    flex-direction: row-reverse;
     vertical-align: middle;
 }
 
