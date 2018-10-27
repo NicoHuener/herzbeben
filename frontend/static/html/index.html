@@ -140,7 +140,7 @@ function checkNotEmpty(usernamel,passwordl) {
         <label for="confpassword">Confirm password:</label>
         <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password">
         <div id="lower2">
-            <input type="checkbox" id = "AGBcheckbox"><label for="AGBcheckbox">I have read the <a href="AGB.html">AGB's</a></label>
+            <input type="checkbox" id = "AGBcheckbox"><label for="AGBcheckbox" >I have read the <a onclick="openAGB()" href="">AGB's</a></label>
             <input type="submit" value="Create account" onclick="registerUser()" >
 
             <button class="helpRe">Help
@@ -151,110 +151,201 @@ function checkNotEmpty(usernamel,passwordl) {
         </div>
     </form>
 </div>
+<style>
 
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+</style>
+<!-- Opens the AGB window -->
+<div id="AGBModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+            <h2>AGB</h2>
+        </div>
+        <div class="modal-body">
+            <form>
+                <p>TERMS OF USE
+                    Last revised on 10/17/2018
+                    1. Acceptance of Terms of Use Agreement.
+
+                    By creating a klicks account, you agree to be bound by these Terms of Use, which is incorporated by reference into this Agreement, and (iii) any terms disclosed and agreed to by you if you purchase additional features, products or services we offer on the Service (collectively, this “Agreement”). If you do not accept and agree to be bound by all of the terms of this Agreement, please do not use the Service.
+                    We may make changes to this Agreement and to the Service from time to time. We may do this for a variety of reasons including to reflect changes in or requirements of the law, new features, or changes in business practices. The most recent version of this Agreement will be posted on the Service under Settings and also on klicks.com, and you should regularly check for the most recent version. The most recent version is the version that applies. If the changes include material changes that affect your rights or obligations, we will notify you in advance of the changes by reasonable means, which could include notification through the Service or via email. If you continue to use the Service after the changes become effective, then you agree to the revised Agreement.
+                    2. Eligibility.
+                    You must be at least 18 years of age to create an account on klicks and use the Service. By creating an account and using the Service, you represent and warrant that:
+                    •	you can form a binding contract with klicks,
+                    •	you are not a person who is barred from using the Service under the laws of the United States or any other applicable jurisdiction–meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition,
+                    •	you will comply with this Agreement and all applicable local, state, national and international laws, rules and regulations, and
+                    •	you have never been convicted of a felony or indictable offense (or crime of similar severity), a sex crime, or any crime involving violence, and that you are not required to register as a sex offender with any state, federal or local sex offender registry.
+
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
 
+    //AGB Modal
+    var modal = document.getElementById('AGBModal');
 
-   function registerUser(){
-       alert('register started'); //debug purpose only
+    // Get the button that opens the modal
+    var btn = document.getElementById("AGBcheckbox");
 
-       // initalizing variables with textfields from html signup form
-       var email = document.getElementById("mail").value;
-       var lastname = document.getElementById("lastname").value;
-       var firstname = document.getElementById("firstname").value;
-       var username = document.getElementById("username").value;
-       var password = document.getElementById("password").value;
-       var confpw = document.getElementById("confpassword").value;
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-       function createuser() {
+    // When the user clicks on the button, open the modal
+    btn.onclick = function openAGB() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+        function registerUser() {
+            alert('register started'); //debug purpose only
+
+            // initalizing variables with textfields from html signup form
+            var email = document.getElementById("mail").value;
+            var lastname = document.getElementById("lastname").value;
+            var firstname = document.getElementById("firstname").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confpw = document.getElementById("confpassword").value;
+
+            function createuser() {
 
 
-           // Check if ConfirmationPW = PW
-           if (checkPassword(confpw, password) === true) {
-               //create hashed PW
-               //var valpw = createvalidpw(password);
+                // Check if ConfirmationPW = PW
+                if (checkPassword(confpw, password) === true) {
+                    //create hashed PW
+                    //var valpw = createvalidpw(password);
 
-               var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+                    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
 
-               xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
-               xmlhttp.setRequestHeader("Content-Type", "application/json");
-               //sent the new HttpRequest
-               xmlhttp.send(JSON.stringify({
-                   "email": email,
-                   "password": password,
-                   "name": lastname,
-                   "firstName": firstname,
-                   "username": username
-               }));
+                    xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json");
+                    //sent the new HttpRequest
+                    xmlhttp.send(JSON.stringify({
+                        "email": email,
+                        "password": password,
+                        "name": lastname,
+                        "firstName": firstname,
+                        "username": username
+                    }));
 
+                }
+                else {
+                    alert('signin failed');
+                }
+            }
+
+
+            function checkdataindb(email, username) {
+                var xhr = new XMLHttpRequest();
+                var json;
+                var anzahluser;
+
+                function createcookie() {
+                    var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
+
+                    xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
+                    xmlhttpcookie.setRequestHeader("Content-Type", "application/json");
+                    //sent the new HttpRequest
+                    xmlhttpcookie.send(null);
+                    xmlhttpcookie.onreadystatechange = function () {
+                        if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlhttpcookie.responseText;
+                            var userdata = JSON.parse(json);
+                            document.cookie = "id=" + userdata.id;
+                        }
                     }
-           else
-               {
-                   alert('signin failed');
-               }
-           }
+
+                }
+
+                xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+                xhr.send(null);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        json = xhr.responseText;
+
+                        var userlist = JSON.parse(json);
+                        anzahluser = (Object.keys(userlist).length)
+
+                        var useravailable = true;
+                        for (var i = 0; i < anzahluser; i++) {
+                            if (userlist[i].email === email) {
+                                alert('Their is already an account with this Email: ' + email);
+                                window.location.replace("http://localhost:8080/index.html");
+                                return useravailable = false;
+                            }
+                            else if (userlist[i].username === username) {
+                                alert('Username ' + username + ' is already taken!');
+                                window.location.replace("http://localhost:8080/index.html");
+                                return useravailable = false;
+                            }
+                        }
+                        if (useravailable === true) {
+                            createuser();
+                            createcookie();
+
+                            window.location.replace("http://localhost:8080/compare.html");
+                        }
+                    }
+                }
+
+            }
+
+            checkdataindb(email, username);
 
 
-
-           function checkdataindb(email, username) {
-               var xhr = new XMLHttpRequest();
-               var json;
-               var anzahluser;
-
-               function createcookie (){
-                   var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
-
-                   xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
-                   xmlhttpcookie.setRequestHeader("Content-Type", "application/json");
-                   //sent the new HttpRequest
-                   xmlhttpcookie.send(null);
-                   xmlhttpcookie.onreadystatechange = function () {
-                       if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
-                           var json = xmlhttpcookie.responseText;
-                           var userdata = JSON.parse(json);
-                           document.cookie = "id=" + userdata.id;
-                       }
-                   }
-
-               }
-               xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
-               xhr.send(null);
-
-               xhr.onreadystatechange = function () {
-                   if (xhr.readyState == XMLHttpRequest.DONE) {
-                       json = xhr.responseText;
-
-                       var userlist = JSON.parse(json);
-                       anzahluser = (Object.keys(userlist).length)
-
-                       var useravailable = true;
-                       for (var i = 0; i < anzahluser; i++) {
-                           if (userlist[i].email === email) {
-                               alert('Their is already an account with this Email: ' + email);
-                               window.location.replace("http://localhost:8080/index.html");
-                               return useravailable = false;
-                           }
-                           else if (userlist[i].username === username) {
-                               alert('Username ' + username + ' is already taken!');
-                               window.location.replace("http://localhost:8080/index.html");
-                               return useravailable = false;
-                           }
-                       }
-                       if (useravailable === true) {
-                           createuser();
-                           createcookie();
-
-                           window.location.replace("http://localhost:8080/compare.html");
-                       }
-                   }
-               }
-
-           }
-
-       checkdataindb(email, username);
-   }
-
-
+    }
 
 </script>
 
