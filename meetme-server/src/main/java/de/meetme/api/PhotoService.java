@@ -70,6 +70,26 @@ import java.util.List;
         return dao.getPhotoFromPerson(id);
     }
 
+    //Liefert Liste mit clicks und id sortiert nach clicks
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestpictures")
+    @UnitOfWork
+    public List<Photo> getbestpictures(){
+        return dao.getclickssorted();
+    }
+
+    //Liefert Liste mit wins, person_id soritert nach wins
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestphotographers")
+    @UnitOfWork
+    public List<Photo> getbestphotographers(){
+        return dao.getwinssorted();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
