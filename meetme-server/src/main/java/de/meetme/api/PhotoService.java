@@ -1,7 +1,9 @@
 package de.meetme.api;
 
+import de.meetme.data.Person;
 import de.meetme.data.Photo;
 import de.meetme.db.PhotoDao;
+import de.meetme.db.PersonDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -23,9 +25,10 @@ import java.util.List;
 
     private static final Logger log = LoggerFactory.getLogger(de.meetme.api.PhotoService.class);
     private final PhotoDao dao;
-
-    public PhotoService(PhotoDao dao) {
+    private final PersonDao persondao;
+    public PhotoService(PhotoDao dao, PersonDao persondao) {
         this.dao = dao;
+        this.persondao= persondao;
     }
 
     @PUT
@@ -85,6 +88,17 @@ import java.util.List;
         log.debug("Create Photo: " + photo);
         return dao.persist(photo);
     }
+
+   /* @POST
+    @Path("/upload/picdata/{userid}")
+    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
+    public Photo createPhoto( @PathParam("userid") long userId,String title,int clicks,int wins,String picture ) throws Exception {
+        log.debug("Create Photo from: " + userId);
+        Person person = persondao.get(userId);
+        Photo photo = new Photo(person,title,clicks,wins,picture);
+        return dao.persist(photo);
+    }*/
 
     @POST
     @Path("/upload")
