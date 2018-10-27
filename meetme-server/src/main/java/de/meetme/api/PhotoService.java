@@ -3,7 +3,6 @@ package de.meetme.api;
 import de.meetme.data.Person;
 import de.meetme.data.Photo;
 import de.meetme.db.PhotoDao;
-import de.meetme.db.PersonDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
@@ -25,10 +24,8 @@ import java.util.List;
 
     private static final Logger log = LoggerFactory.getLogger(de.meetme.api.PhotoService.class);
     private final PhotoDao dao;
-    private final PersonDao persondao;
-    public PhotoService(PhotoDao dao, PersonDao persondao) {
+    public PhotoService(PhotoDao dao) {
         this.dao = dao;
-        this.persondao= persondao;
     }
 
     @PUT
