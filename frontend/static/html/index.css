@@ -278,3 +278,20 @@ input[type=submit] {
     width: 100px;
     height: 30px;
 }
+
+/* #links {
+float: left;
+}
+
+#rechts {
+float: right;
+} */
+
+label, input {
+    float: left;
+    display: block;
+}
+
+label {
+width: 10px;
+}

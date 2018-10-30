@@ -156,3 +156,7 @@ table, th, td {
          .helpBtn4:hover{
          cursor: pointer;
          opacity: 0.9;}
+
+    .container {
+    position: center;
+    }
