@@ -93,7 +93,19 @@
               <!--/.well -->
         </div>
         <!--/span-->
-    <!-- Modal popup Shootout -->
+    <!-- Popup-Info beim fertigen Durchlauf eines Shootouts -->
+        <div id="popupInfo" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <div class="modal-header">
+                    <h1> Das Shootout ist vorbei!</h1>
+                </div>
+                <div class="modal-body">
+                    <h2>Das waren Deine drei Lieblingsbilder:</h2>
+                </div>
+            </div>
+        </div>
+    <!-- Modal popup Shootout
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -103,7 +115,7 @@
                 <div class="modal-body">
                     <form>
                         <label for="nameShootout">Name</label>
-                        <input type="text" id="nameShootout">
+                        <input type="text" id="nameShootout"> -->
 
                         <!--    <select>
                         <option> private </option>
@@ -180,7 +192,7 @@ function createshootoutlist() {
                 }
                 return Wert;
             }
-            // Get the modal
+   /*         // Get the modal
             var modal = document.getElementById('myModal');
 
             // Get the button that opens the modal
@@ -210,7 +222,7 @@ function createshootoutlist() {
                     modal.style.display = "none";
                 }
             }
-
+*/
             function createShootout(){
                 var userID;
                 userID = cookiewerteHolen();
@@ -238,7 +250,25 @@ function createshootoutlist() {
                 //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
             }
+            //popupInfo Modal Fenster
+            var modal2 = document.getElementById('popupInfo');
 
+            var btn2 =document.getElementById("create_shootout");
+
+            var span2 = document.getElementsByClassName("close2")[0];
+
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
+
+            span2.onclick = function() {
+                modal2.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal2.style.display = "none";
+                }
+            }
 
 
         </script>
@@ -356,12 +386,14 @@ function starttheshow (personID, shootoutID){
             document.getElementById("image2").onclick = '';
             alert('no pics left!');
             //gewinner ist bild 2
+
             var picID = document.getElementById("image2").title;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("PUT", "http://localhost:8080/meetme/api/photo/wins/" + picID);
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
             xmlhttp.send();
+            modal2.style.display = "block";
         }
     }
 
@@ -382,12 +414,14 @@ function starttheshow (personID, shootoutID){
             alert('no pics left!');
             //gewinner ist bild 1
 
+
             var photoid = document.getElementById("image1").title;
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("PUT", "http://localhost:8080/meetme/api/photo/wins/" + photoid);
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
             xmlhttp.send();
+            modal2.style.display = "block";
         }
     }
 
