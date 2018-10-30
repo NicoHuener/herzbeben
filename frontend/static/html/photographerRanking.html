@@ -113,14 +113,14 @@
                 xmlhttplog2.onreadystatechange = function () {
                     if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
                         var json = xmlhttplog2.responseText;
-                        var points = JSON.parse(json);
-                        points.reverse();
-                        document.getElementById('bestpic').src = points[0].photo.picture;
-                        document.getElementById('bestpicpoints').innerText = "Points: "+ points[0].points;
-                        document.getElementById('Secondpic').src = points[1].photo.picture;
-                        document.getElementById('secondpicpoints').innerText = "Points: "+ points[1].points;
-                        document.getElementById('Thirdpic').src = points[2].photo.picture;
-                        document.getElementById('thirdpicpoints').innerText = "Points: "+ points[2].points;
+                        var wins = JSON.parse(json);
+                        wins.reverse();
+                        document.getElementById('bestphoto').src = ;
+                        document.getElementById('bestpicpoints').innerText = ;
+                        document.getElementById('secondphoto').src = ;
+                        document.getElementById('secondpicpoints').innerText = ;
+                        document.getElementById('thirdphoto').src = ;
+                        document.getElementById('thirdpicpoints').innerText = ;
                     }
 
                 };
