@@ -260,6 +260,9 @@ function createshootoutlist() {
             btn2.onclick = function() {
                 modal2.style.display = "block";
             }
+            function info() {
+                modal2.style.display = "block";
+            }
 
             span2.onclick = function() {
                 modal2.style.display = "none";
@@ -381,6 +384,7 @@ function starttheshow (personID, shootoutID){
             xmlhttppoints.send();*/
         }
         else { //Keine Bilder mehr in Array!
+            info();
             alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic2: ' + clicks);
             document.getElementById("image1").onclick = '';
             document.getElementById("image2").onclick = '';
@@ -393,7 +397,7 @@ function starttheshow (personID, shootoutID){
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
             xmlhttp.send();
-            modal2.style.display = "block";
+
         }
     }
 
@@ -408,6 +412,7 @@ function starttheshow (personID, shootoutID){
             alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic1: ' + clicks);
         }
         else {  //Keine Bilder mehr in Array!
+            info();
             alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic1: ' + clicks);
             document.getElementById("image1").onclick = '';
             document.getElementById("image2").onclick = '';
@@ -421,7 +426,7 @@ function starttheshow (personID, shootoutID){
             xmlhttp.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
             xmlhttp.send();
-            modal2.style.display = "block";
+
         }
     }
 
