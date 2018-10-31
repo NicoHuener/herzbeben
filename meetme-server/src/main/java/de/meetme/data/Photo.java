@@ -18,19 +18,22 @@ public class Photo extends PersistentObject {
     private int wins;
     //private byte [] picture;
     private String picture;
+    private String category;
+
 
     public Photo() {
         super(0);
     }
 
    // public Photo(Person person, String title, int clicks, int wins, byte[] picture) {
-    public Photo(Person person, String title, int clicks, int wins, String picture) {
+    public Photo(Person person, String title, int clicks, int wins, String picture,String category) {
         super(0);
         this.person = person;
         this.title = title;
         this.clicks = clicks;
         this.wins = wins;
         this.picture = picture;
+        this.category = category;
     }
 
     @JsonProperty
@@ -53,6 +56,11 @@ public class Photo extends PersistentObject {
         return wins;
     }
 
+    @JsonProperty
+    public String getCategory() {
+        return category;
+    }
+
    /* @JsonProperty
     public byte[] getPicture() {
         return picture;
@@ -70,6 +78,7 @@ public class Photo extends PersistentObject {
                 ", title='" + title + '\'' +
                 ", clicks=" + clicks +
                 ", wins=" + wins +
+                ", category=" + category +
                 '}';
     }
 }

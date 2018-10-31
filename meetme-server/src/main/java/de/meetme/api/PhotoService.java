@@ -1,5 +1,6 @@
 package de.meetme.api;
 
+import de.meetme.data.Person;
 import de.meetme.data.Photo;
 import de.meetme.db.PhotoDao;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -23,7 +24,6 @@ import java.util.List;
 
     private static final Logger log = LoggerFactory.getLogger(de.meetme.api.PhotoService.class);
     private final PhotoDao dao;
-
     public PhotoService(PhotoDao dao) {
         this.dao = dao;
     }
@@ -70,6 +70,26 @@ import java.util.List;
         return dao.getPhotoFromPerson(id);
     }
 
+    //Liefert Liste mit clicks und id sortiert nach clicks
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestpictures")
+    @UnitOfWork
+    public List<Photo> getbestpictures(){
+        return dao.getclickssorted();
+    }
+
+    //Liefert Liste mit wins, person_id soritert nach wins
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestphotographers")
+    @UnitOfWork
+    public List<Photo> getbestphotographers(){
+        return dao.getwinssorted();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -85,6 +105,17 @@ import java.util.List;
         log.debug("Create Photo: " + photo);
         return dao.persist(photo);
     }
+
+   /* @POST
+    @Path("/upload/picdata/{userid}")
+    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
+    public Photo createPhoto( @PathParam("userid") long userId,String title,int clicks,int wins,String picture ) throws Exception {
+        log.debug("Create Photo from: " + userId);
+        Person person = persondao.get(userId);
+        Photo photo = new Photo(person,title,clicks,wins,picture);
+        return dao.persist(photo);
+    }*/
 
     @POST
     @Path("/upload")

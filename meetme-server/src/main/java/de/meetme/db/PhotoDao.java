@@ -28,18 +28,30 @@ public class PhotoDao extends AbstractDao<Photo> {
         return q.<de.meetme.data.Photo>getResultList();
     }
 
-   /* public List<Photo>  updatewins(long id){
-        String sql= "select wins from" +getEntityClass().getSimpleName() +"where photo_id = ?";
-        Query a = currentSession().createNativeQuery(sql, de.meetme.data.Photo.class);
-        a.setParameter( 1, id );
-        int newwins = Integer.parseInt(sql);
-        newwins = newwins +1;
-        String sqlQuery = "update table" + getEntityClass().getSimpleName() + "set wins =" + newwins + "where photo_id = ?";
+    public List<Photo> getclickssorted() {
+        String sqlQuery = "select clicks,id from " + getEntityClass().getSimpleName() + " order by clicks";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
-        q.setParameter( 1, id );
         return q.<de.meetme.data.Photo>getResultList();
     }
-    */
+
+    public List<Photo> getwinssorted(){
+        String sqlQuery = "select wins,person_id from " + getEntityClass().getSimpleName() + " order by wins";
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
+        return q.<de.meetme.data.Photo>getResultList();
+    }
+
+    /* public List<Photo>  updatewins(long id){
+            String sql= "select wins from" +getEntityClass().getSimpleName() +"where photo_id = ?";
+            Query a = currentSession().createNativeQuery(sql, de.meetme.data.Photo.class);
+            a.setParameter( 1, id );
+            int newwins = Integer.parseInt(sql);
+            newwins = newwins +1;
+            String sqlQuery = "update table" + getEntityClass().getSimpleName() + "set wins =" + newwins + "where photo_id = ?";
+            Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
+            q.setParameter( 1, id );
+            return q.<de.meetme.data.Photo>getResultList();
+        }
+        */
    public void updatewins(long id){
        //List<Photo> ph= getPhotoById(id);
        Photo pic = get(id);
