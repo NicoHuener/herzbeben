@@ -73,20 +73,13 @@
                     <br>
                     <button type="button" id="create_shootout" onclick="openModal()">Create shootout</button>
                     <div class="form-group" id="search_shootout">
-                        <input  type="text" class="form-control" placeholder="Search">
+                        <input  id="shootout_input" type="text" class="form-control" placeholder="Search for shootouts" onkeyup="searchShootout()">
                     </div >
 
-                    <table id="shootoutstable">
+                    <ul id="shootoutlist">
                         <!--/ Inhalt wird dynamisch geladen! -->
-                    </table>
-                                            <!--/  <li class="active"><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li>
-                                              <li><a href="#">Link</a></li> -->
+                    </ul>
+
                   </ul>
 
               </div>
@@ -149,7 +142,7 @@ function createshootoutlist() {
                         var shootoutData = JSON.parse(json);
                         alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
-                        var shootouttable = document.getElementById("shootoutstable");
+                        var shootouttable = document.getElementById("shootoutlist");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person;
                            var shootoutid = shootoutData[i].id;

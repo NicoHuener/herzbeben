@@ -323,12 +323,12 @@ function checkNotEmpty(usernamel,passwordl) {
                         for (var i = 0; i < anzahluser; i++) {
                             if (userlist[i].email === email) {
                                 alert('Their is already an account with this Email: ' + email);
-                                window.location.replace("http://localhost:8080/index.html");
+                                /*window.location.replace("http://localhost:8080/index.html");*/
                                 return useravailable = false;
                             }
                             else if (userlist[i].username === username) {
                                 alert('Username ' + username + ' is already taken!');
-                                window.location.replace("http://localhost:8080/index.html");
+                                /*window.location.replace("http://localhost:8080/index.html");*/
                                 return useravailable = false;
                             }
                         }
