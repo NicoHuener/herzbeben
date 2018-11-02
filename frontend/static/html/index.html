@@ -26,12 +26,12 @@
 
 <!--creates Help button log in-->
 <div id = "help">
-<button class="help">Help
-    <span class="helpText">To sign in with your klicks-account please enter your username and password
+    <button class="help">Help
+        <span class="helpText">To sign in with your klicks-account please enter your username and password
         into the designated input box and click on the “Log In”-button afterwards. <br>
         If you don’t have a klicks-account, please select “Create Account” to register.
 </span>
-</button>
+    </button>
 </div>
 
 <!-- creates Help button register
@@ -51,7 +51,8 @@
         <label for="passwordlogin">Password:</label>
         <input type="password" id="passwordlogin" name="passwordlogin" placeholder="Enter Password">
         <div id="lower">
-            <input type="checkbox"><label for="checkbox">Keep me logged in</label>
+            <input type="checkbox" id="checkbox">
+            <label for="checkbox" >Keep me logged in</label>
             <input type="submit" value="Login" onclick="signinUser()">
         </div>
     </form>
@@ -138,6 +139,7 @@ function checkNotEmpty(usernamel,passwordl) {
         <label for="confpassword">Confirm password:</label>
         <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password">
 
+
         <div id="lower2">
             <input type="checkbox" id="AGBcheckbox">
             <label for="AGBcheckbox" >I have read the <p onclick="openAGB()" href="">AGB's</p></label>
@@ -220,135 +222,7 @@ function checkNotEmpty(usernamel,passwordl) {
         </div>
     </div>
 </div>
-<script>
 
-    //AGB Modal
-    var modal = document.getElementById('AGBModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("AGBcheckbox");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function openAGB() {
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-        function registerUser() {
-            alert('register started'); //debug purpose only
-
-            // initalizing variables with textfields from html signup form
-            var email = document.getElementById("mail").value;
-            var lastname = document.getElementById("lastname").value;
-            var firstname = document.getElementById("firstname").value;
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            var confpw = document.getElementById("confpassword").value;
-
-            function createuser() {
-
-
-                // Check if ConfirmationPW = PW
-                if (checkPassword(confpw, password) === true) {
-                    //create hashed PW
-                    //var valpw = createvalidpw(password);
-
-                    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-
-                    xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
-                    xmlhttp.setRequestHeader("Content-Type", "application/json");
-                    //sent the new HttpRequest
-                    xmlhttp.send(JSON.stringify({
-                        "email": email,
-                        "password": password,
-                        "name": lastname,
-                        "firstName": firstname,
-                        "username": username
-                    }));
-
-                }
-                else {
-                    alert('signin failed');
-                }
-            }
-
-
-            function checkdataindb(email, username) {
-                var xhr = new XMLHttpRequest();
-                var json;
-                var anzahluser;
-
-                function createcookie() {
-                    var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
-
-                    xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
-                    xmlhttpcookie.setRequestHeader("Content-Type", "application/json");
-                    //sent the new HttpRequest
-                    xmlhttpcookie.send(null);
-                    xmlhttpcookie.onreadystatechange = function () {
-                        if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
-                            var json = xmlhttpcookie.responseText;
-                            var userdata = JSON.parse(json);
-                            document.cookie = "id=" + userdata.id;
-                        }
-                    }
-
-                }
-
-                xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
-                xhr.send(null);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == XMLHttpRequest.DONE) {
-                        json = xhr.responseText;
-
-                        var userlist = JSON.parse(json);
-                        anzahluser = (Object.keys(userlist).length)
-
-                        var useravailable = true;
-                        for (var i = 0; i < anzahluser; i++) {
-                            if (userlist[i].email === email) {
-                                alert('Their is already an account with this Email: ' + email);
-                                /*window.location.replace("http://localhost:8080/index.html");*/
-                                return useravailable = false;
-                            }
-                            else if (userlist[i].username === username) {
-                                alert('Username ' + username + ' is already taken!');
-                                /*window.location.replace("http://localhost:8080/index.html");*/
-                                return useravailable = false;
-                            }
-                        }
-                        if (useravailable === true) {
-                            createuser();
-                            createcookie();
-
-                            window.location.replace("http://localhost:8080/compare.html");
-                        }
-                    }
-                }
-
-            }
-
-            checkdataindb(email, username);
-
-
-    }
-
-</script>
 
 
 </body>
