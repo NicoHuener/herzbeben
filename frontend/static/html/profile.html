@@ -115,6 +115,43 @@
 
     <!--Flexbox ENde-->
 
+
+    <!-- Feed 2.0--------------------------------------------------------->
+    <div id="Feed">
+
+        <!--div class="gallery">
+           <img id= "image01" src="" alt="no pic" width="300" height="200">
+
+        </div>
+
+        <div class="gallery">
+           <img id ="image02" src="" alt="Forest" width="300" height="200">
+
+        </div>-->
+    </div>
+
+    <style> /*Style für Profile Gallery*/
+    #Feed {
+        margin-top: 250px;
+        margin-left: 42px;
+    }
+
+    .gallery{
+        margin: 5px;
+        float: left;
+        margin-left: 20px;
+
+    }
+
+    .gallery img{
+        /*width: auto;*/
+        high: auto;
+    }
+
+    </style>
+    <!--Feed 2.0 ENde------------------------------->
+
+
     <script>
     window.onload = function () {
 
@@ -170,6 +207,12 @@
                 for (var i = 0; i < anzahlphotos; i++) {
                     var n = i+1;
                     document.getElementById("image0"+ n).src = photos[i].picture;
+                    Feed.innerHTML +=
+                        "<div class='gallery'>"
+                    "<img id= '"image0"+n' src="" alt="no pic" width="300" height="200">"
+                    "</div>"
+
+
                     /*document.getElementById("image0+1).src = photos[1].picture;
                     document.getElementById("image03").src = photos[2].picture;
                     document.getElementById("image04").src = photos[3].picture;

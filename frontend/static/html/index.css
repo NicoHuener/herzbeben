@@ -253,7 +253,7 @@ input[type=password] {
     margin-top: 10px;
     margin-left: 16px;
     width: 290px;
-    height: 30px;
+    height: 25px;
 }
 #lower {
     /*background: #ecf2f5;*/
@@ -268,9 +268,14 @@ input[type=checkbox] {
     margin-left: 20px;
     margin-top: 30px;
 }
-.check {
-    margin-left: 3px;
+#AGBcheckbox {
+    margin-left: 13px;
+    margin-top: -35px;
 }
+
+/*.check {
+    margin-left: 3px;
+}*/
 input[type=submit] {
     float: right;
     margin-right: 20px;

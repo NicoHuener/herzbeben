@@ -64,32 +64,105 @@
     <input type="file" id="file-select" name="photos[]" multiple/>
     <button type="submit" id="upload-button">Upload</button>
 </form> -->
+<button id="Form">
+
+</button>
+
 <button class="helpBtn6">Help
-    <span class="helpText">Please select the Picture you want to upload and click on "Upload Picture"!</span>
+    <span class="helpText">Please select the picture you want to upload and click on "Upload Picture"!</span>
 </button>
 <body>
-<h1>Picture Upload</h1>
+<header id="heading">
+    <h1>Picture Upload</h1>
+</header>
 
-<form action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
+<form id = "Upload" action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
     <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
-    <input type="submit" onclick="addpictodb(from)" value="Upload Picture" />
+    <input id ="UploadBtn" type="submit" onclick="addpictodb()" value="Upload Picture" />
 </form>
 <script>
-    function addpictodb(from) {
+    function cookiewerteHolen () {
+        var Wert = "";
+        if (document.cookie) {
+            var Wertstart = document.cookie.indexOf("=") + 1;
+            var Wertende = document.cookie.indexOf(";");
+            if (Wertende == -1) {
+                Wertende = document.cookie.length;
+            }
+            Wert = document.cookie.substring(Wertstart, Wertende);
+        }
+        return Wert;
+    }
+
+
+    function addpictodb() {
  var fullPath = document.getElementById('eingabefeld').value;
  if (fullPath){
      var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
      var fielname = fullPath.substring(startIndex);
      if (filename.indexOf('\\') === 0 || fielname.indexOf('/') === 0){
-         fielname = filename.substring(1);
+         filename = filename.substring(1);
      }
      console.log(filename);
 
-     var filepath = "../../../meetme-server/src/main/uploads/" + filename + ".jpg";
+     var filepath = "./uploads/" + filename;
+    var userid = cookiewerteHolen();
+    var piccategory = "summer";
+
+    /* var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+     xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata/"+userid+"&"+filename+"&"+filepath+"&"+ piccategory);
+     xmlhttp.setRequestHeader("Content-Type", "application/json");
+     //sent the new HttpRequest
+     xmlhttp.send(null);*/
 
  }
     }
 </script>
+
+<style>
+    #UploadBtn{
+        background-color: #E9AD9C;
+        border: none;
+        width: 120px;
+        height: 45px;
+        position: fixed;
+        margin-left: 130px;
+        display: inline-block;
+        bottom: 70px;
+        z-index: 2;
+        border-radius: 5px;
+        color: white;
+    }
+
+    #Upload{
+        margin-left: 36%;
+        margin-top: 2%;
+        z-index:2;
+        font-size: 15px;
+        position:fixed;
+
+    }
+
+    #heading{
+        margin-left: 35%;
+        margin-top: 5%;
+
+    }
+    #Form{
+        width:300px;
+        height:400px;
+        background-color: #D8D8D8;
+        z-index:-1;
+        border: none;
+        margin-left: 34%;
+        margin-top: 7%;
+        position: absolute;
+        border-radius: 5px;
+    }
+
+</style>
+
+
 </body>
 
 

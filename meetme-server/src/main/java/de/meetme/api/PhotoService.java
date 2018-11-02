@@ -141,7 +141,7 @@ import java.util.List;
 
        OutputStream out = null;
        String fileName = fileDetail.getFileName();
-       String filePath = "./src/main/uploads/" + fileName;
+       String filePath = "../frontend/static/html/uploads/" + fileName;
 
 
        try {
@@ -157,14 +157,14 @@ import java.util.List;
        } catch (IOException e) {
            e.printStackTrace();
            return Response.status(500).build();
-       } /*finally {
+       } finally {
            try {
                out.close();
            } catch (IOException e) {
                e.printStackTrace();
                return Response.status(500).build();
            }
-       }*/
+       }
        return Response.status(200).build();
    }
 }
