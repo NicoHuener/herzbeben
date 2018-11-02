@@ -201,9 +201,8 @@ function checkRequired() {
     function registerUser() {
 
         // Get the checkbox
-          var checkBox = document.getElementById("AGBcheckbox");
-          // Get the output text
-          var text = document.getElementById("AGBnotAccepted");
+        var checkBox = document.getElementById("AGBcheckbox");
+
 
         if(checkBox.checked){
 
@@ -306,7 +305,7 @@ function checkRequired() {
 
 
         else {
-            //alert('AGBs not checked');
+            alert('AGBs not checked');
             //text.style.display = "block";
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
