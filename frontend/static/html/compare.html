@@ -73,12 +73,12 @@
                     <br>
                     <button type="button" id="create_shootout" onclick="openModal()">Create shootout</button>
                     <div class="form-group" id="search_shootout">
-                        <input  type="text" class="form-control" placeholder="Search">
+                        <input  type="text" class="form-control" id="shootout_input" placeholder="Search for shootout" onkeyup="searchShootout()">
                     </div >
 
-                    <table id="shootoutstable">
+                    <ul id="shootouttable">
                         <!--/ Inhalt wird dynamisch geladen! -->
-                    </table>
+                    </ul>
                                             <!--/  <li class="active"><a href="#">Link</a></li>
                                               <li><a href="#">Link</a></li>
                                               <li><a href="#">Link</a></li>

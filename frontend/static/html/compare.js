@@ -48,7 +48,7 @@ function searchShootout() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("shootout_input");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("shootoutlist");
+    ul = document.getElementById("shootouttable");
     li = ul.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
@@ -86,7 +86,7 @@ function createshootoutlist() {
                         var shootoutData = JSON.parse(json);
                         alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
-                        var shootouttable = document.getElementById("shootouttable"); // Zukünftig getElementById("shootoutlist")
+                        var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person;
                            var shootoutid = shootoutData[i].id;
