@@ -25,4 +25,16 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         return q.<de.meetme.data.Person>getResultList();
     }
 
+        // Gibt alle Shootouts aus, die am selben Tag von Usern durchlaufen wurden. Z.B. für Datenanalyse "Welches ist das beliebteste shootout am Tag x gewesen"
+    public List<Shootout> getShootoutsByDate(String timestamp) {
+        String sqlQuery = "SELECT * FROM Shootout s\n" +
+                "inner join PERSONSHOOTOUT ps on ps.shootout_id = s.ID\n" +
+                "where ps.timestamp = " + timestamp;
+
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Shootout.class);
+        return q.<de.meetme.data.Person>getResultList();
+    }
+
+
+
 }
