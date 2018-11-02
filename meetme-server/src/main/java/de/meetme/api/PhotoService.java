@@ -121,13 +121,13 @@ import java.util.List;
     }
 
     @POST
-    @Path("/upload/picdata/{userid}/{title}/{clicks}/{wins}/{picture}/{category}")
+    @Path("/upload/picdata/{userid}&{title}&{picture}&{category}")
     @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
-    public Photo createPhoto( @PathParam("userid") long userId,@PathParam("title") String title,@PathParam("clicks") int clicks,@PathParam("wins") int wins,@PathParam("picture") String picture,@PathParam("category") String category) throws Exception {
+    public Photo createPhoto( @PathParam("userid") long userId,@PathParam("title") String title,@PathParam("picture") String picture,@PathParam("category") String category) throws Exception {
         log.debug("Create Photo from: " + userId);
         Person person = persondao.get(userId);
-        Photo photo = new Photo(person,title,clicks,wins,picture,category);
+        Photo photo = new Photo(person,title,0,0,picture,category);
         return dao.persist(photo);
     }
 

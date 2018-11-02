@@ -77,19 +77,22 @@
 
 <div class="container" >
     <div id="Best-photographer">
-        <h4>No.1 Photographer</h4>
+        <h4>No.1 Photographer:</h4>
+        <h4 id="1username"></h4>
         <h5>Best picture</h5>
         <img id="bestphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         <h4 id="bestphotowins"></h4>
     </div> <br> <br>
     <div id="Second-photo">
-        <h4>No.2 Photographer</h4>
+        <h4>No.2 Photographer:</h4>
+        <h4 id="2username"></h4>
         <h5>Best picture</h5>
         <img id="secondphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         <h4 id="secondphotowins"></h4>
     </div> <br> <br>
     <div id="Third-photo">
-        <h4>No.3 Photographer</h4>
+        <h4>No.3 Photographer:</h4>
+        <h4 id="3username"></h4>
         <h5>Best picture</h5>
         <img id="thirdphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
         <h4 id="thirdphotowins"></h4>
@@ -101,26 +104,30 @@
         alert('in function');
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
-            xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/" + photo.person + photo.wins , true);
+            xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestphotographers", true);
             xmlhttplog2.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
             //var data = JSON.stringify(json);
             xmlhttplog2.send(null);
             console.log('request für top fotografen gesendet');
 
-
-
                 xmlhttplog2.onreadystatechange = function () {
                     if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
                         var json = xmlhttplog2.responseText;
-                        var wins = JSON.parse(json);
-                        wins.reverse();
-                        document.getElementById('bestphoto').src = ;
-                        document.getElementById('bestphotowins').innerText = ;
-                        document.getElementById('secondphoto').src = ;
-                        document.getElementById('secondphotowins').innerText = ;
-                        document.getElementById('thirdphoto').src = ;
-                        document.getElementById('thirdphotowins').innerText = ;
+                        var userlist = JSON.parse(json);
+                        userlist.reverse();
+                        document.getElementById('bestphoto').src = userlist[0].picture;
+                        document.getElementById('bestphotowins').innerText = userlist[0].wins;
+                        //document.getElementById('1username').innerText = userlist[0].person.username;
+                        document.getElementById('1username').innerText = userlist[0].person;
+                        //-----------------------------
+                        document.getElementById('secondphoto').src = userlist[1].picture;
+                        document.getElementById('secondphotowins').innerText = userlist[1].wins;
+                        document.getElementById('2username').innerText = userlist[1].person;
+                        //-----------------------------
+                        document.getElementById('thirdphoto').src = userlist[2].picture;
+                        document.getElementById('thirdphotowins').innerText = userlist[2].wins;
+                        document.getElementById('3username').innerText = userlist[2].person;
                     }
 
                 };
