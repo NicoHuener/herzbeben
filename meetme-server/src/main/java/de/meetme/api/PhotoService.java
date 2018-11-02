@@ -1,5 +1,6 @@
 package de.meetme.api;
 
+import de.meetme.data.Bean.PhotoUploadBean;
 import de.meetme.data.Person;
 import de.meetme.data.Photo;
 import de.meetme.db.PersonDao;
@@ -114,22 +115,16 @@ import java.util.List;
 
     @POST
     @Path("/upload/picdata")
-    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public Photo createPhoto(Photo photo) throws Exception {
-        log.debug("Create Photo: " + photo);
+    @Consumes(MediaType.APPLICATION_JSON)
+    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
+    public Photo createPhoto(PhotoUploadBean photoBean) throws Exception {
+        log.debug("Create Photo from: " + photoBean);
+        Person person = persondao.get(photoBean.getUserId());
+        Photo photo = new Photo(person,photoBean.getTitle(),0,0,photoBean.getPicture(),photoBean.getCategory());
         return dao.persist(photo);
     }
 
-    @POST
-    @Path("/upload/picdata/{userid}&{title}&{picture}&{category}")
-    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
-    public Photo createPhoto( @PathParam("userid") long userId,@PathParam("title") String title,@PathParam("picture") String picture,@PathParam("category") String category) throws Exception {
-        log.debug("Create Photo from: " + userId);
-        Person person = persondao.get(userId);
-        Photo photo = new Photo(person,title,0,0,picture,category);
-        return dao.persist(photo);
-    }
 
     @POST
     @Path("/upload")
