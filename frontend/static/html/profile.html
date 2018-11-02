@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- <script type=text/javascript src = "index.js"></script> -->
         <script type=text/javascript src = "navbarFunction.js"></script>
-        <script type=text/javascript src = "profile.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
     </head>
     <body>
@@ -76,7 +75,7 @@
 
     </div>-->
 
-    <!-- Photo Grid -->
+    <!-- Photo Grid
     <div class="row">
         <div class="column">
             <img id="image01" src="‪" alt="no picture uploaded" style="width:100%">
@@ -112,7 +111,7 @@
             <img src="" style="width:100%">
             <img src="" style="width:100%">
         </div>
-    </div>
+    </div>-->
 
     <!--Flexbox ENde-->
 
@@ -207,11 +206,12 @@
                 }*/
                 for (var i = 0; i < anzahlphotos; i++) {
                     var n = i+1;
-                    document.getElementById("image0"+ n).src = photos[i].picture;
+
                     Feed.innerHTML +=
-                        "<div class='gallery'>"
-                    "<img id= '"image0"+n' src="" alt="no pic" width="300" height="200">"
-                    "</div>"
+                        "<div class='gallery'>"+
+                    "<img id= 'image" + n + "' src='' alt='no pic' width='300' height='200'>"+
+                    "</div>";
+                    document.getElementById("image"+ n).src = photos[i].picture;
 
 
                     /*document.getElementById("image0+1).src = photos[1].picture;

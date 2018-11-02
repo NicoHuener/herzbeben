@@ -17,29 +17,3 @@ window.onclick = function (event) {
   }
 }
 
-    function searchUser() {
-
-        var xmlhttpsidebar = new XMLHttpRequest ();
-        xmlhttpsidebar.open("GET", 'http://localhost:8080/meetme/api/person/', true);
-        xmlhttpsidebar.setRequestHeader("Content-Type", "application/json"); //?
-        xmlhttpsidebar.send(null);
-        xmlhttpsidebar.onreadystatechange = function (){
-            if(xmlhttpsidebar.readyState == XMLHttpRequest.DONE){
-
-                var json = xmlhttpsidebar.responseText;
-                var userData = JSON.parse(json);
-                alert(userData[0].name);
-                var anzahlUser=(Object.keys(shootoutData).length);
-        var shootouttable = document.getElementById("shootoutlist");
-                for (var i = 0; i < anzahlShootouts; i++){
-                   var pid = shootoutData[i].person;
-                   var shootoutid = shootoutData[i].id;
-                    shootouttable.innerHTML +=
-                        "<tr>" +
-                        "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + "</a>"+ "</li>" +
-                        "</tr>";
-
-                }
-            }
-        }
-    }
