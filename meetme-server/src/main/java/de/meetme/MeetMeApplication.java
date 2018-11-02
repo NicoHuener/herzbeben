@@ -58,26 +58,19 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
 
         // data class, DAO and service for person
         final PersonDao daoperson = new PersonDao(hibernate.getSessionFactory());
+        final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
+        final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
+        final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
+        final RankDao daorank = new RankDao(hibernate.getSessionFactory());
+
         de.meetme.api.PersonService personService = new de.meetme.api.PersonService(daoperson);
         environment.jersey().register(personService);
-
-        // data class, DAO and service for photo
-        final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
         de.meetme.api.PhotoService photoService = new de.meetme.api.PhotoService(daophoto,daoperson);
         environment.jersey().register(photoService);
-
-        // data class, DAO and service for shootout
-        final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
-        de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout,daoperson);
+        de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout,daoperson,daorank,daophoto);
         environment.jersey().register(shootoutService);
-
-        // data class, DAO and service for personshootout
-        final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory());
         de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout,daoshootout);
         environment.jersey().register(personShootoutService);
-
-       // data class, DAO and service for rank
-        final RankDao daorank = new RankDao(hibernate.getSessionFactory());
         de.meetme.api.RankService rankService= new de.meetme.api.RankService(daorank);
         environment.jersey().register(rankService);
 
