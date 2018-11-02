@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
     <script type=text/javascript src = "index.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
@@ -21,7 +22,7 @@
 <!-- creates Buttons that lead to Login/Account creating -->
 <div id="choice">
     <button id="buttonCreate" onclick="showCreateAccount()">Create account</button>
-    <button id="buttonLogin" onclick="showLogin()">Back to login</button>
+    <!--<button id="buttonLogin" onclick="showLogin()">Back to login</button>-->
 </div>
 
 <!--creates Help button log in-->
@@ -126,32 +127,57 @@ function checkNotEmpty(usernamel,passwordl) {
 <!-- creates signup sheet -->
 <div id="signup">
     <form name="signupform" id="signupform" >
-        <label for="mail">E-Mail address:</label>
-        <input type="text" id="mail" name="mail" placeholder="Enter Email-Adress">
-        <label for="firstname">Firstname:</label>
-        <input type="text" id="firstname" name="firstname" placeholder="Enter Firstname">
-        <label for="lastname">Lastname:</label>
-        <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Enter Username">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter Password">
-        <label for="confpassword">Confirm password:</label>
-        <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password">
-
-
-        <div id="lower2">
+        <p id="legend">Create your account!</p><br><br>
+        <div id="column">
+            <label for="mail">E-Mail address:</label>
+            <br>
+            <input type="text" id="mail" name="mail" placeholder="Enter Email-Adress">
+            <br>
+            <label for="firstname">Firstname:</label>
+            <br>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter Firstname">
+            <br>
+            <label for="lastname">Lastname:</label>
+            <br>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname">
+            <br>
+            <input type="checkbox" id="AGBcheckbox">
+            <label for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a></label>
+        </div>
+        <div id="column">
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" id="username" name="username" placeholder="Enter Username">
+            <br>
+            <label for="password">Password:</label>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Enter Password">
+            <br>
+            <label for="confpassword">Confirm password:</label>
+            <br>
+            <input type="password" id="confpassword" name="confpassword" placeholder="Confirm Password">
+            <br>
+            <input type="submit" value="Create account" onclick="registerUser()" >
+            <br><br>
+            <button id="buttonLogin" onclick="showLogin()">Back to login</button>
+        </div>
+        <br>
+       <!-- <div id="lower2">
             <input type="checkbox" id="AGBcheckbox">
             <label for="AGBcheckbox" >I have read the <p onclick="openAGB()" href="">AGB's</p></label>
-            <p id="AGBnotAccepted"  >Please accept the AGB's to register!</p>
             <input type="submit" value="Create account" onclick="registerUser()" >
+
+            <div class="popup" >
+            <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
+            </div>
 
             <button class="helpRe">Help
                 <span class="helpText"> Please enter the required information and click on the "Create Account" button to register.
                 </span>
             </button>
 
-        </div>
+
+        </div> -->
     </form>
 </div>
 <style>
