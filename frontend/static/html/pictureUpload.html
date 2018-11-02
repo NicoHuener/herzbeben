@@ -107,13 +107,18 @@
 
      var filepath = "./uploads/" + filename;
     var userid = cookiewerteHolen();
-    var piccategory = "summer";
+    var piccategory = "summer"; //brauchen noch ein Eingabefeld!
 
-    /* var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-     xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata/"+userid+"&"+filename+"&"+filepath+"&"+ piccategory);
+    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+     xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata");
      xmlhttp.setRequestHeader("Content-Type", "application/json");
      //sent the new HttpRequest
-     xmlhttp.send(null);*/
+     xmlhttp.send( xmlhttp.send(JSON.stringify({
+         "userId": userid,
+         "title": filename,
+         "picture": filepath,
+         "category": piccategory,
+     })));
 
  }
     }
