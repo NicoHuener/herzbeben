@@ -63,7 +63,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
 
         // data class, DAO and service for photo
         final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
-        de.meetme.api.PhotoService photoService = new de.meetme.api.PhotoService(daophoto);
+        de.meetme.api.PhotoService photoService = new de.meetme.api.PhotoService(daophoto,daoperson);
         environment.jersey().register(photoService);
 
         // data class, DAO and service for shootout

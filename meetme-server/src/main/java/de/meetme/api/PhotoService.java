@@ -2,6 +2,7 @@ package de.meetme.api;
 
 import de.meetme.data.Person;
 import de.meetme.data.Photo;
+import de.meetme.db.PersonDao;
 import de.meetme.db.PhotoDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -24,8 +25,10 @@ import java.util.List;
 
     private static final Logger log = LoggerFactory.getLogger(de.meetme.api.PhotoService.class);
     private final PhotoDao dao;
-    public PhotoService(PhotoDao dao) {
+    private final PersonDao persondao;
+    public PhotoService(PhotoDao dao, PersonDao persondao) {
         this.dao = dao;
+        this.persondao = persondao;
     }
 
     @PUT
@@ -81,7 +84,7 @@ import java.util.List;
         return dao.getPhotosbycategory();
     }
 
-    //Liefert Liste mit clicks und id sortiert nach clicks
+    //Liefert Liste sortiert nach clicks
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -91,7 +94,7 @@ import java.util.List;
         return dao.getclickssorted();
     }
 
-    //Liefert Liste mit wins, person_id soritert nach wins
+    //Liefert Liste soritert nach wins
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -117,16 +120,16 @@ import java.util.List;
         return dao.persist(photo);
     }
 
-   /* @POST
-    @Path("/upload/picdata/{userid}")
+    @POST
+    @Path("/upload/picdata/{userid}/{title}/{picture}/{category} & ")
     @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
-    public Photo createPhoto( @PathParam("userid") long userId,String title,int clicks,int wins,String picture,String category ) throws Exception {
+    public Photo createPhoto( @PathParam("userid") long userId,@PathParam("title") String title,@PathParam("picture") String picture,@PathParam("category") String category) throws Exception {
         log.debug("Create Photo from: " + userId);
         Person person = persondao.get(userId);
-        Photo photo = new Photo(person,title,clicks,wins,picture,category);
+        Photo photo = new Photo(person,title,0,0,picture,category);
         return dao.persist(photo);
-    }*/
+    }
 
     @POST
     @Path("/upload")
