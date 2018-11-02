@@ -7,7 +7,8 @@
     <link rel="icon" href="./images/Herzbeben_Logo.png">
     <link rel="stylesheet" href="allusers.css" type="text/css">
     <script type=text/javascript src = "navbarFunction.js"></script>
-
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type=text/javascript src = "navbarFunction.js"></script>
@@ -78,9 +79,22 @@
 
 <form id = "Upload" action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
     <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
-    <input id ="UploadBtn" type="submit" onclick="addpictodb()" value="Upload Picture" />
+    <input id ="UploadBtn" type="submit"  value="Upload Picture" />
 </form>
 <script>
+//onclick="addpictodb()"
+    $('#Upload').submit(function(e) {
+        e.preventDefault();
+        var data = $(this).closest('form').serialize();
+        $.ajax({
+            url: "http://localhost:8080/meetme/api/photo/upload",
+            dataType:"json",
+            type: 'post',
+            data: data,
+        });
+        addpictodb();
+    });
+
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {
@@ -99,8 +113,8 @@
  var fullPath = document.getElementById('eingabefeld').value;
  if (fullPath){
      var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
-     var fielname = fullPath.substring(startIndex);
-     if (filename.indexOf('\\') === 0 || fielname.indexOf('/') === 0){
+     var filename = fullPath.substring(startIndex);
+     if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0){
          filename = filename.substring(1);
      }
      console.log(filename);
@@ -113,12 +127,14 @@
      xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata");
      xmlhttp.setRequestHeader("Content-Type", "application/json");
      //sent the new HttpRequest
-     xmlhttp.send( xmlhttp.send(JSON.stringify({
+     var request = JSON.stringify({
          "userId": userid,
          "title": filename,
          "picture": filepath,
          "category": piccategory,
-     })));
+     });
+     alert(request);
+     xmlhttp.send( request);
 
  }
     }
