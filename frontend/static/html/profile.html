@@ -117,6 +117,146 @@
     <!--Flexbox ENde-->
 
 
+    <!-- Feed 2.0--------------------------------------------------------->
+    <div id="Feed">
+
+        <!--div class="gallery">
+           <img id= "image01" src="" alt="no pic" width="300" height="200">
+
+        </div>
+
+        <div class="gallery">
+           <img id ="image02" src="" alt="Forest" width="300" height="200">
+
+        </div>-->
+    </div>
+
+    <style> /*Style für Profile Gallery*/
+    #Feed {
+        margin-top: 250px;
+        margin-left: 42px;
+    }
+
+    .gallery{
+        margin: 5px;
+        float: left;
+        margin-left: 20px;
+
+    }
+
+    .gallery img{
+        /*width: auto;*/
+        high: auto;
+    }
+
+    </style>
+    <!--Feed 2.0 ENde------------------------------->
+
+
+    <script>
+    window.onload = function () {
+
+        function cookiewerteHolen () {
+            var Wert = "";
+            if (document.cookie) {
+                var Wertstart = document.cookie.indexOf("=") + 1;
+                var Wertende = document.cookie.indexOf(";");
+                if (Wertende == -1) {
+                    Wertende = document.cookie.length;
+                }
+                Wert = document.cookie.substring(Wertstart, Wertende);
+            }
+            return Wert;
+        }
+
+//Bilderabfrage für Flexbox-----------------------------------------------
+
+
+        var userID;
+        userID = cookiewerteHolen();
+        if (userID === "") {
+            alert('undefined User!');
+        }
+        // cookiewerteHolen();
+
+        var photos;
+        var xmlhttpr = new XMLHttpRequest(); //get all the photos from user
+        xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
+        xmlhttpr.send(null);
+
+        xmlhttpr.onreadystatechange = function () {
+            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpr.responseText;
+                photos = JSON.parse(json);
+
+
+                var anzahlphotos =(Object.keys(photos).length);
+               // alert(Object.keys(photos).length);
+               /* var schleifen = anzahlphotos / 6;
+
+
+                for (var i = 0; i < anzahlphotos; i++) {
+                    result.innerHTML += "<tr> " +
+                        "<td id='td1" + i + "'/>" + photolist[i].id + "</td> " +
+                        "<td id='td2 " + i + " '>" + photolist[i].title + "</td>" +
+                        "<td id='td3 " + i + "'>" + photolist[i].clicks + "</td>" +
+                        "<td id='td4 " + i + " '>" + photolist[i].wins + "</td>" +
+                        "<td id='td5 " + i + "'>" + photolist[i].person.id + "</td>" +
+                        "<td id='td6 " + i + "'>" + photolist[i].person.username + "</td>" +
+                        "</tr>";
+                }*/
+                for (var i = 0; i < anzahlphotos; i++) {
+                    var n = i+1;
+                    document.getElementById("image0"+ n).src = photos[i].picture;
+                    Feed.innerHTML +=
+                        "<div class='gallery'>"
+                    "<img id= '"image0"+n' src="" alt="no pic" width="300" height="200">"
+                    "</div>"
+
+
+                    /*document.getElementById("image0+1).src = photos[1].picture;
+                    document.getElementById("image03").src = photos[2].picture;
+                    document.getElementById("image04").src = photos[3].picture;
+                    document.getElementById("image05").src = photos[4].picture;*/
+
+                }
+
+            }
+        };
+
+        /* function profilepictures (){
+         var arraylength =(Object.key(photos).length);
+         if (arraylength !==0){
+         document.getElementById ("image01").scr = photos [0].pictures;
+
+         }
+         else { //keine Bilder im Array
+         alert('photos left: ' + ((Object.key(photos).length)))
+              }
+         }
+
+         profilepictures ();*/
+
+//Bilderabfrage für Flexbox Ende----------------------------------------
+
+
+        var xmlhttplog = new XMLHttpRequest(); // new HttpRequest instance
+        var userid = cookiewerteHolen();
+        xmlhttplog.open("GET", "http://localhost:8080/meetme/api/person/" + userid, true);
+        xmlhttplog.setRequestHeader("Content-Type", "application/json");
+        //sent the new HttpRequest
+        xmlhttplog.send(null);
+        xmlhttplog.onreadystatechange = function () {
+            if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog.responseText;
+                var userdata = JSON.parse(json);
+                var namelabel = document.getElementById("usernamefield");
+                namelabel.innerHTML +=
+            "<p id='profile-username'>" + userdata.username +"</p>";
+            }
+        }
+    }
+</script>
     <!--Help button-->
     <button class="helpBtn2">Help
         <span class="helpText">To upload new pictures please click on the "+" and select local files you want to

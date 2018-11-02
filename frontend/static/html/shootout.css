@@ -68,7 +68,7 @@ table, th, td {
      position: fixed;
      margin-left: 1142px;
      display: inline-block;
-     bottom: 490px;
+     bottom: 510px;
      z-index: 2;
      border-radius: 5px;
      color: white;
@@ -157,6 +157,7 @@ table, th, td {
          cursor: pointer;
          opacity: 0.9;}
 
-    .container {
-    position: center;
-    }
+.container {
+    margin: auto;
+    width: 80%;
+    margin-left: 30%;}

@@ -87,7 +87,19 @@
               <!--/.well -->
         </div>
         <!--/span-->
-    <!-- Modal popup Shootout -->
+    <!-- Popup-Info beim fertigen Durchlauf eines Shootouts -->
+        <div id="popupInfo" class="modal">
+            <div class="modal-content">
+                <span class="close2">&times;</span>
+                <div class="modal-header">
+                    <h1> Das Shootout ist vorbei!</h1>
+                </div>
+                <div class="modal-body">
+                    <h2>Das waren Deine drei Lieblingsbilder:</h2>
+                </div>
+            </div>
+        </div>
+    <!-- Modal popup Shootout
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -97,7 +109,7 @@
                 <div class="modal-body">
                     <form>
                         <label for="nameShootout">Name</label>
-                        <input type="text" id="nameShootout">
+                        <input type="text" id="nameShootout"> -->
 
                         <!--    <select>
                         <option> private </option>
@@ -160,7 +172,7 @@
                     modal.style.display = "none";
                 }
             }
-
+*/
             function createShootout(){
                 var userID;
                 userID = cookiewerteHolen();
@@ -188,8 +200,32 @@
                 //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
             }
+            //popupInfo Modal Fenster
+            var modal2 = document.getElementById('popupInfo');
+
+            var btn2 =document.getElementById("create_shootout");
 
             </script>
+            var span2 = document.getElementsByClassName("close2")[0];
+
+            btn2.onclick = function() {
+                modal2.style.display = "block";
+            }
+            function info() {
+                modal2.style.display = "block";
+            }
+
+            span2.onclick = function() {
+                modal2.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal2.style.display = "none";
+                }
+            }
+
+
+        </script>
 
 
         <!-- Seitenüberschrift-->
