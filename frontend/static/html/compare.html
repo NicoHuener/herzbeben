@@ -94,7 +94,7 @@
         </div>
         <!--/span-->
     <!-- Popup-Info beim fertigen Durchlauf eines Shootouts -->
-        <div id="popupInfo" class="modal">
+        <div id="pInfo" class="modal" >
             <div class="modal-content">
                 <span class="close2">&times;</span>
                 <div class="modal-header">
@@ -105,7 +105,7 @@
                 </div>
             </div>
         </div>
-    <!-- Modal popup Shootout
+    <!-- Modal popup Shootout -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -115,7 +115,7 @@
                 <div class="modal-body">
                     <form>
                         <label for="nameShootout">Name</label>
-                        <input type="text" id="nameShootout"> -->
+                        <input type="text" id="nameShootout">
 
                         <!--    <select>
                         <option> private </option>
@@ -159,7 +159,7 @@ function createshootoutlist() {
 
                         var json = xmlhttpsidebar.responseText;
                         var shootoutData = JSON.parse(json);
-                        alert(shootoutData[0].name);
+                        //alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
                         var shootouttable = document.getElementById("shootoutstable");
                         for (var i = 0; i < anzahlShootouts; i++){
@@ -192,7 +192,7 @@ function createshootoutlist() {
                 }
                 return Wert;
             }
-   /*         // Get the modal
+           // Get the modal
             var modal = document.getElementById('myModal');
 
             // Get the button that opens the modal
@@ -222,7 +222,7 @@ function createshootoutlist() {
                     modal.style.display = "none";
                 }
             }
-*/
+
             function createShootout(){
                 var userID;
                 userID = cookiewerteHolen();
@@ -251,7 +251,7 @@ function createshootoutlist() {
 
             }
             //popupInfo Modal Fenster
-            var modal2 = document.getElementById('popupInfo');
+            var modal2 = document.getElementById("pInfo");
 
             var btn2 =document.getElementById("create_shootout");
 
@@ -259,14 +259,14 @@ function createshootoutlist() {
 
             btn2.onclick = function() {
                 modal2.style.display = "block";
-            }
+            };
             function info() {
                 modal2.style.display = "block";
             }
 
             span2.onclick = function() {
                 modal2.style.display = "none";
-            }
+            };
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal2.style.display = "none";
