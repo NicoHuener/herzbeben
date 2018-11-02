@@ -2,8 +2,12 @@ package de.meetme.api;
 
 
 import de.meetme.data.Person;
+import de.meetme.data.Photo;
+import de.meetme.data.Rank;
 import de.meetme.data.Shootout;
 import de.meetme.db.PersonDao;
+import de.meetme.db.PhotoDao;
+import de.meetme.db.RankDao;
 import de.meetme.db.ShootoutDao;
 import io.dropwizard.hibernate.UnitOfWork;
 import org.slf4j.Logger;
@@ -21,10 +25,14 @@ public class ShootoutService {
 
     private final ShootoutDao shootoutDao;
     private PersonDao personDao;
+    private RankDao rankDao;
+    private PhotoDao photoDao;
 
-    public ShootoutService(ShootoutDao dao, PersonDao personDao) {
+    public ShootoutService(ShootoutDao dao, PersonDao personDao, RankDao rankDao,PhotoDao photoDao) {
         this.shootoutDao = dao;
         this.personDao = personDao;
+        this.rankDao = rankDao;
+        this.photoDao = photoDao;
     }
 
   /*  @POST
@@ -46,17 +54,16 @@ public class ShootoutService {
         log.debug("Create Shootout from: " + userId);
         Person person = personDao.get(userId);
         Shootout shootout = new Shootout(shootoutName,person);
+        createRanksForShootout(shootout,person);
         return shootoutDao.persist(shootout);
     }
 
-  /*  @GET
-    @UnitOfWork
-    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public List<Shootout> getShootoutByUserid(Person person) throws Exception {
-        log.debug("Get Shootout from Person: " + person.getEmail());
-
-        return shootoutDao.getShootoutByPerson(person);
-    }*/
+    private void createRanksForShootout(Shootout shootout,Person person){
+        List<Photo> photoList = photoDao.getPhotoFromPerson(person.getId());
+        for(Photo photo:photoList){
+            rankDao.persist(new Rank(shootout,0,photo));
+        }
+    }
 
     @GET
     @Path("/{id}")
