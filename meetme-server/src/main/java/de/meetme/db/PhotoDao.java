@@ -29,10 +29,16 @@ public class PhotoDao extends AbstractDao<Photo> {
     }
 
     public List<Photo> getPhotosbycategory() {
-        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " group by category";
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() +  " group by category";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
         return q.<de.meetme.data.Photo>getResultList();
     }
+
+    /*public List<Photo> getPhotosByCategory(String category) {
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where category = " + category;
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
+        return q.<de.meetme.data.Photo>getResultList();
+    }*/
 
     public List<Photo> getclickssorted() {
         String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " order by clicks";
