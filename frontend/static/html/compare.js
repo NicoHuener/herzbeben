@@ -196,7 +196,10 @@ window.onclick = function(event) {
 //--------------------------------------------------------
 //alt="no picture uploaded"
 var photos;
-function starttheshow (personID, shootoutID){
+var shootoutID;
+function starttheshow (personID, soID){
+
+    shootoutID = soID;
     // Fisher-Yates shuffle algorithm
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -250,11 +253,35 @@ function starttheshow (personID, shootoutID){
     // changepic2(); //set first Pic on page
 }
 
-var clicks = 0;
+var points = 0;
+
+function updateclicks(picID) {
+    var click = 1;
+    var xmlhttpclick = new XMLHttpRequest();
+    xmlhttpclick.open("PUT", "http://localhost:8080/meetme/api/photo/clicks/"+ click +"&"+ picID);
+    xmlhttpclick.setRequestHeader("Content-Type", "application/json");
+    //sent the new HttpRequest
+    xmlhttpclick.send();
+}
+
+function updatewins(picID) {
+    var xmlhttpwins = new XMLHttpRequest();
+    xmlhttpwins.open("PUT", "http://localhost:8080/meetme/api/photo/wins/" + picID);
+    xmlhttpwins.setRequestHeader("Content-Type", "application/json");
+    //sent the new HttpRequest
+    xmlhttpwins.send();
+}
+
+function updatepoints(picID,points) {
+    var xmlhttppoints = new XMLHttpRequest();
+    xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + points +"&"+ shootoutID + "&" + picID);
+    xmlhttppoints.setRequestHeader("Content-Type", "application/json");
+    //sent the new HttpRequest
+    xmlhttppoints.send();
+}
 
 function changepic1() { //bild 2 geclickt
-    clicks++;
-    alert (Object.keys(photos).length);
+    points++;
     var arraylength = (Object.keys(photos).length);
     if (arraylength !== 0) {
         document.getElementById("image1").src = photos[0].picture;
@@ -262,57 +289,55 @@ function changepic1() { //bild 2 geclickt
         photos.shift();
         var pic2ID = document.getElementById("image2").title;
 
-        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic2: ' + clicks);
-        var xmlhttppoints = new XMLHttpRequest();
-        /* xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + clicks +"&"+ shootoutID + "&" + pic2ID);
-         xmlhttppoints.setRequestHeader("Content-Type", "application/json");
-         //sent the new HttpRequest
-         xmlhttppoints.send();*/
+        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
+        updatepoints(pic2ID,points);
+        updateclicks(pic2ID);
     }
     else { //Keine Bilder mehr in Array!
         info();
-        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic2: ' + clicks);
+        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic2: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
         alert('no pics left!');
-        //gewinner ist bild 2
 
-        var picID = document.getElementById("image2").title;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("PUT", "http://localhost:8080/meetme/api/photo/wins/" + picID);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        //sent the new HttpRequest
-        xmlhttp.send();
+        //gewinner ist bild 2 --> Update wins
+        var lastpic2ID = document.getElementById("image2").title;
+
+        updatepoints(lastpic2ID,points);
+        updatewins(lastpic2ID);
+        updateclicks(lastpic2ID);
 
     }
 }
 
 function changepic2() { //bild 1 geklickt
-    clicks++;
+    points++;
     var arraylength = (Object.keys(photos).length);
     if (arraylength !== 0) {
         var lastpic = (Object.keys(photos).length) - 1;
         document.getElementById("image2").src = photos[lastpic].picture;
         document.getElementById("image2").title = photos[lastpic].id;
         photos.pop();
-        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl clicks für pic1: ' + clicks);
+        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic1: ' + points);
+
+        var pic1ID = document.getElementById("image1").title;
+        updatepoints(pic1ID,points);
+        updateclicks(pic1ID);
+
     }
     else {  //Keine Bilder mehr in Array!
         info();
-        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl clicks für pic1: ' + clicks);
+        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic1: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
         alert('no pics left!');
         //gewinner ist bild 1
 
 
-        var photoid = document.getElementById("image1").title;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("PUT", "http://localhost:8080/meetme/api/photo/wins/" + photoid);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        //sent the new HttpRequest
-        xmlhttp.send();
-
+        var lastpic1ID = document.getElementById("image1").title;
+        updatepoints(lastpic1ID,points);
+        updatewins(lastpic1ID);
+        updateclicks(lastpic1ID);
     }
 }
 
