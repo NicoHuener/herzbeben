@@ -66,9 +66,10 @@ html, body {
     color: white;
     width: 190px;
     height: 50px;
-    position: absolute;
+    /*position: absolute;
     top: 87%;
-    margin-left: 860px;
+    margin-left: 860px;*/
+    margin-top: 30px;
     display: none;
     z-index: 2;
     border-radius: 5px;
@@ -185,16 +186,23 @@ html, body {
 
 #signup {
     position: absolute;
-    width: 340px;
-    height: 600px;
+    width: 675px;
+    height: 77%;
     top: 40%;
     left: 80%;
-    margin-top: -240px;
-    margin-left: -170px;
+    margin-top: -140px;
+    margin-left: -450px;
     display:none;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0;
+}
+
+#column {
+	width: 33%;
+	padding: 10px 40px;
+	float: left;
+
 }
 /* login-style additional */
 #container {
@@ -214,6 +222,14 @@ html, body {
     position: absolute;
     margin-top: -10px;
     margin-left: 20px;
+    background: white;
+    font-size: 20px;
+}
+
+#legend {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 45px;
     background: white;
     font-size: 20px;
 }
@@ -252,7 +268,7 @@ input[type=password] {
     margin: 10px;
     margin-top: 10px;
     margin-left: 16px;
-    width: 290px;
+    width: 250px;
     height: 25px;
 }
 #lower {
@@ -267,36 +283,89 @@ input[type=password] {
 input[type=checkbox] {
     margin-left: 20px;
     margin-top: 30px;
-}
-#AGBcheckbox {
-    margin-left: 13px;
-    margin-top: -35px;
+    padding: 40px;
 }
 
-/*.check {
-    margin-left: 3px;
-}*/
+
 input[type=submit] {
-    float: right;
-    margin-right: 20px;
+    /*float: left;
+    margin-right: 20px;*/
+    margin-left: 17px;
     margin-top: 20px;
     width: 100px;
     height: 30px;
 }
 
-/* #links {
-float: left;
-}
-
-#rechts {
-float: right;
-} */
 
 label, input {
     float: left;
-    display: block;
 }
 
 label {
-width: 10px;
+width: auto;
+}
+
+#AGBlabel {
+width: 150px;
+margin-top: 18px;
+}
+
+
+/*popup*/
+/* Popup container - can be anything you want */
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }

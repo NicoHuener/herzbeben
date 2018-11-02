@@ -198,117 +198,121 @@ function checkRequired() {
         }
     }
 
-        function registerUser() {
+    function registerUser() {
 
-            // Get the checkbox
-              var checkBox = document.getElementById("AGBcheckbox");
-              // Get the output text
-              var text = document.getElementById("AGBnotAccepted");
+        // Get the checkbox
+          var checkBox = document.getElementById("AGBcheckbox");
+          // Get the output text
+          var text = document.getElementById("AGBnotAccepted");
 
-            if(checkBox.checked){
+        if(checkBox.checked){
 
-                alert('register started'); //debug purpose only
+            alert('register started'); //debug purpose only
 
-                // initalizing variables with textfields from html signup form
-                var email = document.getElementById("mail").value;
-                var lastname = document.getElementById("lastname").value;
-                var firstname = document.getElementById("firstname").value;
-                var username = document.getElementById("username").value;
-                var password = document.getElementById("password").value;
-                var confpw = document.getElementById("confpassword").value;
+            // initalizing variables with textfields from html signup form
+            var email = document.getElementById("mail").value;
+            var lastname = document.getElementById("lastname").value;
+            var firstname = document.getElementById("firstname").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confpw = document.getElementById("confpassword").value;
 
-                function createuser() {
+            function createuser() {
 
 
-                    // Check if ConfirmationPW = PW
-                    if (checkPassword(confpw, password) === true) {
-                        //create hashed PW
-                        //var valpw = createvalidpw(password);
+                // Check if ConfirmationPW = PW
+                if (checkPassword(confpw, password) === true) {
+                    //create hashed PW
+                    //var valpw = createvalidpw(password);
 
-                        var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+                    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
 
-                        xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
-                        xmlhttp.setRequestHeader("Content-Type", "application/json");
-                        //sent the new HttpRequest
-                        xmlhttp.send(JSON.stringify({
-                            "email": email,
-                            "password": password,
-                            "name": lastname,
-                            "firstName": firstname,
-                            "username": username
-                        }));
+                    xmlhttp.open("POST", "http://localhost:8080/meetme/api/person");
+                    xmlhttp.setRequestHeader("Content-Type", "application/json");
+                    //sent the new HttpRequest
+                    xmlhttp.send(JSON.stringify({
+                        "email": email,
+                        "password": password,
+                        "name": lastname,
+                        "firstName": firstname,
+                        "username": username
+                    }));
 
-                    }
-                    else {
-                        alert('signin failed');
-                    }
                 }
+                else {
+                    alert('signin failed');
+                }
+            }
 
 
-                function checkdataindb(email, username) {
-                    var xhr = new XMLHttpRequest();
-                    var json;
-                    var anzahluser;
+            function checkdataindb(email, username) {
+                var xhr = new XMLHttpRequest();
+                var json;
+                var anzahluser;
 
-                    function createcookie() {
-                        var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
+                function createcookie() {
+                    var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
 
-                        xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
-                        xmlhttpcookie.setRequestHeader("Content-Type", "application/json");
-                        //sent the new HttpRequest
-                        xmlhttpcookie.send(null);
-                        xmlhttpcookie.onreadystatechange = function () {
-                            if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
-                                var json = xmlhttpcookie.responseText;
-                                var userdata = JSON.parse(json);
-                                document.cookie = "id=" + userdata.id;
-                            }
-                        }
-
-                    }
-
-                    xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
-                    xhr.send(null);
-
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState == XMLHttpRequest.DONE) {
-                            json = xhr.responseText;
-
-                            var userlist = JSON.parse(json);
-                            anzahluser = (Object.keys(userlist).length)
-
-                            var useravailable = true;
-                            for (var i = 0; i < anzahluser; i++) {
-                                if (userlist[i].email === email) {
-                                    alert('There is already an account with this Email: ' + email);
-                                    //window.location.replace("http://localhost:8080/index.html");
-                                    return useravailable = false;
-                                }
-                                else if (userlist[i].username === username) {
-                                    alert('Username ' + username + ' is already taken!');
-                                    //window.location.replace("http://localhost:8080/index.html");
-                                    return useravailable = false;
-                                }
-                            }
-                            if (useravailable === true) {
-                                createuser();
-                                createcookie();
-
-                                window.location.replace("http://localhost:8080/compare.html");
-                            }
+                    xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
+                    xmlhttpcookie.setRequestHeader("Content-Type", "application/json");
+                    //sent the new HttpRequest
+                    xmlhttpcookie.send(null);
+                    xmlhttpcookie.onreadystatechange = function () {
+                        if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlhttpcookie.responseText;
+                            var userdata = JSON.parse(json);
+                            document.cookie = "id=" + userdata.id;
                         }
                     }
 
                 }
 
-                checkdataindb(email, username);
+                xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+                xhr.send(null);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        json = xhr.responseText;
+
+                        var userlist = JSON.parse(json);
+                        anzahluser = (Object.keys(userlist).length)
+
+                        var useravailable = true;
+                        for (var i = 0; i < anzahluser; i++) {
+                            if (userlist[i].email === email) {
+                                alert('There is already an account with this Email: ' + email);
+                                //window.location.replace("http://localhost:8080/index.html");
+                                return useravailable = false;
+                            }
+                            else if (userlist[i].username === username) {
+                                alert('Username ' + username + ' is already taken!');
+                                //window.location.replace("http://localhost:8080/index.html");
+                                return useravailable = false;
+                            }
+                        }
+                        if (useravailable === true) {
+                            createuser();
+                            createcookie();
+
+                            window.location.replace("http://localhost:8080/compare.html");
+                        }
+                    }
+                }
+
             }
 
-
-            else {
-                alert('AGBs not checked');
-                text.style.display = "block";
-            }
+            checkdataindb(email, username);
         }
+
+
+        else {
+            //alert('AGBs not checked');
+            //text.style.display = "block";
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+        }
+    }
+
+
 
 
