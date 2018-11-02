@@ -1,4 +1,4 @@
-import de.meetme.data.Person
+/*import de.meetme.data.Person
 import de.meetme.db.PersonDao
 import org.hibernate.SessionFactory
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder
@@ -164,3 +164,4 @@ class PersonDaoTest extends Specification {
         session.close()
     }
 }
+*/
