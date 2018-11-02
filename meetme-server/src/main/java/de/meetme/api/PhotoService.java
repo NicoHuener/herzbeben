@@ -70,6 +70,17 @@ import java.util.List;
         return dao.getPhotoFromPerson(id);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/category")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Photo> getPhotosbycategory() throws Exception {
+
+        return dao.getPhotosbycategory();
+    }
+
     //Liefert Liste mit clicks und id sortiert nach clicks
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -110,10 +121,10 @@ import java.util.List;
     @Path("/upload/picdata/{userid}")
     @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
-    public Photo createPhoto( @PathParam("userid") long userId,String title,int clicks,int wins,String picture ) throws Exception {
+    public Photo createPhoto( @PathParam("userid") long userId,String title,int clicks,int wins,String picture,String category ) throws Exception {
         log.debug("Create Photo from: " + userId);
         Person person = persondao.get(userId);
-        Photo photo = new Photo(person,title,clicks,wins,picture);
+        Photo photo = new Photo(person,title,clicks,wins,picture,category);
         return dao.persist(photo);
     }*/
 
