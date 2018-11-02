@@ -49,6 +49,17 @@ public class ShootoutService {
         return shootoutDao.persist(shootout);
     }
 
+   /* @POST
+    @Path("/{shootoutname}&{userid}")
+    @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
+    public Shootout createShootoutbyCategory(@PathParam("shootoutname") String shootoutName, @PathParam("userid") long userId) throws Exception {
+        log.debug("Create Shootout from: " + userId);
+        Person person = personDao.get(userId);
+        Shootout shootout = new Shootout(shootoutName,person);
+        return shootoutDao.persist(shootout);
+    }*/
+
   /*  @GET
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
