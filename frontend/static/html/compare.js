@@ -146,6 +146,7 @@ function createShootout(){
     else {
         window.location.replace("http://localhost:8080/index.html");
     }
+    var modal = document.getElementById('myModal');
     modal.style.display="none";
     //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
