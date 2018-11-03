@@ -35,10 +35,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
-                    <div class="form-group">
+                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                    <!-- <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="allusers.html">All Users</a></li>  <!-- Hab ich nur vorläuftig mal hier hin gepackt zwecks schnellerem Zugriff -->
@@ -62,26 +63,36 @@
     </nav>
 </header>
 
-<h1>Tabelle mit allen Nutzern</h1>
+    <div id="container">
 
-    <table id="result" border="solid black">
+        <h1>Search for Users</h1>
+        <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
+        <select id="mySelect">
+            <option value="username">Search by Username</option>
+            <option value="firstname">Search by Firstname</option>
+            <option value="lastname">Search by Lastname</option>
+        </select>
+
+        <table id="result" border="solid black" >
         <tr>
-            <th>ID</th>
-            <th>Surname</th>
-            <th>Firstname</th>
-            <th>E-Mail</th>
-            <th>Username</th>
+            <th class="column">Username</th>
+            <th class="column">Firstname</th>
+            <th class="column">Lastname</th>
+            <th class="column">E-Mail</th>
+            <!--<th>ID</th>-->
             <!--   <th>Password</th>-->
-          </tr>
+        </tr>
+        </table>
+    </div>
 
-      </table>
-       <!--help button-->
-<button class="helpBtn">Help
-    <span class="helpText">On this page you can see all the users that are registered. </span>
-</button>
+
+    <!--help button-->
+    <button class="helpBtn">Help
+        <span class="helpText">On this page you can see all the users that are registered. </span>
+    </button>
 
 <script>
-
+    //Tabelle erstellen
     window.onload = function () {
 
             var xhr = new XMLHttpRequest();
@@ -104,22 +115,103 @@
 
                     for (var i = 0; i < anzahluser; i++) {
                         result.innerHTML += "<tr> " +
-                            "<td id='td1" + i + "'/>" + userlist[i].id + "</td> " +
-                            "<td id='td2 " + i + " '>" + userlist[i].name + "</td>" +
-                            "<td id='td3 " + i + "'>" + userlist[i].firstName + "</td>" +
+                            "<td id='td1" + i + "'/>" + userlist[i].username + "</td> " +
+                            "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
+                            "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
                             "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +
-                            "<td id='td5 " + i + "'>" + userlist[i].username + "</td>" +
+                            //"<td id='td5 " + i + "'>" + userlist[i].id + "</td>" +
                             //"<td id='td6 " + i + "'>" + userlist[i].password + "</td>" +
                             "</tr>";
                     }
-                    }
                 }
-
             }
 
+    }
+
+    //Tabelle durchsuchen
+    function searchUser(){
+    var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+    }
 
 
-        </script>
+
+
+</script>
+
+<!-- <script>
+    /*Tabelle durchsuchen*/
+    function searchUser() {
+        var x = document.getElementById("mySelect").value;
+        alert(x);
+        if (x == "Search by Username") {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[4];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+        }
+
+        else if ((x == "Search by Firstname") {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+        }
+
+        else if ((x == "Search by Lastname") {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+        }
+    }
+</script> -->
 
 </body>
 </html>
