@@ -17,3 +17,8 @@ window.onclick = function (event) {
   }
 }
 
+//Searchbar location change to search for users
+function locationChange (){
+    window.location.replace("http://localhost:8080/allusers.html");
+}
+
