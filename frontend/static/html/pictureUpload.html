@@ -81,16 +81,21 @@
     <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
     <input id ="UploadBtn" type="submit"  value="Upload Picture" />
 </form>
+
 <script>
+
 //onclick="addpictodb()"
     $('#Upload').submit(function(e) {
         e.preventDefault();
-        var data = $(this).closest('form').serialize();
+        var form_data = new FormData(this); //Creates new FormData object
+
         $.ajax({
             url: "http://localhost:8080/meetme/api/photo/upload",
-            dataType:"json",
+            dataType:"multipart/form-data",
+            processData: false,
+            contentType: false,
             type: 'post',
-            data: data,
+            data: form_data,
         });
         addpictodb();
     });
