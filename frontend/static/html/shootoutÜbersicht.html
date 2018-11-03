@@ -78,6 +78,7 @@
         </tr>
 
         <script>
+        /*
                 window.onload = function () {
 
                     var xhr = new XMLHttpRequest();
@@ -86,7 +87,7 @@
 
                     xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
                     xhr.send(null);
-console.log('shootout gesendet');
+                    console.log('shootout gesendet');
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == XMLHttpRequest.DONE) {
                             console.log('response erhalten');
@@ -107,7 +108,68 @@ console.log('shootout gesendet');
                     };
 
                     };
+            */
+    window.onload = function profileLink (){
 
+    var shootoutlist;
+    var anzahlshootouts;
+    var userdata;
+    var anzahlusers;
+
+
+
+    //erster Request: Get username
+    var xmlhttplog = new XMLHttpRequest();
+
+        xmlhttplog.open("GET", 'http://localhost:8080/meetme/api/person/', true);
+        xmlhttplog.setRequestHeader("Content-Type", "application/json");
+        xmlhttplog.send(null);
+
+        xmlhttplog.onreadystatechange = function () {
+            if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
+                alert('response erhalten');
+                var json = xmlhttplog.responseText;
+                this.userdata = JSON.parse(json);
+                this.anzahlusers=(Object.keys(userdata).length);
+                alert('ready');
+            }
+            alert('hola');
+        }
+
+    //zweiter Request: Get shootoutname and userID
+    var xhr = new XMLHttpRequest();
+            var json;
+
+
+        xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
+        xhr.send(null);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == XMLHttpRequest.DONE) {
+                json = xhr.responseText;
+                this.shootoutlist = JSON.parse(json);
+                this.anzahlshootouts=(Object.keys(shootoutlist).length);
+                var shootouttable = document.getElementById("table");
+
+
+                for (var i = 3; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
+                    //var personid = shootoutlist[i].person;
+
+                    for (var j=0; i < anzahlusers; j++){
+                        if(shootoutlist[i].person == userdata[j].id){
+
+                            result.innerHTML += "<tr> " +
+                            "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
+                            "<td id='td2 " + i + " '>" + userdata[j].username + "</td>" +
+                            "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
+                            "</tr>";
+                        }
+                    }
+                }
+            }
+        }
+
+};
             </script>
     </table>
 
