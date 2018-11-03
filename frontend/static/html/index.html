@@ -52,20 +52,20 @@
         <label for="passwordlogin">Password:</label>
         <input type="password" id="passwordlogin" name="passwordlogin" placeholder="Enter Password">
         <div id="lower">
-            <input type="checkbox" id="checkbox">
-            <label for="checkbox" >Keep me logged in</label>
-            <input type="submit" value="Login" onclick="signinUser()">
-        </div>
-    </form>
-</div>
-<script>
+            <!--  <input type="checkbox" id="checkbox">
+             <label for="checkbox" >Keep me logged in</label>-->
+             <input type="submit" value="Login" onclick="signinUser()">
+         </div>
+     </form>
+ </div>
+ <script>
 
 
-</script>
+ </script>
 
 
 
-<!-- creates signup sheet -->
+ <!-- creates signup sheet -->
 <div id="signup">
     <form name="signupform" id="signupform" >
         <p id="legend">Create your account!</p><br><br>
@@ -165,7 +165,7 @@
 <!-- Opens the AGB window -->
 <div id="AGBModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeAGB()">&times;</span>
         <div class="modal-header">
             <h2>AGB</h2>
         </div>

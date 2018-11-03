@@ -325,8 +325,11 @@ window.onclick = function(event) {
 //---------------------------------------------------
 //Funktionen für popupInfo Modal Fenster
 function showinfomodal() {
+modalbody.innerHTML +=
+"<a href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
     var modal2 = document.getElementById("Infomodal");
     modal2.style.display = "block";
+
 }
 
 function closeinfomodal() {
