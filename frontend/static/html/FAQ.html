@@ -21,8 +21,10 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 15px;
+            font-size: 17px;
+            font-weight: bold;
             transition: 0.4s;
+
         }
 
         .active, .accordion:hover {
@@ -31,11 +33,20 @@
 
         .panel {
             padding: 0 18px;
+
             background-color: white;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
+
+        h1  {
+            margin-left: 10px;
+            margin-bottom: 30px;
+            margin-top: 80px;
+            text-shadow: 2px 2px #E9AD9C;
+            text-align: center; }
+
     </style>
 </head>
 <body>
@@ -90,7 +101,7 @@
 </header>
 </head>
 
-<p></p>
+<h1>Frequently Asked Questions</h1>
 
 <button class="accordion">How can I create a shootout?</button>
 <div class="panel">
@@ -116,6 +127,21 @@
     </p>
 </div>
 
+<button class="accordion"></button>
+<div class="panel">
+    <p>
+    </p>
+</div>
+<button class="accordion"></button>
+<div class="panel">
+    <p>
+    </p>
+</div>
+<button class="accordion"></button>
+<div class="panel">
+    <p>
+    </p>
+</div>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;
