@@ -106,8 +106,22 @@
 
 <script>
     window.onload = function (){
-        alert('in function');
-        var shootoutID = 3;
+        //alert('in function');
+        var shootoutID = Werteliste(location.search);
+        function Werteliste (querystring) {
+            if (querystring == '') return;
+            var wertestring = querystring.slice(1);
+            var paare = wertestring.split("&");
+            var paar, name, wert;
+                paar = paare[0].split("=");
+                name = paar[0];
+                wert = paar[1];
+                name = unescape(name).replace("+", " ");
+                wert = unescape(wert).replace("+", " ");
+                return wert;
+            }
+
+
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
             xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/rank/shootout/" + shootoutID, true);
@@ -124,8 +138,10 @@
                         var json = xmlhttplog2.responseText;
                         var points = JSON.parse(json);
                         points.reverse();
+                       /* console.log(points);
+                        alert(points);*/
                         alert (Object.keys(points).length);
-                        alert(points[0].photo.picture);
+                        //alert(points[0].photo.picture);
                         document.getElementById('bestpic').src = points[0].photo.picture;
                         document.getElementById('bestpicpoints').innerText = "Points: "+ points[0].points;
                         document.getElementById('Secondpic').src = points[1].photo.picture;

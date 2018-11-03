@@ -98,7 +98,7 @@ function createshootoutlist() {
                         var anzahlShootouts=(Object.keys(shootoutData).length);
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
-                           var pid = shootoutData[i].person;
+                           var pid = shootoutData[i].person.id;
                            var shootoutid = shootoutData[i].id;
                             shootouttable.innerHTML +=
                                 "<tr>" +

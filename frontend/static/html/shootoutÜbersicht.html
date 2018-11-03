@@ -82,40 +82,25 @@
 
                     var xhr = new XMLHttpRequest();
                     var json;
-                    var anzahlshootouts;
 
 
                     xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
                     xhr.send(null);
-
+console.log('shootout gesendet');
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == XMLHttpRequest.DONE) {
+                            console.log('response erhalten');
                             json = xhr.responseText;
                             var shootoutlist = JSON.parse(json);
                             var anzahlshootouts=(Object.keys(shootoutlist).length);
-                            var shootouttable = document.getElementById("table");
 
 
-                            for (var i = 3; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
-                                var personid = shootoutlist[i].person;
-                                                        /*  if (isNaN(personid)){
-
-                                                        }else {
-
-
-                                                        var xhrperson = new XMLHttpRequest();
-                                                        xhrperson.open('GET', 'http://localhost:8080/meetme/api/person/' + personid, true);
-                                                        xhrperson.send(null);
-                                                        xhr.onreadystatechange = function () {
-                                                            if (xhrperson.readyState == XMLHttpRequest.DONE) {
-                                                                json = xhrperson.responseText;
-                                                                var person = JSON.parse(json);*/
-
+                            for (var i = 0; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
 
                                 result.innerHTML += "<tr> " +
                                     "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
-                                    "<td id='td2 " + i + " '>" + shootoutlist[i].person + "</td>" +
-                                    "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\" >Picture ranking</a></td>" +
+                                    "<td id='td2 " + i + " '>" + shootoutlist[i].person.id + "</td>" +
+                                    "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
                                     "</tr>";
                             }
                         }
