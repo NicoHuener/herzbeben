@@ -72,7 +72,7 @@
                 <ul class="nav">
                     <h1>Shootouts</h1>
                     <br>
-                    <button type="button" id="create_shootout" onclick="openModal()">Create shootout</button>
+                    <button type="button" id="create_shootout" onclick="openModalcS()">Create shootout</button>
                     <div class="form-group" id="search_shootout">
                         <input  type="text" class="form-control" id="shootout_input" placeholder="Search for shootout" onkeyup="searchShootout()">
                     </div >
@@ -94,10 +94,10 @@
               <!--/.well -->
         </div>
         <!--/span-->
-    <!-- Popup-Info beim fertigen Durchlauf eines Shootouts -->
-        <div id="pInfo" class="modal" >
+    <!-- Popup-Info beim fertigen Durchlauf eines Shootouts --------------------->
+        <div id="Infomodal" class="modal" >
             <div class="modal-content">
-                <span class="close2">&times;</span>
+                <span class="close2" onclick="closeinfomodal()">&times;</span>
                 <div class="modal-header">
                     <h1> Das Shootout ist vorbei!</h1>
                 </div>
@@ -106,10 +106,10 @@
                 </div>
             </div>
         </div>
-    <!-- Modal popup Shootout -->
+    <!-- Modal popup für create Shootout --------------------------------------->
         <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close" onclick="closemodcS()">&times;</span>
                 <div class="modal-header">
                     <h2> Create your shootout!</h2>
                 </div>
