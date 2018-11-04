@@ -371,8 +371,11 @@ alert("Account for "+username+" successfully created!")
             //text.style.display = "block";
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
+
         }
     }
+
+
 
 
 

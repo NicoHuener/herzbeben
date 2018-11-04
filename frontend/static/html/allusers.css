@@ -115,7 +115,7 @@
      border: 1px solid white;
      border-radius: 3px;
  }
- tr:nth-child(even) {
+tr:nth-child(even) {
      background-color: #dddddd;
  }
  td, th{
@@ -127,7 +127,6 @@
      font-size: 25px;
      height: 50px;
      color: #6F9EB2​;
-
  }
  td{
      font-size: 15px;
@@ -136,6 +135,7 @@
 
  tr{
  height:25px;
+
  }
 
  #mySelect {
@@ -143,3 +143,4 @@
  margin-top: 20px;
  margin-bottom: 20px;
  }
+
