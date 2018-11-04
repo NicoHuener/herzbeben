@@ -7,7 +7,8 @@
     <link rel="icon" href="./images/Herzbeben_Logo.png">
     <link rel="stylesheet" href="allusers.css" type="text/css">
     <script type=text/javascript src = "navbarFunction.js"></script>
-
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type=text/javascript src = "navbarFunction.js"></script>
@@ -35,10 +36,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
-                    <div class="form-group">
+                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                    <!-- <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
@@ -78,9 +80,27 @@
 
 <form id = "Upload" action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
     <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
-    <input id ="UploadBtn" type="submit" onclick="addpictodb()" value="Upload Picture" />
+    <input id ="UploadBtn" type="submit"  value="Upload Picture" />
 </form>
+
 <script>
+
+//onclick="addpictodb()"
+    $('#Upload').submit(function(e) {
+        e.preventDefault();
+        var form_data = new FormData(this); //Creates new FormData object
+
+        $.ajax({
+            url: "http://localhost:8080/meetme/api/photo/upload",
+            dataType:"multipart/form-data",
+            processData: false,
+            contentType: false,
+            type: 'post',
+            data: form_data,
+        });
+        addpictodb();
+    });
+
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {
@@ -99,23 +119,36 @@
  var fullPath = document.getElementById('eingabefeld').value;
  if (fullPath){
      var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
-     var fielname = fullPath.substring(startIndex);
-     if (filename.indexOf('\\') === 0 || fielname.indexOf('/') === 0){
+     var filename = fullPath.substring(startIndex);
+     if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0){
          filename = filename.substring(1);
      }
      console.log(filename);
 
      var filepath = "./uploads/" + filename;
     var userid = cookiewerteHolen();
-    var piccategory = "summer";
+    var piccategory = "summer"; //brauchen noch ein Eingabefeld!
 
-    /* var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
-     xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata/"+userid+"&"+filename+"&"+filepath+"&"+ piccategory);
+    var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
+     xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata");
      xmlhttp.setRequestHeader("Content-Type", "application/json");
      //sent the new HttpRequest
-     xmlhttp.send(null);*/
+     var request = JSON.stringify({
+         "userId": userid,
+         "title": filename,
+         "picture": filepath,
+         "category": piccategory,
+     });
+     alert(request);
+     xmlhttp.send( request);
 
  }
+
+
+            function clearinput(){
+                $('input:file').val('');
+            }
+            clearinput();
     }
 </script>
 

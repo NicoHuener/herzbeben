@@ -44,6 +44,8 @@ function comparePicture2(){
     var xmlhttp = new XMLHttpRequest();*/
 
 //funktion Searchbar
+var points = 0;
+
 function searchShootout() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("shootout_input");
@@ -63,6 +65,13 @@ function searchShootout() {
 //Ausgabe der Liste aller Shootouts in der Sidebar
 
 window.onload = function () {
+    //hide the create shootout modal
+    var modal1 = document.getElementById('myModal');
+    modal1.style.display = "none";
+    //hide the shootoutinfo modal
+    var modal2 = document.getElementById('Infomodal');
+    modal2.style.display = "none";
+
 
     if (document.cookie === ""){
         window.location.replace("http://localhost:8080/index.html");
@@ -71,6 +80,7 @@ window.onload = function () {
     //starttheshow();
     createshootoutlist();
 };
+
 
 
 function createshootoutlist() {
@@ -84,11 +94,11 @@ function createshootoutlist() {
 
                         var json = xmlhttpsidebar.responseText;
                         var shootoutData = JSON.parse(json);
-                        alert(shootoutData[0].name);
+                       // alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
-                           var pid = shootoutData[i].person;
+                           var pid = shootoutData[i].person.id;
                            var shootoutid = shootoutData[i].id;
                             shootouttable.innerHTML +=
                                 "<tr>" +
@@ -112,36 +122,6 @@ function cookiewerteHolen () {
     }
     return Wert;
 }
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("create_shootout");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-};
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-};
-//var die beim klicken auf Btn "Create Shootout
-var closeCS = document.getElementById("createShootout")[0];
-closeCS.onclick= function(){
-    modal.style.display="none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-};
 
 function createShootout(){
     var userID;
@@ -166,37 +146,17 @@ function createShootout(){
     else {
         window.location.replace("http://localhost:8080/index.html");
     }
+    var modal = document.getElementById('myModal');
     modal.style.display="none";
     //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
 }
-//popupInfo Modal Fenster
-var modal2 = document.getElementById("pInfo");
-
-var btn2 =document.getElementById("create_shootout");
-
-var span2 = document.getElementsByClassName("close2")[0];
-
-btn2.onclick = function() {
-    modal2.style.display = "block";
-};
-function info() {
-    modal2.style.display = "block";
-}
-
-span2.onclick = function() {
-    modal2.style.display = "none";
-};
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal2.style.display = "none";
-    }
-};
-
 //--------------------------------------------------------
 //alt="no picture uploaded"
 var photos;
 var shootoutID;
+
+
 function starttheshow (personID, soID){
 
     shootoutID = soID;
@@ -253,7 +213,7 @@ function starttheshow (personID, soID){
     // changepic2(); //set first Pic on page
 }
 
-var points = 0;
+
 
 function updateclicks(picID) {
     var click = 1;
@@ -272,16 +232,18 @@ function updatewins(picID) {
     xmlhttpwins.send();
 }
 
-function updatepoints(picID,points) {
+function updatepoints(picID,picpoints) {
     var xmlhttppoints = new XMLHttpRequest();
-    xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + points +"&"+ shootoutID + "&" + picID);
+    xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + picpoints +"&"+ shootoutID + "&" + picID);
     xmlhttppoints.setRequestHeader("Content-Type", "application/json");
     //sent the new HttpRequest
     xmlhttppoints.send();
 }
 
+
 function changepic1() { //bild 2 geclickt
     points++;
+    console.log(points);
     var arraylength = (Object.keys(photos).length);
     if (arraylength !== 0) {
         document.getElementById("image1").src = photos[0].picture;
@@ -290,11 +252,11 @@ function changepic1() { //bild 2 geclickt
         var pic2ID = document.getElementById("image2").title;
 
         alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
-        updatepoints(pic2ID,points);
+       updatepoints(pic2ID,points);
         updateclicks(pic2ID);
     }
     else { //Keine Bilder mehr in Array!
-        info();
+
         alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic2: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
@@ -306,12 +268,14 @@ function changepic1() { //bild 2 geclickt
         updatepoints(lastpic2ID,points);
         updatewins(lastpic2ID);
         updateclicks(lastpic2ID);
+        showinfomodal();
 
     }
 }
 
 function changepic2() { //bild 1 geklickt
     points++;
+    console.log(points);
     var arraylength = (Object.keys(photos).length);
     if (arraylength !== 0) {
         var lastpic = (Object.keys(photos).length) - 1;
@@ -326,7 +290,6 @@ function changepic2() { //bild 1 geklickt
 
     }
     else {  //Keine Bilder mehr in Array!
-        info();
         alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic1: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
@@ -338,16 +301,47 @@ function changepic2() { //bild 1 geklickt
         updatepoints(lastpic1ID,points);
         updatewins(lastpic1ID);
         updateclicks(lastpic1ID);
+        showinfomodal();
     }
 }
-
-
-
-
 //---------------------------------------------------
+//Funktionen create Shootout Popup Fenster
+function openModalcS() {
+    var modal = document.getElementById('myModal');
+    modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+function closemodcS() {
+    var modal = document.getElementById('myModal');
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    var modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+//---------------------------------------------------
+//Funktionen für popupInfo Modal Fenster
+function showinfomodal() {
+modalbody.innerHTML +=
+"<a href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
+    var modal2 = document.getElementById("Infomodal");
+    modal2.style.display = "block";
 
+}
 
-
+function closeinfomodal() {
+    var modal2 = document.getElementById("Infomodal");
+    modal2.style.display = "none";
+}
+window.onclick = function(event) {
+    var modal2 = document.getElementById("Infomodal");
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
+};
 
 
 

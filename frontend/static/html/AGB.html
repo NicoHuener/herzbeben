@@ -6,38 +6,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>AGB</title>
         <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <-- <link rel="stylesheet" href="compare_profile.css"> -->
+        <link rel="stylesheet" href="compare_profile.css">
       <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- <script type=text/javascript src = "index.js"></script> -->
         <script type=text/javascript src = "navbarFunction.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+
     <style>
-        .accordion {
-            background-color: #eee;
-            color: #444;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
-        }
-
-        .active, .accordion:hover {
-            background-color: #ccc;
-        }
-
-        .panel {
-            padding: 0 18px;
-            background-color: white;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-        }
+        div { margin-left: 4em; margin-right: 4em; }
+        h1 { margin-left: 10px; margin-top: 80px; text-shadow: 2px 2px #E9AD9C; text-align: center; }
+        h3 { margin-left: 20px; }
+        ul { margin-top: 10px; }
+        p {margin-top: 10px;}
     </style>
+
 </head>
 <body>
 
@@ -63,10 +46,11 @@
                      -->
                 </ul>
                 <form class="navbar-form navbar-left">
-                    <div class="form-group">
+                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                    <!-- <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
@@ -90,50 +74,245 @@
 </header>
 </head>
 
+
+<h1>Terms of Use</h1>
+
+<hr>
+<h3>1. Acceptance of Terms of Use Agreement.</h3>
+<div>
+    By creating a klicks account, you agree to be bound by these Terms of Use, which is incorporated by reference
+        into this Agreement, and any terms disclosed and agreed to by you if you purchase additional features,
+        products or services we offer on the Service (collectively, this “Agreement”).
+        If you do not accept and agree to be bound by all of the terms of this Agreement, please do not use the Service.
+           <p>We may make changes to this Agreement and to the Service from time to time. We may do this for a variety of
+            reasons including to reflect changes in or requirements of the law, new features, or changes in business practices.
+            The most recent version of this Agreement will be posted on the Service under Settings and also on klicks.com,
+            and you should regularly check for the most recent version. The most recent version is the version that applies.
+            If the changes include material changes that affect your rights or obligations, we will notify you in advance of the changes
+            by reasonable means, which could include notification through the Service or via email. If you continue to use the Service
+            after the changes become effective, then you agree to the revised Agreement.
+</div>
+<hr>
+<h3>2. Eligibility</h3>
+<div>
+    You must be at least 18 years of age to create an account on klicks and use the Service. By creating an account and using the Service, you represent and warrant that:
+        <ul>
+            <li>you can form a binding contract with klicks,</li>
+            <li>you are not a person who is barred from using the Service under the laws of the United States
+                or any other applicable jurisdiction–meaning that you do not appear on the U.S. Treasury Department’s list of
+                Specially Designated Nationals or face any other similar prohibition, </li>
+            <li>you will comply with this Agreement and all applicable local, state, national and international laws, rules and regulations, and</li>
+            <li>you have never been convicted of a felony or indictable offense (or crime of similar severity), a sex crime, or any crime involving violence.</li>
+        </ul>
+</div>
+<hr>
+<h3>3. Your Account.</h3>
+<div>
+    In order to use klicks, you may sign in using your Facebook login.  If you do so, you authorize us to access
+        and use certain Facebook account information, including but not limited to your public Facebook profile and information
+        about Facebook friends you share in common with other klicks users.
+        For more information regarding the information we collect from you and how we use it, please consult our Privacy Policy.
+        <p>You are responsible for maintaining the confidentiality of your login credentials you use to sign up for klicks,
+        and you are solely responsible for all activities that occur under those credentials.
+
+</div>
+<hr>
+
+<h3>4. Modifying the Service and Termination.</h3>
+<div>
+    klicks is always striving to improve the Service and bring you additional functionality that you will find engaging and useful.
+    This means we may add new product features or enhancements from time to time as well as remove some features, and if these actions
+    do not materially affect your rights or obligations, we may not provide you with notice before taking them.
+    >We may even suspend the Service entirely,
+    in which event we will notify you in advance unless extenuating circumstances, such as safety or security concerns, prevent us from doing so.
+    <p>You may terminate your account at any time, for any reason, by following the instructions in “Settings” in the Service.
+    klicks may terminate your account at any time without notice if it believes that you have violated this Agreement.
+    After your account is terminated, this Agreement will terminate, except that the following provisions will still apply to you and klicks:
+    Section 5, Section 6, and Sections 13 through 20.
+
+</div>
+<hr>
+
+<h3>5. Safety; Your Interactions with Other Users.</h3>
+<div>
+    klicks is not responsible for the conduct of any user on or off of the Service. You agree to use caution in all interactions with other users.
+    In addition, you agree you will not provide your financial information (for example, your credit card or bank account information),
+    or wire or otherwise send money, to other users.
+    <p>YOU ARE SOLELY RESPONSIBLE FOR YOUR INTERACTIONS WITH OTHER USERS. YOU UNDERSTAND THAT KLICKS DOES NOT CONDUCT CRIMINAL BACKGROUND CHECKS
+    ON ITS USERS OR OTHERWISE INQUIRE INTO THE BACKGROUND OF ITS USERS. KLICKS MAKES NO REPRESENTATIONS OR WARRANTIES AS TO THE CONDUCT OF USERS.
+</div>
+<hr>
+
+<h3>6. Rights klicks Grants You.</h3>
+<div>
+    klicks grants you a personal, worldwide, royalty-free, non-assignable, nonexclusive, revocable, and non-sublicensable license to access and use the Service.
+    This license is for the sole purpose of letting you use and enjoy the Service’s benefits as intended by klicks and permitted by this Agreement. Therefore, you agree not to:
+    <ul>
+        <li>use the Service or any content contained in the Service for any commercial purposes without our written consent.</li>
+        <li>copy, modify, transmit, create any derivative works from, make use of, or reproduce in any way any copyrighted material,
+            images, trademarks, trade names, service marks, or other intellectual property, content or proprietary information accessible through the Service without klicks’ prior written consent.</li>
+        <li>express or imply that any statements you make are endorsed by klicks.</li>
+        <li>use any robot, bot, spider, crawler, scraper, site search/retrieval application, proxy or other manual or automatic device,
+            method or process to access, retrieve, index, “data mine,” or in any way reproduce or circumvent the navigational structure or presentation of the Service or its contents. </li>
+        <li>use the Service in any way that could interfere with, disrupt or negatively affect the Service or the servers or networks connected to the Service.</li>
+        <li>upload viruses or other malicious code or otherwise compromise the security of the Service.</li>
+        <li>forge headers or otherwise manipulate identifiers in order to disguise the origin of any information transmitted to or through the Service. </li>
+        <li>“frame” or “mirror” any part of the Service without klicks’ prior written authorization.</li>
+        <li>use meta tags or code or other devices containing any reference to klicks or the Service (or any trademark,
+            trade name, service mark, logo or slogan of klicks) to direct any person to any other website for any purpose.</li>
+        <li>modify, adapt, sublicense, translate, sell, reverse engineer, decipher, decompile or otherwise disassemble any portion of the Service, or cause others to do so.</li>
+        <li>use or develop any third-party applications that interact with the Service or other users’ Content or information without our written consent.</li>
+        <li>use, access, or publish the klicks application programming interface without our written consent.</li>
+        <li>probe, scan or test the vulnerability of our Service or any system or network.</li>
+        <li>encourage or promote any activity that violates this Agreement.</li>
+    </ul>
+    The Company may investigate and take any available legal action in response to illegal and/ or unauthorized uses of the Service, including termination of your account.
+    <p>Any software that we provide you may automatically download and install upgrades, updates, or other new features. You may be able to adjust these automatic downloads through your device’s settings.
+
+</div>
+<hr>
+
+
+<h3>7. Rights you Grant klicks.</h3>
+<div>
+    By creating an account, you grant to klicks a worldwide, transferable, sub-licensable, royalty-free, right and license to
+    host, store, use, copy, display, reproduce, adapt, edit, publish, modify and distribute information you authorize us to
+    access from Facebook, as well as any information you post, upload, display or otherwise make available (collectively, “post”)
+    on the Service or transmit to other users (collectively, “Content”). Klicks’ license to your Content shall be non-exclusive,
+    except that klicks’ license shall be exclusive with respect to derivative works created through use of the Service. For example,
+    klicks would have an exclusive license to screenshots of the Service that include your Content. In addition, so that klicks
+    can prevent the use of your Content outside of the Service, you authorize klicks to act on your behalf with respect to
+    infringing uses of your Content taken from the Service by other users or third parties. This expressly includes the authority,
+    but not the obligation, to send notices pursuant to 17 U.S.C. § 512(c)(3) (i.e., DMCA Takedown Notices) on your behalf
+    if your Content is taken and used by third parties outside of the Service. Our license to your Content is subject to
+    your rights under applicable law (for example laws regarding personal data protection to the extent any Content contains
+    personal information as defined by those laws) and is for the limited purpose of operating, developing, providing,
+    and improving the Service and researching and developing new ones. You agree that any Content you place or that you authorize us to place on the Service may be viewed by other users
+        and may be viewed by any person visiting or participating in the Service (such as individuals who may receive shared Content from other klicks users).
+    </p>
+    <p>You agree that all information that you submit upon creation of your account, including information submitted from your Facebook account,
+        is accurate and truthful and you have the right to post the Content on the Service and grant the license to klicks above.
+    <p>You understand and agree that we may monitor or review any Content you post as part of a Service. We may delete any Content,
+        in whole or in part, that in our sole judgment violates this Agreement or may harm the reputation of the Service.
+    <p>When communicating with our customer care representatives, you agree to be respectful and kind. If we feel that your
+        behavior towards any of our customer care representatives or other employees is at any time threatening or offensive,
+        we reserve the right to immediately terminate your account.
+    <p>In consideration for klicks allowing you to use the Service, you agree that we, our affiliates, and our third-party
+        partners may place advertising on the Service. By submitting suggestions or feedback to klicks regarding our Services,
+        you agree that klicks may use and share such feedback for any purpose without compensating you.
+    <p>You agree that klicks may access, preserve and disclose your account information and Content if required to do so by
+        law or in a good faith belief that such access, preservation or disclosure is reasonably necessary, such as to:
+        (i) comply with legal process; (ii) enforce this Agreement; (iii) respond to claims that any Content violates the rights of third parties;
+        (iv) respond to your requests for customer service; or (v) protect the rights, property or personal safety of the Company or any other person.
+</div>
+<hr>
+
+<h3>8. Community Rules. </h3>
+<div>
+    By using the Service, you agree that you will not:
+    <ul>
+        <li>use the Service for any purpose that is illegal or prohibited by this Agreement.</li>
+        <li>use the Service for any harmful or nefarious purpose</li>
+        <li>use the Service in order to damage klicks</li>
+        <li>violate our Community Guidelines, as updated from time to time.</li>
+        <li>spam, solicit money from or defraud any users.</li>
+        <li>impersonate any person or entity or post any images of another person without his or her permission.</li>
+        <li>bully, “stalk,” intimidate, assault, harass, mistreat or defame any person.</li>
+        <li>post any Content that violates or infringes anyone’s rights, including rights of publicity, privacy, copyright, trademark or other intellectual property or contract right.</li>
+        <li>post any Content that is hate speech, threatening, sexually explicit or pornographic; incites violence; or contains nudity or graphic or gratuitous violence.</li>
+        <li>post any Content that promotes racism, bigotry, hatred or physical harm of any kind against any group or individual.</li>
+        <li>solicit passwords for any purpose, or personal identifying information for commercial or unlawful purposes from
+            other users or disseminate another person’s personal information without his or her permission.</li>
+        <li>use another user’s account.</li>
+        <li>create another account if we have already terminated your account, unless you have our permission.</li>
+    </ul>
+    klicks reserves the right to investigate and/ or terminate your account without a refund of any purchases if you have violated this Agreement,
+    misused the Service or behaved in a way that klicks regards as inappropriate or unlawful, including actions or communications that occur on or off the Service.
+
+</div>
+<hr>
+
+
+<h3>9. Other Users’ Content.</h3>
+<div>
+    Although klicks reserves the right to review and remove Content that violates this Agreement, such Content is the sole
+    responsibility of the user who posts it, and klicks cannot guarantee that all Content will comply with this Agreement.
+    If you see Content on the Service that violates this Agreement, please report it within the Service.
+</div>
+<hr>
+
+
+<h3>10. Notice and Procedure for Making Claims of Copyright Infringement.</h3>
+<div>
+    If you believe that your work has been copied and posted on the Service in a way that constitutes copyright infringement, please provide our Copyright Agent with the following information:
+    <ul>
+        <li>an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright interest;</li>
+        <li>a description of the copyrighted work that you claim has been infringed;</li>
+        <li>a description of where the material that you claim is infringing is located on the Service (and such description must be reasonably sufficient to enable us to find the alleged infringing material);</li>
+        <li>your contact information, including address, telephone number and email address;</li>
+        <li>a written statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law; and</li>
+        <li>a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner’s behalf.</li>
+    </ul>
+    klicks will terminate the accounts of repeat infringers.
+</div>
+<hr>
+
+<h3>11. Disclaimers.</h3>
+<div>
+    KLICKS PROVIDES THE SERVICE ON AN “AS IS” AND “AS AVAILABLE” BASIS AND TO THE EXTENT PERMITTED BY APPLICABLE LAW,
+    GRANTS NO WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE WITH RESPECT TO THE SERVICE
+    (INCLUDING ALL CONTENT CONTAINED THEREIN), INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF SATISFACTORY QUALITY,
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT. KLICKS DOES NOT REPRESENT OR WARRANT THAT
+    (A) THE SERVICE WILL BE UNINTERRUPTED, SECURE OR ERROR FREE, (B) ANY DEFECTS OR ERRORS IN THE SERVICE WILL BE CORRECTED,
+    OR (C) THAT ANY CONTENT OR INFORMATION YOU OBTAIN ON OR THROUGH THE SERVICE WILL BE ACCURATE.
+    <p>KLICKS TAKES NO RESPONSIBILITY FOR ANY CONTENT THAT YOU OR ANOTHER USER OR THIRD PARTY POSTS, SENDS OR RECEIVES THROUGH
+    THE SERVICE. ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICE IS ACCESSED AT YOUR OWN DISCRETION AND RISK.
+
+</div>
+<hr>
+
+<h3>12. Third Party Services.</h3>
+<div>
+    The Service may contain advertisements and promotions offered by third parties and links to other web sites or resources.
+    klicks is not responsible for the availability (or lack of availability) of such external websites or resources.
+    If you choose to interact with the third parties made available through our Service, such party’s terms will govern their relationship with you.
+    klicks is not responsible or liable for such third parties’ terms or actions.
+</div>
+<hr>
+
+<h3>13. Limitation of Liability.</h3>
+<div>
+    TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL KLICKS, ITS AFFILIATES, EMPLOYEES, LICENSORS
+    OR SERVICE PROVIDERS BE LIABLE FOR ANY INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE DAMAGES,
+    INCLUDING, WITHOUT LIMITATION, LOSS OF PROFITS, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL,
+    OR OTHER INTANGIBLE LOSSES, RESULTING FROM: (I) YOUR ACCESS TO OR USE OF OR INABILITY TO ACCESS OR USE THE SERVICE,
+    (II) THE CONDUCT OR CONTENT OF OTHER USERS OR THIRD PARTIES ON, THROUGH, OR FOLLOWING USE OF THE SERVICE; OR
+    (III) UNAUTHORIZED ACCESS, USE OR ALTERATION OF YOUR CONTENT, EVEN IF KLICKS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+    IN NO EVENT WILL KLICKS AGGREGATE LIABILITY TO YOU FOR ALL CLAIMS RELATING TO THE SERVICE EXCEED THE AMOUNT PAID, IF ANY, BY YOU TO KLICKS FOR THE SERVICE WHILE YOU HAVE AN ACCOUNT.
+    <p>SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF CERTAIN DAMAGES, SO SOME OR ALL OF THE EXCLUSIONS AND LIMITATIONS IN THIS SECTION MAY NOT APPLY TO YOU.
+</div>
+<hr>
+
+<h3>14. Indemnity by You.</h3>
+<div>
+    You agree, to the extent permitted under applicable law, to indemnify, defend and hold harmless klicks, our affiliates,
+    and their and our respective officers, directors, agents, and employees from and against any and all complaints, demands,
+    claims, damages, losses, costs, liabilities and expenses, including attorney’s fees, due to, arising out of, or relating
+    in any way to your access to or use of the Service, your Content, or your breach of this Agreement.
+</div>
+<hr>
+
+<h3>15. Entire Agreement; Other.</h3>
+<div>
+    This Agreement, with the Privacy Policy, the Safety Tips and any terms disclosed and agreed to by you if you purchase additional features,
+    products or services we offer on the Service, contains the entire agreement between you and klicks regarding the use of the Service.
+    If any provision of this Agreement is held invalid, the remainder of this Agreement shall continue in full force and effect.
+    The failure of the Company to exercise or enforce any right or provision of this Agreement shall not constitute a waiver of such right or provision.
+    You agree that your klicks account is non-transferable and all of your rights to your account and its Content terminate upon your death.
+    No agency, partnership, joint venture, fiduciary or other special relationship or employment is created as a result of this Agreement
+    and you may not make any representations on behalf of or bind klicks in any manner.
+</div>
 <p></p>
-
-<button class="accordion">How can I create a shootout?</button>
-<div class="panel">
-    <p>To create a shootout, please click on "Compare Pictures". You can then select "Create shootout" on the bottom left of the page.</p>
-</div>
-
-<button class="accordion">How does the shootout work?</button>
-<div class="panel">
-    <p>When you've selected a shootout, two pictures will appear on your screen.
-        <br>Click on the picture you like better to select it as a favorite. Once you have selected your favourite, the other picture will be replaced by another picture of the shootout.</p>
-</div>
-
-<button class="accordion">Who can see my shootout?</button>
-<div class="panel">
-    <p>If you create a private shootout, only you and whoever you invite will be able to see it and participate in it.
-    <br>If you create a public shootout, everyone visiting the page will be able to see it, but only users will be able to participate in it.
-    </p>
-</div>
-
-<button class="accordion"></button>
-<div class="panel">
-    <p>
-    </p>
-</div>
-
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight){
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
-</script>
-
 
 </body>
 </html>

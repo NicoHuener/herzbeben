@@ -37,10 +37,11 @@
                      -->
                 </ul>
                 <form class="navbar-form navbar-left">
-                    <div class="form-group">
+                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                    <!-- <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
@@ -77,44 +78,94 @@
         </tr>
 
         <script>
+            window.onload = function profileLink (){
+
+                var shootoutlist;
+                var anzahlshootouts;
+                var userdata;
+                var anzahlusers;
+
+
+
+                //erster Request: Get username
+                var xmlhttplog = new XMLHttpRequest();
+
+                xmlhttplog.open("GET", 'http://localhost:8080/meetme/api/person/', true);
+                xmlhttplog.setRequestHeader("Content-Type", "application/json");
+                xmlhttplog.send(null);
+
+                xmlhttplog.onreadystatechange = function () {
+                    if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
+                        var jsona = xmlhttplog.responseText;
+                        userdata = JSON.parse(jsona);
+                        anzahlusers=(Object.keys(userdata).length);
+                        getshootouts();
+                    }
+                };
+
+    function getshootouts() {
+
+                //zweiter Request: Get shootoutname and userID
+                var xhr = new XMLHttpRequest();
+                //var json;
+                xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(null);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        var json = xhr.responseText;
+                        shootoutlist = JSON.parse(json);
+                        anzahlshootouts=(Object.keys(shootoutlist).length);
+                       // alert(shootoutlist[0].person.id);
+                       // alert( userdata[0].id);
+
+
+                        for (var i = 0; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
+
+
+                            for (var j=0; j < anzahlusers; j++){
+                                if(shootoutlist[i].person.id == userdata[j].id){
+
+                                    result.innerHTML += "<tr> " +
+                                        "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
+                                        "<td id='td2 " + i + "'><a href=\"otherusersprofile.html\?uid="+shootoutlist[i].person.id+"\" >"+ userdata[j].username + "</a></td>" +
+                                        "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
+                                        "</tr>";
+                                }
+                            }
+                        }
+                    }
+                };
+
+            }
+            }
+        </script>
+
+        <!--<script>
                 window.onload = function () {
 
                     var xhr = new XMLHttpRequest();
                     var json;
-                    var anzahlshootouts;
 
 
                     xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
                     xhr.send(null);
-
+                    console.log('shootout gesendet');
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == XMLHttpRequest.DONE) {
+                            console.log('response erhalten');
                             json = xhr.responseText;
                             var shootoutlist = JSON.parse(json);
                             var anzahlshootouts=(Object.keys(shootoutlist).length);
-                            var shootouttable = document.getElementById("table");
 
 
-                            for (var i = 3; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
-                                var personid = shootoutlist[i].person;
-                                                        /*  if (isNaN(personid)){
-
-                                                        }else {
-
-
-                                                        var xhrperson = new XMLHttpRequest();
-                                                        xhrperson.open('GET', 'http://localhost:8080/meetme/api/person/' + personid, true);
-                                                        xhrperson.send(null);
-                                                        xhr.onreadystatechange = function () {
-                                                            if (xhrperson.readyState == XMLHttpRequest.DONE) {
-                                                                json = xhrperson.responseText;
-                                                                var person = JSON.parse(json);*/
-
+                            for (var i = 0; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
 
                                 result.innerHTML += "<tr> " +
                                     "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
-                                    "<td id='td2 " + i + " '>" + shootoutlist[i].person + "</td>" +
-                                    "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\" >Picture ranking</a></td>" +
+                                    "<td id='td2 " + i + " '>" + shootoutlist[i].person.id + "</td>" +
+                                    "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
                                     "</tr>";
                             }
                         }
@@ -122,7 +173,7 @@
 
                     };
 
-            </script>
+            </script>-->
     </table>
 
     <script>
