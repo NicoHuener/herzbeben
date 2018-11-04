@@ -51,7 +51,7 @@
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="allphotos.html">All Pictures</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
@@ -67,17 +67,17 @@
 
         <h1>Search for Users</h1>
         <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
-        <select id="mySelect">
+        <!--<select id="mySelect">
             <option value="username">Search by Username</option>
             <option value="firstname">Search by Firstname</option>
             <option value="lastname">Search by Lastname</option>
-        </select>
+        </select>-->
 
         <table id="result" border="solid black" >
         <tr>
             <th class="column">Username</th>
-            <th class="column">Firstname</th>
-            <th class="column">Lastname</th>
+            <th class="column">First name</th>
+            <th class="column">Last name</th>
             <th class="column">E-Mail</th>
             <!--<th>ID</th>-->
             <!--   <th>Password</th>-->
@@ -114,8 +114,8 @@
 
 
                     for (var i = 0; i < anzahluser; i++) {
-                        result.innerHTML += "<tr> " +
-                            "<td id='td1" + i + "'/>" + userlist[i].username + "</td> " +
+                        result.innerHTML += "<tr id='tablerow'> " +
+                            "<td id='td1" + i + "'/><a href=\"otherusersprofile.html\?uid="+userlist[i].id+"\" >" + userlist[i].username + "</a></td> " +
                             "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
                             "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
                             "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +

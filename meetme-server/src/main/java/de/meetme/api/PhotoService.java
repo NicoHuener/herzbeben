@@ -80,7 +80,7 @@ import java.util.List;
     @Path("/category")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public List<Photo> getPhotosgroupedbycategory() throws Exception {
+    public List<Photo> getPhotosgroupedbycategory() {
 
         return dao.getPhotosbycategory();
     }
@@ -88,9 +88,11 @@ import java.util.List;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/photosfromcategory/{category}")
-    public List<Photo> getPhotofromcategory(@PathParam("category") String category) throws Exception{
-     return dao.getPhotobyspecificcategory(category)   ;
+    @Path("/photosfromcat/{category}")
+    @UnitOfWork
+    public List<Photo> getPhotofromcategory(@PathParam("category") String category) throws Exception {
+        log.debug("Get Photos from Category: " + category);
+     return dao.getPhotosfromcat(category);
     }
 
     //Liefert Liste sortiert nach clicks

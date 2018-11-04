@@ -44,7 +44,7 @@ function checkNotEmpty(usernamel,passwordl) {
                 if (dbpassword === passwordl && dbusername === usernamel) {
                     if (usernamel == "admin"){
                         document.cookie = "id=" + userdata.id;
-                        window.location.replace("http://localhost:8080/dataAnalyticsDashboard.html");
+                        window.location.replace("http://localhost:8080/page.html");
                     }
                     else{
                     document.cookie = "id=" + userdata.id;
@@ -371,8 +371,11 @@ alert("Account for "+username+" successfully created!")
             //text.style.display = "block";
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
+
         }
     }
+
+
 
 
 

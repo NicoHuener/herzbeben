@@ -13,3 +13,68 @@
     font-size: 25px;
     margin-top: 10%;
 }
+
+
+.navbar-brand{
+margin-left: 360px;
+margin-top: -0.5%;
+}
+
+.heading{
+color: white;
+margin-top: 2%;
+margin-left: 480px;
+font-size: 28px;}
+
+.helpBtn10{
+    background-color: #E9AD9C;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    margin-left: 1200px;
+    display: inline-block;
+    bottom: 560px;
+    z-index: 3;
+    border-radius: 5px;
+    color: white;
+    }
+    .helpBtn10 .helpText{
+    visibility: hidden;
+    width: 150px;
+    height: 330px;
+    background-color: #E9AD9C;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -730%;
+    left: -225%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .helpBtn10 .helpText::after{
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #E9AD9C transparent transparent transparent;
+    }
+    .helpBtn10:hover .helpText{
+    visibility: visible;
+    opacity: 1;
+    }
+    .helpBtn10:hover{
+    cursor: pointer;
+    opacity: 0.9;}
+
+.form-group{
+margin-left: 600px;
+margin-top: 150px;
+}

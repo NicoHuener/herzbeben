@@ -29,7 +29,7 @@ public class ShootoutDao extends AbstractDao<Shootout> {
     }
 
     public List<Shootout> getShootoutByShootoutid(long id) {
-        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ?";
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where id = ?";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Shootout.class);
         q.setParameter( 1, id );
         return q.<de.meetme.data.Shootout>getResultList();

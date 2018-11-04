@@ -156,35 +156,69 @@ function createShootout(){
 var photos;
 var shootoutID;
 
+// Fisher-Yates shuffle algorithm
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
-function starttheshow (personID, soID){
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
+
+function starttheshow (personID, soID) {
 
     shootoutID = soID;
-    // Fisher-Yates shuffle algorithm
-    function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+    var xmlsocat = new XMLHttpRequest();
+    xmlsocat.open("GET", "http://localhost:8080/meetme/api/shootout/shootoutid/" + shootoutID);
+    xmlsocat.send(null);
 
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
+    xmlsocat.onreadystatechange = function () {
+        if (xmlsocat.readyState == XMLHttpRequest.DONE) {
+            var json = xmlsocat.responseText;
+            var selectedshootout = JSON.parse(json);
 
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
+            if (selectedshootout.category == null) {
+                //usershootout
+                getuserpics(personID);
+            }
+            else {
+                //shootout hat eine category
+                var shootoutcategory = selectedshootout.category;
+                getpicsfromcategory(shootoutcategory);
 
-            // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+            }
         }
-        return array;
-    }
+    };
 
-    /*var userID;
-    userID = cookiewerteHolen();
-    if (userID === "") {
-        alert('undefined User!');
-    }*/
+}
+function getpicsfromcategory(category) {
+    alert(category);
+    var xmlhttpr = new XMLHttpRequest();
+    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/photosfromcat/" + category);
+    xmlhttpr.send(null);
 
+    xmlhttpr.onreadystatechange = function () {
+        if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+            var json = xmlhttpr.responseText;
+            photos = JSON.parse(json);
+            photos = shuffle(photos);
+            loadshootout();
+        }
+    };
+}
+
+function getuserpics(personID){
+    alert("usershootout");
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);
@@ -194,24 +228,28 @@ function starttheshow (personID, soID){
             var json = xmlhttpr.responseText;
             photos = JSON.parse(json);
             photos = shuffle(photos);
+            loadshootout();
+        }
+    };
+}
             //var picamount = (Object.keys(photos).length);
             // alert (pictureNumber);
             // alert(photo[0].title);
+function loadshootout () {
+    // ------ load fist pic for image1 ---------------------
+    document.getElementById("image1").src = photos[0].picture;
+    document.getElementById("image1").title = photos[0].id;
+    photos.shift();
+    // ------ load fist pic for image2 --------------------
+    var lastpic = (Object.keys(photos).length) - 1;
+    document.getElementById("image2").src = photos[lastpic].picture;
+    document.getElementById("image2").title = photos[lastpic].id;
+    photos.pop();
 
-            // ------ load fist pic for image1 ---------------------
-            document.getElementById("image1").src = photos[0].picture;
-            document.getElementById("image1").title = photos[0].id;
-            photos.shift();
-            // ------ load fist pic for image2 --------------------
-            var lastpic = (Object.keys(photos).length) - 1;
-            document.getElementById("image2").src = photos[lastpic].picture;
-            document.getElementById("image2").title = photos[lastpic].id;
-            photos.pop();
-        }
-    };
+}
     // changepic1(); //set first Pic on page
     // changepic2(); //set first Pic on page
-}
+
 
 
 
@@ -272,6 +310,8 @@ function changepic1() { //bild 2 geclickt
 
     }
 }
+
+
 
 function changepic2() { //bild 1 geklickt
     points++;

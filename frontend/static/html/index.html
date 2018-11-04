@@ -58,15 +58,10 @@
          </div>
      </form>
  </div>
- <script>
-
-
- </script>
-
-
 
  <!-- creates signup sheet -->
 <div id="signup">
+
     <form name="signupform" id="signupform" >
         <p id="legend">Create your account!</p><br><br>
         <div id="column">
@@ -83,7 +78,9 @@
             <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname">
             <br>
             <input type="checkbox" id="AGBcheckbox">
-            <label for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a></label>
+            <label class="popup" for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a>
+                <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
+            </label>
         </div>
         <div id="column">
             <label for="username">Username:</label>
@@ -101,26 +98,14 @@
             <input type="submit" value="Create account" onclick="registerUser()" >
             <br><br>
             <button id="buttonLogin" onclick="showLogin()">Back to login</button>
-        </div>
-        <br>
-       <!-- <div id="lower2">
-            <input type="checkbox" id="AGBcheckbox">
-            <label for="AGBcheckbox" >I have read the <p onclick="openAGB()" href="">AGB's</p></label>
-            <input type="submit" value="Create account" onclick="registerUser()" >
-
-            <div class="popup" >
-            <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
-            </div>
-
             <button class="helpRe">Help
                 <span class="helpText"> Please enter the required information and click on the "Create Account" button to register.
                 </span>
             </button>
-
-
-        </div> -->
+        </div>
     </form>
 </div>
+
 <style>
 
     /* The Modal (background) */
