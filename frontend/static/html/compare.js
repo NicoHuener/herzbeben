@@ -186,6 +186,7 @@ function starttheshow (personID, soID) {
         if (xmlsocat.readyState == XMLHttpRequest.DONE) {
             var json = xmlsocat.responseText;
             var selectedshootout = JSON.parse(json);
+
             if (selectedshootout.category == null) {
                 //usershootout
                 getuserpics(personID);
@@ -193,16 +194,31 @@ function starttheshow (personID, soID) {
             else {
                 //shootout hat eine category
                 var shootoutcategory = selectedshootout.category;
-
+                getpicsfromcategory(shootoutcategory);
 
             }
         }
     };
 
 }
+function getpicsfromcategory(category) {
+    alert(category);
+    var xmlhttpr = new XMLHttpRequest();
+    xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/photosfromcat/" + category);
+    xmlhttpr.send(null);
 
+    xmlhttpr.onreadystatechange = function () {
+        if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+            var json = xmlhttpr.responseText;
+            photos = JSON.parse(json);
+            photos = shuffle(photos);
+            loadshootout();
+        }
+    };
+}
 
 function getuserpics(personID){
+    alert("usershootout");
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);
