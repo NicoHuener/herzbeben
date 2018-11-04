@@ -70,13 +70,24 @@
         <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="sidebar-nav">
                 <ul class="nav">
-                    <h1>Shootouts</h1>
+                    <h1 style="text-align: center">Shootouts</h1>
                     <br>
                     <button type="button" id="create_shootout" onclick="openModalcS()">Create shootout</button>
+                    <p>
+                    <div class="dropdownKategorie">
+                    <button class="dropBtnKat">Category <span class="caret"></span></button>
+                        <div class="dropdown-content">
+                            <a href="#">Animals</a>
+                            <a href="#">Art</a>
+                            <a href="#">Fashion</a>
+                            <a href="#">Food</a>
+                            <a href="#">Nature</a>
+                            <a href="#">Portrait</a>
+                        </div>
+                    </div></p>
                     <div class="form-group" id="search_shootout">
                         <input  type="text" class="form-control" id="shootout_input" placeholder="Search for shootout" onkeyup="searchShootout()">
                     </div >
-
                     <ul id="shootouttable">
                         <!--/ Inhalt wird dynamisch geladen! -->
                     </ul>
