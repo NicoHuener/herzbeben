@@ -76,7 +76,7 @@ public class ShootoutService {
     }
 
     @GET
-    @Path("/{id}/shootoutname")
+    @Path("/shootout/{id}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public List<Shootout> getShootoutByShootoutid(@PathParam("id") long id) throws Exception {
