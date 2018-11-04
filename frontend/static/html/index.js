@@ -369,20 +369,13 @@ alert("Account for "+username+" successfully created!")
         else {
             alert('AGBs not checked');
             //text.style.display = "block";
-            //var popup = document.getElementById("myPopup");
-            //popup.classList.toggle("show");
-            function myFunction() {
-                    var popup = document.getElementById("myPopup");
-                    popup.classList.toggle("show");
-                }
+            var popup = document.getElementById("myPopup");
+            popup.classList.toggle("show");
+
         }
     }
 
 
-    function myFunction() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-    }
 
 
 

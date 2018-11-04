@@ -61,9 +61,9 @@
 
  <!-- creates signup sheet -->
 <div id="signup">
-    <div class="popup" onclick="myFunction()" id="popuptoggle">Click me to toggle the popup!
+    <!--<div class="popup" onclick="myFunction()" id="popuptoggle">Click me to toggle the popup!
         <span class="popuptext" id="myPopup">A Simple Popup!</span>
-    </div>
+    </div> -->
 
     <form name="signupform" id="signupform" >
         <p id="legend">Create your account!</p><br><br>
@@ -81,7 +81,9 @@
             <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname">
             <br>
             <input type="checkbox" id="AGBcheckbox">
-            <label for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a></label>
+            <label class="popup" for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a>
+                <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
+            </label>
             <!--<div class="popup" >
                 <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
             </div>-->
