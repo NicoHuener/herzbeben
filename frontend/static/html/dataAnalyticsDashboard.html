@@ -84,6 +84,32 @@
     <div>User's Preferences</div>
     <div>Standard Variance</div>
 </div>
+<script>
+    window.onload = function () {
+        var userID = cookiewerteHolen();
+        var AdminID = "1";
+        if (userID != AdminID ) {
+            console.log("kein Admin");
+            window.location.replace("http://localhost:8080/compare.html");
+        }
+        else if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+        }
+    };
+
+    function cookiewerteHolen () {
+        var Wert = "";
+        if (document.cookie) {
+            var Wertstart = document.cookie.indexOf("=") + 1;
+            var Wertende = document.cookie.indexOf(";");
+            if (Wertende == -1) {
+                Wertende = document.cookie.length;
+            }
+            Wert = document.cookie.substring(Wertstart, Wertende);
+        }
+        return Wert;
+    }
+</script>
 </body>
 </html>
 
