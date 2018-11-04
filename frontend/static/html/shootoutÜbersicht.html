@@ -44,23 +44,15 @@
                     <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
-                    <li class="dropdown">
-                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
-                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="pictureRanking.html">Picture Ranking</a></li>
-                            <li><a href="photographer.html">Photographer Ranking</a></li>
-                            <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
-                            <li role="separator" class="divider"></li>
-                        </ul>
-                    </li>
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="allphotos.html">All Pictures</a></li>
-                            <li><a href="FAQ.html">Help</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
@@ -86,7 +78,71 @@
         </tr>
 
         <script>
-        /*
+            window.onload = function profileLink (){
+
+                var shootoutlist;
+                var anzahlshootouts;
+                var userdata;
+                var anzahlusers;
+
+
+
+                //erster Request: Get username
+                var xmlhttplog = new XMLHttpRequest();
+
+                xmlhttplog.open("GET", 'http://localhost:8080/meetme/api/person/', true);
+                xmlhttplog.setRequestHeader("Content-Type", "application/json");
+                xmlhttplog.send(null);
+
+                xmlhttplog.onreadystatechange = function () {
+                    if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
+                        var jsona = xmlhttplog.responseText;
+                        userdata = JSON.parse(jsona);
+                        anzahlusers=(Object.keys(userdata).length);
+                        getshootouts();
+                    }
+                };
+
+    function getshootouts() {
+
+                //zweiter Request: Get shootoutname and userID
+                var xhr = new XMLHttpRequest();
+                //var json;
+                xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(null);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == XMLHttpRequest.DONE) {
+                        var json = xhr.responseText;
+                        shootoutlist = JSON.parse(json);
+                        anzahlshootouts=(Object.keys(shootoutlist).length);
+                       // alert(shootoutlist[0].person.id);
+                       // alert( userdata[0].id);
+
+
+                        for (var i = 0; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
+
+
+                            for (var j=0; j < anzahlusers; j++){
+                                if(shootoutlist[i].person.id == userdata[j].id){
+
+                                    result.innerHTML += "<tr > " +
+                                        "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
+                                        "<td id='td2 " + i + "'><a href=\"otherusersprofile.html\?uid="+shootoutlist[i].person.id+"\" >"+ userdata[j].username + "</a></td>" +
+                                        "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
+                                        "</tr>";
+                                }
+                            }
+                        }
+                    }
+                };
+
+            }
+            }
+        </script>
+
+        <!--<script>
                 window.onload = function () {
 
                     var xhr = new XMLHttpRequest();
@@ -95,7 +151,7 @@
 
                     xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
                     xhr.send(null);
-                    console.log('shootout gesendet');
+console.log('shootout gesendet');
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == XMLHttpRequest.DONE) {
                             console.log('response erhalten');
@@ -116,69 +172,8 @@
                     };
 
                     };
-            */
-    window.onload = function profileLink (){
 
-    var shootoutlist;
-    var anzahlshootouts;
-    var userdata;
-    var anzahlusers;
-
-
-
-    //erster Request: Get username
-    var xmlhttplog = new XMLHttpRequest();
-
-        xmlhttplog.open("GET", 'http://localhost:8080/meetme/api/person/', true);
-        xmlhttplog.setRequestHeader("Content-Type", "application/json");
-        xmlhttplog.send(null);
-
-        xmlhttplog.onreadystatechange = function () {
-            if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
-                alert('response erhalten');
-                var json = xmlhttplog.responseText;
-                this.userdata = JSON.parse(json);
-                this.anzahlusers=(Object.keys(userdata).length);
-                alert('ready');
-            }
-            alert('hola');
-        }
-
-    //zweiter Request: Get shootoutname and userID
-    var xhr = new XMLHttpRequest();
-        var json;
-
-
-        xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
-        xhr.send(null);
-        alert('bye n');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == XMLHttpRequest.DONE) {
-                json = xhr.responseText;
-                this.shootoutlist = JSON.parse(json);
-                this.anzahlshootouts=(Object.keys(shootoutlist).length);
-                var shootouttable = document.getElementById("table");
-
-
-                for (var i = 3; i < anzahlshootouts; i++) { //i is set to 3 because of db issue!!!
-                    //var personid = shootoutlist[i].person;
-
-                    for (var j=0; i < anzahlusers; j++){
-                        if(shootoutlist[i].person == userdata[j].id){
-
-                            result.innerHTML += "<tr> " +
-                            "<td id='td1" + i + "'/>" + shootoutlist[i].name+ "</td> " +
-                            "<td id='td2 " + i + " '>" + userdata[j].username + "</td>" +
-                            "<td id='td3 " + i + "'><a href=\"ShootoutRanking.html\?sid="+shootoutlist[i].id+"\" >Picture ranking</a></td>" +
-                            "</tr>";
-                        }
-                    }
-                }
-            }
-        }
-
-};
-            </script>
+            </script>-->
     </table>
 
     <script>

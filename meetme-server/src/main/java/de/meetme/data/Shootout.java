@@ -15,16 +15,19 @@ public class Shootout extends PersistentObject {
     private String name;
     @ManyToOne
     private Person person;
+    private String category;
+
 
     public Shootout() {
         // Needed by Jackson deserialization
         super(0);
     }
 
-    public Shootout(String name,Person person) {
+    public Shootout(String name,Person person, String category) {
         super(0);
         this.name = name;
         this.person = person;
+        this.category = category;
     }
 
     @JsonProperty
@@ -37,11 +40,17 @@ public class Shootout extends PersistentObject {
         return person;
     }
 
+    @JsonProperty
+    public String getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
         return "Shootout{" +
                 "name='" + name + '\'' +
                 ", personid=" + getPerson().getEmail() +
+                ", category=" + category +
                 '}';
     }
 }
