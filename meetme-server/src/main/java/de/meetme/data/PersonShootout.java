@@ -13,18 +13,17 @@ public class PersonShootout extends PersistentObject{
     private Person person;
     @ManyToOne
     private Shootout shootout;
-    private Timestamp timestamp;
+    //private String timestamp;
     private String category;
 
     public PersonShootout() {// Needed by Jackson deserialization
         super(0);
     }
 
-    public PersonShootout(Person person, Shootout shootout, Timestamp timestamp, String category) {
+    public PersonShootout(Person person, Shootout shootout, String category) {
         super(0);
         this.person = person;
         this.shootout = shootout;
-        this.timestamp = timestamp;
         this.category = category;
     }
 
@@ -38,10 +37,6 @@ public class PersonShootout extends PersistentObject{
         return shootout;
     }
 
-    @JsonProperty
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
 
     @JsonProperty
     public String getCategory() {
@@ -52,7 +47,6 @@ public class PersonShootout extends PersistentObject{
         return "PersonShootout{" +
                 "person=" + person +
                 ", shootout='" + shootout + '\'' +
-                ", timestamp=" + timestamp + '\''+
                 ", category='" + category + '\'' +
                 '}';
     }
