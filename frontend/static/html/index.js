@@ -42,8 +42,14 @@ function checkNotEmpty(usernamel,passwordl) {
                 var dbusername = (userdata.username);
                 alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
                 if (dbpassword === passwordl && dbusername === usernamel) {
+                    if (usernamel == "admin"){
+                        document.cookie = "id=" + userdata.id;
+                        window.location.replace("http://localhost:8080/dataAnalyticsDashboard.html");
+                    }
+                    else{
                     document.cookie = "id=" + userdata.id;
                     window.location.replace("http://localhost:8080/compare.html");
+                    }
                 }
                 else {
                     alert ('wrong username or password!');
@@ -258,7 +264,7 @@ function checkRequired() {
 
         if(checkBox.checked){
 
-            alert('register started'); //debug purpose only
+            //alert('register started'); //debug purpose only
 
             // initalizing variables with textfields from html signup form
             var email = document.getElementById("mail").value;
@@ -271,7 +277,7 @@ function checkRequired() {
             checkdataindb(email, username);
 
             function createuser() {
-                alert("createuserstarted");
+               // alert("createuserstarted");
                 // Check if ConfirmationPW = PW
                 if (checkPassword(confpw, password) === true) {
                     //create hashed PW
@@ -289,15 +295,18 @@ function checkRequired() {
                         "firstName": firstname,
                         "username": username
                     }));
-
-                }
-                else {
-                    alert('signin failed');
+                   /* xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                            setTimeout (createcookie() , 2000 );
+                        }
+                    };
+                    /*else {
+                    alert('signin failed');}*/
                 }
             }
 
-            function createcookie() {
-                alert("createcookiestarted");
+            /*function createcookie() {
+                //alert("createcookiestarted");
                 var xmlhttpcookie = new XMLHttpRequest(); // new HttpRequest instance
 
                 xmlhttpcookie.open("GET", "http://localhost:8080/meetme/api/person/username/" + username, true);
@@ -308,15 +317,15 @@ function checkRequired() {
                     if (xmlhttpcookie.readyState == XMLHttpRequest.DONE) {
                         var json = xmlhttpcookie.responseText;
                         var userdata = JSON.parse(json);
-                        alert(userdata.id);
+                        //alert(userdata.id);
                         document.cookie = "id=" + userdata.id;
                     }
                 }
 
-            }
+            }*/
 
             function checkdataindb(email, username) {
-               alert("checkdataindbstarted");
+              // alert("checkdataindbstarted");
                 var xhr = new XMLHttpRequest();
                 var json;
                 var anzahluser;
@@ -343,16 +352,17 @@ function checkRequired() {
                         }
                         if (useravailable === true) {
                             createuser();
-                            createcookie();
+                            window.location.replace("http://localhost:8080/index.html");
+alert("Account for "+username+" successfully created!")
 
-                            window.location.replace("http://localhost:8080/compare.html");
+
+
+                           // window.location.replace("http://localhost:8080/compare.html");
                         }
                     }
                 }
 
             }
-
-
         }
 
 

@@ -76,6 +76,16 @@ public class ShootoutService {
     }
 
     @GET
+    @Path("/{id}/shootoutname")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Shootout> getShootoutByShootoutid(@PathParam("id") long id) throws Exception {
+        log.debug("Get Shootout by ID: " + id);
+
+        return shootoutDao.getShootoutByShootoutid(id);
+    }
+
+    @GET
     @Path("/categoryFromShootout/{id}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
