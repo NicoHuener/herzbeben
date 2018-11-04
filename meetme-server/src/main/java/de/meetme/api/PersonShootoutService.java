@@ -73,7 +73,7 @@ public class PersonShootoutService {
         return dao.getPersonsFromShootout(shootout);
     }
 
-    @GET
+   /* @GET
     @Path("/timestamp")
     @UnitOfWork
     public List<Shootout> getShootoutsByDate(String timestamp) throws Exception {
@@ -81,6 +81,6 @@ public class PersonShootoutService {
         Shootout shootout = shootoutDao.get(timestamp);
 
         return dao.getShootoutsByDate(timestamp);
-    }
+    }*/
 
 }
