@@ -114,8 +114,8 @@
 
 
                     for (var i = 0; i < anzahluser; i++) {
-                        result.innerHTML += "<tr> " +
-                            "<td id='td1" + i + "'/>" + userlist[i].username + "</td> " +
+                        result.innerHTML += "<tr id='row'> " +
+                            "<td id='td1" + i + "'/><a href=\"otherusersprofile.html\?uid="+userlist[i].id+"\" >" + userlist[i].username + "</a></td> " +
                             "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
                             "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
                             "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +

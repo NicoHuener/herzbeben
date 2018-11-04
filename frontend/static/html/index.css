@@ -131,9 +131,8 @@ html, body {
     border: none;
     width: 40px;
     height: 40px;
-    position: fixed;
-    margin-left: 293px;
-    bottom: 560px;
+    margin-left: 285px;
+    margin-bottom: 100px;
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -311,9 +310,6 @@ margin-top: 18px;
 }
 
 
-/*popup*/
-/* Popup container - can be anything you want */
-
 .popup {
     position: relative;
     display: inline-block;
@@ -368,4 +364,9 @@ margin-top: 18px;
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+
+#popuptoggle {
+    margin-left: 300px;
 }
