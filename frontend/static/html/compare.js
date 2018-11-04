@@ -102,15 +102,11 @@ function createshootoutlist() {
                            var shootoutid = shootoutData[i].id;
                             shootouttable.innerHTML +=
                                 "<tr>" +
-                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + "</a>"+ "</li>" +
+                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name /*+ " - " + shootoutData[i].category.italics()*/ + "</a>"+ "</li>" +
                                 "</tr>";
 
                         }
                     }
-                }
-            }
-
-function cookiewerteHolen () {
     var Wert = "";
     if (document.cookie) {
         var Wertstart = document.cookie.indexOf("=") + 1;
