@@ -79,68 +79,58 @@
 
 <div id="ranking">
     <br>
-    <h1>Top ranked pictures</h1>
-    <h2>The 3 best pictures</h2>
+    <h1>Best of the best</h1>
+    <h2>The 3 best pictures overall</h2>
     <br><br>
 </div>
 
 <div class="container" >
-    <div id="Best-photographer">
-        <h4>No.1 Photographer:</h4>
-        <h4 id="1username"></h4>
-        <h5>Best picture</h5>
-        <img id="bestphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="bestphotowins"></h4>
+    <div id="Best-picture">
+        <h4>No.1</h4>
+        <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="bestpicwins"></h4>
     </div> <br> <br>
-    <div id="Second-photo">
-        <h4>No.2 Photographer:</h4>
-        <h4 id="2username"></h4>
-        <h5>Best picture</h5>
-        <img id="secondphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="secondphotowins"></h4>
+    <div id="Second-best">
+        <h4>No.2</h4>
+        <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="secondpicwins"></h4>
     </div> <br> <br>
-    <div id="Third-photo">
-        <h4>No.3 Photographer:</h4>
-        <h4 id="3username"></h4>
-        <h5>Best picture</h5>
-        <img id="thirdphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="thirdphotowins"></h4>
+    <div id="Third-best">
+        <h4>No.3</h4>
+        <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="thirdpicwins"></h4>
     </div>
 </div>
 
 <script>
     window.onload = function (){
-        alert('in function');
-        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+        alert('function running');
 
-            xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestphotographers", true);
-            xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        var xmlhttplog3 = new XMLHttpRequest(); // new HttpRequest instance
+
+            xmlhttplog3.open("GET", "http://localhost:8080/meetme/api/rank/", true);
+            xmlhttplog3.setRequestHeader("Content-Type", "application/json");
             //sent the new HttpRequest
-            //var data = JSON.stringify(json);
-            xmlhttplog2.send(null);
-            console.log('request für top fotografen gesendet');
+            var data = JSON.stringify(json);
+            xmlhttplog3.send(null);
+            console.log('request für beste Bilder gesendet');
 
-                xmlhttplog2.onreadystatechange = function () {
-                    if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
-                        var json = xmlhttplog2.responseText;
-                        var userlist = JSON.parse(json);
-                        userlist.reverse();
-                        document.getElementById('bestphoto').src = userlist[0].picture;
-                        document.getElementById('bestphotowins').innerText = userlist[0].wins;
-                        //document.getElementById('1username').innerText = userlist[0].person.username;
-                        document.getElementById('1username').innerText = userlist[0].person;
-                        //-----------------------------
-                        document.getElementById('secondphoto').src = userlist[1].picture;
-                        document.getElementById('secondphotowins').innerText = userlist[1].wins;
-                        document.getElementById('2username').innerText = userlist[1].person;
-                        //-----------------------------
-                        document.getElementById('thirdphoto').src = userlist[2].picture;
-                        document.getElementById('thirdphotowins').innerText = userlist[2].wins;
-                        document.getElementById('3username').innerText = userlist[2].person;
+                xmlhttplog3.onreadystatechange = function () {
+                    if (xmlhttplog3.readyState == XMLHttpRequest.DONE) {
+                        var json = xmlhttplog3.responseText;
+                        var wins = JSON.parse(json);
+                        wins.reverse();
+                        alert(wins);
+                        alert (Object.keys(wins).length);
+                        alert(wins[0].photo.picture);
+                        document.getElementById('bestpic').src = wins[0].photo.picture;
+                        document.getElementById('bestpicwins').innerText = "Wins: "+ wins[0].wins;
+                        document.getElementById('Secondpic').src = wins[1].photo.picture;
+                        document.getElementById('secondpicwins').innerText = "Wins: "+ wins[1].wins;
+                        document.getElementById('Thirdpic').src = wins[2].photo.picture;
+                        document.getElementById('thirdpicwins').innerText = "Winss: "+ wins[2].wins;
                     }
-
                 };
-
             };
 
 </script>
