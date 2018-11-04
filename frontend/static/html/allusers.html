@@ -51,7 +51,7 @@
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="allphotos.html">All Pictures</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
@@ -114,8 +114,8 @@
 
 
                     for (var i = 0; i < anzahluser; i++) {
-                        result.innerHTML += "<tr> " +
-                            "<td id='td1" + i + "'/>" + userlist[i].username + "</td> " +
+                        result.innerHTML += "<tr id='row'> " +
+                            "<td id='td1" + i + "'/><a href=\"otherusersprofile.html\?uid="+userlist[i].id+"\" >" + userlist[i].username + "</a></td> " +
                             "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
                             "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
                             "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +
