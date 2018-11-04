@@ -180,9 +180,9 @@
     width: 40px;
     height: 20px;
     position: fixed;
-    margin-left: -105px;
+ /*   margin-left: -105px; */
     display: inline-block;
-    bottom: 385px;
+ /*   bottom: 385px; */
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -334,7 +334,7 @@ footer {
 }
 .modal-content{
     background-color:#fafafa;
-    margin:15% auto;
+    margin:10% auto;
     padding:30px;
     width: 30%;
     box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0.17);
@@ -348,7 +348,7 @@ footer {
     border:0;
     border-radius: 5px;
 }
-.close{
+.close, .close2{
     color:#ccc;
     float: right;
     font-size:30px;
@@ -357,6 +357,15 @@ footer {
     color:#000;
     text-decoration: none;
     cursor:pointer;
+}
+.modalInfo-content{
+    background-color:#fafafa;
+    margin:10% auto;
+    padding:30px;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0.17);
+    animation-name:modalopen;
+    animation-duration: 1s;
 }
 /*AGB Accordion
 /* Style the buttons that are used to open and close the accordion panel */
