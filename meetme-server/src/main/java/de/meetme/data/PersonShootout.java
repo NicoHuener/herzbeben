@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import java.security.Timestamp;
 
 @Entity
 public class PersonShootout extends PersistentObject{
@@ -12,14 +13,14 @@ public class PersonShootout extends PersistentObject{
     private Person person;
     @ManyToOne
     private Shootout shootout;
-    private String timestamp;
+    private Timestamp timestamp;
     private String category;
 
     public PersonShootout() {// Needed by Jackson deserialization
         super(0);
     }
 
-    public PersonShootout(Person person, Shootout shootout, String timestamp, String category) {
+    public PersonShootout(Person person, Shootout shootout, Timestamp timestamp, String category) {
         super(0);
         this.person = person;
         this.shootout = shootout;
@@ -38,7 +39,7 @@ public class PersonShootout extends PersistentObject{
     }
 
     @JsonProperty
-    public String getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
