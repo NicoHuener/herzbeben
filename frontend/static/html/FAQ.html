@@ -21,10 +21,8 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 17px;
-            font-weight: bold;
+            font-size: 15px;
             transition: 0.4s;
-
         }
 
         .active, .accordion:hover {
@@ -33,27 +31,11 @@
 
         .panel {
             padding: 0 18px;
-
             background-color: white;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
-
-        h1  {
-            margin-left: 10px;
-            margin-bottom: 30px;
-            margin-top: 80px;
-            text-shadow: 2px 2px #E9AD9C;
-            text-align: center;
-        }
-
-        p {
-            margin-top: 10px;
-        }
-
-
-
     </style>
 </head>
 <body>
@@ -89,6 +71,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
+                    <li class="dropdown">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="pictureRanking.html">Picture Ranking</a></li>
+                            <li><a href="photographer.html">Photographer Ranking</a></li>
+                            <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
@@ -108,7 +99,7 @@
 </header>
 </head>
 
-<h1>Frequently Asked Questions</h1>
+<p></p>
 
 <button class="accordion">How can I create a shootout?</button>
 <div class="panel">
@@ -128,27 +119,12 @@
     </p>
 </div>
 
-<button class="accordion">How can I search for other shootouts?</button>
+<button class="accordion"></button>
 <div class="panel">
-    <p>If you want to find someone else's shootout, just search for the name of the shootout in the search bar on the top left of the page.
+    <p>
     </p>
 </div>
 
-<button class="accordion">Will my pictures be made available to third parties?</button>
-<div class="panel">
-    <p>Your pictures belong to you only. Klicks does not forward any pictures to our partners or other websites.
-    </p>
-</div>
-<button class="accordion"></button>
-<div class="panel">
-    <p>
-    </p>
-</div>
-<button class="accordion"></button>
-<div class="panel">
-    <p>
-    </p>
-</div>
 <script>
     var acc = document.getElementsByClassName("accordion");
     var i;

@@ -45,6 +45,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
+                    <li class="dropdown">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="pictureRanking.html">Picture Ranking</a></li>
+                            <li><a href="photographer.html">Photographer Ranking</a></li>
+                            <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
@@ -71,8 +80,7 @@
 </button>
 
 <button class="helpBtn6">Help
-    <span class="helpText">Please select the picture you want to upload and click on "Upload Picture"!
-                           Pictures with a size up to 2048 bytes are possible to upload.</span>
+    <span class="helpText">Please select the picture you want to upload and click on "Upload Picture"!</span>
 </button>
 <body>
 <header id="heading">

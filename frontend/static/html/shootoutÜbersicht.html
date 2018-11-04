@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Fallstudie</title>
-    <link rel="icon" href="./images/Herzbeben_Logo.png">
+    <link rel="icon" href="Herzbeben_Logo.png">
     <link rel="stylesheet" href="compare_profile.css" type="text/css">
     <link rel="stylesheet" href="shootout.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
@@ -151,7 +151,7 @@
 
                     xhr.open('GET', 'http://localhost:8080/meetme/api/shootout', true);
                     xhr.send(null);
-                    console.log('shootout gesendet');
+console.log('shootout gesendet');
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == XMLHttpRequest.DONE) {
                             console.log('response erhalten');

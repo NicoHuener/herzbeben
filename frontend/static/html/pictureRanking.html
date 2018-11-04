@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Data Analytics</title>
-    <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css">
-
-    <!-- for top navbar -->
+    <title>Fallstudie</title>
+    <link rel="icon" href="Herzbeben_Logo.png">
+    <link rel="stylesheet" href="compare_profile.css" type="text/css">
+    <link rel="stylesheet" href="shootout.css" type="text/css">
+    <!-- Latest compiled and minified CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="dataAnalyticsDashboard.css" type="text/css">
     <script type=text/javascript src = "navbarFunction.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
-</head>
 
+</head>
 <body>
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
     <nav role="navigation">
@@ -30,13 +29,18 @@
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
             </div>
 
+            <!--creates Help button-->
+            <div id="helpBtn3">
+                <button class="helpBtn3">Help
+                    <span class="helpText"> On this page you see the picture ranking of the selected shootout. To
+                      get back to the different shootouts click on "Shootout Rankings" at the top menu.
+      </span>
+                </button>
+            </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <!--            <li><a href="#">Help</a></li>
-                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
-                     -->
-                </ul>
+                <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
                     <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
                     <!-- <div class="form-group">
@@ -72,28 +76,64 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-<!-- Seitenüberschrift-->
-<header id="heading">
-    <h1 style=margin-top:0px;>DATA ANALYTICS</h1>
-</header>
 
-<!--Help button-->
-<button class="helpBtn1">Help
-    <span class="helpText">This is your data analytics dashboard. It is divided into 3 sections: <br> 1. Geolocation: Track the location of your users <br> 2. User's Preferences: Take a look into the shootout preferecnes. <br> 3. Standard Variance: Examine the deviation of an individual assessment from the average assessment.
-            </span>
-</button>
+<div id="ranking">
+    <br>
+    <h1>Best of the best</h1>
+    <h2>The 3 best pictures overall</h2>
+    <br><br>
+</div>
 
-<!-- JavaScript for top navbar -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+<div class="container" >
+    <div id="Best-picture">
+        <h4>No.1</h4>
+        <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="bestpicwins"></h4>
+    </div> <br> <br>
+    <div id="Second-best">
+        <h4>No.2</h4>
+        <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="secondpicwins"></h4>
+    </div> <br> <br>
+    <div id="Third-best">
+        <h4>No.3</h4>
+        <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+        <h4 id="thirdpicwins"></h4>
+    </div>
+</div>
+
+<script>
+    window.onload = function (){
+        alert('function running');
+
+        var xmlhttplog3 = new XMLHttpRequest(); // new HttpRequest instance
+
+            xmlhttplog3.open("GET", "http://localhost:8080/meetme/api/rank/", true);
+            xmlhttplog3.setRequestHeader("Content-Type", "application/json");
+            //sent the new HttpRequest
+            var data = JSON.stringify(json);
+            xmlhttplog3.send(null);
+            console.log('request für beste Bilder gesendet');
+
+                xmlhttplog3.onreadystatechange = function () {
+                    if (xmlhttplog3.readyState == XMLHttpRequest.DONE) {
+                        var json = xmlhttplog3.responseText;
+                        var wins = JSON.parse(json);
+                        wins.reverse();
+                        alert(wins);
+                        alert (Object.keys(wins).length);
+                        alert(wins[0].photo.picture);
+                        document.getElementById('bestpic').src = wins[0].photo.picture;
+                        document.getElementById('bestpicwins').innerText = "Wins: "+ wins[0].wins;
+                        document.getElementById('Secondpic').src = wins[1].photo.picture;
+                        document.getElementById('secondpicwins').innerText = "Wins: "+ wins[1].wins;
+                        document.getElementById('Thirdpic').src = wins[2].photo.picture;
+                        document.getElementById('thirdpicwins').innerText = "Wins: "+ wins[2].wins;
+                    }
+                };
+            };
+
 </script>
 
-<div class="flex-container">
-    <div>Geolocation</div>
-    <div>User's Preferences</div>
-    <div>Standard Variance</div>
-</div>
 </body>
 </html>
-
-
-
