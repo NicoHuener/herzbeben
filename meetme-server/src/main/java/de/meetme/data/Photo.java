@@ -76,9 +76,9 @@ public class Photo extends PersistentObject {
         return "Photo{" +
                 "person=" + person +
                 ", title='" + title + '\'' +
-                ", clicks=" + clicks +
-                ", wins=" + wins +
-                ", category=" + category +
+                ", clicks=" + clicks + '\''+
+                ", wins=" + wins +'\''+
+                ", category='" + category + '\'' +
                 '}';
     }
 }
