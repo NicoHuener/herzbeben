@@ -28,49 +28,37 @@ public class PersonShootoutService {
         this.shootoutDao = shootoutDao;
     }
 
-   /* @POST
-    @Path("/{shootout}&{persons}")
-    @UnitOfWork
-    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public Shootout addParticipantsToShootout(@PathParam("shootout") Shootout shootout, @PathParam("persons") List<Person> persons) throws Exception {
-        log.debug("Create Teilnehmer am Shootout : " + shootout.getName());
-
-        for(Person person:persons){
-            dao.persist(new PersonShootout(person,shootout));
-        }
-        return shootout;
-    }*/
-
-    /*------------------------------------------------------------------------------------------------
-    Noch zu bearbeiten: shootout über shootoutid suchen, nicht über shootoutname
     @POST
-    @Path("/{shootoutname}&{userid}")
+    @Path("/{shootoutId}&{userId}&{timestamp}&{category}")
     @UnitOfWork
-    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public Shootout addParticipantToShootout(@PathParam("shootoutname") String shootoutname, @PathParam("userid") List<Integer> userids) throws Exception {
-        log.debug("Create Teilnehmer am Shootout : " + shootoutname);
-
-        for(int i = 0; i< userids.size(); i++){
-            int userid = userids.get(i);
-            Person person = personDao.get(userid);
-            Shootout shootout = shootoutDao.getShootoutbyName(shootoutname);
-            dao.persist(new PersonShootout(person,shootout));
-        }
-        return shootoutDao.persist(shootout);
+    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId,@PathParam("userId")long userId,@PathParam("timestamp")String timestamp,@PathParam("category")String category){
+     Shootout shootout = shootoutDao.get(shootoutId);
+     Person person = personDao.get(userId);
+        PersonShootout personshootout = new PersonShootout(person,shootout,timestamp,category);
+        return personshootout;
     }
-    --------------------------------------------------------------------------------------------------*/
-
-
-
 
     @GET
-    @Path("/{shootout}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/participants/{shootout}")
     @UnitOfWork
     public List<Person> getParticipantsByShootout(@PathParam("shootout") long shootoutId) throws Exception {
         log.debug("Get Participants from Shootout: " + shootoutId);
         Shootout shootout = shootoutDao.get(shootoutId);
 
         return dao.getPersonsFromShootout(shootout);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{userId}")
+    @UnitOfWork
+    public List<PersonShootout> getTimestampsForShootouts(@PathParam("userId") long userId) throws Exception {
+        log.debug("Get Timestamps from Shootouts: " + userId);
+
+        return dao.getTimeFromShootout(userId);
     }
 
    /* @GET
