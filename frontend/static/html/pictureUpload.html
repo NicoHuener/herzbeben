@@ -81,8 +81,18 @@
 <form id = "Upload" action="http://localhost:8080/meetme/api/photo/upload" method="POST" enctype="multipart/form-data">
     <p>Select a file : <input id="eingabefeld" type="file" name="file" size="45"/></p>
     <input id ="UploadBtn" type="submit"  value="Upload Picture" />
+<br>
+    <p>Select a category:</p>
+    <select style="height: 27px">
+        <option>User Shootout</option>
+        <option>Animals</option>
+        <option>Art</option>
+        <option>Fashion</option>
+        <option>Food</option>
+        <option>Nature</option>
+        <option>Portrait</option>
+    </select>
 </form>
-
 <script>
 
 //onclick="addpictodb()"
