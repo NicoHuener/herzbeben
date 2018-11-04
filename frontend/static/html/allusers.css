@@ -15,7 +15,7 @@
     .helpBtn6 .helpText{
     visibility: hidden;
     width: 150px;
-    height: 100px;
+    height: 150px;
     background-color: #E9AD9C;
     color: white;
     text-align: center;
@@ -23,7 +23,7 @@
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -150%;
+    bottom: -276%;
     left: -225%;
     margin-left: -70px;
     opacity: 0;
