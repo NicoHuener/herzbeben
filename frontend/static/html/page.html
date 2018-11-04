@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AllUsers</title>
+    <title>Admin Page</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="allusers.css" type="text/css">
-    <script type=text/javascript src = "navbarFunction.js"></script>
+    <link rel="stylesheet" href="page.css">
 
+    <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="dataAnalyticsDashboard.css" type="text/css">
     <script type=text/javascript src = "navbarFunction.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
-
 </head>
 
 <body>
-
-<header class="navbar navbar-inverse">
+<header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
     <nav role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,24 +28,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
+                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="40px" height="40px"> </a>
+                <div class="heading">DATA ANALYTICS</div>
+                <button class="helpBtn10">Help
+                    <span class="helpText">This is your data analytics dashboard. It is divided into 2 sections: <br> 1. Geolocation: Track the location of your users <br> 2. User's Preferences: Take a look into the shootout preferecnes. <br> 3. Standard Variance: Examine the deviation of an individual assessment from the average assessment.
+            </span>
+                </button>
             </div>
+
+            <!--search bar
+            div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+            </div>
+               <button type="submit" class="btn btn-default">Submit</button-->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <!--            <li><a href="#">Help</a></li>
+                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
+                     -->
+                </ul>
                 <form class="navbar-form navbar-left">
-                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
-                    <!-- <div class="form-group">
+                    <!--button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                     <!--div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="allusers.html">All Users</a></li>  <!-- Hab ich nur vorläuftig mal hier hin gepackt zwecks schnellerem Zugriff -->
+                <!--ul class="nav navbar-nav navbar-right">
                     <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
-                    <li><a href="profile.html">Profile</a></li>
+                    <li class="active"><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -57,24 +71,25 @@
                             <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
-                </ul>
+                </ul>-->
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 </header>
 
-    <div id="container">
 
-        <h1>Search for Users</h1>
-        <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
-        <!--<select id="mySelect">
-            <option value="username">Search by Username</option>
-            <option value="firstname">Search by Firstname</option>
-            <option value="lastname">Search by Lastname</option>
-        </select> -->
+<div id="container">
 
-        <table id="result" border="solid black" >
-        <tr id="tablerow">
+    <h1>Search for Users</h1>
+    <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
+    <select id="mySelect">
+        <option value="username">Search by Username</option>
+        <option value="firstname">Search by Firstname</option>
+        <option value="lastname">Search by Lastname</option>
+    </select>
+
+    <table id="result" border="solid black" >
+        <tr>
             <th class="column">Username</th>
             <th class="column">First name</th>
             <th class="column">Last name</th>
@@ -82,14 +97,8 @@
             <!--<th>ID</th>-->
             <!--   <th>Password</th>-->
         </tr>
-        </table>
-    </div>
-
-
-    <!--help button-->
-    <button class="helpBtn">Help
-        <span class="helpText">On this page you can see all the users that are registered. </span>
-    </button>
+    </table>
+</div>
 
 <script>
     //Tabelle erstellen
@@ -114,8 +123,8 @@
 
 
                     for (var i = 0; i < anzahluser; i++) {
-                        result.innerHTML += "<tr id='row'> " +
-                            "<td id='td1" + i + "'/><a href=\"otherusersprofile.html\?uid="+userlist[i].id+"\" >" + userlist[i].username + "</a></td> " +
+                        result.innerHTML += "<tr> " +
+                            "<td id='td1 " + i + "'><a href=\"otherusersDataAnalyticsDashboard.html\?uid="+userlist[i].id+"\" >"+ userlist[j].username + "</a></td>" +
                             "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
                             "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
                             "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +
@@ -152,66 +161,6 @@
 
 </script>
 
-<!-- <script>
-    /*Tabelle durchsuchen*/
-    function searchUser() {
-        var x = document.getElementById("mySelect").value;
-        alert(x);
-        if (x == "Search by Username") {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("user_input");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("result");
-            tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[4];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        } else {
-                        tr[i].style.display = "none";
-                        }
-                    }
-                }
-        }
-
-        else if ((x == "Search by Firstname") {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("user_input");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("result");
-            tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[2];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        } else {
-                        tr[i].style.display = "none";
-                        }
-                    }
-                }
-        }
-
-        else if ((x == "Search by Lastname") {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("user_input");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("result");
-            tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        } else {
-                        tr[i].style.display = "none";
-                        }
-                    }
-                }
-        }
-    }
-</script> -->
-
 </body>
+
 </html>

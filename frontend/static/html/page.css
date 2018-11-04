@@ -1,0 +1,46 @@
+#container {
+    margin-left: 50px;
+    margin-right:50px;
+    margin-top: 130px;
+    border-spacing: 7px;
+    }
+
+    .column {
+        width: 300px;
+        background:#E9AD9C;
+        color: #fff;
+        text-align: center;
+    }
+
+ table{
+     border: 1px solid white;
+     border-radius: 3px;
+ }
+ tr:nth-child(even) {
+     background-color: #dddddd;
+ }
+ td, th{
+     border: 1px solid white;
+     padding: 50px;
+
+ }
+ th{
+     font-size: 25px;
+     height: 50px;
+     color: #6F9EB2​;
+
+ }
+ td{
+     font-size: 15px;
+     cellpadding:10px;
+ }
+
+ tr{
+ height:25px;
+ }
+
+ #mySelect {
+ padding: 10px;
+ margin-top: 20px;
+ margin-bottom: 20px;
+ }
