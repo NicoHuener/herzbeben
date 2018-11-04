@@ -47,13 +47,13 @@ public class ShootoutService {
     }*/
 
     @POST
-    @Path("/{shootoutname}&{userid}")
+    @Path("/{shootoutname}&{userid}&{category}")
     @UnitOfWork //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     //public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("person") Person person) throws Exception {
-    public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("userid") long userId) throws Exception {
+    public Shootout createShootout(@PathParam("shootoutname") String shootoutName, @PathParam("userid") long userId,@PathParam("category") String category) throws Exception {
         log.debug("Create Shootout from: " + userId);
         Person person = personDao.get(userId);
-        Shootout shootout = new Shootout(shootoutName,person);
+        Shootout shootout = new Shootout(shootoutName,person,category);
         createRanksForShootout(shootout,person);
         return shootoutDao.persist(shootout);
     }
@@ -73,6 +73,17 @@ public class ShootoutService {
         log.debug("Get Shootout from Person: " + id);
 
         return shootoutDao.getShootoutByPersonid(id);
+    }
+
+    @GET
+    @Path("/categoryFromShootout/{id}")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public String getCategoryFromShootout(@PathParam("id") long id) throws Exception {
+        log.debug("Get Shootout from Person: " + id);
+        Shootout sh = shootoutDao.get(id);
+        String shootout = sh.getCategory();
+        return shootout;
     }
 
     @GET
