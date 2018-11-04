@@ -46,4 +46,13 @@ public class PersonShootout extends PersistentObject{
     public String getCategory() {
         return category;
     }
+    @Override
+    public String toString() {
+        return "PersonShootout{" +
+                "person=" + person +
+                ", shootout='" + shootout + '\'' +
+                ", timestamp=" + timestamp + '\''+
+                ", category='" + category + '\'' +
+                '}';
+    }
 }
