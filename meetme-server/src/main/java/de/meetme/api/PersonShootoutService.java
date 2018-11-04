@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.security.Timestamp;
 import java.util.List;
 
 @Path("/personshootout") // Part of the URL to identify this resource
@@ -28,13 +29,23 @@ public class PersonShootoutService {
         this.shootoutDao = shootoutDao;
     }
 
-    @POST
+    /*@POST
     @Path("/{shootoutId}&{userId}&{timestamp}&{category}")
     @UnitOfWork
-    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId,@PathParam("userId")long userId,@PathParam("timestamp")String timestamp,@PathParam("category")String category){
+    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("timestamp") String timestamp, @PathParam("category")String category){
      Shootout shootout = shootoutDao.get(shootoutId);
      Person person = personDao.get(userId);
         PersonShootout personshootout = new PersonShootout(person,shootout,timestamp,category);
+        return personshootout;
+    }*/
+
+    @POST
+    @Path("/{shootoutId}&{userId}&{category}")
+    @UnitOfWork
+    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("category")String category){
+        Shootout shootout = shootoutDao.get(shootoutId);
+        Person person = personDao.get(userId);
+        PersonShootout personshootout = new PersonShootout(person,shootout,category);
         return personshootout;
     }
 
