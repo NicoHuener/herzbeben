@@ -57,7 +57,7 @@
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="allphotos.html">All Pictures</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
@@ -118,15 +118,15 @@
                         var userlist = JSON.parse(json);
                         userlist.reverse();
                         document.getElementById('bestphoto').src = userlist[0].picture;
-                        document.getElementById('bestphotowins').innerText = "Das Bild hat " + userlist[0].wins + " Siege!";
-                        document.getElementById('1username').innerText = userlist[0].person;
+                        document.getElementById('bestphotowins').innerText = "The picture has " + userlist[0].wins + " wins!";
+                        document.getElementById('1username').innerText = "<a href=\"otherusersprofile.html\?uid="+userlist[0].id+"\" >"+ userlist[0].person + "</a>";
                         //-----------------------------
                         document.getElementById('secondphoto').src = userlist[1].picture;
-                        document.getElementById('secondphotowins').innerText = userlist[1].wins;
+                        document.getElementById('secondphotowins').innerText = "The picture has " + userlist[1].wins + " wins!";
                         document.getElementById('2username').innerText = userlist[1].person;
                         //-----------------------------
                         document.getElementById('thirdphoto').src = userlist[2].picture;
-                        document.getElementById('thirdphotowins').innerText = userlist[2].wins;
+                        document.getElementById('thirdphotowins').innerText = "The picture has " + userlist[2].wins + " wins!";
                         document.getElementById('3username').innerText = userlist[2].person;
                     }
 

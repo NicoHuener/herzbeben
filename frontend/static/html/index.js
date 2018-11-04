@@ -42,8 +42,14 @@ function checkNotEmpty(usernamel,passwordl) {
                 var dbusername = (userdata.username);
                 alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
                 if (dbpassword === passwordl && dbusername === usernamel) {
+                    if (usernamel == "admin"){
+                        document.cookie = "id=" + userdata.id;
+                        window.location.replace("http://localhost:8080/dataAnalyticsDashboard.html");
+                    }
+                    else{
                     document.cookie = "id=" + userdata.id;
                     window.location.replace("http://localhost:8080/compare.html");
+                    }
                 }
                 else {
                     alert ('wrong username or password!');
@@ -363,9 +369,19 @@ alert("Account for "+username+" successfully created!")
         else {
             alert('AGBs not checked');
             //text.style.display = "block";
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
+            //var popup = document.getElementById("myPopup");
+            //popup.classList.toggle("show");
+            function myFunction() {
+                    var popup = document.getElementById("myPopup");
+                    popup.classList.toggle("show");
+                }
         }
+    }
+
+
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
     }
 
 
