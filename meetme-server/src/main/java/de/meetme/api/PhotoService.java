@@ -89,9 +89,10 @@ import java.util.List;
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/photosfromcat/{category}")
+    @UnitOfWork
     public List<Photo> getPhotofromcategory(@PathParam("category") String category) throws Exception {
         log.debug("Get Photos from Category: " + category);
-     return dao.getPhotobyspecificcategory(category);
+     return dao.getPhotosfromcat(category);
     }
 
     //Liefert Liste sortiert nach clicks
