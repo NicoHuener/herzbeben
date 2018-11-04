@@ -85,13 +85,24 @@ import java.util.List;
         return dao.getPhotosbycategory();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/{category}")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Photo> getPhotosbycategory(@PathParam("category") String category) throws Exception {
+
+        return dao.getPhotobycategory(category) ;
+    }
+
     //Liefert Liste sortiert nach clicks
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/bestpictures")
+    @Path("/bestpicture")
     @UnitOfWork
-    public List<Photo> getbestpictures(){
+    public List<Photo> getbestpicturebyclicks(){
         return dao.getclickssorted();
     }
 
@@ -99,9 +110,9 @@ import java.util.List;
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/bestphotographers")
+    @Path("/bestbywins")
     @UnitOfWork
-    public List<Photo> getbestphotographers(){
+    public List<Photo> getbestbywins(){
         return dao.getwinssorted();
     }
 
