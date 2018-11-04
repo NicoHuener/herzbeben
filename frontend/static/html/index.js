@@ -42,8 +42,14 @@ function checkNotEmpty(usernamel,passwordl) {
                 var dbusername = (userdata.username);
                 alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
                 if (dbpassword === passwordl && dbusername === usernamel) {
+                    if (usernamel == "admin"){
+                        document.cookie = "id=" + userdata.id;
+                        window.location.replace("http://localhost:8080/dataAnalyticsDashboard.html");
+                    }
+                    else{
                     document.cookie = "id=" + userdata.id;
                     window.location.replace("http://localhost:8080/compare.html");
+                    }
                 }
                 else {
                     alert ('wrong username or password!');

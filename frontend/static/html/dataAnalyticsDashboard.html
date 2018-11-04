@@ -87,8 +87,8 @@
 <script>
     window.onload = function () {
         var userID = cookiewerteHolen();
-        var AdminID = "1";
-        if (userID != AdminID ) {
+        var AdminID = "129";
+        if (userID !== AdminID ) {
             console.log("kein Admin");
             window.location.replace("http://localhost:8080/compare.html");
         }

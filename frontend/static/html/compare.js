@@ -100,13 +100,17 @@ function createshootoutlist() {
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person.id;
                            var shootoutid = shootoutData[i].id;
+                           var category = shootoutData[i].category;
+                           if (category == null){
+                               category = "Usershootout"
+                           }
                             shootouttable.innerHTML +=
                                 "<tr>" +
-                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name /*+ " - " + shootoutData[i].category.italics()*/ + "</a>"+ "</li>" +
+                                "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + " - " + category.italics() + "</a>"+ "</li>" +
                                 "</tr>";
 
                         }
-                    }
+                    }};
     var Wert = "";
     if (document.cookie) {
         var Wertstart = document.cookie.indexOf("=") + 1;
