@@ -32,8 +32,9 @@
             <!--creates Help button-->
             <div id="helpBtn3">
                 <button class="helpBtn3">Help
-                    <span class="helpText"> On this page you see the picture ranking of the selected shootout. To
-                      get back to the different shootouts click on "Shootout Rankings" at the top menu.
+                    <span class="helpText"> On this page the 3 recent best pictures.<br>
+                    The best picture is the one with most of the points.<br>
+                    To get back to the other Rankings click on the tab "Leaderboars" on the top menu.
       </span>
                 </button>
             </div>
@@ -65,7 +66,6 @@
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
-                            <li><a href="allphotos.html">All Pictures</a></li>
                             <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
                         </ul>
@@ -102,36 +102,38 @@
 </div>
 
 <script>
-    window.onload = function (){
-        alert('function running');
+    window.onload = function () {
+        alert('in function');
+        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
-        var xmlhttplog3 = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestpicture", true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        //sent the new HttpRequest
+        //var data = JSON.stringify(json);
+        xmlhttplog2.send(null);
+        console.log('request für top fotografen gesendet');
 
-            xmlhttplog3.open("GET", "http://localhost:8080/meetme/api/rank/", true);
-            xmlhttplog3.setRequestHeader("Content-Type", "application/json");
-            //sent the new HttpRequest
-            var data = JSON.stringify(json);
-            xmlhttplog3.send(null);
-            console.log('request für beste Bilder gesendet');
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var userlist = JSON.parse(json);
+                userlist.reverse();
 
-                xmlhttplog3.onreadystatechange = function () {
-                    if (xmlhttplog3.readyState == XMLHttpRequest.DONE) {
-                        var json = xmlhttplog3.responseText;
-                        var wins = JSON.parse(json);
-                        wins.reverse();
-                        alert(wins);
-                        alert (Object.keys(wins).length);
-                        alert(wins[0].photo.picture);
-                        document.getElementById('bestpic').src = wins[0].photo.picture;
-                        document.getElementById('bestpicwins').innerText = "Wins: "+ wins[0].wins;
-                        document.getElementById('Secondpic').src = wins[1].photo.picture;
-                        document.getElementById('secondpicwins').innerText = "Wins: "+ wins[1].wins;
-                        document.getElementById('Thirdpic').src = wins[2].photo.picture;
-                        document.getElementById('thirdpicwins').innerText = "Wins: "+ wins[2].wins;
-                    }
-                };
-            };
+                //User1 ------------------------------------------------------------------------
+                document.getElementById('bestphoto').src = userlist[0].picture;
+                document.getElementById('bestphotowins').innerText = userlist[0].clicks;
 
+                //User 2-------------------------------------------------------------------------
+                document.getElementById('secondphoto').src = userlist[1].picture;
+                document.getElementById('secondphotowins').innerText = userlist[1].clicks;
+
+                //User 3-------------------------------------------------------------------------
+                document.getElementById('thirdphoto').src = userlist[2].picture;
+                document.getElementById('thirdphotowins').innerText = userlist[2].clicks;
+
+            }
+        };
+    };
 </script>
 
 <footer class="footer">
