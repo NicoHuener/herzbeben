@@ -42,7 +42,7 @@ font-size: 28px;}
     .helpBtn10 .helpText{
     visibility: hidden;
     width: 150px;
-    height: 330px;
+    height: 100px;
     background-color: #E9AD9C;
     color: white;
     text-align: center;
@@ -50,7 +50,7 @@ font-size: 28px;}
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -730%;
+    bottom: -150%;
     left: -225%;
     margin-left: -70px;
     opacity: 0;
@@ -164,7 +164,7 @@ h1 {
          .helpBtn13 .helpText{
          visibility: hidden;
          width: 150px;
-         height: 330px;
+         height: 100px;
          background-color: #E9AD9C;
          color: white;
          text-align: center;
@@ -172,7 +172,7 @@ h1 {
          padding: 7px 0;
          position: absolute;
          z-index: 1;
-         bottom: -730%;
+         bottom: -150%;
          left: -225%;
          margin-left: -70px;
          opacity: 0;
