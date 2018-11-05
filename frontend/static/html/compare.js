@@ -99,10 +99,15 @@ function createshootoutlist() {
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person.id;
+                           if (pid == undefined){
+                               pid = shootoutData[i].person;
+                           }
+                           alert(pid);
                            var shootoutid = shootoutData[i].id;
                            var category = shootoutData[i].category;
-                           if (category == null){
-                               category = "Usershootout"
+                          // alert(category);
+                           if (category == "US"){
+                               category = "Usershootout";
                            }
                             shootouttable.innerHTML +=
                                 "<tr>" +
@@ -111,6 +116,18 @@ function createshootoutlist() {
 
                         }
                     }};
+    var Wert = "";
+    if (document.cookie) {
+        var Wertstart = document.cookie.indexOf("=") + 1;
+        var Wertende = document.cookie.indexOf(";");
+        if (Wertende == -1) {
+            Wertende = document.cookie.length;
+        }
+        Wert = document.cookie.substring(Wertstart, Wertende);
+    }
+    return Wert;
+}
+function cookiewerteHolen () {
     var Wert = "";
     if (document.cookie) {
         var Wertstart = document.cookie.indexOf("=") + 1;
@@ -151,6 +168,7 @@ function createShootout(){
     }
     var modal = document.getElementById('myModal');
     modal.style.display="none";
+    createshootoutlist();
     //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
 }
@@ -191,7 +209,7 @@ function starttheshow (personID, soID) {
             var selectedshootout = JSON.parse(json);
             var shootoutcategory = selectedshootout[0].category;
             //alert(shootoutcategory);
-            if (shootoutcategory == null) {
+            if (shootoutcategory == "US") {
                 //usershootout
                 getuserpics(personID);
                 //alert("getuserpics");
@@ -199,7 +217,7 @@ function starttheshow (personID, soID) {
             else {
                 //shootout hat eine category
                 getpicsfromcategory(shootoutcategory);
-               // alert("getpicsfromshootout");
+                //alert("getpicsfromshootout");
 
             }
         }
@@ -223,7 +241,7 @@ function getpicsfromcategory(category) {
 }
 
 function getuserpics(personID){
-    //alert("usershootout");
+    alert(personID);
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);
