@@ -11,6 +11,9 @@
         <!-- <script type=text/javascript src = "index.js"></script> -->
         <script type=text/javascript src = "navbarFunction.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
         
@@ -217,12 +220,15 @@
                     var n = i+1;
 
                     Feed.innerHTML +=
-                        "<div class='gallery'>"+
-                    "<img id= 'image" + n + "' src='' alt='no pic' width='358' height='239'>"+
-                        "<div class='middle'>" +
-                                "<div>" + photos[i].clicks + "</div>" +
+                    "<div class='gallery'>"+
+                        "<div class='w3-display-container w3-hover-opacity'>" +
+                            "<img id= 'image" + n + "' src='' alt='no pic' width='358' height='239'>"+
+                            "<div class='w3-display-middle w3-display-hover w3-xlarge'>" +
+                                    "<p style='color: white; font-size: 70px; font-family:'Helvetica Neue', Helvetica, sans-serif;'>" + photos[i].clicks + "</p>" +
+                            "</div>" +
                         "</div>" +
                     "</div>";
+
                     document.getElementById("image"+ n).src = photos[i].picture;
 
 
