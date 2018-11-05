@@ -93,23 +93,55 @@
       </div>
   </div>-->
   <div class="container" >
+    <div class="column" style="text-align: center">
       <div id="Best-picture">
+          <br><br><br>
           <h4>No.1</h4>
-         <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
           <h4 id="bestpicpoints"></h4>
-      </div> <br> <br>
+          <br><br><br>
+      </div> <br><br><br><br><hr>
       <div id="Second-best">
+          <br><br><br>
           <h4>No.2</h4>
-          <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
           <h4 id="secondpicpoints"></h4>
-      </div> <br> <br>
+          <br><br><br>
+      </div> <br><br><br><hr>
       <div id="Third-best">
+          <br><br><br>
           <h4>No.3</h4>
-          <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
           <h4 id="thirdpicpoints"></h4>
       </div>
-  </div>
+    </div>
 
+      <div class="column" >
+          <div>
+              <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+          </div> <br><br>
+          <div>
+              <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+          </div><br><br>
+          <div>
+              <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+          </div>
+
+      </div>
+  </div>
+  <style>
+      * {
+          box-sizing: border-box;
+      }
+
+      .container {
+          display: flex;
+      }
+
+      /* Create two equal columns that sits next to each other */
+      .column {
+          flex: 50%;
+          padding: 10px;
+          height: 300px; /* Should be removed. Only for demonstration */
+      }
+  </style>
 <script>
     window.onload = function (){
         //alert('in function');
