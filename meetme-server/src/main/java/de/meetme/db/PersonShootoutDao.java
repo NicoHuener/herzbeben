@@ -25,16 +25,6 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         return q.<de.meetme.data.Person>getResultList();
     }
 
-    public List<PersonShootout> getTimeFromShootout(long personId) {
-        String sqlQuery = "SELECT timestamp,shootout_id FROM Person p\n" +
-                "inner join PERSONSHOOTOUT ps on ps.person_id = p.ID\n" +
-                "inner join shootout s on s.id = ps.shootout_id\n" +
-                "where p.id = ?";
-
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        q.setParameter( 1, personId );
-        return q.<de.meetme.data.Person>getResultList();
-    }
 
 
         // Gibt alle Shootouts aus, die am selben Tag von Usern durchlaufen wurden. Z.B. für Datenanalyse "Welches ist das beliebteste shootout am Tag x gewesen"
@@ -44,7 +34,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "where ps.date = " + date;
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Shootout.class);
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.Shootout>getResultList();
     }
 
     public List<PersonShootout> getBestShootoutsAll() {
@@ -52,7 +42,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "group by shootout_id";
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.PersonShootout>getResultList();
     }
 
     public List<PersonShootout> getBestShootoutsByPerson(long personId) {
@@ -62,7 +52,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
         q.setParameter( 1, personId );
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.PersonShootout>getResultList();
     }
 
     public List<PersonShootout> countCategoriesAll() {
@@ -70,7 +60,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "group by category";
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.PersonShootout>getResultList();
     }
 
     public List<PersonShootout> countCategoriesByUser(long personId) {
@@ -80,7 +70,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
         q.setParameter( 1, personId );
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.PersonShootout>getResultList();
     }
 
     //wie viele Shootouts hat eine person heute bearbeitet?
@@ -90,7 +80,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "GROUP BY date";
 
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<de.meetme.data.PersonShootout>getResultList();
     }
 
 

@@ -1,5 +1,6 @@
 package de.meetme.api;
 
+import de.meetme.data.Bean.BestPhotoBean;
 import de.meetme.data.Rank;
 import de.meetme.db.RankDao;
 import io.dropwizard.hibernate.UnitOfWork;
@@ -42,7 +43,7 @@ public class RankService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/getallpoints")
     @UnitOfWork
-    public List<Rank> getallpoints() throws Exception {
+    public List<BestPhotoBean> getallpoints() throws Exception {
         return dao.getpointsinsgesammt();
     }
 
@@ -56,7 +57,7 @@ public class RankService {
         return dao.getpoints(photoId);
     }
 
-   @GET
+    @GET
     @Path("/shootout/{shootoutId}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
