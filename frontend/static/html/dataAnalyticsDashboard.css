@@ -84,3 +84,15 @@ NumberOfShootouts {
     color: #2b2b2b;
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
 }
+.footer {
+    position: fixed;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(15,10,10);
+    text-align: center;
+    color: lightgray;
+    height: 25px;
+    z-index: 10;
+}
