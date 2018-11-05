@@ -174,9 +174,9 @@
 
                     Feed.innerHTML +=
                     "<div class='gallery'>"+
-                        "<div class='w3-display-container w3-hover-opacity'>" +
+                        "<div class='w3-display-container w3-hover-opacity'id='hover'>" +
                             "<img id= 'image" + n + "' src='' alt='no pic' width='358' height='239' onclick='openpic(this.src)'>"+
-                            "<div class='w3-display-middle w3-display-hover w3-xlarge'>" +
+                            "<div class='w3-display-middle w3-display-hover w3-xlarge' >" +
                                     "<p style='color: white; font-size: 70px; font-family:'Helvetica Neue', Helvetica, sans-serif;'>" + photos[i].clicks + "</p>" +
                             "</div>" +
                         "</div>" +
@@ -241,7 +241,7 @@
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
-            <span class="close" onclick="document.getElementById('myModal').style.display='none'" >&times;</span>
+            <span id="close" onclick="document.getElementById('myModal').style.display='none'" >Close Window</span>
             <img class="modal-content" id="img01">
     </div>
 
