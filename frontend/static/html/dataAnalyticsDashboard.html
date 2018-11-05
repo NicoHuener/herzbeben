@@ -105,7 +105,7 @@
 
         <div class="column">
             <h1>Shootouts - Today</h1>
-            <NumberOfShootouts>123</NumberOfShootouts>
+            <NumberOfShootouts id = "totalSO">123</NumberOfShootouts>
         </div>
 
     </div>
@@ -125,8 +125,8 @@
         else if (document.cookie === ""){
         window.location.replace("http://localhost:8080/index.html");
         }
-
-
+    getshootouttotal();
+//------------------------------------------------------------------------
         var theme = {
             Chart: {
                 colorSet: "colorSet1",
@@ -178,7 +178,21 @@
         });
         chart.render();
     };
-
+//-----------------------------------------------------------------------
+    function getshootouttotal() {
+        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/shootout", true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        xmlhttplog2.send(null);
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var shootoutlist = JSON.parse(json);
+                var anzahlshootouts =(Object.keys(shootoutlist).length);
+                document.getElementById('totalSO').innerText = anzahlshootouts;
+            }
+        };
+    }
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {
