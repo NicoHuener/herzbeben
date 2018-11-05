@@ -14,12 +14,6 @@
     margin-top: 10%;
 }
 
-/*#heading{
-top: 5%;
-color: black;
-position: fixed;
-z-index: 2;
-}*/
 
 .navbar-brand{
 margin-left: 360px;
@@ -56,7 +50,7 @@ font-size: 28px;}
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -350%;
+    bottom: -730%;
     left: -225%;
     margin-left: -70px;
     opacity: 0;
@@ -84,3 +78,36 @@ font-size: 28px;}
 margin-left: 600px;
 margin-top: 150px;
 }
+
+.btnAdmin{
+    background-color: transparent;
+    border: none;
+    width: 150px;
+    height: 40px;
+    position: fixed;
+    margin-left: 1030px;
+    display: inline-block;
+    top: 2.5%;
+    z-index: 2;
+    border-radius: 5px;
+    font-color: white;
+    color: #FFFFFF;
+    font-size: 18px;
+    }
+
+.btnAdmin1{
+    background-color: transparent;
+    border: none;
+    width: 90px;
+    height: 40px;
+    position: fixed;
+    margin-left: 1050px;
+    display: inline-block;
+    top: 2.5%;
+    z-index: 2;
+    border-radius: 5px;
+    font-color: white;
+    color: #FFFFFF;
+    font-size: 18px;
+    }
+

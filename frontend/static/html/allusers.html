@@ -67,17 +67,17 @@
 
         <h1>Search for Users</h1>
         <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
-        <select id="mySelect">
+        <!--<select id="mySelect">
             <option value="username">Search by Username</option>
             <option value="firstname">Search by Firstname</option>
             <option value="lastname">Search by Lastname</option>
-        </select>
+        </select>-->
 
         <table id="result" border="solid black" >
         <tr>
             <th class="column">Username</th>
-            <th class="column">Firstname</th>
-            <th class="column">Lastname</th>
+            <th class="column">First name</th>
+            <th class="column">Last name</th>
             <th class="column">E-Mail</th>
             <!--<th>ID</th>-->
             <!--   <th>Password</th>-->
@@ -114,7 +114,7 @@
 
 
                     for (var i = 0; i < anzahluser; i++) {
-                        result.innerHTML += "<tr id='row'> " +
+                        result.innerHTML += "<tr id='tablerow'> " +
                             "<td id='td1" + i + "'/><a href=\"otherusersprofile.html\?uid="+userlist[i].id+"\" >" + userlist[i].username + "</a></td> " +
                             "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
                             "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +

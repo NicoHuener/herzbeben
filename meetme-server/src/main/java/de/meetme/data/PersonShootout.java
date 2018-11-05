@@ -50,4 +50,6 @@ public class PersonShootout extends PersistentObject{
                 ", category='" + category + '\'' +
                 '}';
     }
+
+
 }

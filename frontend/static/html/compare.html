@@ -13,10 +13,6 @@
     <script type=text/javascript src = "compare.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
     <!--  <script src="jquery-3.3.1.min.js"></script> -->
-
-
-
-
   </head>
 
   <body>
@@ -74,13 +70,25 @@
         <div class="col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="sidebar-nav">
                 <ul class="nav">
-                    <h1>Shootouts</h1>
+                    <h1 style="text-align: center">Shootouts</h1>
                     <br>
                     <button type="button" id="create_shootout" onclick="openModalcS()">Create shootout</button>
+                    <p>
+                    <div class="dropdownKategorie">
+                    <button class="dropBtnKat">Search by category <span class="caret"></span></button>
+                        <div class="dropdown-content">
+                            <a href="#">User Shootout</a>
+                            <a href="#">Animals</a>
+                            <a href="#">Art</a>
+                            <a href="#">Fashion</a>
+                            <a href="#">Food</a>
+                            <a href="#">Nature</a>
+                            <a href="#">Portrait</a>
+                        </div>
+                    </div></p>
                     <div class="form-group" id="search_shootout">
                         <input  type="text" class="form-control" id="shootout_input" placeholder="Search for shootout" onkeyup="searchShootout()">
                     </div >
-
                     <ul id="shootouttable">
                         <!--/ Inhalt wird dynamisch geladen! -->
                     </ul>
@@ -103,10 +111,10 @@
             <div class="modal-content">
                 <span class="close2" onclick="closeinfomodal()">&times;</span>
                 <div class="modal-header">
-                    <h1 style="text-align: center">You have completed the shootout!</h1>
+                    <h1> Das Shootout ist vorbei!</h1>
                 </div>
                 <div id ="modalbody" class="modal-body">
-                    <h2 style="text-align: center">Have a look at the ranking of the shootout!</h2>
+                    <h2>Schau Dir jetzt das Ranking des Shootouts an!</h2>
                 </div>
             </div>
         </div>
@@ -115,22 +123,29 @@
             <div class="modal-content">
                 <span class="close" onclick="closemodcS()">&times;</span>
                 <div class="modal-header">
+
                     <h2> Create your shootout!</h2>
                 </div>
                 <div class="modal-body">
-                    <form>
+
                         <label for="nameShootout">Name</label>
                         <input type="text" id="nameShootout">
-
-                        <!--    <select>
-                        <option> private </option>
-                         <option> public</option>
-                    </select>-->
-                        <button class="helpBtn5">Help
-                            <span class="helpText">Please enter the name of your new shootout. <br>
+                        <p></p>
+                            <label>Select a category:</label>
+                            <select style="height: 27px">
+                            <option>User Shootout</option>
+                            <option>Animals</option>
+                            <option>Art</option>
+                            <option>Fashion</option>
+                            <option>Food</option>
+                            <option>Nature</option>
+                            <option>Portrait</option>
+                    </select>
+                    <button class="helpBtn5">Help
+                        <span class="helpText">Please enter the name of your new shootout. <br>
     If you want to share this shootout with everyone select "public" below.
     </span>
-                        </button>
+                    </button>
                     </form>
                 </div>
                 <div class="modal-footer">

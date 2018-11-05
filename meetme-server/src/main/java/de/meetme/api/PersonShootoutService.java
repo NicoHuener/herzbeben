@@ -72,6 +72,28 @@ public class PersonShootoutService {
         return dao.getTimeFromShootout(userId);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestShootouts")
+    @UnitOfWork
+    public List<PersonShootout> getBestShootoutsAll() throws Exception {
+
+        return dao.getBestShootoutsAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/bestShootouts/{userId}")
+    @UnitOfWork
+    public List<PersonShootout> getBestShootoutsByPerson(@PathParam("userId") long userId) throws Exception {
+        log.debug("Get best Shootouts from person: " + userId);
+
+
+        return dao.getBestShootoutsByPerson(userId);
+    }
+
    /* @GET
     @Path("/timestamp")
     @UnitOfWork

@@ -47,6 +47,26 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         return q.<de.meetme.data.Person>getResultList();
     }
 
+    public List<PersonShootout> getBestShootoutsAll() {
+        String sqlQuery = "SELECT shootout_id, category, count(*) as count FROM PersonShootout\n" +
+                "group by shootout_id";
+
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
+        return q.<de.meetme.data.Person>getResultList();
+    }
+
+    public List<PersonShootout> getBestShootoutsByPerson(long personId) {
+        String sqlQuery = "SELECT person_id, shootout_id, category, count(*) as count FROM PersonShootout p\n" +
+                "where p.id = ?\n" +
+                "group by shootout_id";
+
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
+        q.setParameter( 1, personId );
+        return q.<de.meetme.data.Person>getResultList();
+    }
+
+
+
 
 
 }

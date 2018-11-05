@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Data Analytics</title>
+    <title>Admin Page</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css">
+    <link rel="stylesheet" href="adminpage.css">
 
     <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -29,7 +29,6 @@
                 </button>
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="40px" height="40px"> </a>
                 <div class="heading">DATA ANALYTICS</div>
-                <button class="btnAdmin1" onclick="locationChange()">All Users</button>
                 <button class="helpBtn10">Help
                     <span class="helpText">This is your data analytics dashboard. It is divided into 2 sections: <br> 1. Geolocation: Track the location of your users <br> 2. User's Preferences: Take a look into the shootout preferecnes. <br> 3. Standard Variance: Examine the deviation of an individual assessment from the average assessment.
             </span>
@@ -76,59 +75,90 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-<!-- Seitenüberschrift
-<header id="heading">
-    <h1 style=margin-top:0px;>DATA ANALYTICS</h1>
-</header>-->
 
+<div id="container">
 
+    <h1>Search for Users</h1>
+    <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
+    <select id="mySelect">
+        <option value="username">Search by Username</option>
+        <option value="firstname">Search by Firstname</option>
+        <option value="lastname">Search by Lastname</option>
+    </select>
 
-
-<!-- JavaScript for top navbar-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-</script>
-
-<div class="flex-container">
-    <div>Geolocation</div>
-    <div>User's Preferences</div>
-    <div>Standard Variance</div>
-    <div>DataSet4</div>
-    <div>DataSet5</div>
-    <div>DataSet6</div>
+    <table id="result" border="solid black" >
+        <tr>
+            <th class="column">Username</th>
+            <th class="column">Firstname</th>
+            <th class="column">Lastname</th>
+            <th class="column">E-Mail</th>
+            <!--<th>ID</th>-->
+            <!--   <th>Password</th>-->
+        </tr>
+    </table>
 </div>
-<script>
-    window.onload = function () {
-        var userID = cookiewerteHolen();
-        var AdminID = "129";
-        if (userID !== AdminID ) {
-            console.log("kein Admin");
-            window.location.replace("http://localhost:8080/compare.html");
-        }
-        else if (document.cookie === ""){
-        window.location.replace("http://localhost:8080/index.html");
-        }
-    };
 
-    function cookiewerteHolen () {
-        var Wert = "";
-        if (document.cookie) {
-            var Wertstart = document.cookie.indexOf("=") + 1;
-            var Wertende = document.cookie.indexOf(";");
-            if (Wertende == -1) {
-                Wertende = document.cookie.length;
+<script>
+    //Tabelle erstellen
+    window.onload = function () {
+
+            var xhr = new XMLHttpRequest();
+            var json;
+            var anzahluser;
+
+
+            xhr.open('GET', 'http://localhost:8080/meetme/api/person', true);
+            xhr.send(null);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    json = xhr.responseText;
+
+                    var userlist = JSON.parse(json);
+                    alert (json);
+                    alert (userlist[0].name);
+                    anzahluser=(Object.keys(userlist).length)
+
+
+                    for (var i = 0; i < anzahluser; i++) {
+                        result.innerHTML += "<tr> " +
+                            "<td id='td1 " + i + "'><a href=\"otherusersDataAnalyticsDashboard.html\?uid="+userlist[i].id+"\" >"+ userlist[j].username + "</a></td>" +
+                            "<td id='td2 " + i + " '>" + userlist[i].firstName + "</td>" +
+                            "<td id='td3 " + i + "'>" + userlist[i].name + "</td>" +
+                            "<td id='td4 " + i + " '>" + userlist[i].email + "</td>" +
+                            //"<td id='td5 " + i + "'>" + userlist[i].id + "</td>" +
+                            //"<td id='td6 " + i + "'>" + userlist[i].password + "</td>" +
+                            "</tr>";
+                    }
+                }
             }
-            Wert = document.cookie.substring(Wertstart, Wertende);
-        }
-        return Wert;
+
     }
 
-  function locationChange (){
-    window.location.replace("http://localhost:8080/page.html");
-}
+    //Tabelle durchsuchen
+    function searchUser(){
+    var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+    }
+
+
+
 
 </script>
+
 </body>
+
 </html>
-
-
-
