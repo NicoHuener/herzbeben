@@ -155,37 +155,47 @@
             ])
 
         CanvasJS.addTheme('Klicks',theme); // You can use any name
+//------------------------------------------------------------------------------------------
+        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/personshootout/countCategories", true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        xmlhttplog2.send(null);
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var categorylist = JSON.parse(json);
+                var anzahlCategories =(Object.keys(categorylist).length);
 
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    /*theme: 'Klicks',*/
+                    colorSet: 'klicksTheme',
+                    backgroundColor: '#f1f1f1',
+                    /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: ""
+                    },
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            /*theme: 'Klicks',*/
-            colorSet: 'klicksTheme',
-            backgroundColor: '#f1f1f1',
-            /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
-            exportEnabled: true,
-            animationEnabled: true,
-            title: {
-                text: ""
-            },
-            data: [{
-                type: "pie",
-                startAngle: 25,
-                toolTipContent: "<b>{label}</b>: {y}%",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 15,
-                indexLabel: "{label} - {y}%",
-                dataPoints: [
-                    { y: 51.08, label: "User Shootout" },
-                    { y: 27.34, label: "Animals" },
-                    { y: 10.62, label: "Art" },
-                    { y: 5.02, label: "Fashion" },
-                    { y: 4.07, label: "Food" },
-                    { y: 1.22, label: "Nature" },
-                    { y: 0.44, label: "Portrait" }
-                ]
-            }]
-        });
+                    data: [{
+                        type: "pie",
+                        startAngle: 25,
+                        toolTipContent: "<b>{label}</b>: {y}%",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 15,
+                        indexLabel: "{label} - {y}%",
+                        dataPoints: [
+                            { y: 'categorylist.', label: "User Shootout" },
+                            { y: ' ', label: "Animals" },
+                            { y: ' ', label: "Art" },
+                            { y: ' ', label: "Fashion" },
+                            { y: ' ', label: "Food" },
+                            { y: ' ', label: "Nature" },
+                            { y: ' ', label: "Portrait" }
+                        ]
+                    }]
+                });
         chart.render();
     };
 //-----------------------------------------------------------------------
@@ -203,6 +213,7 @@
             }
         };
     }
+
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {

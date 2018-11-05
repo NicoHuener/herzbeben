@@ -139,7 +139,9 @@
         else if (document.cookie === ""){
         window.location.replace("http://localhost:8080/index.html");
         }
+        anzahlgemachterSO(userID);
 
+        //----------------------------------------------------------------------------
         //Beginning of Pie Chart
                 var theme = {
             Chart: {
@@ -317,7 +319,23 @@
         chart.render();
         //End of Activity Chart
     };
-
+    //-------------------------------------------------------------------------------
+    function anzahlgemachterSO(userId) {
+        //Request für Anzahl der gemachten shootouts am Tag
+        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId, true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        xmlhttplog2.send(null);
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var shootoutByDate = JSON.parse(json);
+                var anzahlshootouts = (Object.keys(shootoutByDate).length);
+                document.getElementById('OOO').innerText = anzahlshootouts;
+            }
+        };
+    }
+    //------------------------------------------------------------------------------
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {
