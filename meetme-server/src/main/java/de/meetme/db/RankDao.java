@@ -2,6 +2,7 @@ package de.meetme.db;
 
 import de.meetme.data.Photo;
 import de.meetme.data.Rank;
+import de.meetme.data.Shootout;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
@@ -34,6 +35,12 @@ public class RankDao  extends AbstractDao<Rank> {
         q.setParameter( 1, photoId );
         return q.<de.meetme.data.Photo>getResultList();
     }
+    public List<Rank> getWinner(long id) {
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ? order by points desc";
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
+        q.setParameter( 1, id );
+        return q.<de.meetme.data.Shootout>getResultList();
+    }
 
     /*public void updatepoints(int points,long rankid){
         Rank rank = get(rankId);
@@ -55,7 +62,7 @@ public class RankDao  extends AbstractDao<Rank> {
     }
 
     public List<Rank> getRankFromShootout(long shootoutId) {
-        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ? order by points";
+        String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where shootout_id = ? order by points desc";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
         q.setParameter( 1, shootoutId );
         return q.<de.meetme.data.Rank>getResultList();

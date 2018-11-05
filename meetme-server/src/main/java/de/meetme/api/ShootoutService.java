@@ -28,8 +28,8 @@ public class ShootoutService {
     private RankDao rankDao;
     private PhotoDao photoDao;
 
-    public ShootoutService(ShootoutDao dao, PersonDao personDao, RankDao rankDao,PhotoDao photoDao) {
-        this.shootoutDao = dao;
+    public ShootoutService(ShootoutDao shootoutDao, PersonDao personDao, RankDao rankDao,PhotoDao photoDao) {
+        this.shootoutDao = shootoutDao;
         this.personDao = personDao;
         this.rankDao = rankDao;
         this.photoDao = photoDao;
