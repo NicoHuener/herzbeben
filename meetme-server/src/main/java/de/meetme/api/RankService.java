@@ -49,11 +49,11 @@ public class RankService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/getallpoints/{photoId}")
+    @Path("/getallpointsfromphoto/{photoId}")
     @UnitOfWork
     public List<Rank> getallpointsfromphoto(@PathParam("photoId")long photoId) throws Exception {
         log.debug("Get all points from Photo: " + photoId);
-        return dao.getpointsinsg(photoId);
+        return dao.getpoints(photoId);
     }
 
    @GET
