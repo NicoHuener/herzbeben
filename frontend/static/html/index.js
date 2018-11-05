@@ -8,6 +8,18 @@
     return vaildpw;
 }*/
 
+//Snackbar
+function myFunction() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+}
+
 window.onload = function () {
     if (document.cookie) {
         window.location.replace("http://localhost:8080/compare.html");
@@ -352,8 +364,8 @@ function checkRequired() {
                         }
                         if (useravailable === true) {
                             createuser();
-                            window.location.replace("http://localhost:8080/index.html");
-alert("Account for "+username+" successfully created!")
+                           /* window.location.replace("http://localhost:8080/index.html");*/
+                        myFunction();
 
 
 
