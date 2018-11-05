@@ -211,6 +211,7 @@ function starttheshow (personID, soID) {
             var json = xmlsocat.responseText;
             var selectedshootout = JSON.parse(json);
             var shootoutcategory = selectedshootout[0].category;
+            postpersonshootout(soID,shootoutcategory);
             //alert(shootoutcategory);
             if (shootoutcategory == "US") {
                 //usershootout
@@ -294,7 +295,17 @@ function updatewins(picID) {
     //sent the new HttpRequest
     xmlhttpwins.send();
 }
-
+function postpersonshootout(shootoutID,shootoutcategory) {
+    var userID = cookiewerteHolen();
+    var datum = new Date();
+    var heute = datum.getDate()+ "." + (datum.getMonth()+ 1)+"." + datum.getFullYear();
+    console.log(heute +" "+ userID +" "+ shootoutcategory +" "+ shootoutID);
+    var xmlhttpps = new XMLHttpRequest();
+    xmlhttpps.open("POST", "http://localhost:8080/meetme/api/personshootout/"+userID+"&"+shootoutID+"&"+heute+"&"+shootoutcategory);
+    xmlhttpps.setRequestHeader("Content-Type", "application/json");
+    //sent the new HttpRequest
+    xmlhttpps.send();
+}
 function updatepoints(picID,picpoints) {
     var xmlhttppoints = new XMLHttpRequest();
     xmlhttppoints.open("PUT", "http://localhost:8080/meetme/api/rank/points/" + picpoints +"&"+ shootoutID + "&" + picID);
