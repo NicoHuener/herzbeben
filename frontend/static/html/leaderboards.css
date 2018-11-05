@@ -211,7 +211,7 @@ header li{
 .case:hover{
     background: var(--lightgrey);
     color: var(--grey);
-
+    cursor: pointer;
 }
 
 #boards{
