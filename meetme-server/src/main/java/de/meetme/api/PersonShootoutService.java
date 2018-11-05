@@ -41,9 +41,9 @@ public class PersonShootoutService {
     }*/
 
     @POST
-    @Path("/{shootoutId}&{userId}&{date}&{category}")
+    @Path("/{userId}&{shootoutId}&{date}&{category}")
     @UnitOfWork
-    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId,@PathParam("date")String date, @PathParam("category")String category){
+    public PersonShootout createPersonShootout(@PathParam("userId")long userId,@PathParam("shootoutId")long shootoutId,@PathParam("date")String date, @PathParam("category")String category){
         Shootout shootout = shootoutDao.get(shootoutId);
         Person person = personDao.get(userId);
         PersonShootout personshootout = new PersonShootout(person,shootout,date,category);
