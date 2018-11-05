@@ -111,6 +111,13 @@
 
 <script>
 
+    window.onload = function () {
+
+        if (document.cookie === ""){
+            window.location.replace("http://localhost:8080/index.html");
+        }
+    }
+
     //Snackbar
     function myFunction() {
         // Get the snackbar DIV

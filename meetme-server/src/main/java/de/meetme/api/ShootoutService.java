@@ -102,4 +102,16 @@ public class ShootoutService {
         return  shootoutDao.getAll();
     }
 
+
+    //wie viele Shootouts hat eine Person jemals erstellt
+    @GET
+    @Path("countShooouts/{userId}")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Shootout> countShootoutsByUser(@PathParam("userId") long userId) throws Exception {
+        log.debug("Count Shootouts from Person: " + userId);
+
+        return shootoutDao.countShootoutsByUser(userId);
+    }
+
 }

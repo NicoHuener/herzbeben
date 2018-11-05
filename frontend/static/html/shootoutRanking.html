@@ -145,6 +145,11 @@
 <script>
     window.onload = function (){
         //alert('in function');
+
+        if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+        }
+
         var shootoutID = Werteliste(location.search);
         function Werteliste (querystring) {
             if (querystring == '') return;

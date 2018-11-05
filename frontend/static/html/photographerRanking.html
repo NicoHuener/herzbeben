@@ -140,6 +140,11 @@
 
 <script>
     window.onload = function () {
+
+    if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+    }
+
         alert('in function');
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 

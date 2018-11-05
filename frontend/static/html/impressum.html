@@ -149,6 +149,16 @@
     <p text-align="center">Klicks Inc. © 2018</p>
 </footer>
 
+<script>
+    window.onload = function () {
+
+        if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+        }
+    }
+</script>
+
+
 </body>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
