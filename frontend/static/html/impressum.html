@@ -8,7 +8,7 @@
     <script type=text/javascript src = "navbarFunction.js"></script>
     <script type=text/javascript src = "compare.js"></script>
 </head>
-<body>
+
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
     <nav role="navigation">
         <div class="container-fluid">
@@ -65,42 +65,46 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
 </header>
+<h1 style="text-align: center; margin-top: -30px"><img id="klicks" src="./images/klicks.png" width="700"> </h1>
+
+<div class="row">
+    <div class="column">
+        <h2>Column 1</h2>
+        <p>Some text..</p>
+    </div>
+    <div class="column" >
+        <h2>Column 2</h2>
+        <p>Some text..</p>
+    </div>
+</div>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+        z-index: 2;
+        float: left;
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+        margin-top: -60px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
 
 </body>
-<!--<style>
-    body {
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
-        color: #333;
-    }
-    /* Compare page code*/
 
-    /* Changes the color of pictures on hover*/
-    .column1:hover #image1 {
-        opacity: 0.8;
-        cursor: pointer;
-    }
-    .column2:hover #image2 {
-        opacity: 0.8;
-        cursor: pointer;
-    }
-    #image_container {
-        margin-left:25%;
-        margin-top: 295px;
-        position: fixed;
-
-    }
-
-    #heading{
-        position: fixed;
-        text-align: center;
-        line-height: 15px;
-        font-size: 20px;
-        margin-left: 35%;
-        margin-top: 80px;
-        margin-bottom: 65px;
-    }
-</style> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 </script>
 
