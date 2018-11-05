@@ -170,7 +170,8 @@ function createShootout(){
     }
     var modal = document.getElementById('myModal');
     modal.style.display="none";
-    createshootoutlist();
+    //createshootoutlist();
+    window.location.replace("http://localhost:8080/compare.html");
     //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
 }
