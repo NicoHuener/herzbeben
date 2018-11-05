@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fallstudie</title>
+</head>
+<body>
+<header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+    <nav role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!--            <li><a href="#">Help</a></li>
+                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
+                     -->
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button> -->
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                    <li><a href="compare.html">Compare Pictures</a></li>
+                    <li class="dropdown">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="pictureRanking.html">Picture Ranking</a></li>
+                            <li><a href="photographer.html">Photographer Ranking</a></li>
+                            <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li class="dropdown">
+                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="allusers.html">All Users</a></li>
+                            <li><a href="allphotos.html">All Pictures</a></li>
+                            <li><a href="FAQ.html">FAQ</a></li>
+                            <li><a href="AGB.html">AGB's</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+
+</body>
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        color: #333;
+    }
+    /* Compare page code*/
+
+    /* Changes the color of pictures on hover*/
+    .column1:hover #image1 {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    .column2:hover #image2 {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    #image_container {
+        margin-left:25%;
+        margin-top: 295px;
+        position: fixed;
+
+    }
+
+    #heading{
+        position: fixed;
+        text-align: center;
+        line-height: 15px;
+        font-size: 20px;
+        margin-left: 35%;
+        margin-top: 80px;
+        margin-bottom: 65px;
+    }
+</style>
+
+
+</html>
