@@ -1,5 +1,6 @@
 package de.meetme.db;
 
+import de.meetme.data.Photo;
 import de.meetme.data.Rank;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -20,6 +21,18 @@ public class RankDao  extends AbstractDao<Rank> {
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
         q.setParameter( 1, rankId );
         q.executeUpdate();
+    }
+    public List<Rank> getpointsinsgesammt() {
+        String sqlQuery = "select photo_id,sum(points) from " + getEntityClass().getSimpleName() +  " group by photo_id";
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
+        return q.<de.meetme.data.Photo>getResultList();
+    }
+
+    public List<Rank> getpointsinsg(long photoId) {
+        String sqlQuery = "select photo_id,sum(points) from " + getEntityClass().getSimpleName() +  " where photo_id = ? group by photo_id";
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
+        q.setParameter( 1, photoId );
+        return q.<de.meetme.data.Photo>getResultList();
     }
 
     /*public void updatepoints(int points,long rankid){

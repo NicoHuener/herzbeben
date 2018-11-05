@@ -114,13 +114,12 @@
 
     <div class="columnDash">
         <h1>Individual Activity</h1>
-        <NumberOfShootouts id = "OOO"> </NumberOfShootouts>
+        <div id="chartContainerActivity" style="height: 250px; width: 100%;"></div>
     </div>
 
     <div class="columnDash">
         <h1>Hits Probability</h1>
-        <NumberOfShootouts id = "OOO"> </NumberOfShootouts>
-        <div id="chartContainerProb" style="height: 370px; width: 100%;"></div>
+        <div id="chartContainerProb" style="height: 250px; width: 100%;"></div>
     </div>
 
 </div>
@@ -193,6 +192,8 @@
         //Beginning of Doughnut Chart
         var chart = new CanvasJS.Chart("chartContainerProb", {
             animationEnabled: true,
+            colorSet: 'klicksTheme',
+            backgroundColor: '#f1f1f1',
             title:{
                 text: "",
                 horizontalAlign: "left"
@@ -200,22 +201,117 @@
             data: [{
                 type: "doughnut",
                 startAngle: 60,
-                //innerRadius: 60,
-                indexLabelFontSize: 17,
+                innerRadius: 50,
+                indexLabelFontSize: 15,
                 indexLabel: "{label} - #percent%",
                 toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                 dataPoints: [
-                    { y: 67, label: "Inbox" },
-                    { y: 28, label: "Archives" },
-                    { y: 10, label: "Labels" },
-                    { y: 7, label: "Drafts"},
-                    { y: 15, label: "Trash"},
-                    { y: 6, label: "Spam"}
+                    { y: 67, label: "Hit" },
+                    { y: 28, label: "Blank" },
                 ]
             }]
         });
         chart.render();
         //End of Doughnut Chart
+
+        //Beginning of Activity Chart
+        var chart = new CanvasJS.Chart("chartContainerActivity", {
+            animationEnabled: true,
+            colorSet: 'klicksTheme',
+            backgroundColor: '#f1f1f1',
+            title: {
+                text: ""
+            },
+            axisY: {
+                includeZero: false,
+                prefix: ""
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                fontSize: 13
+            },
+            data: [{
+                type: "splineArea",
+                showInLegend: true,
+                name: "Created Shootouts",
+                yValueFormatString: "#,##0",
+                xValueFormatString: "MMM YYYY",
+                dataPoints: [
+                    {x: new Date(2018, 5), y: 13},
+                    {x: new Date(2018, 6), y: 12},
+                    {x: new Date(2018, 7), y: 15},
+                    {x: new Date(2018, 8), y: 16},
+                    {x: new Date(2018, 9), y: 3},
+                    {x: new Date(2018, 10), y: 7},
+                    {x: new Date(2018, 11), y: 19},
+                ]
+            },
+                {
+                    type: "splineArea",
+                    showInLegend: true,
+                    name: "Pictures Uploaded",
+                    yValueFormatString: "#,##0",
+                    dataPoints: [
+                        {x: new Date(2018, 5), y: 4},
+                        {x: new Date(2018, 6), y: 20},
+                        {x: new Date(2018, 7), y: 22},
+                        {x: new Date(2018, 8), y: 18},
+                        {x: new Date(2018, 9), y: 5},
+                        {x: new Date(2018, 10), y: 5},
+                        {x: new Date(2018, 11), y: 32},
+                    ]
+                },
+                {
+                    type: "splineArea",
+                    showInLegend: true,
+                    name: "Participated Shootouts",
+                    yValueFormatString: "#,##0",
+                    dataPoints: [
+                        {x: new Date(2018, 5), y: 27},
+                        {x: new Date(2018, 6), y: 16},
+                        {x: new Date(2018, 7), y: 17},
+                        {x: new Date(2018, 8), y: 6},
+                        {x: new Date(2018, 9), y: 16},
+                        {x: new Date(2018, 10), y: 22},
+                        {x: new Date(2018, 11), y: 29},
+                    ]
+                },
+                {
+                    type: "splineArea",
+                    showInLegend: true,
+                    yValueFormatString: "#,##0",
+                    name: "External Profile Visits",
+                    dataPoints: [
+                        {x: new Date(2018, 5), y: 44},
+                        {x: new Date(2018, 6), y: 17},
+                        {x: new Date(2018, 7), y: 47},
+                        {x: new Date(2018, 8), y: 40},
+                        {x: new Date(2018, 9), y: 61},
+                        {x: new Date(2018, 10), y: 32},
+                        {x: new Date(2018, 11), y: 42},
+                    ]
+                },
+
+                {
+                    type: "splineArea",
+                    showInLegend: true,
+                    name: "Login",
+                    yValueFormatString: "#,##0",
+                    dataPoints: [
+                        {x: new Date(2018, 5), y: 30},
+                        {x: new Date(2018, 6), y: 8},
+                        {x: new Date(2018, 7), y: 13},
+                        {x: new Date(2018, 8), y: 4},
+                        {x: new Date(2018, 9), y: 5},
+                        {x: new Date(2018, 10), y: 10},
+                        {x: new Date(2018, 11), y: 7},
+                    ]
+                }]
+        });
+        chart.render();
+        //End of Activity Chart
     };
 
     function cookiewerteHolen () {
