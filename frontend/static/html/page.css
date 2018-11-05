@@ -61,8 +61,8 @@
      }
      .helpBtn12 .helpText{
      visibility: hidden;
-     width: 170px;
-     height: 130px;
+     width: 150px;
+     height: 80px;
      background-color: #E9AD9C;
      color: white;
      text-align: center;
@@ -70,9 +70,8 @@
      padding: 7px 0;
      position: absolute;
      z-index: 1;
-     bottom: -557%;
-     left: 290%;
-     margin-left: -70px;
+     bottom: -100%;
+     margin-left: -165px;
      opacity: 0;
      transition: opacity 0.3s;
      }
@@ -80,7 +79,7 @@
      content: "";
      position: absolute;
      top: 10%;
-     left: 0%;
+     left: 100%;
      margin-left: -5px;
      border-width: 5px;
      border-style: solid;
@@ -95,11 +94,25 @@
      opacity: 0.9;}
 
      .btnAdmin{
+     padding: 14px 13px;
      font-size: 19px;
-     top: 3.5%;
-     margin-left: 1000px;
+     top: 0%;
+     margin-left: 790px;
      position: fixed;
      border: none;
-     background-color: transparent;
+     background-color: #585858;
      color: white;
+     }
+
+     .btnAdmin:active{
+     outline: none;
+     border-color: transparent;
+     webkit-box-shadow: none;
+     box-shadow:none;
+     }
+     .btnAdmin:focus{
+     outline: none;
+     border-color: transparent;
+     webkit-box-shadow: none;
+     box-shadow:none;
      }
