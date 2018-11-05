@@ -391,7 +391,7 @@ window.onclick = function(event) {
 //Funktionen für popupInfo Modal Fenster
 function showinfomodal() {
 modalbody.innerHTML +=
-"<a style='font-size: 20px; text-align: center' href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
+"<br><br><a style='font-size: 20px;margin-left: 170px; color: #E9AD9C ' href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
     var modal2 = document.getElementById("Infomodal");
     modal2.style.display = "block";
 

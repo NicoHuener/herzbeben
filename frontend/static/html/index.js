@@ -224,7 +224,6 @@ function showLogin() {
     else {
          r.style.display = "none";
     }*/
-
 }
 
 function checkPassword(confpw,pw){
@@ -234,7 +233,6 @@ function checkPassword(confpw,pw){
     else{
         alert("Passwords don't match");
         return false;
-
     }
 }
 
@@ -245,7 +243,6 @@ function checkRequired() {
         return false;
     }
 }
-
 
     //AGB Modal --------------------------------------------------
     // When the user clicks on the button, open the modal
@@ -338,7 +335,6 @@ function checkRequired() {
                         document.cookie = "id=" + userdata.id;
                     }
                 }
-
             }*/
 
             function checkdataindb(email, username) {
@@ -371,10 +367,7 @@ function checkRequired() {
                             createuser();
                            /* window.location.replace("http://localhost:8080/index.html");*/
                         window.location.replace("http://localhost:8080/index.html");
-                        myFunction();
-
-
-
+                        //myFunction();
 
                         }
                     }
@@ -382,7 +375,6 @@ function checkRequired() {
 
             }
         }
-
 
         else {
             alert('AGBs not checked');

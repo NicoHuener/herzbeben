@@ -8,7 +8,7 @@
 
 
 hr{
-    border: 0;
+    border:0;
     height: 1px;
     background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
     background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -16,6 +16,18 @@ hr{
     background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
 }
 
+.footer {
+    position: fixed;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(15,10,10);
+    text-align: center;
+    color: lightgray;
+    height: 25px;
+    z-index: 10;
+}
 /*
 #course{
     box-shadow: var(--shadow);
@@ -169,6 +181,8 @@ header li{
     grid-gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     color: var(--white);
+    margin-left: 10px;
+    margin-right: 10px;
 
 
 }
