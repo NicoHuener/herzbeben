@@ -69,7 +69,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         environment.jersey().register(photoService);
         de.meetme.api.ShootoutService shootoutService= new de.meetme.api.ShootoutService(daoshootout,daoperson,daorank,daophoto);
         environment.jersey().register(shootoutService);
-        de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout,daoshootout);
+        de.meetme.api.PersonShootoutService personShootoutService= new de.meetme.api.PersonShootoutService(daopersonshootout,daoshootout, daoperson);
         environment.jersey().register(personShootoutService);
         de.meetme.api.RankService rankService= new de.meetme.api.RankService(daorank);
         environment.jersey().register(rankService);
