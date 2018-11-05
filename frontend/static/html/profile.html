@@ -187,6 +187,7 @@
         // cookiewerteHolen();
 
         var photos;
+        var anzahlphotos;
         var xmlhttpr = new XMLHttpRequest(); //get all the photos from user
         xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + userID);
         xmlhttpr.send(null);
@@ -195,7 +196,7 @@
             if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
                 var json = xmlhttpr.responseText;
                 photos = JSON.parse(json);
-
+                anzahlphotos = (Object.keys(photos).length);
 
                 var anzahlphotos =(Object.keys(photos).length);
                // alert(Object.keys(photos).length);
@@ -218,6 +219,9 @@
                     Feed.innerHTML +=
                         "<div class='gallery'>"+
                     "<img id= 'image" + n + "' src='' alt='no pic' width='358' height='239'>"+
+                        "<div class='middle'>" +
+                                "<div>" + photos[i].clicks + "</div>" +
+                        "</div>" +
                     "</div>";
                     document.getElementById("image"+ n).src = photos[i].picture;
 
