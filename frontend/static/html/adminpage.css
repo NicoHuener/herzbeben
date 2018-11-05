@@ -1,3 +1,15 @@
+.footer {
+    position: fixed;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(15,10,10);
+    text-align: center;
+    color: lightgray;
+    height: 25px;
+    z-index: 10;
+}
  #container {
     margin-left: 50px;
     margin-right:50px;

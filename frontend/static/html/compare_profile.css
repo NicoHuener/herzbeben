@@ -398,6 +398,7 @@ footer {
     overflow: hidden;
 }
 .dropBtnKat {
+    text-align: center;
     background-color: #E9AD9C;
     color: #ffffff;
     padding: 1em 2em;
@@ -434,6 +435,18 @@ footer {
     background-color: #aaaaaa;
 }
 
+.footer {
+    position: fixed;
+    display: block;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(15,10,10);
+    text-align: center;
+    color: lightgray;
+    height: 25px;
+    z-index: 10;
+}
 /*Profile Flexbox---------------------------------*/
 /** {
     box-sizing: border-box;
