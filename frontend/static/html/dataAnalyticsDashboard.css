@@ -103,8 +103,9 @@ NumberOfShootouts {
      border: none;
      color: white;
      font-size: 20px;
-     margin-top: -20px;
+     top: 3.5%;
      margin-left: 950px;
+     position: fixed;
      }
 
 
@@ -138,16 +139,16 @@ h1 {
     text-align: center;
     font-weight: bold;
 }
-    font-size: 19px;
+ .btnAdmin1 { font-size: 19px;
          top: 3.5%;
          margin-left: 1050px;
          position: fixed;
          border: none;
          background-color: transparent;
          color: white;
-     }
+}
 
- .helpBtn11{
+.helpBtn13{
          background-color: #E9AD9C;
          border: none;
          width: 40px;
@@ -155,12 +156,12 @@ h1 {
          position: fixed;
          margin-left: 1200px;
          display: inline-block;
-         bottom: 560px;
+         bottom: 545px;
          z-index: 3;
          border-radius: 5px;
          color: white;
          }
-         .helpBtn11 .helpText{
+         .helpBtn13 .helpText{
          visibility: hidden;
          width: 150px;
          height: 330px;
@@ -177,7 +178,7 @@ h1 {
          opacity: 0;
          transition: opacity 0.3s;
          }
-         .helpBtn11 .helpText::after{
+         .helpBtn13 .helpText::after{
          content: "";
          position: absolute;
          top: 10%;
@@ -187,10 +188,12 @@ h1 {
          border-style: solid;
          border-color: #E9AD9C transparent transparent transparent;
          }
-         .helpBtn11:hover .helpText{
+         .helpBtn13:hover .helpText{
          visibility: visible;
          opacity: 1;
          }
-         .helpBtn11:hover{
+         .helpBtn13:hover{
          cursor: pointer;
-         opacity: 0.9;}
+         opacity: 0.9;
+         }
+
