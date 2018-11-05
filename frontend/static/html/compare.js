@@ -278,10 +278,9 @@ function loadshootout () {
 
 
 
-function updateclicks(picID) {
-    var click = 1;
+function updateclicks(picID,points) {
     var xmlhttpclick = new XMLHttpRequest();
-    xmlhttpclick.open("PUT", "http://localhost:8080/meetme/api/photo/clicks/"+ click +"&"+ picID);
+    xmlhttpclick.open("PUT", "http://localhost:8080/meetme/api/photo/clicks/"+ points +"&"+ picID);
     xmlhttpclick.setRequestHeader("Content-Type", "application/json");
     //sent the new HttpRequest
     xmlhttpclick.send();
@@ -316,7 +315,7 @@ function changepic1() { //bild 2 geclickt
 
         alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
        updatepoints(pic2ID,points);
-        updateclicks(pic2ID);
+        updateclicks(pic2ID,points);
     }
     else { //Keine Bilder mehr in Array!
 
@@ -330,7 +329,7 @@ function changepic1() { //bild 2 geclickt
 
         updatepoints(lastpic2ID,points);
         updatewins(lastpic2ID);
-        updateclicks(lastpic2ID);
+        updateclicks(lastpic2ID,points);
         showinfomodal();
 
     }
@@ -351,7 +350,7 @@ function changepic2() { //bild 1 geklickt
 
         var pic1ID = document.getElementById("image1").title;
         updatepoints(pic1ID,points);
-        updateclicks(pic1ID);
+        updateclicks(pic1ID,points);
 
     }
     else {  //Keine Bilder mehr in Array!
@@ -365,7 +364,7 @@ function changepic2() { //bild 1 geklickt
         var lastpic1ID = document.getElementById("image1").title;
         updatepoints(lastpic1ID,points);
         updatewins(lastpic1ID);
-        updateclicks(lastpic1ID);
+        updateclicks(lastpic1ID,points);
         showinfomodal();
     }
 }

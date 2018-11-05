@@ -71,11 +71,13 @@ table, th, td {
      z-index: 2;
      border-radius: 5px;
      color: white;
+     top: 10%;
      }
      .helpBtn3 .helpText{
+     top: 10%;
      visibility: hidden;
      width: 150px;
-     height: 165px;
+     height: 250px;
      background-color: #E9AD9C;
      color: white;
      text-align: center;
@@ -120,11 +122,13 @@ table, th, td {
          z-index: 2;
          border-radius: 5px;
          color: white;
+         top: 10%;
          }
          .helpBtn4 .helpText{
+         top: 10%;
          visibility: hidden;
          width: 150px;
-         height: 100px;
+         height: 150px;
          background-color: #E9AD9C;
          color: white;
          text-align: center;
@@ -132,7 +136,7 @@ table, th, td {
          padding: 7px 0;
          position: absolute;
          z-index: 1;
-         bottom: -150%;
+         /*bottom: -150%;*/
          left: -230%;
          margin-left: -70px;
          opacity: 0;

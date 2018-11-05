@@ -32,9 +32,10 @@
             <!--creates Help button-->
             <div id="helpBtn3">
                 <button class="helpBtn3">Help
-                    <span class="helpText"> On this page you see the picture ranking of the selected shootout. To
-                      get back to the different shootouts click on "Shootout Rankings" at the top menu.
-      </span>
+                    <span class="helpText"> On this page the top 3 photographers are displayed. <br>
+                    The photographer whose picture has won in the most shootouts is the best ranked photographer.<br>
+                    To get back to the other Rankings click on the tab "Leaderboars" on the top menu.
+                    </span>
                 </button>
             </div>
 
@@ -65,11 +66,8 @@
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
-                            <li><a href="allphotos.html">All Pictures</a></li>
                             <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -110,40 +108,99 @@
 </div>
 
 <script>
-    window.onload = function (){
+    window.onload = function () {
         alert('in function');
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
-            xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestphotographers", true);
-            xmlhttplog2.setRequestHeader("Content-Type", "application/json");
-            //sent the new HttpRequest
-            //var data = JSON.stringify(json);
-            xmlhttplog2.send(null);
-            console.log('request für top fotografen gesendet');
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestbywins", true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        //sent the new HttpRequest
+        //var data = JSON.stringify(json);
+        xmlhttplog2.send(null);
+        console.log('request für top fotografen gesendet');
 
-                xmlhttplog2.onreadystatechange = function () {
-                    if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
-                        var json = xmlhttplog2.responseText;
-                        var userlist = JSON.parse(json);
-                        userlist.reverse();
-                        document.getElementById('bestphoto').src = userlist[0].picture;
-                        document.getElementById('bestphotowins').innerText = userlist[0].wins;
-                        //document.getElementById('1username').innerText = userlist[0].person.username;
-                        document.getElementById('1username').innerText = userlist[0].person;
-                        //-----------------------------
-                        document.getElementById('secondphoto').src = userlist[1].picture;
-                        document.getElementById('secondphotowins').innerText = userlist[1].wins;
-                        document.getElementById('2username').innerText = userlist[1].person;
-                        //-----------------------------
-                        document.getElementById('thirdphoto').src = userlist[2].picture;
-                        document.getElementById('thirdphotowins').innerText = userlist[2].wins;
-                        document.getElementById('3username').innerText = userlist[2].person;
-                    }
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var userlist = JSON.parse(json);
+                userlist.reverse();
 
-                };
+                //User1 ------------------------------------------------------------------------
+                document.getElementById('bestphoto').src = userlist[0].picture;
+                document.getElementById('bestphotowins').innerText = userlist[0].wins;
+                //document.getElementById('1username').innerText = userlist[0].person.username;
+                var username1;
+                username1 = userlist[0].person.username;
+                alert(username1);
+                document.getElementById('1username').innerText = username1;
+                if (username1 == undefined) {
+                    var pid1 = userlist[0].person;
+                    var xmlusername = new XMLHttpRequest(); // new HttpRequest instance
+                    xmlusername.open("GET", "http://localhost:8080/meetme/api/person/" + pid1, true);
+                    xmlusername.setRequestHeader("Content-Type", "application/json");
+                    xmlusername.send(null);
+                    xmlusername.onreadystatechange = function () {
+                        if (xmlusername.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlusername.responseText;
+                            var user = JSON.parse(json);
+                            //alert(user.username);
+                            username1 = user.username;
+                            document.getElementById('1username').innerText = username1;
+                        }
+                    };
+                }
+                //User 2-------------------------------------------------------------------------
+                document.getElementById('secondphoto').src = userlist[1].picture;
+                document.getElementById('secondphotowins').innerText = userlist[1].wins;
+                var username2;
+                username2 = userlist[1].person.username;
+                document.getElementById('2username').innerText = username2;
 
-            };
+                // alert(username2);
+                if (username2 == undefined) {
+                    var pid2 = userlist[1].person;
+                    var xmlusername2 = new XMLHttpRequest(); // new HttpRequest instance
+                    xmlusername2.open("GET", "http://localhost:8080/meetme/api/person/" + pid2, true);
+                    xmlusername2.setRequestHeader("Content-Type", "application/json");
+                    xmlusername2.send(null);
+                    xmlusername2.onreadystatechange = function () {
+                        if (xmlusername2.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlusername2.responseText;
+                            var user = JSON.parse(json);
+                            //alert(user.username);
+                            username2 = user.username;
+                            document.getElementById('2username').innerText = username2;
+                        }
+                    };
+                }
 
+//User 3-------------------------------------------------------------------------
+                document.getElementById('thirdphoto').src = userlist[2].picture;
+                document.getElementById('thirdphotowins').innerText = userlist[2].wins;
+                var username3 = userlist[2].person.username;
+                document.getElementById('3username').innerText = username3;
+                //alert(username3);
+                if (username3 == undefined) {
+                    var pid3 = userlist[2].person;
+                    var xmlusername3 = new XMLHttpRequest(); // new HttpRequest instance
+                    xmlusername3.open("GET", "http://localhost:8080/meetme/api/person/" + pid3, true);
+                    xmlusername3.setRequestHeader("Content-Type", "application/json");
+                    xmlusername3.send(null);
+                    xmlusername3.onreadystatechange = function () {
+                        if (xmlusername3.readyState == XMLHttpRequest.DONE) {
+                            var json = xmlusername3.responseText;
+                            var user = JSON.parse(json);
+                            //alert(user.username);
+                            username3 = user.username;
+                            document.getElementById('3username').innerText = username3;
+                        }
+                    };
+                    //  alert(username3);
+                }
+
+            }
+        };
+    };
 </script>
 
 <footer class="footer">

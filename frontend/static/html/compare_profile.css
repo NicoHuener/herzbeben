@@ -83,6 +83,7 @@
     height: 40px;
     position: fixed;
     margin-left: 1230px;
+    top: 10%;
     display: inline-block;
     bottom: 511px;
     z-index: 2;
@@ -137,6 +138,7 @@
     z-index: 2;
     border-radius: 5px;
     color: white;
+    top: 10%;
     }
     .helpBtn2 .helpText{
     visibility: hidden;
@@ -190,7 +192,7 @@
     .helpBtn5 .helpText{
     visibility: hidden;
     width: 170px;
-    height: 130px;
+    height: 300px;
     background-color: #E9AD9C;
     color: white;
     text-align: center;
@@ -198,7 +200,8 @@
     padding: 7px 0;
     position: absolute;
     z-index: 1;
-    bottom: -557%;
+
+    /*bottom: -400%;*/
     left: 290%;
     margin-left: -70px;
     opacity: 0;
