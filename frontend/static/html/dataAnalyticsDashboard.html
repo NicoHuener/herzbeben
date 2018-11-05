@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Data Analytics</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
     <link rel="stylesheet" href="compare_profile.css">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js></script>
 
     <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -17,6 +19,7 @@
 
 <body>
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js></script>
     <nav role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,21 +84,78 @@
     <h1 style=margin-top:0px;>DATA ANALYTICS</h1>
 </header>-->
 
-
-
-
 <!-- JavaScript for top navbar-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 </script>
 
 <div class="flex-container">
-    <div>Geolocation</div>
-    <div>User's Preferences</div>
-    <div>Standard Variance</div>
-    <div>DataSet4</div>
+    <div>
+        <h1>Geolocation</h1>
+        <img src=./images/heatmap.gif width='356' height='200'>
+    </div>
+
+    <div>
+        <h1>All User's Preferences</h1>
+        <div  id="canvas-holder" style="width:100%; z-index: -1;">
+            <canvas id="chart-area"></canvas>
+        </div>
+
+        <script>
+            var randomScalingFactor = function() {
+                return Math.round(Math.random() * 100);
+            };
+
+            var config = {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                            randomScalingFactor(),
+                        ],
+                        backgroundColor: [
+                            'rgba(111, 158, 178)',
+                            'rgba(210, 180, 180)',
+                            'rgba(103, 104, 110)',
+                            'rgba(118, 76, 60)',
+                            'rgba(159, 69, 75)',
+                        ],
+                        label: 'Dataset 1'
+                    }],
+                    labels: [
+                        'Nature',
+                        'Portrait',
+                        'Food',
+                        'Fashion',
+                        'Animals'
+                    ]
+                },
+                options: {
+                    responsive: true
+                }
+            };
+
+            window.onload = function() {
+                var ctx = document.getElementById('chart-area').getContext('2d');
+                window.myPie = new Chart(ctx, config);
+            };
+        </script>
+    </div>
+
+    <div>
+        <h1>Shootouts - Today</h1>
+        <!--<p style="font-size: 150px">123</p>-->
+        <NumberOfShootouts>123</NumberOfShootouts>
+    </div>
+
+    <!--<div>DataSet4</div>
     <div>DataSet5</div>
-    <div>DataSet6</div>
+    <div>DataSet6</div>-->
 </div>
+
 <script>
     window.onload = function () {
         var userID = cookiewerteHolen();
