@@ -96,14 +96,21 @@ function createshootoutlist() {
                         var shootoutData = JSON.parse(json);
                        // alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
+                        alert(anzahlShootouts);
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person.id;
+                           if (pid == undefined){
+                               pid = shootoutData[i].person;
+                           }
+                           alert(pid);
                            var shootoutid = shootoutData[i].id;
                            var category = shootoutData[i].category;
-                           if (category == null){
-                               category = "Usershootout"
+                          alert(category);
+                           if (category == "US"){
+                               category = "Usershootout";
                            }
+
                             shootouttable.innerHTML +=
                                 "<tr>" +
                                 "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + " - " + category.italics() + "</a>"+ "</li>" +
@@ -111,6 +118,18 @@ function createshootoutlist() {
 
                         }
                     }};
+    var Wert = "";
+    if (document.cookie) {
+        var Wertstart = document.cookie.indexOf("=") + 1;
+        var Wertende = document.cookie.indexOf(";");
+        if (Wertende == -1) {
+            Wertende = document.cookie.length;
+        }
+        Wert = document.cookie.substring(Wertstart, Wertende);
+    }
+    return Wert;
+}
+function cookiewerteHolen () {
     var Wert = "";
     if (document.cookie) {
         var Wertstart = document.cookie.indexOf("=") + 1;
@@ -131,14 +150,17 @@ function createShootout(){
     if (document.cookie) {
         var nameShootout=document.getElementById("nameShootout").value;
         var xmlhttp = new XMLHttpRequest();
+        var m = document.getElementById('creatsocategory');
+        var socategory  = m.options[m.selectedIndex].value;
 
-        xmlhttp.open("POST","http://localhost:8080/meetme/api/shootout/"+nameShootout+"&"+userID);
+        xmlhttp.open("POST","http://localhost:8080/meetme/api/shootout/"+nameShootout+"&"+userID+"&"+socategory);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         //sent the new HttpRequest
-        xmlhttp.send(JSON.stringify({
+        xmlhttp.send();
+        /*xmlhttp.send(JSON.stringify({
             "shootoutName": nameShootout,
             "userid": userID
-        }));
+        }));*/
         //modal.style.display="none";
 
     }
@@ -148,6 +170,7 @@ function createShootout(){
     }
     var modal = document.getElementById('myModal');
     modal.style.display="none";
+    createshootoutlist();
     //nameShootout.innerHTML += ""; noch zeile schreiben, damit textbox leer wird
 
 }
@@ -186,15 +209,17 @@ function starttheshow (personID, soID) {
         if (xmlsocat.readyState == XMLHttpRequest.DONE) {
             var json = xmlsocat.responseText;
             var selectedshootout = JSON.parse(json);
-
-            if (selectedshootout.category == null) {
+            var shootoutcategory = selectedshootout[0].category;
+            //alert(shootoutcategory);
+            if (shootoutcategory == "US") {
                 //usershootout
                 getuserpics(personID);
+                //alert("getuserpics");
             }
             else {
                 //shootout hat eine category
-                var shootoutcategory = selectedshootout.category;
                 getpicsfromcategory(shootoutcategory);
+                //alert("getpicsfromshootout");
 
             }
         }
@@ -202,7 +227,7 @@ function starttheshow (personID, soID) {
 
 }
 function getpicsfromcategory(category) {
-    alert(category);
+    //alert(category);
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/photosfromcat/" + category);
     xmlhttpr.send(null);
@@ -218,7 +243,7 @@ function getpicsfromcategory(category) {
 }
 
 function getuserpics(personID){
-    alert("usershootout");
+    alert(personID);
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);
@@ -253,10 +278,9 @@ function loadshootout () {
 
 
 
-function updateclicks(picID) {
-    var click = 1;
+function updateclicks(picID,points) {
     var xmlhttpclick = new XMLHttpRequest();
-    xmlhttpclick.open("PUT", "http://localhost:8080/meetme/api/photo/clicks/"+ click +"&"+ picID);
+    xmlhttpclick.open("PUT", "http://localhost:8080/meetme/api/photo/clicks/"+ points +"&"+ picID);
     xmlhttpclick.setRequestHeader("Content-Type", "application/json");
     //sent the new HttpRequest
     xmlhttpclick.send();
@@ -291,7 +315,7 @@ function changepic1() { //bild 2 geclickt
 
         alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
        updatepoints(pic2ID,points);
-        updateclicks(pic2ID);
+        updateclicks(pic2ID,points);
     }
     else { //Keine Bilder mehr in Array!
 
@@ -305,7 +329,7 @@ function changepic1() { //bild 2 geclickt
 
         updatepoints(lastpic2ID,points);
         updatewins(lastpic2ID);
-        updateclicks(lastpic2ID);
+        updateclicks(lastpic2ID,points);
         showinfomodal();
 
     }
@@ -326,7 +350,7 @@ function changepic2() { //bild 1 geklickt
 
         var pic1ID = document.getElementById("image1").title;
         updatepoints(pic1ID,points);
-        updateclicks(pic1ID);
+        updateclicks(pic1ID,points);
 
     }
     else {  //Keine Bilder mehr in Array!
@@ -340,7 +364,7 @@ function changepic2() { //bild 1 geklickt
         var lastpic1ID = document.getElementById("image1").title;
         updatepoints(lastpic1ID,points);
         updatewins(lastpic1ID);
-        updateclicks(lastpic1ID);
+        updateclicks(lastpic1ID,points);
         showinfomodal();
     }
 }
@@ -366,7 +390,7 @@ window.onclick = function(event) {
 //Funktionen für popupInfo Modal Fenster
 function showinfomodal() {
 modalbody.innerHTML +=
-"<a href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
+"<br><br><a style='font-size: 20px;margin-left: 170px; color: #E9AD9C ' href=\"ShootoutRanking.html\?sid="+shootoutID+"\" >Show Picture ranking</a>";
     var modal2 = document.getElementById("Infomodal");
     modal2.style.display = "block";
 

@@ -43,27 +43,24 @@
                     <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
-                    <li class="dropdown">
-                        <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
-                        <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="pictureRanking.html">Picture Ranking</a></li>
-                            <li><a href="photographer.html">Photographer Ranking</a></li>
-                            <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
-                            <li role="separator" class="divider"></li>
-                        </ul>
-                    </li>
+                    <li><a href="leaderboards.html">Leaderboards</a></li>
+                    <!--a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
+                     <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="pictureRanking.html">Picture Ranking</a></li>
+                        <li><a href="photographerRanking.html">Photographer Ranking</a></li>
+                        <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </li-->
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
-                            <li><a href="allphotos.html">All Pictures</a></li>
                             <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -80,7 +77,10 @@
 </button>
 
 <button class="helpBtn6">Help
-    <span class="helpText">Please select the picture you want to upload and click on "Upload Picture"!</span>
+    <span class="helpText">Select a local picture you want to upload and choose a category. <br>
+        If you choose 'User Shootout' as a category your picture will only be uploaded to your own profile without adding it to a public category.<br>
+        If you choose a different caregory your picture will be participating in the public category-shootouts.
+        After choosing your category select "Upload Picture"!</span>
 </button>
 <body>
 <header id="heading">
@@ -92,17 +92,36 @@
     <input id ="UploadBtn" type="submit"  value="Upload Picture" />
 <br>
     <p>Select a category:</p>
-    <select style="height: 27px">
-        <option>User Shootout</option>
-        <option>Animals</option>
-        <option>Art</option>
-        <option>Fashion</option>
-        <option>Food</option>
-        <option>Nature</option>
-        <option>Portrait</option>
+    <select id = "category" style="height: 27px">
+        <option selected value="US">User Shootout</option>
+        <option value="Animals">Animals</option>
+        <option value="Art">Art</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Food">Food</option>
+        <option value="Nature">Nature</option>
+        <option value="Portrait">Portrait</option>
     </select>
 </form>
+
+<!--Snackbar Message -->
+<!-- Use a button to open the snackbar -->
+
+<div id="snackbar">Your photo has been successfully uploaded!
+    <p>You can see your uploaded pictures on your profile.</p></div>
+
 <script>
+
+    //Snackbar
+    function myFunction() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+    }
 
 //onclick="addpictodb()"
     $('#Upload').submit(function(e) {
@@ -146,7 +165,8 @@
 
      var filepath = "./uploads/" + filename;
     var userid = cookiewerteHolen();
-    var piccategory = "summer"; //brauchen noch ein Eingabefeld!
+     var m = document.getElementById('category');
+     var piccategory  = m.options[m.selectedIndex].value;
 
     var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
      xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata");
@@ -168,6 +188,9 @@
                 $('input:file').val('');
             }
             clearinput();
+
+        myFunction();
+
     }
 </script>
 
@@ -212,9 +235,56 @@
         border-radius: 5px;
     }
 
+    /* The snackbar - position it at the bottom and in the middle of the screen */
+    #snackbar {
+        visibility: hidden; /* Hidden by default. Visible on click */
+        min-width: 250px; /* Set a default minimum width */
+        margin-left: -125px; /* Divide value of min-width by 2 */
+        background-color: #E9AD9C; /* Black background color */
+        color: #fff; /* White text color */
+        text-align: center; /* Centered text */
+        border-radius: 2px; /* Rounded borders */
+        padding: 16px; /* Padding */
+        position: fixed; /* Sit on top of the screen */
+        z-index: 1; /* Add a z-index if needed */
+        left:75%; /* Center the snackbar */
+        bottom: 30px; /* 30px from the bottom */
+    }
+
+    /* Show the snackbar when clicking on a button (class added with JavaScript) */
+    #snackbar.show {
+        visibility: visible; /* Show the snackbar */
+        /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+       However, delay the fade out process for 2.5 seconds */
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    /* Animations to fade the snackbar in and out */
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
 </style>
 
-
+<footer class="footer">
+    <p>Klicks Inc. © 2018</p>
+</footer>
 </body>
 
 

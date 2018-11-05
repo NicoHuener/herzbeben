@@ -1,23 +1,29 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>Fallstudie</title>
+    <title>Leaderboards</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css" type="text/css">
-    <link rel="stylesheet" href="shootout.css" type="text/css">
-    <!-- Latest compiled and minified CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="leaderboards.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <!-- Optional theme -->
+    <!-- for top navbar -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type=text/javascript src = "navbarFunction.js"></script>
+    <script type=text/javascript src = "compare.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
-
+    <!--  <script src="jquery-3.3.1.min.js"></script> -->
 </head>
+
 <body>
+
+
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
-    <nav role="navigation">
-        <div class="container-fluid">
+    <nav role="navigation" >
+        <div class="container-fluid" >
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -29,25 +35,15 @@
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
             </div>
 
-            <!--creates Help button-->
-            <div id="helpBtn3">
-                <button class="helpBtn3">Help
-                    <span class="helpText"> On this page the 3 recent best pictures.<br>
-                    The best picture is the one with most of the points.<br>
-                    To get back to the other Rankings click on the tab "Leaderboars" on the top menu.
-      </span>
-                </button>
-            </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav"></ul>
                 <form class="navbar-form navbar-left">
                     <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
-                    <!-- <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                    <!--<div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" onkeyup="locationChange()">
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button> -->
+                    <button type="submit" class="btn btn-default" >Submit</button>-->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="impressum.html">Impressum</a></li>
@@ -76,62 +72,52 @@
     </nav>
 </header>
 
-<div id="ranking">
-    <br>
-    <h1>Best of the best</h1>
-    <h2>The 3 best pictures overall</h2>
-    <br><br>
-</div>
+<!-- Seitenüberschrift-->
+<header id="heading">
+    <h1>Leaderboards</h1>
+</header>
 
-<div class="container" >
-    <div id="Best-picture">
-        <h4>No.1</h4>
-        <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="bestpicwins"></h4>
-    </div> <br> <br>
-    <div id="Second-best">
-        <h4>No.2</h4>
-        <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="secondpicwins"></h4>
-    </div> <br> <br>
-    <div id="Third-best">
-        <h4>No.3</h4>
-        <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="thirdpicwins"></h4>
-    </div>
+<div id="boards">
+<section class="cases">
+
+
+        <div class="case" onclick="locationChange1()">
+            <i class="fas fa-award fa-10px"></i>
+            <h4>Photographer Ranking</h4>
+        </div>
+
+
+
+
+        <div class="case" onclick="locationChange2()">
+            <i class="fas fa-camera fa-10px"></i>
+            <h4>Picture Ranking</h4>
+        </div>
+
+
+
+
+        <div class="case" onclick="locationChange3 ()">
+            <i class="far fa-image fa-10px"></i>
+            <h4>Shootout Ranking</h4>
+        </div>
+
+</section>
+
 </div>
 
 <script>
-    window.onload = function (){
-        alert('function running');
+    function locationChange1 (){
+    window.location.replace("http://localhost:8080/photographerRanking.html");
+    }
 
-        var xmlhttplog3 = new XMLHttpRequest(); // new HttpRequest instance
+    function locationChange2 (){
+    window.location.replace("http://localhost:8080/pictureRanking.html");
+    }
 
-            xmlhttplog3.open("GET", "http://localhost:8080/meetme/api/rank/", true);
-            xmlhttplog3.setRequestHeader("Content-Type", "application/json");
-            //sent the new HttpRequest
-            var data = JSON.stringify(json);
-            xmlhttplog3.send(null);
-            console.log('request für beste Bilder gesendet');
-
-                xmlhttplog3.onreadystatechange = function () {
-                    if (xmlhttplog3.readyState == XMLHttpRequest.DONE) {
-                        var json = xmlhttplog3.responseText;
-                        var wins = JSON.parse(json);
-                        wins.reverse();
-                        alert(wins);
-                        alert (Object.keys(wins).length);
-                        alert(wins[0].photo.picture);
-                        document.getElementById('bestpic').src = wins[0].photo.picture;
-                        document.getElementById('bestpicwins').innerText = "Wins: "+ wins[0].wins;
-                        document.getElementById('Secondpic').src = wins[1].photo.picture;
-                        document.getElementById('secondpicwins').innerText = "Wins: "+ wins[1].wins;
-                        document.getElementById('Thirdpic').src = wins[2].photo.picture;
-                        document.getElementById('thirdpicwins').innerText = "Wins: "+ wins[2].wins;
-                    }
-                };
-            };
-
+    function locationChange3 (){
+    window.location.replace("http://localhost:8080/shootoutÜbersicht.html");
+    }
 </script>
 
 <footer class="footer">

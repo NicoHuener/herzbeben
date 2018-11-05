@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Fallstudie</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css" type="text/css">
-    <link rel="stylesheet" href="shootout.css" type="text/css">
-    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="compare_profile.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type=text/javascript src = "navbarFunction.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
-
+    <script type=text/javascript src = "compare.js"></script>
 </head>
-<body>
+
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
     <nav role="navigation">
         <div class="container-fluid">
@@ -29,19 +24,13 @@
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="30px" height="30px"> </a>
             </div>
 
-            <!--creates Help button-->
-            <div id="helpBtn3">
-                <button class="helpBtn3">Help
-                    <span class="helpText"> On this page the 3 recent best pictures.<br>
-                    The best picture is the one with most of the points.<br>
-                    To get back to the other Rankings click on the tab "Leaderboars" on the top menu.
-      </span>
-                </button>
-            </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <!--            <li><a href="#">Help</a></li>
+                                <li class="active"><a href="#">Compare pictures <span class="sr-only">(current)</span></a></li>
+                     -->
+                </ul>
                 <form class="navbar-form navbar-left">
                     <button type="button" class="btn btn-default" id="UserSearchbtn" onclick="locationChange()">Search for Users</button>
                     <!-- <div class="form-group">
@@ -74,69 +63,95 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+
 </header>
+<h1 style="text-align: center; margin-top: 60px"><img id="klicks" src="./images/klicks.png" width="400"> </h1>
 
-<div id="ranking">
-    <br>
-    <h1>Best of the best</h1>
-    <h2>The 3 best pictures overall</h2>
-    <br><br>
-</div>
+<div class="row" style="margin-left: 10px">
+    <div class="column left">
+        <h2 style="text-align: right; color: #9F454B"><b><i>Who we are</i></b></h2>
+        <br>
+        <img src="./images/nico.jpg" height="90px"><b>Nico Hüner</b>
+        <hr>
+        <p>
+            <img src="./images/rahel.jpg" height="90px"><b>Rahel Faenger</b></p>
+        <hr>
+        <p>
+            <img src="./images/nele.png" height="90px"> <b>Nele Josefs</b>
+        </p>
+        <hr>
+        <p>
+            <img src="./images/nina.jpg" height="90px"> <b>Nina Pape</b>
+        </p>
+        <hr>
+        <p>
+            <img src="./images/gina.jpg" height="90px"> <b>Gina Forner</b>
+        </p>
+    </div>
 
-<div class="container" >
-    <div id="Best-picture">
-        <h4>No.1</h4>
-        <img id="bestpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="bestpicwins"></h4>
-    </div> <br> <br>
-    <div id="Second-best">
-        <h4>No.2</h4>
-        <img id="Secondpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="secondpicwins"></h4>
-    </div> <br> <br>
-    <div id="Third-best">
-        <h4>No.3</h4>
-        <img id="Thirdpic" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="thirdpicwins"></h4>
+    <div class="column middle">
+        <p style="margin-top: 83px">
+            <img src="./images/alex.jpg" height="90px"><b>Alexandros Dirbanis</b>
+        </p>
+        <hr>
+        <p>
+            <img src="./images/eva.png" height="90px"> <b>Eva Schröder</b>
+        </p>
+        <hr>
+        <p>
+            <img src="./images/hannah.jpg" height="90px"> <b>Hannah Liebezeit</b>
+        </p>
+        <hr>
+        <p>
+            <img src="./images/blerona.jpg" height="90px"> <b>Blerona Bytyqi</b>
+        </p>
+        <hr>
+
+    </div>
+    <div class="column right">
+        <h2 style="text-align: center; color: #9F454B"><b><i>Our mission...</i></b></h2>
+        <p style="text-align: center"> <img src="images/Mission.PNG" height="550px"></p>
     </div>
 </div>
 
-<script>
-    window.onload = function (){
-        alert('function running');
+<style>
+    * {
+        box-sizing: border-box;
 
-        var xmlhttplog3 = new XMLHttpRequest(); // new HttpRequest instance
+    }
 
-            xmlhttplog3.open("GET", "http://localhost:8080/meetme/api/rank/", true);
-            xmlhttplog3.setRequestHeader("Content-Type", "application/json");
-            //sent the new HttpRequest
-            var data = JSON.stringify(json);
-            xmlhttplog3.send(null);
-            console.log('request für beste Bilder gesendet');
+    .row{
+        text-align: left;
+    }
+    /* Create three unequal columns that floats next to each other */
+    .column {
+        float: left;
+        padding: 10px;
+    }
 
-                xmlhttplog3.onreadystatechange = function () {
-                    if (xmlhttplog3.readyState == XMLHttpRequest.DONE) {
-                        var json = xmlhttplog3.responseText;
-                        var wins = JSON.parse(json);
-                        wins.reverse();
-                        alert(wins);
-                        alert (Object.keys(wins).length);
-                        alert(wins[0].photo.picture);
-                        document.getElementById('bestpic').src = wins[0].photo.picture;
-                        document.getElementById('bestpicwins').innerText = "Wins: "+ wins[0].wins;
-                        document.getElementById('Secondpic').src = wins[1].photo.picture;
-                        document.getElementById('secondpicwins').innerText = "Wins: "+ wins[1].wins;
-                        document.getElementById('Thirdpic').src = wins[2].photo.picture;
-                        document.getElementById('thirdpicwins').innerText = "Wins: "+ wins[2].wins;
-                    }
-                };
-            };
+    .left, .middle {
+        width: 20%;
+    }
 
-</script>
+    .right {
+        width: 58%;
+    }
 
-<footer class="footer">
-    <p>Klicks Inc. © 2018</p>
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<footer class="footer" align-content="center">
+    <p text-align="center">Klicks Inc. © 2018</p>
 </footer>
 
 </body>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
 </html>

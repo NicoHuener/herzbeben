@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FAQ</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <!-- <link rel="stylesheet" href="compare_profile.css"> -->
+    <link rel="stylesheet" href="compare_profile.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- <script type=text/javascript src = "index.js"></script> -->
@@ -21,10 +21,8 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 17px;
-            font-weight: bold;
+            font-size: 15px;
             transition: 0.4s;
-
         }
 
         .active, .accordion:hover {
@@ -33,27 +31,11 @@
 
         .panel {
             padding: 0 18px;
-
             background-color: white;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
-
-        h1  {
-            margin-left: 10px;
-            margin-bottom: 30px;
-            margin-top: 80px;
-            text-shadow: 2px 2px #E9AD9C;
-            text-align: center;
-        }
-
-        p {
-            margin-top: 10px;
-        }
-
-
-
     </style>
 </head>
 <body>
@@ -87,18 +69,24 @@
                     <button type="submit" class="btn btn-default">Submit</button> -->
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                    <li><a href="impressum.html">Impressum</a></li>
                     <li><a href="compare.html">Compare Pictures</a></li>
+                    <li><a href="leaderboards.html">Leaderboards</a></li>
+                    <!--a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leaderboards <span class="caret"></span></a>
+                     <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="pictureRanking.html">Picture Ranking</a></li>
+                        <li><a href="photographerRanking.html">Photographer Ranking</a></li>
+                        <li><a href="shootoutÜbersicht.html">Shootout Rankings</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </li-->
                     <li><a href="profile.html">Profile</a></li>
                     <li class="dropdown">
                         <a onclick="dropdownMenu()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
-                            <li><a href="allphotos.html">All Pictures</a></li>
                             <li><a href="FAQ.html">FAQ</a></li>
                             <li><a href="AGB.html">AGB's</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Sign out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -108,14 +96,7 @@
 </header>
 </head>
 
-<h1>Frequently Asked Questions</h1>
-
-<button class="accordion">How can I create a klicks account?</button>
-<div class="panel">
-    <p>To create an account, click on "Create Account". You have to enter a username, your e-mail address and your name, as well as a password.
-    </p>
-</div>
-
+<p></p>
 
 <button class="accordion">How can I create a shootout?</button>
 <div class="panel">
@@ -135,40 +116,11 @@
     </p>
 </div>
 
-<button class="accordion">How can I search for other shootouts?</button>
-<div class="panel">
-    <p>If you want to find someone else's shootout, just search for the name of the shootout in the search bar on the top left of the page.
-    </p>
-</div>
-
-<button class="accordion">Will my pictures be made available to third parties?</button>
-<div class="panel">
-    <p>Your pictures belong to you only. Klicks does not forward any pictures to our partners or other websites.
-    </p>
-</div>
-
-<button class="accordion">How can I upload pictures to be used in a shootout?</button>
-<div class="panel">
-    <p>To upload pictures that you can use to fill a shootout, go to your profile and klick on the "Upload Picture" button.
-    </p>
-</div>
-
-<button class="accordion">How many pictures are in a shootout?</button>
-<div class="panel">
-    <p>Shootouts can contain between 5 and 25 pictures.
-    </p>
-</div>
-
 <button class="accordion"></button>
 <div class="panel">
     <p>
     </p>
 </div>
-
-
-
-
-
 
 <script>
     var acc = document.getElementsByClassName("accordion");
@@ -186,5 +138,10 @@
         });
     }
 </script>
+
+<footer class="footer">
+    <p>Klicks Inc. © 2018</p>
+</footer>
+
 </body>
 </html>

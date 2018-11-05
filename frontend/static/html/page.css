@@ -45,3 +45,61 @@
  margin-bottom: 20px;
  }
 
+ .helpBtn10{
+     background-color: #E9AD9C;
+     border: none;
+     width: 40px;
+     height: 20px;
+     position: fixed;
+  /*   margin-left: -105px; */
+     display: inline-block;
+  /*   bottom: 385px; */
+     z-index: 2;
+     border-radius: 5px;
+     color: white;
+     }
+     .helpBtn10 .helpText{
+     visibility: hidden;
+     width: 170px;
+     height: 130px;
+     background-color: #E9AD9C;
+     color: white;
+     text-align: center;
+     border-radius: 5px;
+     padding: 7px 0;
+     position: absolute;
+     z-index: 1;
+     bottom: -557%;
+     left: 290%;
+     margin-left: -70px;
+     opacity: 0;
+     transition: opacity 0.3s;
+     }
+     .helpBtn10 .helpText::after{
+     content: "";
+     position: absolute;
+     top: 10%;
+     left: 0%;
+     margin-left: -5px;
+     border-width: 5px;
+     border-style: solid;
+     border-color: #E9AD9C transparent transparent transparent;
+     }
+     .helpBtn10:hover .helpText{
+     visibility: visible;
+     opacity: 1;
+     }
+     .helpBtn10:hover{
+     cursor: pointer;
+     opacity: 0.9;}
+
+     .btnAdmin{
+     width: 160px;
+     background-color: transparent;
+     border: none;
+     color: white;
+     font-size: 20px;
+     margin-top: -100px;
+     margin-left: 950px;
+
+     }

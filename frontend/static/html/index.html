@@ -7,6 +7,7 @@
     <link rel="icon" href="./images/Herzbeben_Logo.png">
     <link rel="stylesheet" href="index.css">
     <script type=text/javascript src = "index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,7 +46,7 @@
 
 <!-- creates basic login-form -->
 <div id="container">
-    <form id="login" name="login">
+    <div id="login" name="login">
         <p id="sign-in1">Sign in now!</p><br><br>
         <label for="usernamelogin">Username:</label>
         <input type="text" id="usernamelogin" name="usernamelogin" placeholder="Enter Username">
@@ -56,13 +57,13 @@
              <label for="checkbox" >Keep me logged in</label>-->
              <input type="submit" value="Login" onclick="signinUser()">
          </div>
-     </form>
+     </div>
  </div>
 
  <!-- creates signup sheet -->
 <div id="signup">
 
-    <form name="signupform" id="signupform" >
+    <div name="signupform" id="signupform" >
         <p id="legend">Create your account!</p><br><br>
         <div id="column">
             <label for="mail">E-Mail address:</label>
@@ -78,7 +79,7 @@
             <input type="text" id="lastname" name="lastname" placeholder="Enter Lastname">
             <br>
             <input type="checkbox" id="AGBcheckbox">
-            <label class="popup" for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGB()" href="">AGB's</a>
+            <label class="popup" for="AGBcheckbox" id="AGBlabel" >I have read the <a onclick="openAGBwindow()" href="">AGB's</a>
                 <span class="popuptext" id="myPopup">Please accept the AGB's to register!</span>
             </label>
         </div>
@@ -103,8 +104,12 @@
                 </span>
             </button>
         </div>
-    </form>
+    </div>
 </div>
+
+<!-- Snackbar -->
+<div id="snackbar">registration successful</div>
+
 
 <style>
 

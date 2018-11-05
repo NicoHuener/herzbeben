@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Data Analytics</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css">
+    <link rel="stylesheet" href="page.css">
 
     <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -88,14 +88,42 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 </script>
 
-<div class="flex-container">
-    <div>Geolocation</div>
-    <div>User's Preferences</div>
-    <div>Standard Variance</div>
-    <div>DataSet4</div>
-    <div>DataSet5</div>
-    <div>DataSet6</div>
+
+<div class="row">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <div class="columnDash">
+        <h1>Individual Geolocation</h1>
+        <img src=./images/usersLocationExample.PNG width='356' height='200'>
+    </div>
+
+    <div class="columnDash">
+        <h1>Individual Preferences</h1>
+        <div id="chartContainer" style="height: 250px; width: 100%;"></div>
+    </div>
+
+    <div class="columnDash">
+        <h1>Sum of Created Shootouts</h1>
+        <NumberOfShootouts id = "totalSO"> </NumberOfShootouts>
+    </div>
+
+    <div class="columnDash">
+        <h1>Today's Shootout Participations</h1>
+        <NumberOfShootouts id = "totalPA"> </NumberOfShootouts>
+    </div>
+
+    <div class="columnDash">
+        <h1>Individual Activity</h1>
+        <NumberOfShootouts id = "totalPA"> </NumberOfShootouts>
+    </div>
+
+    <div class="columnDash">
+        <h1>Hits Probability</h1>
+        <NumberOfShootouts id = "totalPA"> </NumberOfShootouts>
+    </div>
+
 </div>
+
 <script>
     window.onload = function () {
         var userID = cookiewerteHolen();
@@ -126,5 +154,8 @@
     window.location.replace("http://localhost:8080/page.html");
 }
 </script>
+<footer class="footer">
+    <p>Klicks Inc. © 2018</p>
+</footer>
 </body>
 </html>

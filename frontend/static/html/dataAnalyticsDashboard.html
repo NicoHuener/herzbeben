@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Data Analytics</title>
     <link rel="icon" href="./images/Herzbeben_Logo.png">
-    <link rel="stylesheet" href="compare_profile.css">
+    <link rel="stylesheet" href="dataAnalyticsDashboard.css">
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js></script>
 
     <!-- for top navbar -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,10 +15,13 @@
     <link rel="stylesheet" href="dataAnalyticsDashboard.css" type="text/css">
     <script type=text/javascript src = "navbarFunction.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset= utf-8" />
+
 </head>
 
 <body>
+
 <header class="navbar navbar-inverse navbar-fixed-top navbar-custom">
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js></script>
     <nav role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,21 +86,39 @@
     <h1 style=margin-top:0px;>DATA ANALYTICS</h1>
 </header>-->
 
-
-
-
 <!-- JavaScript for top navbar-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
 </script>
 
-<div class="flex-container">
-    <div>Geolocation</div>
-    <div>User's Preferences</div>
-    <div>Standard Variance</div>
-    <div>DataSet4</div>
+    <div class="row">
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <div class="columnDash">
+            <h1>Geolocation</h1>
+            <img src=./images/heatmap.gif width='356' height='200'>
+        </div>
+
+        <div class="columnDash">
+            <h1>All User's Preferences</h1>
+            <div id="chartContainer" style="height: 250px; width: 100%;"></div>
+        </div>
+
+        <div class="columnDash">
+            <h1>Sum of Created Shootouts</h1>
+            <NumberOfShootouts id = "totalSO"> </NumberOfShootouts>
+        </div>
+
+        <div class="columnDash">
+            <h1>Today's Shootout Participations</h1>
+            <NumberOfShootouts id = "totalPA"> </NumberOfShootouts>
+        </div>
+
+    </div>
+
+    <!--<div>DataSet4</div>
     <div>DataSet5</div>
-    <div>DataSet6</div>
-</div>
+    <div>DataSet6</div>-->
+
 <script>
     window.onload = function () {
         var userID = cookiewerteHolen();
@@ -107,8 +130,74 @@
         else if (document.cookie === ""){
         window.location.replace("http://localhost:8080/index.html");
         }
-    };
+    getshootouttotal();
+//------------------------------------------------------------------------
+        var theme = {
+            Chart: {
+                colorSet: "colorSet1",
+                background: "000000",
+            }
+        }
+        CanvasJS.addColorSet("klicksTheme",
+            [//colorSet Array
+                "#6F9EB2",
+                "#d29aaa",
+                "#3f4046",
+                "#764C3C",
+                "#9F454B",
+                "#000000",
+                "#FFFFFF",
+            ])
 
+        CanvasJS.addTheme('Klicks',theme); // You can use any name
+
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            /*theme: 'Klicks',*/
+            colorSet: 'klicksTheme',
+            backgroundColor: '#f1f1f1',
+            /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: ""
+            },
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}%",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 15,
+                indexLabel: "{label} - {y}%",
+                dataPoints: [
+                    { y: 51.08, label: "User Shootout" },
+                    { y: 27.34, label: "Animals" },
+                    { y: 10.62, label: "Art" },
+                    { y: 5.02, label: "Fashion" },
+                    { y: 4.07, label: "Food" },
+                    { y: 1.22, label: "Nature" },
+                    { y: 0.44, label: "Portrait" }
+                ]
+            }]
+        });
+        chart.render();
+    };
+//-----------------------------------------------------------------------
+    function getshootouttotal() {
+        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/shootout", true);
+        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+        xmlhttplog2.send(null);
+        xmlhttplog2.onreadystatechange = function () {
+            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttplog2.responseText;
+                var shootoutlist = JSON.parse(json);
+                var anzahlshootouts =(Object.keys(shootoutlist).length);
+                document.getElementById('totalSO').innerText = anzahlshootouts;
+            }
+        };
+    }
     function cookiewerteHolen () {
         var Wert = "";
         if (document.cookie) {
@@ -127,6 +216,9 @@
 }
 
 </script>
+<footer class="footer">
+    <p>Klicks Inc. © 2018</p>
+</footer>
 </body>
 </html>
 

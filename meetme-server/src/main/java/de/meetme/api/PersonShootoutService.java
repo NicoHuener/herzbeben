@@ -40,12 +40,12 @@ public class PersonShootoutService {
     }*/
 
     @POST
-    @Path("/{shootoutId}&{userId}&{category}")
+    @Path("/{shootoutId}&{userId}&{category}&{date}")
     @UnitOfWork
-    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("category")String category){
+    public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("category")String category, @PathParam("date")String date){
         Shootout shootout = shootoutDao.get(shootoutId);
         Person person = personDao.get(userId);
-        PersonShootout personshootout = new PersonShootout(person,shootout,category);
+        PersonShootout personshootout = new PersonShootout(person,shootout,category,date);
         return personshootout;
     }
 
@@ -94,14 +94,13 @@ public class PersonShootoutService {
         return dao.getBestShootoutsByPerson(userId);
     }
 
-   /* @GET
-    @Path("/timestamp")
+    @GET
+    @Path("/date")
     @UnitOfWork
-    public List<Shootout> getShootoutsByDate(String timestamp) throws Exception {
-        log.debug("Get Shootouts by Date: " + timestamp);
-        Shootout shootout = shootoutDao.get(timestamp);
+    public List<Shootout> getShootoutsByDate(String date) throws Exception {
+        log.debug("Get Shootouts by Date: " + date);
 
-        return dao.getShootoutsByDate(timestamp);
-    }*/
+        return dao.getShootoutsByDate(date);
+    }
 
 }

@@ -8,6 +8,18 @@
     return vaildpw;
 }*/
 
+//Snackbar
+function myFunction() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);
+}
+
 window.onload = function () {
     if (document.cookie) {
         window.location.replace("http://localhost:8080/compare.html");
@@ -212,7 +224,6 @@ function showLogin() {
     else {
          r.style.display = "none";
     }*/
-
 }
 
 function checkPassword(confpw,pw){
@@ -222,7 +233,6 @@ function checkPassword(confpw,pw){
     else{
         alert("Passwords don't match");
         return false;
-
     }
 }
 
@@ -234,12 +244,17 @@ function checkRequired() {
     }
 }
 
-
     //AGB Modal --------------------------------------------------
     // When the user clicks on the button, open the modal
-    function openAGB() {
+    /*function openAGB() {
         var modal = document.getElementById('AGBModal');
-        modal.style.display = "block";
+        //modal.style.display = "block";
+        //modal.classList.toggle("show");
+        if (modal.style.display === "none") {
+                modal.style.display = "block";
+            } else {
+                modal.style.display = "none";
+            }
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -254,13 +269,12 @@ function checkRequired() {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    };
+    };*/
 //-----------------------------------------------------------------------
     function registerUser() {
 
         // Get the checkbox
         var checkBox = document.getElementById("AGBcheckbox");
-
 
         if(checkBox.checked){
 
@@ -321,7 +335,6 @@ function checkRequired() {
                         document.cookie = "id=" + userdata.id;
                     }
                 }
-
             }*/
 
             function checkdataindb(email, username) {
@@ -352,19 +365,16 @@ function checkRequired() {
                         }
                         if (useravailable === true) {
                             createuser();
-                            window.location.replace("http://localhost:8080/index.html");
-alert("Account for "+username+" successfully created!")
+                           /* window.location.replace("http://localhost:8080/index.html");*/
+                        window.location.replace("http://localhost:8080/index.html");
+                        //myFunction();
 
-
-
-                           // window.location.replace("http://localhost:8080/compare.html");
                         }
                     }
                 }
 
             }
         }
-
 
         else {
             alert('AGBs not checked');
@@ -373,6 +383,10 @@ alert("Account for "+username+" successfully created!")
             popup.classList.toggle("show");
 
         }
+    }
+
+    function openAGBwindow() {
+        window.open("http://localhost:8080/AGB_notregistered.html");
     }
 
 
