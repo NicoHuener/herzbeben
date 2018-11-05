@@ -153,20 +153,20 @@
             if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
                 alert('function running');
                 var json = xmlhttplog2.responseText;
-                var userlist = JSON.parse(json);
-                userlist.reverse();
-
+                var piclist = JSON.parse(json);
+                piclist.reverse();
+                alert(piclist[0].picture);
                 //User1 ------------------------------------------------------------------------
-                document.getElementById('bestphoto').src = userlist[0].picture;
-                document.getElementById('bestphotowins').innerText = userlist[0].clicks;
+                document.getElementById('bestpic').src = piclist[0].picture;
+                document.getElementById('bestpicwins').innerText = piclist[0].clicks;
 
                 //User 2-------------------------------------------------------------------------
-                document.getElementById('secondphoto').src = userlist[1].picture;
-                document.getElementById('secondphotowins').innerText = userlist[1].clicks;
+                document.getElementById('Secondpic').src = piclist[1].picture;
+                document.getElementById('secondpicwins').innerText = piclist[1].clicks;
 
                 //User 3-------------------------------------------------------------------------
-                document.getElementById('thirdphoto').src = userlist[2].picture;
-                document.getElementById('thirdphotowins').innerText = userlist[2].clicks;
+                document.getElementById('Thirdpic').src = piclist[2].picture;
+                document.getElementById('thirdpicwins').innerText = piclist[2].clicks;
 
             }
         };
