@@ -13,7 +13,6 @@ public class PersonShootout extends PersistentObject{
     private Person person;
     @ManyToOne
     private Shootout shootout;
-    //private String timestamp;
     private String date;
     private String category;
 
@@ -21,12 +20,13 @@ public class PersonShootout extends PersistentObject{
         super(0);
     }
 
-    public PersonShootout(Person person, Shootout shootout, String category, String date) {
+    public PersonShootout(Person person, Shootout shootout,String date, String category) {
         super(0);
         this.person = person;
         this.shootout = shootout;
-        this.category = category;
         this.date = date;
+        this.category = category;
+
     }
 
     @JsonProperty
@@ -40,21 +40,22 @@ public class PersonShootout extends PersistentObject{
     }
 
     @JsonProperty
+    public String getDate() {
+        return date;
+    }
+
+    @JsonProperty
     public String getCategory() {
         return category;
     }
 
-    @JsonProperty
-    public String getDate() {
-        return date;
-    }
     @Override
     public String toString() {
         return "PersonShootout{" +
                 "person=" + person +
                 ", shootout='" + shootout + '\'' +
-                ", category='" + category + '\'' +
                 ", date='" + date + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 
