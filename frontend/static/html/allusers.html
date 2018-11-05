@@ -161,19 +161,19 @@
 
 </script>
 
-<!-- <script>
+<!--<script>
     /*Tabelle durchsuchen*/
     function searchUser() {
-        var x = document.getElementById("mySelect").value;
+        var x = document.getElementByID("mySelect");
         alert(x);
-        if (x == "Search by Username") {
+        if (x == "username") {
             var input, filter, table, tr, td, i;
             input = document.getElementById("user_input");
             filter = input.value.toUpperCase();
             table = document.getElementById("result");
             tr = table.getElementsByTagName("tr");
                 for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[4];
+                td = tr[i].getElementsByTagName("td")[0];
                     if (td) {
                         if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
@@ -184,25 +184,7 @@
                 }
         }
 
-        else if ((x == "Search by Firstname") {
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("user_input");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("result");
-            tr = table.getElementsByTagName("tr");
-                for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[2];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        } else {
-                        tr[i].style.display = "none";
-                        }
-                    }
-                }
-        }
-
-        else if ((x == "Search by Lastname") {
+        else if (x == "firstname") {
             var input, filter, table, tr, td, i;
             input = document.getElementById("user_input");
             filter = input.value.toUpperCase();
@@ -219,8 +201,26 @@
                     }
                 }
         }
+
+        else if (x == "lastname") {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("user_input");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("result");
+            tr = table.getElementsByTagName("tr");
+                for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        } else {
+                        tr[i].style.display = "none";
+                        }
+                    }
+                }
+        }
     }
-</script> -->
+</script>-->
 <footer class="footer">
     <p>Klicks Inc. © 2018</p>
 </footer>
