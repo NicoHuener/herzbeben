@@ -98,13 +98,14 @@ NumberOfShootouts {
 }
 
 .btnAdmin1{
-     width: 180px;
-     background-color: transparent;
+     padding: 14px 11px;
+     width: 130px;
+     background-color: #585858;
      border: none;
      color: white;
      font-size: 20px;
-     top: 3.5%;
-     margin-left: 950px;
+     top: 0%;
+     margin-left: 790px;
      position: fixed;
      }
 
@@ -139,14 +140,17 @@ h1 {
     text-align: center;
     font-weight: bold;
 }
- .btnAdmin1 { font-size: 19px;
-         top: 3.5%;
-         margin-left: 1050px;
+ .btnAdmin1 {
+         padding: 14px 11px;
+         font-size: 19px;
+         top: 0%;
+         margin-left: 790px;
          position: fixed;
          border: none;
-         background-color: transparent;
+         background-color: #585858;
          color: white;
 }
+
 
 .helpBtn13{
          background-color: #E9AD9C;
@@ -197,3 +201,15 @@ h1 {
          opacity: 0.9;
          }
 
+.btnAdmin1:active{
+     outline: none;
+     border-color: transparent;
+     webkit-box-shadow: none;
+     box-shadow:none;
+     }
+     .btnAdmin1:focus{
+     outline: none;
+     border-color: transparent;
+     webkit-box-shadow: none;
+     box-shadow:none;
+     }

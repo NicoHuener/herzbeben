@@ -29,8 +29,8 @@ public class RankDao  extends AbstractDao<Rank> {
         return q.<de.meetme.data.Photo>getResultList();
     }
 
-    public List<Rank> getpointsinsg(long photoId) {
-        String sqlQuery = "select photo_id,sum(points) from " + getEntityClass().getSimpleName() +  " where photo_id = ? group by photo_id";
+    public List<Rank> getpoints(long photoId) {
+        String sqlQuery = "select photo_id,sum(points) from " + getEntityClass().getSimpleName() +  " where photo_id = ? ";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Rank.class);
         q.setParameter( 1, photoId );
         return q.<de.meetme.data.Photo>getResultList();

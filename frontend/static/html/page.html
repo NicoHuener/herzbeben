@@ -32,8 +32,7 @@
                 <div class="heading">DATA ANALYTICS</div>
                 <button class="btnAdmin" onclick="locationChange()">Average User</button>
                 <button class="helpBtn12">Help
-                    <span class="helpText">This is your data analytics dashboard. It is divided into 2 sections: <br> 1. Geolocation: Track the location of your users <br> 2. User's Preferences: Take a look into the shootout preferecnes. <br> 3. Standard Variance: Examine the deviation of an individual assessment from the average assessment.
-            </span>
+                    <span class="helpText">On this page you can select a specific user and view the data.</span>
                 </button>
             </div>
 
@@ -72,8 +71,8 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Sign out</a></li>
                         </ul>
-                    </li>
-                </ul>-->
+                    </li>-->
+                </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
@@ -84,11 +83,11 @@
 
     <h1>Search for Users</h1>
     <input  type="text" class="form-control" id="user_input" placeholder="Search for users by username" onkeyup="searchUser()">
-    <select id="mySelect">
+    <!--<select id="mySelect">
         <option value="username">Search by Username</option>
         <option value="firstname">Search by Firstname</option>
         <option value="lastname">Search by Lastname</option>
-    </select>
+    </select>-->
 
     <table id="result" border="solid black" >
         <tr>
