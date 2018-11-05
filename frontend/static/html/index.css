@@ -195,6 +195,7 @@ html, body {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0;
+
 }
 
 #column {
@@ -414,4 +415,12 @@ margin-top: 18px;
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
+}
+
+#AGBModal {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: lightblue;
+    margin-top: 20px;
 }

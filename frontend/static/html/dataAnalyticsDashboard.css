@@ -96,3 +96,13 @@ NumberOfShootouts {
     height: 25px;
     z-index: 10;
 }
+
+.btnAdmin1{
+     width: 180px;
+     background-color: transparent;
+     border: none;
+     color: white;
+     font-size: 20px;
+     margin-top: -20px;
+     margin-left: 950px;
+     }
