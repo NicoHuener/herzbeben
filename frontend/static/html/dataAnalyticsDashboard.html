@@ -32,6 +32,7 @@
                 </button>
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="40px" height="40px"> </a>
                 <div class="heading">DATA ANALYTICS</div>
+                <button class="btnAdmin1" onclick="locationChange()">All Users</button>
                 <button class="helpBtn10">Help
                     <span class="helpText">This is your data analytics dashboard. It is divided into 2 sections: <br> 1. Geolocation: Track the location of your users <br> 2. User's Preferences: Take a look into the shootout preferecnes. <br> 3. Standard Variance: Examine the deviation of an individual assessment from the average assessment.
             </span>
@@ -180,6 +181,11 @@
         }
         return Wert;
     }
+
+  function locationChange (){
+    window.location.replace("http://localhost:8080/page.html");
+}
+
 </script>
 </body>
 </html>

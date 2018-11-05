@@ -108,22 +108,28 @@
         <!--/span-->
     <!-- Popup-Info beim fertigen Durchlauf eines Shootouts --------------------->
         <div id="Infomodal" class="modal" >
-            <div class="modal-content">
+            <div class="modalInfo-content">
                 <span class="close2" onclick="closeinfomodal()">&times;</span>
                 <div class="modal-header">
-                    <h1> Das Shootout ist vorbei!</h1>
+                    <h1 style="text-align: center"> The shootout is over!</h1>
                 </div>
                 <div id ="modalbody" class="modal-body">
-                    <h2>Schau Dir jetzt das Ranking des Shootouts an!</h2>
+                    <h2 style="text-align: center">Check out the shootout ranking:</h2>
                 </div>
+                <br>
             </div>
         </div>
     <!-- Modal popup für create Shootout --------------------------------------->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closemodcS()">&times;</span>
-                <div class="modal-header">
 
+                    <button class="helpBtn5">Help
+                        <span class="helpText">Please enter the name of your new shootout. <br>
+    If you want to share this shootout with everyone select "public" below.
+    </span>
+                    </button>
+                    <div class="modal-header">
                     <h2> Create your shootout!</h2>
                 </div>
                 <div class="modal-body">
@@ -132,20 +138,16 @@
                         <input type="text" id="nameShootout">
                         <p></p>
                             <label>Select a category:</label>
-                            <select style="height: 27px">
-                            <option>User Shootout</option>
-                            <option>Animals</option>
-                            <option>Art</option>
-                            <option>Fashion</option>
-                            <option>Food</option>
-                            <option>Nature</option>
-                            <option>Portrait</option>
+                    <select id = "creatsocategory" style="height: 27px">
+                        <option selected value="">User Shootout</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Art">Art</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Food">Food</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Portrait">Portrait</option>
                     </select>
-                    <button class="helpBtn5">Help
-                        <span class="helpText">Please enter the name of your new shootout. <br>
-    If you want to share this shootout with everyone select "public" below.
-    </span>
-                    </button>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -181,11 +183,6 @@
     <!--/span-->
 </div>
 <!--/row-->
-
-  <script>
-
-
-  </script>
 
 <!--Help button-->
 <button class="helpBtn1">Help
