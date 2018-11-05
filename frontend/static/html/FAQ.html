@@ -26,6 +26,7 @@
             transition: 0.4s;
         }
 
+
         .active, .accordion:hover {
             background-color: #ccc;
         }
@@ -36,6 +37,20 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.2s ease-out;
+        }
+
+
+        .footer {
+            position: fixed;
+            display: block;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(15,10,10);
+            text-align: center;
+            color: lightgray;
+            height: 25px;
+            z-index: 10;
         }
 
         h1  {
@@ -100,7 +115,7 @@
                         <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="allusers.html">All Users</a></li>
                             <li><a href="FAQ.html">FAQ</a></li>
-                            <li><a href="AGB.html">AGB's</a></li>
+                            <li><a href="AGB.html">Terms and Conditions</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -159,7 +174,6 @@
     <p>Shootouts can contain as many pictures as you want.
     </p>
 </div>
-
 
 
 <button class="accordion"></button>

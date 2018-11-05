@@ -1,12 +1,5 @@
 
-/*function createvalidpw (pw) {
-    var bcrypt = require('bcryptjs')
 
-    var salt = bcrypt.genSaltSync();
-    var vaildpw = bcrypt.hashSync(pw, salt);
-    alert("Password: " && vaildpw);
-    return vaildpw;
-}*/
 
 //Snackbar
 function myFunction() {

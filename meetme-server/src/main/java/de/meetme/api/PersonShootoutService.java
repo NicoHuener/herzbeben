@@ -94,4 +94,36 @@ public class PersonShootoutService {
         return dao.getShootoutsByDate(date);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/countCategories")
+    @UnitOfWork
+    public List<PersonShootout> countCategoriesAll() throws Exception {
+
+        return dao.countCategoriesAll();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/countCategories/{userId}")
+    @UnitOfWork
+    public List<PersonShootout> countCategoriesAll(@PathParam("userId") long userId) throws Exception {
+        log.debug("Count categories by user: " + userId);
+        return dao.countCategoriesByUser(userId);
+    }
+
+
+    //wie viele shootouts hat ein user am gegebenen Datum erstellt?
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/countShootoutsByDate/{userId}")
+    @UnitOfWork
+    public List<PersonShootout> countShootoutsByDate(@PathParam("userId") long userId, String date) throws Exception {
+        log.debug("Count shootouts by date by user: " + userId);
+        return dao.countShootoutsByDate(userId, date);
+    }
+
 }
