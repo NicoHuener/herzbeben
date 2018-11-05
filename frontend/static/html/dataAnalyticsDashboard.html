@@ -93,19 +93,24 @@
     <div class="row">
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-        <div class="column">
+        <div class="columnDash">
             <h1>Geolocation</h1>
             <img src=./images/heatmap.gif width='356' height='200'>
         </div>
 
-        <div class="column">
+        <div class="columnDash">
             <h1>All User's Preferences</h1>
             <div id="chartContainer" style="height: 250px; width: 100%;"></div>
         </div>
 
-        <div class="column">
-            <h1>Shootouts - Today</h1>
-            <NumberOfShootouts id = "totalSO">123</NumberOfShootouts>
+        <div class="columnDash">
+            <h1>Sum of Created Shootouts</h1>
+            <NumberOfShootouts id = "totalSO" style="text-align: center"></NumberOfShootouts>
+        </div>
+
+        <div class="columnDash">
+            <h1>Today's Shootout Participations</h1>
+            <NumberOfShootouts id = "totalPA"></NumberOfShootouts>
         </div>
 
     </div>
