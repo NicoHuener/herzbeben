@@ -101,6 +101,9 @@
 <script>
     //Tabelle erstellen
     window.onload = function () {
+        if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+        }
 
             var xhr = new XMLHttpRequest();
             var json;

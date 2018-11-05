@@ -183,6 +183,14 @@
 </div>
 
 <script>
+
+    window.onload = function () {
+
+        if (document.cookie === ""){
+        window.location.replace("http://localhost:8080/index.html");
+        }
+    }
+
     var acc = document.getElementsByClassName("accordion");
     var i;
 

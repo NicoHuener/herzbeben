@@ -151,6 +151,10 @@
         <!--<script>
                 window.onload = function () {
 
+                if (document.cookie === ""){
+                    window.location.replace("http://localhost:8080/index.html");
+                }
+
                     var xhr = new XMLHttpRequest();
                     var json;
 
@@ -183,6 +187,12 @@ console.log('shootout gesendet');
     </table>
 
     <script>
+        window.onload = function () {
+            if (document.cookie === ""){
+                window.location.replace("http://localhost:8080/index.html");
+            }
+        }
+
         function searchShootout() {
             var input, filter, table, tr, td, i;
             input = document.getElementById("searchShootout");

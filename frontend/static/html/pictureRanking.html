@@ -139,6 +139,11 @@
 <script>
     window.onload = function () {
         alert('in function');
+
+        if (document.cookie === ""){
+            window.location.replace("http://localhost:8080/index.html");
+        }
+
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
         xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestpicture", true);
