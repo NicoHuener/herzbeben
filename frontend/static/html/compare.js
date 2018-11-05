@@ -96,6 +96,7 @@ function createshootoutlist() {
                         var shootoutData = JSON.parse(json);
                        // alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
+                        alert(anzahlShootouts);
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person.id;
@@ -105,10 +106,11 @@ function createshootoutlist() {
                            alert(pid);
                            var shootoutid = shootoutData[i].id;
                            var category = shootoutData[i].category;
-                          // alert(category);
+                          alert(category);
                            if (category == "US"){
                                category = "Usershootout";
                            }
+
                             shootouttable.innerHTML +=
                                 "<tr>" +
                                 "<li>" + "<a href ='#' id='"+shootoutData[i].id+"' onclick='starttheshow("+pid+","+shootoutid+")' />" + shootoutData[i].name + " - " + category.italics() + "</a>"+ "</li>" +

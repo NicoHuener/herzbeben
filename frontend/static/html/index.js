@@ -246,9 +246,15 @@ function checkRequired() {
 
     //AGB Modal --------------------------------------------------
     // When the user clicks on the button, open the modal
-    function openAGB() {
+    /*function openAGB() {
         var modal = document.getElementById('AGBModal');
-        modal.style.display = "block";
+        //modal.style.display = "block";
+        //modal.classList.toggle("show");
+        if (modal.style.display === "none") {
+                modal.style.display = "block";
+            } else {
+                modal.style.display = "none";
+            }
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -263,7 +269,7 @@ function checkRequired() {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    };
+    };*/
 //-----------------------------------------------------------------------
     function registerUser() {
 
@@ -360,8 +366,9 @@ function checkRequired() {
                         if (useravailable === true) {
                             createuser();
                            /* window.location.replace("http://localhost:8080/index.html");*/
-                        myFunction();
-                           // window.location.replace("http://localhost:8080/compare.html");
+                        window.location.replace("http://localhost:8080/index.html");
+                        //myFunction();
+
                         }
                     }
                 }
@@ -375,20 +382,15 @@ function checkRequired() {
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
 
-            /*var x = document.getElementById("signup");
-
-            var z = document.getElementById("container");
-
-            if(z.style.display === "block"){
-            z.style.display = "none";
-            x.style.display = "block";
-            }
-
-            if(x.style.display === "block") {
-            x.style.display = "block";
-            }*/
-
-            showCreateAccount;
-
-            }
+        }
     }
+
+    function openAGBwindow() {
+        window.open("http://localhost:8080/AGB_notregistered.html");
+    }
+
+
+
+
+
+
