@@ -57,12 +57,20 @@ public class RankService {
     }
 
    @GET
-   @Path("/shootout/{shootoutId}")
+    @Path("/shootout/{shootoutId}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public List<Rank> getRanksbyShootoutId(@PathParam("shootoutId")long shootoutId) throws Exception {
         log.debug("Get Rank from Shootout: " + shootoutId);
-       return dao.getRankFromShootout(shootoutId);
+        return dao.getRankFromShootout(shootoutId);
+    }
+    @GET
+    @Path("/winner/{shootoutId}")
+    @UnitOfWork
+    //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public List<Rank> getWinnerfromshootout(@PathParam("shootoutId")long shootoutId) throws Exception {
+        log.debug("Get Winner from Shootout: " + shootoutId);
+        return dao.getWinner(shootoutId);
     }
 
 }
