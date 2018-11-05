@@ -8,7 +8,7 @@
 
 
 hr{
-    border: 0;
+    border:0;
     height: 1px;
     background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
     background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -181,6 +181,8 @@ header li{
     grid-gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     color: var(--white);
+    margin-left: 10px;
+    margin-right: 10px;
 
 
 }
