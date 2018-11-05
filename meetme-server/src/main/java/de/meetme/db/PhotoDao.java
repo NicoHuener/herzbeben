@@ -40,6 +40,12 @@ public class PhotoDao extends AbstractDao<Photo> {
         return q.<de.meetme.data.Photo>getResultList();
     }
 
+    public List<Photo> getpointsinsgesammt() {
+        String sqlQuery = "select photo_id,sum(points) from " + getEntityClass().getSimpleName() +  " group by photo_id";
+        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Photo.class);
+        return q.<de.meetme.data.Photo>getResultList();
+    }
+
 
     /*public List<Photo> getPhotosByCategory(String category) {
         String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where category = " + category;

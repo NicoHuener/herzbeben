@@ -95,6 +95,15 @@ import java.util.List;
      return dao.getPhotosfromcat(category);
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/getallpoints")
+    @UnitOfWork
+    public List<Photo> getallpoints() throws Exception {
+        return dao.getpointsinsgesammt();
+    }
+
     //Liefert Liste sortiert nach clicks
     @GET
     @Produces(MediaType.APPLICATION_JSON)
