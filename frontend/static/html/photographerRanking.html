@@ -83,29 +83,61 @@
     <br><br>
 </div>
 
-<div class="container" >
+<div class="container">
+   <div class="column" style="text-align: center">
     <div id="Best-photographer">
         <h4>No.1 Photographer:</h4>
-        <h4 id="1username"></h4>
-        <h5>Best picture</h5>
-        <img id="bestphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="bestphotowins"></h4>
-    </div> <br> <br>
+        <h4 style="color: #9F454B" id="1username"></h4> <br>
+        <p>Wins:</p>
+        <h4 id="bestphotowins"></h4> <br><br><br>
+        <h5 style="text-align: right"> <i>Best picture:</i></h5>
+    </div> <br><hr>
     <div id="Second-photo">
         <h4>No.2 Photographer:</h4>
-        <h4 id="2username"></h4>
-        <h5>Best picture</h5>
-        <img id="secondphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="secondphotowins"></h4>
-    </div> <br> <br>
+        <h4 style="color: #9F454B" id="2username"></h4> <br>
+        <p>Wins:</p>
+        <h4 id="secondphotowins"></h4> <br><br><br>
+        <h5 style="text-align: right"><i>Best picture:</i></h5>
+    </div> <br><hr>
     <div id="Third-photo">
         <h4>No.3 Photographer:</h4>
-        <h4 id="3username"></h4>
-        <h5>Best picture</h5>
-        <img id="thirdphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
-        <h4 id="thirdphotowins"></h4>
+        <h4 style="color: #9F454B" id="3username"></h4> <br>
+        <p>Wins:</p>
+        <h4 id="thirdphotowins"></h4> <br><br>
+        <h5 style="text-align: right"> <i>Best picture:</i></h5>
     </div>
+   </div>
+
+   <div class="column">
+       <div>
+           <img id="bestphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+       </div> <br><br>
+       <div>
+           <img id="secondphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+       </div><br><br>
+       <div>
+           <img id="thirdphoto" src="" alt="no pictures ranked yet" style="width:100%" height="250px" width="280px">
+       </div>
+
+
+   </div>
 </div>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    /* Create two equal columns that sits next to each other */
+    .column {
+        flex: 50%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
+</style>
 
 <script>
     window.onload = function () {
