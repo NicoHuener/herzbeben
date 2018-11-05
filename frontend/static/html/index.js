@@ -249,9 +249,15 @@ function checkRequired() {
 
     //AGB Modal --------------------------------------------------
     // When the user clicks on the button, open the modal
-    function openAGB() {
+    /*function openAGB() {
         var modal = document.getElementById('AGBModal');
-        modal.style.display = "block";
+        //modal.style.display = "block";
+        //modal.classList.toggle("show");
+        if (modal.style.display === "none") {
+                modal.style.display = "block";
+            } else {
+                modal.style.display = "none";
+            }
     }
 
     // When the user clicks on <span> (x), close the modal
@@ -266,13 +272,12 @@ function checkRequired() {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    };
+    };*/
 //-----------------------------------------------------------------------
     function registerUser() {
 
         // Get the checkbox
         var checkBox = document.getElementById("AGBcheckbox");
-
 
         if(checkBox.checked){
 
@@ -365,11 +370,12 @@ function checkRequired() {
                         if (useravailable === true) {
                             createuser();
                            /* window.location.replace("http://localhost:8080/index.html");*/
+                        window.location.replace("http://localhost:8080/index.html");
                         myFunction();
 
 
 
-                           // window.location.replace("http://localhost:8080/compare.html");
+
                         }
                     }
                 }
@@ -385,6 +391,10 @@ function checkRequired() {
             popup.classList.toggle("show");
 
         }
+    }
+
+    function openAGBwindow() {
+        window.open("http://localhost:8080/AGB_notregistered.html");
     }
 
 
