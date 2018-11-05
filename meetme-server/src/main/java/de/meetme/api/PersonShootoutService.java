@@ -43,10 +43,11 @@ public class PersonShootoutService {
     @Path("/{shootoutId}&{userId}&{category}")
     @UnitOfWork
     public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("category")String category){
+        log.debug("Create PersonShootout from: " + userId);
         Shootout shootout = shootoutDao.get(shootoutId);
         Person person = personDao.get(userId);
         PersonShootout personshootout = new PersonShootout(person,shootout,category);
-        return personshootout;
+        return dao.persist(personshootout);
     }
 
     @GET
