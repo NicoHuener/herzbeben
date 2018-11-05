@@ -131,14 +131,17 @@ function createShootout(){
     if (document.cookie) {
         var nameShootout=document.getElementById("nameShootout").value;
         var xmlhttp = new XMLHttpRequest();
+        var m = document.getElementById('creatsocategory');
+        var socategory  = m.options[m.selectedIndex].value;
 
-        xmlhttp.open("POST","http://localhost:8080/meetme/api/shootout/"+nameShootout+"&"+userID);
+        xmlhttp.open("POST","http://localhost:8080/meetme/api/shootout/"+nameShootout+"&"+userID+"&"+socategory);
         xmlhttp.setRequestHeader("Content-Type", "application/json");
         //sent the new HttpRequest
-        xmlhttp.send(JSON.stringify({
+        xmlhttp.send();
+        /*xmlhttp.send(JSON.stringify({
             "shootoutName": nameShootout,
             "userid": userID
-        }));
+        }));*/
         //modal.style.display="none";
 
     }
@@ -186,15 +189,17 @@ function starttheshow (personID, soID) {
         if (xmlsocat.readyState == XMLHttpRequest.DONE) {
             var json = xmlsocat.responseText;
             var selectedshootout = JSON.parse(json);
-
-            if (selectedshootout.category == null) {
+            var shootoutcategory = selectedshootout[0].category;
+            //alert(shootoutcategory);
+            if (shootoutcategory == null) {
                 //usershootout
                 getuserpics(personID);
+                //alert("getuserpics");
             }
             else {
                 //shootout hat eine category
-                var shootoutcategory = selectedshootout.category;
                 getpicsfromcategory(shootoutcategory);
+               // alert("getpicsfromshootout");
 
             }
         }
@@ -202,7 +207,7 @@ function starttheshow (personID, soID) {
 
 }
 function getpicsfromcategory(category) {
-    alert(category);
+    //alert(category);
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/photosfromcat/" + category);
     xmlhttpr.send(null);
@@ -218,7 +223,7 @@ function getpicsfromcategory(category) {
 }
 
 function getuserpics(personID){
-    alert("usershootout");
+    //alert("usershootout");
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);

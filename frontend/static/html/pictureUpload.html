@@ -92,14 +92,14 @@
     <input id ="UploadBtn" type="submit"  value="Upload Picture" />
 <br>
     <p>Select a category:</p>
-    <select style="height: 27px">
-        <option>User Shootout</option>
-        <option>Animals</option>
-        <option>Art</option>
-        <option>Fashion</option>
-        <option>Food</option>
-        <option>Nature</option>
-        <option>Portrait</option>
+    <select id = "category" style="height: 27px">
+        <option selected value="">User Shootout</option>
+        <option value="Animals">Animals</option>
+        <option value="Art">Art</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Food">Food</option>
+        <option value="Nature">Nature</option>
+        <option value="Portrait">Portrait</option>
     </select>
 </form>
 
@@ -165,7 +165,8 @@
 
      var filepath = "./uploads/" + filename;
     var userid = cookiewerteHolen();
-    var piccategory = "summer"; //brauchen noch ein Eingabefeld!
+     var m = document.getElementById('category');
+     var piccategory  = m.options[m.selectedIndex].value;
 
     var xmlhttp = new XMLHttpRequest(); // new HttpRequest instance
      xmlhttp.open("POST", "http://localhost:8080/meetme/api/photo/upload/picdata");
