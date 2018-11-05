@@ -37,6 +37,24 @@ public class RankService {
         log.debug("Update points: " + shootoutid + photoId);
         dao.updatepoints(points, shootoutid, photoId);
     }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/getallpoints")
+    @UnitOfWork
+    public List<Rank> getallpoints() throws Exception {
+        return dao.getpointsinsgesammt();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/getallpoints/{photoId}")
+    @UnitOfWork
+    public List<Rank> getallpointsfromphoto(@PathParam("photoId")long photoId) throws Exception {
+        log.debug("Get all points from Photo: " + photoId);
+        return dao.getpointsinsg(photoId);
+    }
 
    @GET
    @Path("/shootout/{shootoutId}")
