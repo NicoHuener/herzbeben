@@ -24,9 +24,10 @@ public class PersonShootoutService {
     private PersonDao personDao;
     private ShootoutDao shootoutDao;
 
-    public PersonShootoutService(PersonShootoutDao dao,ShootoutDao shootoutDao) {
+    public PersonShootoutService(PersonShootoutDao dao,ShootoutDao shootoutDao, PersonDao persondao) {
         this.dao = dao;
         this.shootoutDao = shootoutDao;
+        this.personDao = persondao;
     }
 
     /*@POST
@@ -45,8 +46,8 @@ public class PersonShootoutService {
     public PersonShootout createPersonShootout(@PathParam("shootoutId")long shootoutId, @PathParam("userId")long userId, @PathParam("category")String category, @PathParam("date")String date){
         Shootout shootout = shootoutDao.get(shootoutId);
         Person person = personDao.get(userId);
-        PersonShootout personshootout = new PersonShootout(person,shootout,category,date);
-        return personshootout;
+        PersonShootout personshootout = new PersonShootout(person,shootout,date,category);
+        return dao.persist(personshootout);
     }
 
     @GET
@@ -61,16 +62,6 @@ public class PersonShootoutService {
         return dao.getPersonsFromShootout(shootout);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{userId}")
-    @UnitOfWork
-    public List<PersonShootout> getTimestampsForShootouts(@PathParam("userId") long userId) throws Exception {
-        log.debug("Get Timestamps from Shootouts: " + userId);
-
-        return dao.getTimeFromShootout(userId);
-    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

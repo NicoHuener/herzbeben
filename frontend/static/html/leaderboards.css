@@ -297,3 +297,53 @@ and (max-device-width : 1366px){
 color: black;
 margin-top: 100px;
 margin-left: 40%;}
+
+/*help button*/
+ .helpBtn14{
+    background-color: #E9AD9C;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    margin-left: 1230px;
+    top: 10%;
+    display: inline-block;
+    bottom: 511px;
+    z-index: 2;
+    border-radius: 5px;
+    color: white;
+    }
+    .helpBtn14 .helpText{
+    visibility: hidden;
+    width: 150px;
+    height: 90px;
+    background-color: #E9AD9C;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -127%;
+    left: -300%;
+    margin-left: -40px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .helpBtn14 .helpText::after{
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #E9AD9C transparent transparent transparent;
+    }
+    .helpBtn14:hover .helpText{
+    visibility: visible;
+    opacity: 1;
+    }
+    .helpBtn14:hover{
+    cursor: pointer;
+    opacity: 0.9;}
