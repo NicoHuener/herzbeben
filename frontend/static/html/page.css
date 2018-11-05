@@ -45,20 +45,21 @@
  margin-bottom: 20px;
  }
 
- .helpBtn10{
+ .helpBtn12{
      background-color: #E9AD9C;
      border: none;
      width: 40px;
-     height: 20px;
+     height: 40px;
      position: fixed;
-  /*   margin-left: -105px; */
+     margin-left: 1210px;
      display: inline-block;
-  /*   bottom: 385px; */
+     bottom: 560px;
      z-index: 2;
      border-radius: 5px;
      color: white;
+
      }
-     .helpBtn10 .helpText{
+     .helpBtn12 .helpText{
      visibility: hidden;
      width: 170px;
      height: 130px;
@@ -75,7 +76,7 @@
      opacity: 0;
      transition: opacity 0.3s;
      }
-     .helpBtn10 .helpText::after{
+     .helpBtn12 .helpText::after{
      content: "";
      position: absolute;
      top: 10%;
@@ -85,21 +86,20 @@
      border-style: solid;
      border-color: #E9AD9C transparent transparent transparent;
      }
-     .helpBtn10:hover .helpText{
+     .helpBtn12:hover .helpText{
      visibility: visible;
      opacity: 1;
      }
-     .helpBtn10:hover{
+     .helpBtn12:hover{
      cursor: pointer;
      opacity: 0.9;}
 
      .btnAdmin{
-     width: 160px;
-     background-color: transparent;
+     font-size: 19px;
+     top: 3.5%;
+     margin-left: 1000px;
+     position: fixed;
      border: none;
+     background-color: transparent;
      color: white;
-     font-size: 20px;
-     margin-top: -100px;
-     margin-left: 950px;
-
      }
