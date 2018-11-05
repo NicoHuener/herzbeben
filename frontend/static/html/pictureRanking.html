@@ -151,6 +151,7 @@
 
         xmlhttplog2.onreadystatechange = function () {
             if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                alert('function running');
                 var json = xmlhttplog2.responseText;
                 var userlist = JSON.parse(json);
                 userlist.reverse();
