@@ -47,5 +47,4 @@ public class RankService {
        return dao.getRankFromShootout(shootoutId);
     }
 
-
 }
