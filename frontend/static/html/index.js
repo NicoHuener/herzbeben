@@ -384,7 +384,22 @@ function checkRequired() {
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
 
-        }
+             /*var x = document.getElementById("signup");
+
+             var z = document.getElementById("container");
+
+              if(z.style.display === "block"){
+              z.style.display = "none";
+              x.style.display = "block";
+              }
+
+              if(x.style.display === "block") {
+              x.style.display = "block";
+              }*/
+
+              showCreateAccount;
+
+              }
     }
 
 

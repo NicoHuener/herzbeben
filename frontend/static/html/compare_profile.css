@@ -436,6 +436,7 @@ footer {
 
 .footer {
     position: fixed;
+    display: block;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -443,6 +444,7 @@ footer {
     text-align: center;
     color: lightgray;
     height: 25px;
+    z-index: 10;
 }
 /*Profile Flexbox---------------------------------*/
 /** {
