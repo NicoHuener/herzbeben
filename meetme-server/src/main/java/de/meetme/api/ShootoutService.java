@@ -1,6 +1,7 @@
 package de.meetme.api;
 
 
+import de.meetme.data.Bean.ShootoutBean;
 import de.meetme.data.Person;
 import de.meetme.data.Photo;
 import de.meetme.data.Rank;
@@ -108,7 +109,7 @@ public class ShootoutService {
     @Path("countShootouts/{userId}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
-    public List<Shootout> countShootoutsByUser(@PathParam("userId") long userId) throws Exception {
+    public List<ShootoutBean> countShootoutsByUser(@PathParam("userId") long userId) throws Exception {
         log.debug("Count Shootouts from Person: " + userId);
 
         return shootoutDao.countShootoutsByUser(userId);

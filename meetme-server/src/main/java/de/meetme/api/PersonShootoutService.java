@@ -75,7 +75,7 @@ public class PersonShootoutService {
         return dao.countparticipantsbyshootout();
     }
 
-    @GET
+    /*@GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/bestShootouts/{userId}")
@@ -85,7 +85,7 @@ public class PersonShootoutService {
 
 
         return dao.getBestShootoutsByPerson(userId);
-    }
+    }*/
 
     @GET
     @Path("/date")
