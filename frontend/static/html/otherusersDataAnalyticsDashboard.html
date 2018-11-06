@@ -104,7 +104,7 @@
 
     <div class="columnDash">
         <h1>Sum of Created Shootouts</h1>
-        <NumberOfShootouts id = "OOO"> </NumberOfShootouts>
+        <NumberOfShootouts id = "shootoutscreated"> </NumberOfShootouts>
     </div>
 
     <div class="columnDash">
@@ -420,15 +420,15 @@ function loadhits(userID) {
     function anzahlgemachterSO(userId) {
         //Request für Anzahl der gemachten shootouts am Tag
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
-        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId, true);
+        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/shootout/countShootouts/" + userId, true);
         xmlhttplog2.setRequestHeader("Content-Type", "application/json");
         xmlhttplog2.send(null);
         xmlhttplog2.onreadystatechange = function () {
             if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
                 var json = xmlhttplog2.responseText;
-                var shootoutByDate = JSON.parse(json);
-                var anzahlshootouts = (Object.keys(shootoutByDate).length);
-                document.getElementById('OOO').innerText = anzahlshootouts;
+                var shootoutscreated = JSON.parse(json);
+                console.log(shootoutscreated[0].anzahl);
+                document.getElementById('shootoutscreated').innerText = shootoutscreated[0].anzahl;
             }
         };
     }
