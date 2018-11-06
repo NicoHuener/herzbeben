@@ -138,7 +138,7 @@
 
 <script>
     window.onload = function () {
-        alert('in function');
+     //   alert('in function');
 
         if (document.cookie === ""){
             window.location.replace("http://localhost:8080/index.html");
@@ -155,11 +155,11 @@
 
         xmlhttplog2.onreadystatechange = function () {
             if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
-                alert('function running');
+           //     alert('function running');
                 var json = xmlhttplog2.responseText;
                 var piclist = JSON.parse(json);
                 piclist.reverse();
-                alert(piclist[0].picture);
+             //   alert(piclist[0].picture);
                 //User1 ------------------------------------------------------------------------
                 document.getElementById('bestpic').src = piclist[0].picture;
                 document.getElementById('bestpicwins').innerText = piclist[0].clicks;

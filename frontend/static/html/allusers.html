@@ -117,8 +117,8 @@
                     json = xhr.responseText;
 
                     var userlist = JSON.parse(json);
-                    alert (json);
-                    alert (userlist[0].name);
+                   /* alert (json);
+                    alert (userlist[0].name);*/
                     anzahluser=(Object.keys(userlist).length);
 
 
@@ -165,7 +165,7 @@
     /*Tabelle durchsuchen*/
     function searchUser() {
         var x = document.getElementByID("mySelect");
-        alert(x);
+       /* alert(x);*/
         if (x == "username") {
             var input, filter, table, tr, td, i;
             input = document.getElementById("user_input");

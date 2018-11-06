@@ -22,10 +22,10 @@ window.onload = function () {
 
 function checkNotEmpty(usernamel,passwordl) {
     if (usernamel === "" || usernamel === null) {
-        alert('Please type in a Username!');
+       // alert('Please type in a Username!');
     }
     else if (passwordl === "" || passwordl === null) {
-        alert('Please type in a Password!');
+     //   alert('Please type in a Password!');
 
     }
     else if (document.cookie) {
@@ -37,7 +37,7 @@ function checkNotEmpty(usernamel,passwordl) {
         xmlhttplog.setRequestHeader("Content-Type", "application/json");
         //sent the new HttpRequest
         xmlhttplog.send(null);
-        alert('request für user gesendet');
+     //   alert('request für user gesendet');
         xmlhttplog.onreadystatechange = function () {
             if (xmlhttplog.readyState == XMLHttpRequest.DONE) {
                 var json = xmlhttplog.responseText;
@@ -45,7 +45,7 @@ function checkNotEmpty(usernamel,passwordl) {
                 //alert (userdata);
                 var dbpassword = (userdata.password);
                 var dbusername = (userdata.username);
-                alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
+              //  alert('db passwort = ' + dbpassword + '  db username = ' + dbusername);
                 if (dbpassword === passwordl && dbusername === usernamel) {
                     if (usernamel == "admin"){
                         document.cookie = "id=" + userdata.id;
@@ -57,7 +57,7 @@ function checkNotEmpty(usernamel,passwordl) {
                     }
                 }
                 else {
-                    alert ('wrong username or password!');
+                  //  alert ('wrong username or password!');
                 }
             }
         }

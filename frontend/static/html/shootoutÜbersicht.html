@@ -86,6 +86,10 @@
         <script>
             window.onload = function profileLink (){
 
+            if (document.cookie === ""){
+                window.location.replace("http://localhost:8080/index.html");
+            }
+
                 var shootoutlist;
                 var anzahlshootouts;
                 var userdata;
@@ -187,11 +191,11 @@ console.log('shootout gesendet');
     </table>
 
     <script>
-        window.onload = function () {
+       /* window.onload = function () {
             if (document.cookie === ""){
                 window.location.replace("http://localhost:8080/index.html");
             }
-        }
+        }*/
 
         function searchShootout() {
             var input, filter, table, tr, td, i;

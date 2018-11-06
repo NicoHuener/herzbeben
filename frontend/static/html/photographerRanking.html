@@ -145,7 +145,7 @@
         window.location.replace("http://localhost:8080/index.html");
     }
 
-        alert('in function');
+      //  alert('in function');
         var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
 
         xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/photo/bestbywins", true);
@@ -168,7 +168,7 @@
                 //document.getElementById('1username').innerText = "<a href=\"otherusersprofile.html\?uid="+shootoutlist[i].person.id+"\" >"+ userlist[0].person.username + "</a>";
                 var username1;
                 username1 = userlist[0].person.username;
-                alert(username1);
+              //  alert(username1);
                 document.getElementById('1username').innerText = username1;
                 if (username1 == undefined) {
                     var pid1 = userlist[0].person;

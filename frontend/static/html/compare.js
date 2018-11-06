@@ -96,17 +96,17 @@ function createshootoutlist() {
                         var shootoutData = JSON.parse(json);
                        // alert(shootoutData[0].name);
                         var anzahlShootouts=(Object.keys(shootoutData).length);
-                        alert(anzahlShootouts);
+                       // alert(anzahlShootouts);
                         var shootouttable = document.getElementById("shootouttable");
                         for (var i = 0; i < anzahlShootouts; i++){
                            var pid = shootoutData[i].person.id;
                            if (pid == undefined){
                                pid = shootoutData[i].person;
                            }
-                           alert(pid);
+                          // alert(pid);
                            var shootoutid = shootoutData[i].id;
                            var category = shootoutData[i].category;
-                          alert(category);
+                        //  alert(category);
                            if (category == "US"){
                                category = "Usershootout";
                            }
@@ -245,7 +245,7 @@ function getpicsfromcategory(category) {
 }
 
 function getuserpics(personID){
-    alert(personID);
+  //  alert(personID);
     var xmlhttpr = new XMLHttpRequest();
     xmlhttpr.open("GET", "http://localhost:8080/meetme/api/photo/" + personID);
     xmlhttpr.send(null);
@@ -325,16 +325,16 @@ function changepic1() { //bild 2 geclickt
         photos.shift();
         var pic2ID = document.getElementById("image2").title;
 
-        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
+       // alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic2: ' + points);
        updatepoints(pic2ID,points);
         updateclicks(pic2ID,points);
     }
     else { //Keine Bilder mehr in Array!
 
-        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic2: ' + points);
+       // alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic2: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
-        alert('no pics left!');
+      //  alert('no pics left!');
 
         //gewinner ist bild 2 --> Update wins
         var lastpic2ID = document.getElementById("image2").title;
@@ -358,7 +358,7 @@ function changepic2() { //bild 1 geklickt
         document.getElementById("image2").src = photos[lastpic].picture;
         document.getElementById("image2").title = photos[lastpic].id;
         photos.pop();
-        alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic1: ' + points);
+     //   alert('photos left: ' + (Object.keys(photos).length + 1) + ' Anzahl points für pic1: ' + points);
 
         var pic1ID = document.getElementById("image1").title;
         updatepoints(pic1ID,points);
@@ -366,10 +366,10 @@ function changepic2() { //bild 1 geklickt
 
     }
     else {  //Keine Bilder mehr in Array!
-        alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic1: ' + points);
+      //  alert('photos left: ' + (Object.keys(photos).length) + ' Anzahl points für pic1: ' + points);
         document.getElementById("image1").onclick = '';
         document.getElementById("image2").onclick = '';
-        alert('no pics left!');
+      //  alert('no pics left!');
         //gewinner ist bild 1
 
 
