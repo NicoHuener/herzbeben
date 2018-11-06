@@ -105,7 +105,7 @@ public class ShootoutService {
 
     //wie viele Shootouts hat eine Person jemals erstellt
     @GET
-    @Path("countShooouts/{userId}")
+    @Path("countShootouts/{userId}")
     @UnitOfWork
     //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
     public List<Shootout> countShootoutsByUser(@PathParam("userId") long userId) throws Exception {

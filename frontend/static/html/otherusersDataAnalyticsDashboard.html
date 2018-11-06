@@ -109,7 +109,7 @@
 
     <div class="columnDash">
         <h1>Today's Shootout Participations</h1>
-        <NumberOfShootouts id = "OOO"> </NumberOfShootouts>
+        <NumberOfShootouts id = "shootoutspart"> </NumberOfShootouts>
     </div>
 
     <div class="columnDash">
@@ -139,7 +139,25 @@
         else if (document.cookie === ""){
         window.location.replace("http://localhost:8080/index.html");
         }
-        anzahlgemachterSO(userID);
+
+        function Werteliste (querystring) {
+            if (querystring == '') return;
+            var wertestring = querystring.slice(1);
+            var paare = wertestring.split("&");
+            var paar, name, wert;
+            paar = paare[0].split("=");
+            name = paar[0];
+            wert = paar[1];
+            name = unescape(name).replace("+", " ");
+            wert = unescape(wert).replace("+", " ");
+            return wert;
+        }
+
+        var showuserID;
+        showuserID = Werteliste(location.search);
+        anzahlgemachterSO(showuserID);
+        usercatcount(showuserID);
+        anzahlteilgenommenershootouts(showuserID);
 
         //----------------------------------------------------------------------------
         //Beginning of Pie Chart
@@ -160,40 +178,105 @@
                 "#FFFFFF",
             ])
 
+        function usercatcount(userID){
+                    alert(userID);
         CanvasJS.addTheme('Klicks',theme); // You can use any name
 
+        var xmlhttpcatcount = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttpcatcount.open("GET", "http://localhost:8080/meetme/api/personshootout/personCategoryCount/" + userID, true);
+        xmlhttpcatcount.setRequestHeader("Content-Type", "application/json");
+        xmlhttpcatcount.send(null);
+        xmlhttpcatcount.onreadystatechange = function () {
+            if (xmlhttpcatcount.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpcatcount.responseText;
+                var categorylist = JSON.parse(json);
+                var anzahlCategories = (Object.keys(categorylist).length);
+                alert('anzahl categories: ' + anzahlCategories);
+                //if (anzahlCategories == );
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            /*theme: 'Klicks',*/
-            colorSet: 'klicksTheme',
-            backgroundColor: '#f1f1f1',
-            /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
-            exportEnabled: true,
-            animationEnabled: true,
-            title: {
-                text: ""
-            },
-            data: [{
-                type: "pie",
-                startAngle: 25,
-                toolTipContent: "<b>{label}</b>: {y}%",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 15,
-                indexLabel: "{label} - {y}%",
-                dataPoints: [
-                    { y: 51.08, label: "User Shootout" },
-                    { y: 27.34, label: "Animals" },
-                    { y: 10.62, label: "Art" },
-                    { y: 5.02, label: "Fashion" },
-                    { y: 4.07, label: "Food" },
-                    { y: 1.22, label: "Nature" },
-                    { y: 0.44, label: "Portrait" }
-                ]
-            }]
-        });
-        chart.render();
-        //End of Pie Chart
+                var percentUS = 0;
+                var percentNature = 0;
+                var percentAnimals = 0;
+                var percentArt = 0;
+                var percentFashion = 0;
+                var percentFood = 0;
+                var percentPortrait = 0;
+
+
+                for (i = 0; i < anzahlCategories; i++) {
+                    alert(categorylist[i].category);
+                    if (categorylist[i].category == "US") {
+                        var anzahlUS = categorylist[i].anzahl;
+                        percentUS = (anzahlUS / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Nature") {
+                        var anzahlNature = categorylist[i].anzahl;
+                        percentNature = (anzahlNature / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Animals") {
+                        var anzahlAnimals = categorylist[i].anzahl;
+                        percentAnimals = (anzahlAnimals / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Art") {
+                        var anzahlArt = categorylist[i].anzahl;
+                        percentArt = (anzahlArt / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Fashion") {
+                        var anzahlFashion = categorylist[i].anzahl;
+                        percentFashion = (anzahlFashion / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Food") {
+                        var anzahlFood = categorylist[i].anzahl;
+                        percentFood = (anzahlFood / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Portrait") {
+                        var anzahlPortrait = categorylist[i].anzahl;
+                        percentPortrait = (anzahlPortrait / 7) * 100;
+
+                    }
+
+                }
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    /*theme: 'Klicks',*/
+                    colorSet: 'klicksTheme',
+                    backgroundColor: '#f1f1f1',
+                    /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: ""
+                    },
+
+
+                    data: [{
+                        type: "pie",
+                        startAngle: 25,
+                        toolTipContent: "<b>{label}</b>: {y}%",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 15,
+                        indexLabel: "{label} - {y}%",
+                        dataPoints: [
+                            { y: percentUS, label: "User Shootout" },
+                            { y: percentAnimals, label: "Animals" },
+                            { y: percentArt, label: "Art" },
+                            { y: percentFashion, label: "Fashion" },
+                            { y: percentFood, label: "Food" },
+                            { y: percentNature, label: "Nature" },
+                            { y: percentPortrait, label: "Portrait" }
+                        ]
+                    }]
+                });
+                chart.render();
+                //End of Pie Chart
+            }};}
 
         //Beginning of Doughnut Chart
         var chart = new CanvasJS.Chart("chartContainerProb", {
@@ -318,7 +401,7 @@
         });
         chart.render();
         //End of Activity Chart
-    };
+
     //-------------------------------------------------------------------------------
     function anzahlgemachterSO(userId) {
         //Request für Anzahl der gemachten shootouts am Tag
@@ -332,6 +415,23 @@
                 var shootoutByDate = JSON.parse(json);
                 var anzahlshootouts = (Object.keys(shootoutByDate).length);
                 document.getElementById('OOO').innerText = anzahlshootouts;
+            }
+        };
+    }
+
+    function anzahlteilgenommenershootouts(userId) {
+        //Request für Anzahl der gemachten shootouts am Tag
+        var date = "6.11.2018";
+        alert("userid: " + userId);
+        var xmlhttpsodone = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttpsodone.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId+"&"+date, true);
+        xmlhttpsodone.setRequestHeader("Content-Type", "application/json");
+        xmlhttpsodone.send(null);
+        xmlhttpsodone.onreadystatechange = function () {
+            if (xmlhttpsodone.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpsodone.responseText;
+                var shootoutpartByDate = JSON.parse(json);
+                document.getElementById('shootoutspart').innerText = shootoutpartByDate;
             }
         };
     }
@@ -351,7 +451,7 @@
 
     function locationChange (){
     window.location.replace("http://localhost:8080/page.html");
-}
+}};
 </script>
 <footer class="footer">
     <p>Klicks Inc. © 2018</p>
