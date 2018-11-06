@@ -384,6 +384,16 @@ function changepic2() { //bild 1 geklickt
 }
 //-------------------------------------------------------------------
 function saveuserswin(winpicID) {
+
+    function updatehit(treffer,keinTreffer) {
+        var personId = cookiewerteHolen();
+        var xmlhttpupdate = new XMLHttpRequest();
+        xmlhttpupdate.open("Get", "http://localhost:8080/meetme/api/person/"+personId+"&"+treffer+"&"+keinTreffer);
+        xmlhttpupdate.setRequestHeader("Content-Type", "application/json");
+        //sent the new HttpRequest
+        xmlhttpupdate.send();
+    }
+
     var sid = shootoutID;
     alert('aktuelle shootoutid' + sid);
         var xmlhttpsowinner = new XMLHttpRequest();
@@ -400,10 +410,12 @@ function saveuserswin(winpicID) {
             if (sowinner == winpicID){
                 //hit
                 console.log('hit');
+                updatehit(1,0);
             }
             else{
                 //nohit
                 console.log('nohit');
+                updatehit(0,1);
             }
 
         }
