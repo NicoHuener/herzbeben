@@ -171,7 +171,7 @@
                 var json = xmlhttpcatcount.responseText;
                 var categorylist = JSON.parse(json);
                 var anzahlCategories =(Object.keys(categorylist).length);
-                alert('anzahl categories: '+anzahlCategories);
+                //alert('anzahl categories: '+anzahlCategories);
 
                 var percentUS =0;
                 var percentNature=0;
@@ -183,7 +183,7 @@
 
 
                 for (i = 0; i < anzahlCategories ; i++){
-                    alert(categorylist[i].category);
+                    //alert(categorylist[i].category);
                     if (categorylist[i].category == "US"){
                         var anzahlUS = categorylist[i].anzahl;
                         percentUS = (anzahlUS / 7) * 100;
@@ -281,7 +281,7 @@
             if (xmlhttptpa.readyState == XMLHttpRequest.DONE) {
                 var json = xmlhttptpa.responseText;
                 var anzahl = JSON.parse(json);
-                alert(anzahl);
+                //alert(anzahl);
                 document.getElementById('todaysPA').innerText = anzahl;
             }
         };

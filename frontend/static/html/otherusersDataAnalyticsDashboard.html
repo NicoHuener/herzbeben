@@ -93,12 +93,12 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
     <div class="columnDash">
-        <h1>Individual Geolocation</h1>
+        <h1 id="heading1"></h1>
         <img src=./images/usersLocationExample.PNG width='356' height='200'>
     </div>
 
     <div class="columnDash">
-        <h1>Individual Preferences</h1>
+        <h1 id="heading2"></h1>
         <div id="chartContainer" style="height: 250px; width: 100%;"></div>
     </div>
 
@@ -113,7 +113,7 @@
     </div>
 
     <div class="columnDash">
-        <h1>Individual Activity</h1>
+        <h1 id="heading3"></h1>
         <div id="chartContainerActivity" style="height: 250px; width: 100%;"></div>
     </div>
 
@@ -154,7 +154,24 @@
         }
 
         var showuserID;
+        var username;
         showuserID = Werteliste(location.search);
+        //------------------------------------------------
+        var xmlhttpr = new XMLHttpRequest();
+        xmlhttpr.open("GET", "http://localhost:8080/meetme/api/person/"+showuserID);
+        xmlhttpr.send(null);
+        xmlhttpr.onreadystatechange = function () {
+            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpr.responseText;
+                var userobject= JSON.parse(json);
+                username = userobject.username;
+                document.getElementById('heading1').innerText = username +"'s Geolocation";
+                document.getElementById('heading2').innerText = username +"'s Preferences";
+                document.getElementById('heading3').innerText = username +"'s Activity";
+
+            }
+        };
+
         anzahlgemachterSO(showuserID);
         usercatcount(showuserID);
         anzahlteilgenommenershootouts(showuserID);
@@ -180,7 +197,7 @@
             ])
 
         function usercatcount(userID){
-                    alert(userID);
+                    //alert(userID);
         CanvasJS.addTheme('Klicks',theme); // You can use any name
 
         var xmlhttpcatcount = new XMLHttpRequest(); // new HttpRequest instance
@@ -192,7 +209,7 @@
                 var json = xmlhttpcatcount.responseText;
                 var categorylist = JSON.parse(json);
                 var anzahlCategories = (Object.keys(categorylist).length);
-                alert('anzahl categories: ' + anzahlCategories);
+                //alert('anzahl categories: ' + anzahlCategories);
                 //if (anzahlCategories == );
 
                 var percentUS = 0;
@@ -205,7 +222,7 @@
 
 
                 for (i = 0; i < anzahlCategories; i++) {
-                    alert(categorylist[i].category);
+                    //alert(categorylist[i].category);
                     if (categorylist[i].category == "US") {
                         var anzahlUS = categorylist[i].anzahl;
                         percentUS = (anzahlUS / 7) * 100;
@@ -436,7 +453,7 @@ function loadhits(userID) {
     function anzahlteilgenommenershootouts(userId) {
         //Request für Anzahl der gemachten shootouts am Tag
         var date = "6.11.2018";
-        alert("userid: " + userId);
+        //alert("userid: " + userId);
         var xmlhttpsodone = new XMLHttpRequest(); // new HttpRequest instance
         xmlhttpsodone.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId+"&"+date, true);
         xmlhttpsodone.setRequestHeader("Content-Type", "application/json");

@@ -395,7 +395,7 @@ function saveuserswin(winpicID) {
     }
 
     var sid = shootoutID;
-    alert('aktuelle shootoutid' + sid);
+   // alert('aktuelle shootoutid' + sid);
         var xmlhttpsowinner = new XMLHttpRequest();
     xmlhttpsowinner.open("Get", "http://localhost:8080/meetme/api/rank/winner/"+sid);
     xmlhttpsowinner.setRequestHeader("Content-Type", "application/json");
@@ -406,7 +406,7 @@ function saveuserswin(winpicID) {
             var json = xmlhttpsowinner.responseText;
             var solist = JSON.parse(json);
             var sowinner = solist[0].photo.id;
-            alert(sowinner);
+            //alert(sowinner);
             if (sowinner == winpicID){
                 //hit
                 console.log('hit');
