@@ -15,11 +15,21 @@ public class PersonDao extends AbstractDao<Person> {
         super(sessionFactory);
     }
 
-    public List<de.meetme.data.Person> byName(String name) {
+    public List<Person> byName(String name) {
         String sqlQuery = "select * from " + getEntityClass().getSimpleName() + " where username = ?";
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Person.class);
+        Query q = currentSession().createNativeQuery(sqlQuery, Person.class);
         q.setParameter( 1, name );
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<Person>getResultList();
     }
 
+    public void updateTreffer(long personId,int treffer,int keinTreffer){
+        String sqlQuery = "Update " + getEntityClass().getSimpleName() +
+                " set treffer = ? , keintreffer = ?" +
+                " where id = ?";
+        Query q = currentSession().createNativeQuery(sqlQuery, Person.class);
+        q.setParameter( 1, treffer );
+        q.setParameter( 2, keinTreffer);
+        q.setParameter( 3, personId);
+        q.executeUpdate();
+    }
 }

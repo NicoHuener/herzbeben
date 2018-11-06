@@ -72,4 +72,12 @@ public class PersonService {
         log.debug("Update Person: " + person);
         dao.update(person);
     }
+
+    @PUT
+    @Path("/{personId}&{treffer}&{keinTreffer}")
+    @UnitOfWork  //  be transaction aware (This tag automatically creates a database transaction with begin/commit or rollback in case of an error
+    public void updateTreffer(@PathParam("treffer") int treffer,@PathParam("keinTreffer") int keinTreffer,@PathParam("personId") long personId) throws Exception {
+        log.debug("Update Person Treffer: ");
+        dao.updateTreffer(personId,treffer,keinTreffer);
+    }
 }
