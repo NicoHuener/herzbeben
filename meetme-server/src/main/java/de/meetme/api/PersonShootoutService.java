@@ -1,6 +1,7 @@
 package de.meetme.api;
 
 import de.meetme.data.Bean.PersonShootoutCategoriesBean;
+import de.meetme.data.Bean.PersonShootoutShootoutBean;
 import de.meetme.data.Person;
 import de.meetme.data.PersonShootout;
 import de.meetme.data.Photo;
@@ -69,9 +70,9 @@ public class PersonShootoutService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/bestShootouts")
     @UnitOfWork
-    public List<PersonShootout> getBestShootoutsAll() throws Exception {
+    public List<PersonShootoutShootoutBean> getBestShootoutsAll() throws Exception {
 
-        return dao.getBestShootoutsAll();
+        return dao.countparticipantsbyshootout();
     }
 
     @GET
