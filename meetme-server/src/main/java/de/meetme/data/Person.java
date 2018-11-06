@@ -23,6 +23,10 @@ public class Person extends PersistentObject {
     private String username;
     @Column (nullable = false)
     private String password;
+    @Column(name = "treffer", columnDefinition = "int default 0")
+    private int treffer = 0;
+    @Column(name = "keintreffer", columnDefinition = "int default 0")
+    private int keinTreffer = 0;
 
     public Person() {// Needed by Jackson deserialization
         super(0);
@@ -35,6 +39,19 @@ public class Person extends PersistentObject {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.treffer = 0;
+        this.keinTreffer = 0;
+    }
+
+    public Person(String name, String firstName, String email, String username, String password, int treffer, int keinTreffer) {
+        super(0);
+        this.name = name;
+        this.firstName = firstName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.treffer = treffer;
+        this.keinTreffer = keinTreffer;
     }
 
     @JsonProperty
@@ -60,6 +77,16 @@ public class Person extends PersistentObject {
     @JsonProperty
     public String getEmail() {
         return email;
+    }
+
+    @JsonProperty
+    public int getTreffer() {
+        return treffer;
+    }
+
+    @JsonProperty
+    public int getKeinTreffer() {
+        return keinTreffer;
     }
 
     @Override

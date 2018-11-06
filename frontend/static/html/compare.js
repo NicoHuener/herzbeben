@@ -212,6 +212,7 @@ function starttheshow (personID, soID) {
             var selectedshootout = JSON.parse(json);
             var shootoutcategory = selectedshootout[0].category;
             postpersonshootout(soID,shootoutcategory);
+
             //alert(shootoutcategory);
             if (shootoutcategory == "US") {
                 //usershootout
@@ -377,10 +378,38 @@ function changepic2() { //bild 1 geklickt
         updatepoints(lastpic1ID,points);
         updatewins(lastpic1ID);
         updateclicks(lastpic1ID,points);
+        saveuserswin(lastpic1ID);
         showinfomodal();
     }
 }
-//---------------------------------------------------
+//-------------------------------------------------------------------
+function saveuserswin(winpicID) {
+    var sid = shootoutID;
+    alert('aktuelle shootoutid' + sid);
+        var xmlhttpsowinner = new XMLHttpRequest();
+    xmlhttpsowinner.open("Get", "http://localhost:8080/meetme/api/rank/winner/"+sid);
+    xmlhttpsowinner.setRequestHeader("Content-Type", "application/json");
+    //sent the new HttpRequest
+    xmlhttpsowinner.send();
+    xmlhttpsowinner.onreadystatechange = function () {
+        if (xmlhttpsowinner.readyState == XMLHttpRequest.DONE) {
+            var json = xmlhttpsowinner.responseText;
+            var solist = JSON.parse(json);
+            var sowinner = solist[0].photo.id;
+            alert(sowinner);
+            if (sowinner == winpicID){
+                //hit
+                console.log('hit');
+            }
+            else{
+                //nohit
+                console.log('nohit');
+            }
+
+        }
+    };
+}
+//-------------------------------------------------------------------
 //Funktionen create Shootout Popup Fenster
 function openModalcS() {
     var modal = document.getElementById('myModal');

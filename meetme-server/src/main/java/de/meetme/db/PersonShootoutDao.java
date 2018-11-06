@@ -1,11 +1,15 @@
 package de.meetme.db;
 
+import de.meetme.data.Bean.PersonShootoutCategoriesBean;
 import de.meetme.data.Person;
 import de.meetme.data.PersonShootout;
 import de.meetme.data.Shootout;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.type.IntegerType;
+import org.hibernate.type.StringType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonShootoutDao extends AbstractDao<PersonShootout> {
@@ -20,9 +24,9 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "inner join shootout s on s.id = ps.shootout_id\n" +
                 "where s.id = ?";
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Person.class);
+        Query q = currentSession().createNativeQuery(sqlQuery, Person.class);
         q.setParameter( 1, shootout.getId() );
-        return q.<de.meetme.data.Person>getResultList();
+        return q.<Person>getResultList();
     }
 
 
@@ -33,16 +37,16 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "inner join PERSONSHOOTOUT ps on ps.shootout_id = s.ID\n" +
                 "where ps.date = " + date;
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Shootout.class);
-        return q.<de.meetme.data.Shootout>getResultList();
+        Query q = currentSession().createNativeQuery(sqlQuery, Shootout.class);
+        return q.<Shootout>getResultList();
     }
 
     public List<PersonShootout> getBestShootoutsAll() {
         String sqlQuery = "SELECT shootout_id, category, count(*) as count FROM PersonShootout\n" +
                 "group by shootout_id";
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.PersonShootout>getResultList();
+        Query q = currentSession().createNativeQuery(sqlQuery, PersonShootout.class);
+        return q.<PersonShootout>getResultList();
     }
 
     public List<PersonShootout> getBestShootoutsByPerson(long personId) {
@@ -50,17 +54,17 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "where p.id = ?\n" +
                 "group by shootout_id";
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
+        Query q = currentSession().createNativeQuery(sqlQuery, PersonShootout.class);
         q.setParameter( 1, personId );
-        return q.<de.meetme.data.PersonShootout>getResultList();
+        return q.<PersonShootout>getResultList();
     }
 
     public List<PersonShootout> countCategoriesAll() {
         String sqlQuery = "SELECT category, count(*) as count FROM PersonShootout p\n" +
                 "group by category";
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.PersonShootout>getResultList();
+        Query q = currentSession().createNativeQuery(sqlQuery, PersonShootout.class);
+        return q.<PersonShootout>getResultList();
     }
 
     public List<PersonShootout> countCategoriesByUser(long personId) {
@@ -68,23 +72,62 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
                 "WHERE person_id = " + personId + "\n" +
                 "group by category";
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
+        Query q = currentSession().createNativeQuery(sqlQuery, PersonShootout.class);
         q.setParameter( 1, personId );
-        return q.<de.meetme.data.PersonShootout>getResultList();
+        return q.<PersonShootout>getResultList();
     }
 
     //wie viele Shootouts hat eine person heute bearbeitet?
-    public List<PersonShootout> countShootoutsByDate(long personID, String date) {
-        String sqlQuery = "SELECT person_id, count(*) as count FROM PersonShootout \n" +
-                "WHERE date = " + date + " AND person_id = " + personID + "\n" +
-                "GROUP BY date";
+    public int countShootoutsByDateAndPerson(long personID, String date) {
+        String sqlQuery = "SELECT person_id FROM PersonShootout \n" +
+                "WHERE date ='" + date +"' AND person_id = " + personID;
 
-        Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.PersonShootout.class);
-        return q.<de.meetme.data.PersonShootout>getResultList();
+        Query query = currentSession().createSQLQuery(sqlQuery);
+        List<Object[]> rows = query.list();
+        return rows.size();
     }
 
+    public int countShootoutsByDate(String date) {
+        String sqlQuery = "SELECT person_id FROM PersonShootout \n" +
+                "WHERE date ='" + date +"'";
 
+        Query query = currentSession().createSQLQuery(sqlQuery);
+        List<Object[]> rows = query.list();
+        return rows.size();
+    }
 
+    public List<PersonShootoutCategoriesBean> personCategoryCount(long userId) {
+        List<PersonShootoutCategoriesBean> beans = new ArrayList<>();
 
+        String sqlQuery = "select count(*) as gesamtanzahl, CATEGORY as category from PERSONSHOOTOUT \n" +
+                "where  PERSON_ID ='"+userId+"' \n" +
+                "group by CATEGORY";
 
+        Query query = currentSession().createSQLQuery(sqlQuery)
+                .addScalar("gesamtanzahl", new IntegerType())
+                .addScalar("category", new StringType());
+
+        List<Object[]> rows = query.list();
+        for(Object[] row : rows){
+            beans.add(new PersonShootoutCategoriesBean(row[1].toString(),Integer.parseInt(row[0].toString())));
+        }
+        return beans;
+    }
+
+    public List<PersonShootoutCategoriesBean> categoryCount() {
+        List<PersonShootoutCategoriesBean> beans = new ArrayList<>();
+
+        String sqlQuery = "select count(*) as gesamtanzahl, CATEGORY as category from PERSONSHOOTOUT \n" +
+                "group by CATEGORY";
+
+        Query query = currentSession().createSQLQuery(sqlQuery)
+                .addScalar("gesamtanzahl", new IntegerType())
+                .addScalar("category", new StringType());
+
+        List<Object[]> rows = query.list();
+        for(Object[] row : rows){
+            beans.add(new PersonShootoutCategoriesBean(row[1].toString(),Integer.parseInt(row[0].toString())));
+        }
+        return beans;
+    }
 }

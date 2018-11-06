@@ -1,5 +1,6 @@
 package de.meetme.api;
 
+import de.meetme.data.Bean.PersonShootoutCategoriesBean;
 import de.meetme.data.Person;
 import de.meetme.data.PersonShootout;
 import de.meetme.data.Photo;
@@ -117,13 +118,38 @@ public class PersonShootoutService {
 
     //wie viele shootouts hat ein user am gegebenen Datum erstellt?
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/countShootoutsByDate/{userId}")
+    @Path("/countShootoutsByDateAndPerson/{userId}&{date}")
     @UnitOfWork
-    public List<PersonShootout> countShootoutsByDate(@PathParam("userId") long userId, String date) throws Exception {
+    public int countShootoutsByDateAndPerson(@PathParam("userId") long userId, @PathParam("date") String date) throws Exception {
         log.debug("Count shootouts by date by user: " + userId);
-        return dao.countShootoutsByDate(userId, date);
+        return dao.countShootoutsByDateAndPerson(userId, date);
     }
+
+    @GET
+    @Path("/countShootoutsByDate/{date}")
+    @UnitOfWork
+    public int countShootoutsByDate(@PathParam("date") String date) throws Exception {
+        log.debug("Count shootouts by date by user: " + date);
+        return dao.countShootoutsByDate(date);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/personCategoryCount/{personId}")
+    @UnitOfWork
+    public List<PersonShootoutCategoriesBean> personCategoryCount(@PathParam("personId") long personId) throws Exception {
+        log.debug("Count shootouts by date by user: " + personId);
+        return dao.personCategoryCount(personId);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/categoryCount")
+    @UnitOfWork
+    public List<PersonShootoutCategoriesBean> categoryCount() throws Exception {
+        log.debug("Count shootouts all user:");
+        return dao.categoryCount();
+    }
+
 
 }
