@@ -124,7 +124,7 @@ html, body {
     cursor: pointer;
     opacity: 0.9;}
 
-/* Creates Help Button register*/
+/* Creates Help Button register
 .helpRe{
     display: inline-block;
     background-color: #E9AD9C;
@@ -132,7 +132,7 @@ html, body {
     width: 40px;
     height: 40px;
     margin-left: 285px;
-    margin-bottom: 100px;
+    margin-bottom: 300px;
     z-index: 2;
     border-radius: 5px;
     color: white;
@@ -170,9 +170,55 @@ html, body {
     }
     .helpRe:hover{
     cursor: pointer;
+    opacity: 0.9;}*/
+
+.helpRegis{
+    background-color: #E9AD9C;
+    border: none;
+    width: 40px;
+    height: 50px;
+    position: fixed;
+    margin-left: 280px;
+    display: inline-block;
+    bottom: 440px;
+    z-index: 2;
+    border-radius: 5px;
+    color: white;
+    }
+    .helpRegis .helpText{
+    visibility: hidden;
+    width: 140px;
+    height: 75px;
+    background-color: #E9AD9C;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 7px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -81%;
+    left: -215%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    }
+    .helpRegis .helpText::after{
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 100%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #E9AD9C transparent transparent transparent;
+    }
+    .helpRegis:hover .helpText{
+    visibility: visible;
+    opacity: 1;
+    }
+    .helpRegis:hover{
+    cursor: pointer;
     opacity: 0.9;}
-
-
 
 #buttonCreate:hover{
     cursor: pointer;
