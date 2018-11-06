@@ -95,7 +95,7 @@ public class PersonShootoutService {
         return dao.getShootoutsByDate(date);
     }
 
-    @GET
+    /*@GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/countCategories")
@@ -103,7 +103,7 @@ public class PersonShootoutService {
     public List<PersonShootout> countCategoriesAll() throws Exception {
 
         return dao.countCategoriesAll();
-    }
+    }*/
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

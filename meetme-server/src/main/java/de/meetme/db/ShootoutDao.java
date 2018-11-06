@@ -45,7 +45,7 @@ public class ShootoutDao extends AbstractDao<Shootout> {
 
     //wie viele shootouts hat ein user jemals erstellt
     public List<Shootout> countShootoutsByUser(long id) {
-        String sqlQuery = "select person_id, count(*) as count from " + getEntityClass().getSimpleName() + " where person_id = ? \n" +
+        String sqlQuery = "select person_id, count(*) as count from " + getEntityClass().getSimpleName() + " where person_id = ?" +
                 "GROUP BY person_id";
         Query q = currentSession().createNativeQuery(sqlQuery, de.meetme.data.Shootout.class);
         q.setParameter( 1, id );

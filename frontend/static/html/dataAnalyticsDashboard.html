@@ -136,6 +136,7 @@
         window.location.replace("http://localhost:8080/index.html");
         }
     getshootouttotal();
+        gettotalparticipation();
 //------------------------------------------------------------------------
         var theme = {
             Chart: {
@@ -156,15 +157,66 @@
 
         CanvasJS.addTheme('Klicks',theme); // You can use any name
 //------------------------------------------------------------------------------------------
-        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
-        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/personshootout/countCategories", true);
-        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
-        xmlhttplog2.send(null);
-        xmlhttplog2.onreadystatechange = function () {
-            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
-                var json = xmlhttplog2.responseText;
+        var xmlhttpcatcount = new XMLHttpRequest(); // new HttpRequest instance
+        xmlhttpcatcount.open("GET", "http://localhost:8080/meetme/api/personshootout/categoryCount", true);
+        xmlhttpcatcount.setRequestHeader("Content-Type", "application/json");
+        xmlhttpcatcount.send(null);
+        xmlhttpcatcount.onreadystatechange = function () {
+            if (xmlhttpcatcount.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpcatcount.responseText;
                 var categorylist = JSON.parse(json);
                 var anzahlCategories =(Object.keys(categorylist).length);
+                alert('anzahl categories: '+anzahlCategories);
+
+                var percentUS =0;
+                var percentNature=0;
+                var percentAnimals=0;
+                var percentArt=0;
+                var percentFashion=0;
+                var percentFood=0;
+                var percentPortrait=0;
+
+
+                for (i = 0; i < anzahlCategories ; i++){
+                    alert(categorylist[i].category);
+                    if (categorylist[i].category == "US"){
+                        var anzahlUS = categorylist[i].anzahl;
+                        percentUS = (anzahlUS / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category== "Nature"){
+                        var anzahlNature = categorylist[i].anzahl;
+                        percentNature = (anzahlNature / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Animals"){
+                        var anzahlAnimals = categorylist[i].anzahl;
+                        percentAnimals = (anzahlAnimals / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Art"){
+                        var anzahlArt = categorylist[i].anzahl;
+                        percentArt = (anzahlArt / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Fashion"){
+                        var anzahlFashion = categorylist[i].anzahl;
+                        percentFashion = (anzahlFashion / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Food"){
+                        var anzahlFood = categorylist[i].anzahl;
+                        percentFood = (anzahlFood / 7) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Portrait"){
+                        var anzahlPortrait = categorylist[i].anzahl;
+                        percentPortrait = (anzahlPortrait / 7) * 100;
+
+                    }
+
+                }
+
 
                 var chart = new CanvasJS.Chart("chartContainer", {
                     /*theme: 'Klicks',*/
@@ -186,13 +238,13 @@
                         indexLabelFontSize: 15,
                         indexLabel: "{label} - {y}%",
                         dataPoints: [
-                            { y: 'categorylist.', label: "User Shootout" },
-                            { y: ' ', label: "Animals" },
-                            { y: ' ', label: "Art" },
-                            { y: ' ', label: "Fashion" },
-                            { y: ' ', label: "Food" },
-                            { y: ' ', label: "Nature" },
-                            { y: ' ', label: "Portrait" }
+                            { y: percentUS, label: "User Shootout" },
+                            { y: percentAnimals, label: "Animals" },
+                            { y: percentArt, label: "Art" },
+                            { y: percentFashion, label: "Fashion" },
+                            { y: percentFood, label: "Food" },
+                            { y: percentNature, label: "Nature" },
+                            { y: percentPortrait, label: "Portrait" }
                         ]
                     }]
                 });
@@ -214,6 +266,22 @@
             }
         };
     }
+    function gettotalparticipation() {
+        var xmlhttptpa = new XMLHttpRequest(); // new HttpRequest instance
+        var date = "6.11.2018";
+        xmlhttptpa.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/"+ date, true);
+        xmlhttptpa.setRequestHeader("Content-Type", "application/json");
+        xmlhttptpa.send(null);
+        xmlhttptpa.onreadystatechange = function () {
+            if (xmlhttptpa.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttptpa.responseText;
+                var anzahl = JSON.parse(json);
+                alert(anzahl);
+                document.getElementById('todaysPA').innerText = anzahl;
+            }
+        };
+
+    }
 
     function cookiewerteHolen () {
         var Wert = "";
@@ -233,15 +301,13 @@
     window.location.replace("http://localhost:8080/page.html");
 }};
 
-
-
-<!--/script>
-function locationChange7 (){
-window.location.replace("http://localhost:8080/page.html");
-}
-<script-->
+    /*function locationChange7 (){
+        window.location.replace("http://localhost:8080/page.html");
+    }*/
 
 </script>
+
+
 <footer class="footer">
     <p>Klicks Inc. © 2018</p>
 </footer>
