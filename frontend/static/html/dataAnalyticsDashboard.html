@@ -34,13 +34,18 @@
                 </button>
                 <a class="navbar-brand" href="#"> <img class="brandImage" src="./images/icon.png" alt="Home" width="40px" height="40px"> </a>
                 <div class="heading">DATA ANALYTICS</div>
-                <button class="btnAdmin1" onclick="locationChange7 ()">All Users</button>
+                <button class="btnAdmin1" onclick="locationChange7()">All Users</button>
                 <button class="helpBtn10">Help
                     <span class="helpText">This is your data analytics dashboard. It provides an overview of the average klicks-user.
                     </span>
                 </button>
             </div>
+   <script>
+       function locationChange7(){
+            window.location.replace("http://localhost:8080/page.html");
 
+       }
+   </script>
             <!--search bar
             div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -249,7 +254,7 @@
                     }]
                 });
         chart.render();
-    }
+
     };
 //-----------------------------------------------------------------------
     function getshootouttotal() {
@@ -297,9 +302,10 @@
     }
 
 
-  function locationChange7 (){
+  function locationChange7(){
     window.location.replace("http://localhost:8080/page.html");
-}};
+}
+
 
     /*function locationChange7 (){
         window.location.replace("http://localhost:8080/page.html");
