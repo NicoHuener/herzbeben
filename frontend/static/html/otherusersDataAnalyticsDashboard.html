@@ -158,6 +158,7 @@
         anzahlgemachterSO(showuserID);
         usercatcount(showuserID);
         anzahlteilgenommenershootouts(showuserID);
+        loadhits(showuserID);
 
         //----------------------------------------------------------------------------
         //Beginning of Pie Chart
@@ -279,30 +280,43 @@
             }};}
 
         //Beginning of Doughnut Chart
-        var chart = new CanvasJS.Chart("chartContainerProb", {
-            animationEnabled: true,
-            colorSet: 'klicksTheme',
-            backgroundColor: '#f1f1f1',
-            title:{
-                text: "",
-                horizontalAlign: "left"
-            },
-            data: [{
-                type: "doughnut",
-                startAngle: 60,
-                innerRadius: 50,
-                indexLabelFontSize: 15,
-                indexLabel: "{label} - #percent%",
-                toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-                dataPoints: [
-                    { y: 67, label: "Hit" },
-                    { y: 28, label: "Blank" },
-                ]
-            }]
-        });
-        chart.render();
-        //End of Doughnut Chart
+function loadhits(userID) {
+        var xmlhttpr = new XMLHttpRequest();
+        xmlhttpr.open("GET", "http://localhost:8080/meetme/api/person/"+userID);
+        xmlhttpr.send(null);
+        xmlhttpr.onreadystatechange = function () {
+            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                var json = xmlhttpr.responseText;
+                var userobject= JSON.parse(json);
+                var hits = userobject.treffer;
+                console.log(hits);
+                var nohits= userobject.keinTreffer;
+                console.log(nohits);
 
+                var chart = new CanvasJS.Chart("chartContainerProb", {
+                    animationEnabled: true,
+                    colorSet: 'klicksTheme',
+                    backgroundColor: '#f1f1f1',
+                    title: {
+                        text: "",
+                        horizontalAlign: "left"
+                    },
+                    data: [{
+                        type: "doughnut",
+                        startAngle: 60,
+                        innerRadius: 50,
+                        indexLabelFontSize: 15,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                            {y: hits, label: "Hit"},
+                            {y: nohits, label: "Blank"},
+                        ]
+                    }]
+                });
+                chart.render();
+                //End of Doughnut Chart
+            }};}
         //Beginning of Activity Chart
         var chart = new CanvasJS.Chart("chartContainerActivity", {
             animationEnabled: true,

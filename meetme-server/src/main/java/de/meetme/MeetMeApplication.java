@@ -59,7 +59,7 @@ public class MeetMeApplication extends Application<MeetMeConfiguration> {
         // data class, DAO and service for person
         final PersonDao daoperson = new PersonDao(hibernate.getSessionFactory());
         final PhotoDao daophoto = new PhotoDao(hibernate.getSessionFactory());
-        final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory());
+        final ShootoutDao daoshootout = new ShootoutDao(hibernate.getSessionFactory(),daoperson);
         final PersonShootoutDao daopersonshootout = new PersonShootoutDao(hibernate.getSessionFactory(),daoshootout);
         final RankDao daorank = new RankDao(hibernate.getSessionFactory(),daoshootout,daophoto);
 
