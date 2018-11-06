@@ -23,9 +23,13 @@ window.onload = function () {
 function checkNotEmpty(usernamel,passwordl) {
     if (usernamel === "" || usernamel === null) {
        // alert('Please type in a Username!');
+       var popup = document.getElementById("thePopup2");
+           popup.classList.toggle("show");
     }
     else if (passwordl === "" || passwordl === null) {
      //   alert('Please type in a Password!');
+        var popup = document.getElementById("thePopup3");
+            popup.classList.toggle("show");
 
     }
     else if (document.cookie) {
@@ -58,6 +62,8 @@ function checkNotEmpty(usernamel,passwordl) {
                 }
                 else {
                   //  alert ('wrong username or password!');
+                  var popup = document.getElementById("thePopup");
+                              popup.classList.toggle("show");
                 }
             }
         }
@@ -346,13 +352,17 @@ function checkRequired() {
                         var useravailable = true;
                         for (var i = 0; i < anzahluser; i++) {
                             if (userlist[i].email === email) {
-                                alert('There is already an account with this Email: ' + email);
+                                //alert('There is already an account with this Email: ' + email);
                                 //window.location.replace("http://localhost:8080/index.html");
+                                var popup = document.getElementById("myPopup2");
+                                    popup.classList.toggle("show");
                                 return useravailable = false;
                             }
                             else if (userlist[i].username === username) {
-                                alert('Username ' + username + ' is already taken!');
+                                //alert('Username ' + username + ' is already taken!');
                                 //window.location.replace("http://localhost:8080/index.html");
+                                var popup = document.getElementById("myPopup3");
+                                    popup.classList.toggle("show");
                                 return useravailable = false;
                             }
                         }
