@@ -1,21 +1,25 @@
 package de.meetme.db;
 
 import de.meetme.data.Bean.PersonShootoutCategoriesBean;
+import de.meetme.data.Bean.PersonShootoutShootoutBean;
 import de.meetme.data.Person;
 import de.meetme.data.PersonShootout;
 import de.meetme.data.Shootout;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.hibernate.type.IntegerType;
+import org.hibernate.type.LongType;
 import org.hibernate.type.StringType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonShootoutDao extends AbstractDao<PersonShootout> {
+private ShootoutDao shootoutdao;
 
-    public PersonShootoutDao(SessionFactory sessionFactory) {
+    public PersonShootoutDao(SessionFactory sessionFactory,ShootoutDao shootoutdao) {
         super(sessionFactory);
+        this.shootoutdao = shootoutdao;
     }
 
     public List<Person> getPersonsFromShootout(Shootout shootout) {
@@ -40,7 +44,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         Query q = currentSession().createNativeQuery(sqlQuery, Shootout.class);
         return q.<Shootout>getResultList();
     }
-
+// error: column id not found
     public List<PersonShootout> getBestShootoutsAll() {
         String sqlQuery = "SELECT shootout_id, category, count(*) as count FROM PersonShootout\n" +
                 "group by shootout_id";
@@ -114,6 +118,7 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         return beans;
     }
 
+
     public List<PersonShootoutCategoriesBean> categoryCount() {
         List<PersonShootoutCategoriesBean> beans = new ArrayList<>();
 
@@ -130,4 +135,20 @@ public class PersonShootoutDao extends AbstractDao<PersonShootout> {
         }
         return beans;
     }
+    public List<PersonShootoutShootoutBean>countparticipantsbyshootout(){
+        String sqlQuery= "Select shootout_id as shootoutId, count(*) as anzahl from PersonShootout group by shootout_id ";
+   List<PersonShootoutShootoutBean> personshootoutlist = new ArrayList<>();
+   Query query = currentSession().createSQLQuery(sqlQuery)
+           .addScalar("shootout_id", new LongType())
+           .addScalar("anzahl", new LongType());
+
+   List<Object[]>rows = query.list();
+   for (Object[] row: rows){
+    Shootout shootout =shootoutdao.get(Long.parseLong(row[0].toString()));
+       int anzahl = Integer.parseInt(row[1].toString());
+       personshootoutlist.add(new PersonShootoutShootoutBean(shootout,anzahl));}
+       return personshootoutlist;
+
 }
+}
+
