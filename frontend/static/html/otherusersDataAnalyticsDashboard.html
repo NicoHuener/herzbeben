@@ -209,8 +209,6 @@
                     var json = xmlhttpcatcount.responseText;
                     var categorylist = JSON.parse(json);
                     var anzahlCategories = (Object.keys(categorylist).length);
-
-
                     //alert('anzahl categories: ' + anzahlCategories);
                     //if (anzahlCategories == );
 
@@ -223,119 +221,89 @@
                     var percentPortrait = 0;
 
 
+                    var gesamtanzahl=0;
 
 
-
-
-
-
-
-
-
-
-                    for (i = 0; i < anzahlCategories; i++) {
+                    for (i = 0; i < anzahlCategories ; i++){
                         //alert(categorylist[i].category);
-                        if (categorylist[i].category == "US") {
+                        if (categorylist[i].category == "US"){
                             var anzahlUS = categorylist[i].anzahl;
-                            percentUS = (anzahlUS / 7) * 100;
-
-
+                            gesamtanzahl += anzahlUS;
 
                         }
-                        else if (categorylist[i].category == "Nature") {
+                        else if (categorylist[i].category== "Nature"){
                             var anzahlNature = categorylist[i].anzahl;
-                            percentNature = (anzahlNature / 7) * 100;
-
-
-
+                            gesamtanzahl += anzahlNature;
 
                         }
-                        else if (categorylist[i].category == "Animals") {
+                        else if (categorylist[i].category == "Animals"){
                             var anzahlAnimals = categorylist[i].anzahl;
-                            percentAnimals = (anzahlAnimals / 7) * 100;
-
-
+                            gesamtanzahl += anzahlAnimals;
 
                         }
-                        else if (categorylist[i].category == "Art") {
+                        else if (categorylist[i].category == "Art"){
                             var anzahlArt = categorylist[i].anzahl;
-                            percentArt = (anzahlArt / 7) * 100;
-
-
-
+                            gesamtanzahl += anzahlArt;
                         }
-                        else if (categorylist[i].category == "Fashion") {
+                        else if (categorylist[i].category == "Fashion"){
                             var anzahlFashion = categorylist[i].anzahl;
-                            percentFashion = (anzahlFashion / 7) * 100;
-
-
+                            gesamtanzahl += anzahlFashion;
 
                         }
-                        else if (categorylist[i].category == "Food") {
+                        else if (categorylist[i].category == "Food"){
                             var anzahlFood = categorylist[i].anzahl;
-                            percentFood = (anzahlFood / 7) * 100;
-
-
+                            gesamtanzahl += anzahlFood;
 
                         }
-                        else if (categorylist[i].category == "Portrait") {
+                        else if (categorylist[i].category == "Portrait"){
                             var anzahlPortrait = categorylist[i].anzahl;
-                            percentPortrait = (anzahlPortrait / 7) * 100;
-
-
+                            gesamtanzahl += anzahlPortrait;
 
                         }
 
                     }
 
+                    console.log('gesamtanzahl: ' + gesamtanzahl);
 
+                    for (i = 0; i < anzahlCategories ; i++){
+                        //alert(categorylist[i].category);
+                        if (categorylist[i].category == "US"){
+                            var anzahlUS = categorylist[i].anzahl;
+                            percentUS = (anzahlUS / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category== "Nature"){
+                            var anzahlNature = categorylist[i].anzahl;
+                            percentNature = (anzahlNature / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category == "Animals"){
+                            var anzahlAnimals = categorylist[i].anzahl;
+                            percentAnimals = (anzahlAnimals / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category == "Art"){
+                            var anzahlArt = categorylist[i].anzahl;
+                            percentArt = (anzahlArt / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category == "Fashion"){
+                            var anzahlFashion = categorylist[i].anzahl;
+                            percentFashion = (anzahlFashion / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category == "Food"){
+                            var anzahlFood = categorylist[i].anzahl;
+                            percentFood = (anzahlFood / gesamtanzahl) * 100;
 
+                        }
+                        else if (categorylist[i].category == "Portrait"){
+                            var anzahlPortrait = categorylist[i].anzahl;
+                            percentPortrait = (anzahlPortrait / gesamtanzahl) * 100;
 
+                        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    }
 
 
                     var chart = new CanvasJS.Chart("chartContainer", {
@@ -349,7 +317,6 @@
                             text: ""
                         },
 
-
                         data: [{
                             type: "pie",
                             startAngle: 25,
@@ -359,13 +326,13 @@
                             indexLabelFontSize: 15,
                             indexLabel: "{label} - {y}%",
                             dataPoints: [
-                                { y: /*percecentUS*/ 53, label: "User Shootout" },
-                                { y: /*percentAnimals*/ 0, label: "Animals" },
-                                { y: /*percentArt*/ 25, label: "Art" },
-                                { y: /*percentFashion*/ 0, label: "Fashion" },
-                                { y: /*percentFood*/ 0, label: "Food" },
-                                { y: /*percentNature*/ 22, label: "Nature" },
-                                { y: /*percentPortrait*/ 0, label: "Portrait" }
+                                { y: percentUS, label: "User Shootout" },
+                                { y: percentAnimals, label: "Animals" },
+                                { y: percentArt, label: "Art" },
+                                { y: percentFashion, label: "Fashion" },
+                                { y: percentFood, label: "Food" },
+                                { y: percentNature, label: "Nature" },
+                                { y: percentPortrait, label: "Portrait" }
                             ]
                         }]
                     });
