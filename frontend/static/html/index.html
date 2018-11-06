@@ -71,7 +71,9 @@
     <div name="signupform" id="signupform" >
         <p id="legend">Create your account!</p><br><br>
         <div id="column">
-            <label for="mail">E-Mail address:</label>
+            <label for="mail" class="popup">E-Mail address:
+                <span class="popuptext" id="myPopup2">There is already an account with this Email</span>
+            </label>
             <br>
             <input type="text" id="mail" name="mail" placeholder="Enter Email-Adress">
             <br>
@@ -89,7 +91,9 @@
             </label>
         </div>
         <div id="column">
-            <label for="username">Username:</label>
+            <label for="username" class="popup">Username:
+                <span class="popuptext" id="myPopup3">Unfortunately this username is already taken.</span>
+            </label>
             <br>
             <input type="text" id="username" name="username" placeholder="Enter Username">
             <br>

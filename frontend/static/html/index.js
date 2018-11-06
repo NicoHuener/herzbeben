@@ -352,13 +352,17 @@ function checkRequired() {
                         var useravailable = true;
                         for (var i = 0; i < anzahluser; i++) {
                             if (userlist[i].email === email) {
-                                alert('There is already an account with this Email: ' + email);
+                                //alert('There is already an account with this Email: ' + email);
                                 //window.location.replace("http://localhost:8080/index.html");
+                                var popup = document.getElementById("myPopup2");
+                                    popup.classList.toggle("show");
                                 return useravailable = false;
                             }
                             else if (userlist[i].username === username) {
-                                alert('Username ' + username + ' is already taken!');
+                                //alert('Username ' + username + ' is already taken!');
                                 //window.location.replace("http://localhost:8080/index.html");
+                                var popup = document.getElementById("myPopup3");
+                                    popup.classList.toggle("show");
                                 return useravailable = false;
                             }
                         }
