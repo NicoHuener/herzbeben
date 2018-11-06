@@ -230,18 +230,18 @@ function checkPassword(confpw,pw){
     return true;
     }
     else{
-        alert("Passwords don't match");
+       // alert("Passwords don't match");
         return false;
     }
 }
 
-function checkRequired() {
+/*function checkRequired() {
      if(!this.div.checkbox.checked)
     {
         alert('You must agree to the terms first.');
         return false;
     }
-}
+}*/
 
     //AGB Modal --------------------------------------------------
     // When the user clicks on the button, open the modal
@@ -380,7 +380,7 @@ function checkRequired() {
         }
 
         else {
-            alert('AGBs not checked');
+           //alert('AGBs not checked');
             //text.style.display = "block";
             var popup = document.getElementById("myPopup");
             popup.classList.toggle("show");
