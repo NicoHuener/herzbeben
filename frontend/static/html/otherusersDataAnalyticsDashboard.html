@@ -127,9 +127,9 @@
 <script>
     window.onload = function () {
 
-    if (document.cookie === ""){
-        window.location.replace("http://localhost:8080/index.html");
-    }
+        if (document.cookie === ""){
+            window.location.replace("http://localhost:8080/index.html");
+        }
         var userID = cookiewerteHolen();
         var AdminID = "129";
         if (userID !== AdminID ) {
@@ -137,7 +137,7 @@
             window.location.replace("http://localhost:8080/compare.html");
         }
         else if (document.cookie === ""){
-        window.location.replace("http://localhost:8080/index.html");
+            window.location.replace("http://localhost:8080/index.html");
         }
 
         function Werteliste (querystring) {
@@ -179,7 +179,7 @@
 
         //----------------------------------------------------------------------------
         //Beginning of Pie Chart
-                var theme = {
+        var theme = {
             Chart: {
                 colorSet: "colorSet1",
                 background: "000000",
@@ -197,143 +197,220 @@
             ])
 
         function usercatcount(userID){
-                    //alert(userID);
-        CanvasJS.addTheme('Klicks',theme); // You can use any name
+            //alert(userID);
+            CanvasJS.addTheme('Klicks',theme); // You can use any name
 
-        var xmlhttpcatcount = new XMLHttpRequest(); // new HttpRequest instance
-        xmlhttpcatcount.open("GET", "http://localhost:8080/meetme/api/personshootout/personCategoryCount/" + userID, true);
-        xmlhttpcatcount.setRequestHeader("Content-Type", "application/json");
-        xmlhttpcatcount.send(null);
-        xmlhttpcatcount.onreadystatechange = function () {
-            if (xmlhttpcatcount.readyState == XMLHttpRequest.DONE) {
-                var json = xmlhttpcatcount.responseText;
-                var categorylist = JSON.parse(json);
-                var anzahlCategories = (Object.keys(categorylist).length);
-                //alert('anzahl categories: ' + anzahlCategories);
-                //if (anzahlCategories == );
-
-                var percentUS = 0;
-                var percentNature = 0;
-                var percentAnimals = 0;
-                var percentArt = 0;
-                var percentFashion = 0;
-                var percentFood = 0;
-                var percentPortrait = 0;
+            var xmlhttpcatcount = new XMLHttpRequest(); // new HttpRequest instance
+            xmlhttpcatcount.open("GET", "http://localhost:8080/meetme/api/personshootout/personCategoryCount/" + userID, true);
+            xmlhttpcatcount.setRequestHeader("Content-Type", "application/json");
+            xmlhttpcatcount.send(null);
+            xmlhttpcatcount.onreadystatechange = function () {
+                if (xmlhttpcatcount.readyState == XMLHttpRequest.DONE) {
+                    var json = xmlhttpcatcount.responseText;
+                    var categorylist = JSON.parse(json);
+                    var anzahlCategories = (Object.keys(categorylist).length);
 
 
-                for (i = 0; i < anzahlCategories; i++) {
-                    //alert(categorylist[i].category);
-                    if (categorylist[i].category == "US") {
-                        var anzahlUS = categorylist[i].anzahl;
-                        percentUS = (anzahlUS / 7) * 100;
+                    //alert('anzahl categories: ' + anzahlCategories);
+                    //if (anzahlCategories == );
+
+                    var percentUS = 0;
+                    var percentNature = 0;
+                    var percentAnimals = 0;
+                    var percentArt = 0;
+                    var percentFashion = 0;
+                    var percentFood = 0;
+                    var percentPortrait = 0;
+
+
+
+
+
+
+
+
+
+
+
+
+                    for (i = 0; i < anzahlCategories; i++) {
+                        //alert(categorylist[i].category);
+                        if (categorylist[i].category == "US") {
+                            var anzahlUS = categorylist[i].anzahl;
+                            percentUS = (anzahlUS / 7) * 100;
+
+
+
+                        }
+                        else if (categorylist[i].category == "Nature") {
+                            var anzahlNature = categorylist[i].anzahl;
+                            percentNature = (anzahlNature / 7) * 100;
+
+
+
+
+                        }
+                        else if (categorylist[i].category == "Animals") {
+                            var anzahlAnimals = categorylist[i].anzahl;
+                            percentAnimals = (anzahlAnimals / 7) * 100;
+
+
+
+                        }
+                        else if (categorylist[i].category == "Art") {
+                            var anzahlArt = categorylist[i].anzahl;
+                            percentArt = (anzahlArt / 7) * 100;
+
+
+
+                        }
+                        else if (categorylist[i].category == "Fashion") {
+                            var anzahlFashion = categorylist[i].anzahl;
+                            percentFashion = (anzahlFashion / 7) * 100;
+
+
+
+                        }
+                        else if (categorylist[i].category == "Food") {
+                            var anzahlFood = categorylist[i].anzahl;
+                            percentFood = (anzahlFood / 7) * 100;
+
+
+
+                        }
+                        else if (categorylist[i].category == "Portrait") {
+                            var anzahlPortrait = categorylist[i].anzahl;
+                            percentPortrait = (anzahlPortrait / 7) * 100;
+
+
+
+                        }
 
                     }
-                    else if (categorylist[i].category == "Nature") {
-                        var anzahlNature = categorylist[i].anzahl;
-                        percentNature = (anzahlNature / 7) * 100;
-
-                    }
-                    else if (categorylist[i].category == "Animals") {
-                        var anzahlAnimals = categorylist[i].anzahl;
-                        percentAnimals = (anzahlAnimals / 7) * 100;
-
-                    }
-                    else if (categorylist[i].category == "Art") {
-                        var anzahlArt = categorylist[i].anzahl;
-                        percentArt = (anzahlArt / 7) * 100;
-
-                    }
-                    else if (categorylist[i].category == "Fashion") {
-                        var anzahlFashion = categorylist[i].anzahl;
-                        percentFashion = (anzahlFashion / 7) * 100;
-
-                    }
-                    else if (categorylist[i].category == "Food") {
-                        var anzahlFood = categorylist[i].anzahl;
-                        percentFood = (anzahlFood / 7) * 100;
-
-                    }
-                    else if (categorylist[i].category == "Portrait") {
-                        var anzahlPortrait = categorylist[i].anzahl;
-                        percentPortrait = (anzahlPortrait / 7) * 100;
-
-                    }
-
-                }
-
-                var chart = new CanvasJS.Chart("chartContainer", {
-                    /*theme: 'Klicks',*/
-                    colorSet: 'klicksTheme',
-                    backgroundColor: '#f1f1f1',
-                    /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
-                    exportEnabled: true,
-                    animationEnabled: true,
-                    title: {
-                        text: ""
-                    },
 
 
-                    data: [{
-                        type: "pie",
-                        startAngle: 25,
-                        toolTipContent: "<b>{label}</b>: {y}%",
-                        showInLegend: "true",
-                        legendText: "{label}",
-                        indexLabelFontSize: 15,
-                        indexLabel: "{label} - {y}%",
-                        dataPoints: [
-                            { y: percentUS, label: "User Shootout" },
-                            { y: percentAnimals, label: "Animals" },
-                            { y: percentArt, label: "Art" },
-                            { y: percentFashion, label: "Fashion" },
-                            { y: percentFood, label: "Food" },
-                            { y: percentNature, label: "Nature" },
-                            { y: percentPortrait, label: "Portrait" }
-                        ]
-                    }]
-                });
-                chart.render();
-                //End of Pie Chart
-            }};}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                        /*theme: 'Klicks',*/
+                        colorSet: 'klicksTheme',
+                        backgroundColor: '#f1f1f1',
+                        /*theme: "dark2", // "light1", "light2", "dark1", "dark2"*/
+                        exportEnabled: true,
+                        animationEnabled: true,
+                        title: {
+                            text: ""
+                        },
+
+
+                        data: [{
+                            type: "pie",
+                            startAngle: 25,
+                            toolTipContent: "<b>{label}</b>: {y}%",
+                            showInLegend: "true",
+                            legendText: "{label}",
+                            indexLabelFontSize: 15,
+                            indexLabel: "{label} - {y}%",
+                            dataPoints: [
+                                { y: /*percecentUS*/ 53, label: "User Shootout" },
+                                { y: /*percentAnimals*/ 0, label: "Animals" },
+                                { y: /*percentArt*/ 25, label: "Art" },
+                                { y: /*percentFashion*/ 0, label: "Fashion" },
+                                { y: /*percentFood*/ 0, label: "Food" },
+                                { y: /*percentNature*/ 22, label: "Nature" },
+                                { y: /*percentPortrait*/ 0, label: "Portrait" }
+                            ]
+                        }]
+                    });
+                    chart.render();
+                    //End of Pie Chart
+                }};}
 
         //Beginning of Doughnut Chart
-function loadhits(userID) {
-        var xmlhttpr = new XMLHttpRequest();
-        xmlhttpr.open("GET", "http://localhost:8080/meetme/api/person/"+userID);
-        xmlhttpr.send(null);
-        xmlhttpr.onreadystatechange = function () {
-            if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
-                var json = xmlhttpr.responseText;
-                var userobject= JSON.parse(json);
-                var hits = userobject.treffer;
-                console.log(hits);
-                var nohits= userobject.keinTreffer;
-                console.log(nohits);
+        function loadhits(userID) {
+            var xmlhttpr = new XMLHttpRequest();
+            xmlhttpr.open("GET", "http://localhost:8080/meetme/api/person/"+userID);
+            xmlhttpr.send(null);
+            xmlhttpr.onreadystatechange = function () {
+                if (xmlhttpr.readyState == XMLHttpRequest.DONE) {
+                    var json = xmlhttpr.responseText;
+                    var userobject= JSON.parse(json);
+                    var hits = userobject.treffer;
+                    console.log(hits);
+                    var nohits= userobject.keinTreffer;
+                    console.log(nohits);
 
-                var chart = new CanvasJS.Chart("chartContainerProb", {
-                    animationEnabled: true,
-                    colorSet: 'klicksTheme',
-                    backgroundColor: '#f1f1f1',
-                    title: {
-                        text: "",
-                        horizontalAlign: "left"
-                    },
-                    data: [{
-                        type: "doughnut",
-                        startAngle: 60,
-                        innerRadius: 50,
-                        indexLabelFontSize: 15,
-                        indexLabel: "{label} - #percent%",
-                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-                        dataPoints: [
-                            {y: hits, label: "Hit"},
-                            {y: nohits, label: "Blank"},
-                        ]
-                    }]
-                });
-                chart.render();
-                //End of Doughnut Chart
-            }};}
+                    var chart = new CanvasJS.Chart("chartContainerProb", {
+                        animationEnabled: true,
+                        colorSet: 'klicksTheme',
+                        backgroundColor: '#f1f1f1',
+                        title: {
+                            text: "",
+                            horizontalAlign: "left"
+                        },
+                        data: [{
+                            type: "doughnut",
+                            startAngle: 60,
+                            innerRadius: 50,
+                            indexLabelFontSize: 15,
+                            indexLabel: "{label} - #percent%",
+                            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                            dataPoints: [
+                                {y: hits, label: "Hit"},
+                                {y: nohits, label: "Blank"},
+                            ]
+                        }]
+                    });
+                    chart.render();
+                    //End of Doughnut Chart
+                }};}
         //Beginning of Activity Chart
         var chart = new CanvasJS.Chart("chartContainerActivity", {
             animationEnabled: true,
@@ -433,56 +510,56 @@ function loadhits(userID) {
         chart.render();
         //End of Activity Chart
 
-    //-------------------------------------------------------------------------------
-    function anzahlgemachterSO(userId) {
-        //Request für Anzahl der gemachten shootouts am Tag
-        var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
-        xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/shootout/countShootouts/" + userId, true);
-        xmlhttplog2.setRequestHeader("Content-Type", "application/json");
-        xmlhttplog2.send(null);
-        xmlhttplog2.onreadystatechange = function () {
-            if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
-                var json = xmlhttplog2.responseText;
-                var shootoutscreated = JSON.parse(json);
-                console.log(shootoutscreated[0].anzahl);
-                document.getElementById('shootoutscreated').innerText = shootoutscreated[0].anzahl;
-            }
-        };
-    }
-
-    function anzahlteilgenommenershootouts(userId) {
-        //Request für Anzahl der gemachten shootouts am Tag
-        var date = "6.11.2018";
-        //alert("userid: " + userId);
-        var xmlhttpsodone = new XMLHttpRequest(); // new HttpRequest instance
-        xmlhttpsodone.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId+"&"+date, true);
-        xmlhttpsodone.setRequestHeader("Content-Type", "application/json");
-        xmlhttpsodone.send(null);
-        xmlhttpsodone.onreadystatechange = function () {
-            if (xmlhttpsodone.readyState == XMLHttpRequest.DONE) {
-                var json = xmlhttpsodone.responseText;
-                var shootoutpartByDate = JSON.parse(json);
-                document.getElementById('shootoutspart').innerText = shootoutpartByDate;
-            }
-        };
-    }
-    //------------------------------------------------------------------------------
-    function cookiewerteHolen () {
-        var Wert = "";
-        if (document.cookie) {
-            var Wertstart = document.cookie.indexOf("=") + 1;
-            var Wertende = document.cookie.indexOf(";");
-            if (Wertende == -1) {
-                Wertende = document.cookie.length;
-            }
-            Wert = document.cookie.substring(Wertstart, Wertende);
+        //-------------------------------------------------------------------------------
+        function anzahlgemachterSO(userId) {
+            //Request für Anzahl der gemachten shootouts am Tag
+            var xmlhttplog2 = new XMLHttpRequest(); // new HttpRequest instance
+            xmlhttplog2.open("GET", "http://localhost:8080/meetme/api/shootout/countShootouts/" + userId, true);
+            xmlhttplog2.setRequestHeader("Content-Type", "application/json");
+            xmlhttplog2.send(null);
+            xmlhttplog2.onreadystatechange = function () {
+                if (xmlhttplog2.readyState == XMLHttpRequest.DONE) {
+                    var json = xmlhttplog2.responseText;
+                    var shootoutscreated = JSON.parse(json);
+                    console.log(shootoutscreated[0].anzahl);
+                    document.getElementById('shootoutscreated').innerText = shootoutscreated[0].anzahl;
+                }
+            };
         }
-        return Wert;
-    }
 
-    function locationChange (){
-    window.location.replace("http://localhost:8080/page.html");
-}};
+        function anzahlteilgenommenershootouts(userId) {
+            //Request für Anzahl der gemachten shootouts am Tag
+            var date = "6.11.2018";
+            //alert("userid: " + userId);
+            var xmlhttpsodone = new XMLHttpRequest(); // new HttpRequest instance
+            xmlhttpsodone.open("GET", "http://localhost:8080/meetme/api/personshootout/countShootoutsByDate/" + userId+"&"+date, true);
+            xmlhttpsodone.setRequestHeader("Content-Type", "application/json");
+            xmlhttpsodone.send(null);
+            xmlhttpsodone.onreadystatechange = function () {
+                if (xmlhttpsodone.readyState == XMLHttpRequest.DONE) {
+                    var json = xmlhttpsodone.responseText;
+                    var shootoutpartByDate = JSON.parse(json);
+                    document.getElementById('shootoutspart').innerText = shootoutpartByDate;
+                }
+            };
+        }
+        //------------------------------------------------------------------------------
+        function cookiewerteHolen () {
+            var Wert = "";
+            if (document.cookie) {
+                var Wertstart = document.cookie.indexOf("=") + 1;
+                var Wertende = document.cookie.indexOf(";");
+                if (Wertende == -1) {
+                    Wertende = document.cookie.length;
+                }
+                Wert = document.cookie.substring(Wertstart, Wertende);
+            }
+            return Wert;
+        }
+
+        function locationChange (){
+            window.location.replace("http://localhost:8080/page.html");
+        }};
 </script>
 <footer class="footer">
     <p>Klicks Inc. © 2018</p>

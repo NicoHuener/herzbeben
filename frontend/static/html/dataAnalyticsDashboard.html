@@ -118,10 +118,10 @@
             <NumberOfShootouts id = "todaysPA"> </NumberOfShootouts>
         </div>
 
-        <div class="columnDash">
+        <!--<div class="columnDash">
             <h1>Sum of Shootout Participations</h1>
             <NumberOfShootouts id = "totalPA"> </NumberOfShootouts>
-        </div>
+        </div>-->
 
     </div>
 
@@ -181,42 +181,85 @@
                 var percentFood=0;
                 var percentPortrait=0;
 
+                var gesamtanzahl=0;
+
 
                 for (i = 0; i < anzahlCategories ; i++){
                     //alert(categorylist[i].category);
                     if (categorylist[i].category == "US"){
                         var anzahlUS = categorylist[i].anzahl;
-                        percentUS = (anzahlUS / 7) * 100;
+                        gesamtanzahl += anzahlUS;
 
                     }
                     else if (categorylist[i].category== "Nature"){
                         var anzahlNature = categorylist[i].anzahl;
-                        percentNature = (anzahlNature / 7) * 100;
+                        gesamtanzahl += anzahlNature;
 
                     }
                     else if (categorylist[i].category == "Animals"){
                         var anzahlAnimals = categorylist[i].anzahl;
-                        percentAnimals = (anzahlAnimals / 7) * 100;
+                        gesamtanzahl += anzahlAnimals;
 
                     }
                     else if (categorylist[i].category == "Art"){
                         var anzahlArt = categorylist[i].anzahl;
-                        percentArt = (anzahlArt / 7) * 100;
-
+                        gesamtanzahl += anzahlArt;
                     }
                     else if (categorylist[i].category == "Fashion"){
                         var anzahlFashion = categorylist[i].anzahl;
-                        percentFashion = (anzahlFashion / 7) * 100;
+                        gesamtanzahl += anzahlFashion;
 
                     }
                     else if (categorylist[i].category == "Food"){
                         var anzahlFood = categorylist[i].anzahl;
-                        percentFood = (anzahlFood / 7) * 100;
+                        gesamtanzahl += anzahlFood;
 
                     }
                     else if (categorylist[i].category == "Portrait"){
                         var anzahlPortrait = categorylist[i].anzahl;
-                        percentPortrait = (anzahlPortrait / 7) * 100;
+                        gesamtanzahl += anzahlPortrait;
+
+                    }
+
+                }
+
+                console.log('gesamtanzahl: ' + gesamtanzahl);
+
+                for (i = 0; i < anzahlCategories ; i++){
+                    //alert(categorylist[i].category);
+                    if (categorylist[i].category == "US"){
+                        var anzahlUS = categorylist[i].anzahl;
+                        percentUS = (anzahlUS / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category== "Nature"){
+                        var anzahlNature = categorylist[i].anzahl;
+                        percentNature = (anzahlNature / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Animals"){
+                        var anzahlAnimals = categorylist[i].anzahl;
+                        percentAnimals = (anzahlAnimals / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Art"){
+                        var anzahlArt = categorylist[i].anzahl;
+                        percentArt = (anzahlArt / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Fashion"){
+                        var anzahlFashion = categorylist[i].anzahl;
+                        percentFashion = (anzahlFashion / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Food"){
+                        var anzahlFood = categorylist[i].anzahl;
+                        percentFood = (anzahlFood / gesamtanzahl) * 100;
+
+                    }
+                    else if (categorylist[i].category == "Portrait"){
+                        var anzahlPortrait = categorylist[i].anzahl;
+                        percentPortrait = (anzahlPortrait / gesamtanzahl) * 100;
 
                     }
 
