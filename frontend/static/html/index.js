@@ -23,9 +23,13 @@ window.onload = function () {
 function checkNotEmpty(usernamel,passwordl) {
     if (usernamel === "" || usernamel === null) {
        // alert('Please type in a Username!');
+       var popup = document.getElementById("thePopup2");
+           popup.classList.toggle("show");
     }
     else if (passwordl === "" || passwordl === null) {
      //   alert('Please type in a Password!');
+        var popup = document.getElementById("thePopup3");
+            popup.classList.toggle("show");
 
     }
     else if (document.cookie) {
@@ -58,6 +62,8 @@ function checkNotEmpty(usernamel,passwordl) {
                 }
                 else {
                   //  alert ('wrong username or password!');
+                  var popup = document.getElementById("thePopup");
+                              popup.classList.toggle("show");
                 }
             }
         }

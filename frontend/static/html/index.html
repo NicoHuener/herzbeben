@@ -48,9 +48,14 @@
 <div id="container">
     <div id="login" name="login">
         <p id="sign-in1">Sign in now!</p><br><br>
-        <label for="usernamelogin">Username:</label>
+        <label class="popup" for="usernamelogin" id="Usernamelabel">Username:
+            <span class="popuptext" id="thePopup">This username is not registered. Please register first.</span>
+            <span class="popuptext" id="thePopup2">Please enter your username first.</span>
+        </label>
         <input type="text" id="usernamelogin" name="usernamelogin" placeholder="Enter Username">
-        <label for="passwordlogin">Password:</label>
+        <label class="popup" for="passwordlogin">Password:
+            <span class="popuptext" id="thePopup3">Please type in your password.</span>
+        </label>
         <input type="password" id="passwordlogin" name="passwordlogin" placeholder="Enter Password">
         <div id="lower">
             <!--  <input type="checkbox" id="checkbox">
